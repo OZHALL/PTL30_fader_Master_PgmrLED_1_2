@@ -1,32 +1,12 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"34237 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
-[s S1512 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1512 . ANSC0 ANSC1 ANSC2 ANSC3 ANSC4 ANSC5 ANSC6 ANSC7 ]
-"34236
-[u S1511 `S1512 1 ]
-[n S1511 . . ]
-"34248
-[v _ANSELCbits `VS1511 ~T0 @X0 0 e@3918 ]
-"719
-[s S40 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S40 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"718
-[u S39 `S40 1 ]
-[n S39 . . ]
-"730
-[v _TRISCbits `VS39 ~T0 @X0 0 e@19 ]
-"905
-[s S46 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S46 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
-"904
-[u S45 `S46 1 ]
-[n S45 . . ]
-"916
-[v _LATCbits `VS45 ~T0 @X0 0 e@24 ]
-"18 LED7Seg.h
-[v _delay `(v ~T0 @X0 0 ef1`i ]
-"21
-[v _LED7SegDisplayValueByDigit `(v ~T0 @X0 0 ef2`ui`ui ]
+"444 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
+[v _PORTB `Vuc ~T0 @X0 0 e@13 ]
+[v F14219 `(v ~T0 @X0 1 tf1`ul ]
+"153 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
+[v __delay `JF14219 ~T0 @X0 0 e ]
+[p i __delay ]
+"382 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
+[v _PORTA `Vuc ~T0 @X0 0 e@12 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -13230,494 +13210,158 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adcc.h: 773: uint8_t ADCC_GetConversionStageStatus(void);
 [; ;mcc.h: 70: void SYSTEM_Initialize(void);
 [; ;mcc.h: 83: void OSCILLATOR_Initialize(void);
-[; ;LED7Seg.h: 16: void LED7SegLoop();
-[; ;LED7Seg.h: 17: void LED7SegSetup();
-[; ;LED7Seg.h: 18: void delay(int delaytime);
-[; ;LED7Seg.h: 19: void LED7SegBlankDisplay();
-[; ;LED7Seg.h: 20: void LED7SegDisplayValue(unsigned int iTwoDigitNumber);
-[; ;LED7Seg.h: 21: void LED7SegDisplayValueByDigit(unsigned int iTensDigit,unsigned int iUnitsDigit);
-"19 LED7Seg.c
-[v _latchpin `Ci ~T0 @X0 1 e ]
-[i _latchpin
--> 16 `i
-]
-[; ;LED7Seg.c: 19: const int latchpin = 16;
-"20
-[v _clockpin `Ci ~T0 @X0 1 e ]
-[i _clockpin
--> 17 `i
-]
-[; ;LED7Seg.c: 20: const int clockpin = 17;
-"21
-[v _datapin `Ci ~T0 @X0 1 e ]
-[i _datapin
--> 18 `i
-]
-[; ;LED7Seg.c: 21: const int datapin = 18;
-"22
-[v _b `f ~T0 @X0 1 e ]
-[i _b
--> -> 0 `i `f
-]
-[; ;LED7Seg.c: 22: float b = 0;
-"23
-[v _c `ui ~T0 @X0 1 e ]
-[i _c
--> -> 0 `i `ui
-]
-[; ;LED7Seg.c: 23: unsigned int c = 0;
-"24
-[v _d `f ~T0 @X0 1 e ]
-[i _d
--> -> 0 `i `f
-]
-[; ;LED7Seg.c: 24: float d = 0;
-"25
-[v _e `i ~T0 @X0 1 e ]
-[i _e
--> 0 `i
-]
-[; ;LED7Seg.c: 25: int e = 0;
-"26
-[v _speed `Cui ~T0 @X0 1 e ]
-[i _speed
--> -> 50 `i `ui
-]
-[; ;LED7Seg.c: 26: const unsigned int speed = 50;
-"27
-[v _twoK `Cui ~T0 @X0 1 e ]
-[i _twoK
--> -> 10000 `i `ui
-]
-[; ;LED7Seg.c: 27: const unsigned int twoK = 10000;
-"28
-[v _toggleDly `Cui ~T0 @X0 1 e ]
-[i _toggleDly
--> -> 10 `i `ui
-]
-[; ;LED7Seg.c: 28: const unsigned int toggleDly=10;
-"29
-[v _segdisp `i ~T0 @X0 -> 10 `i e ]
-[i _segdisp
+"12 VCAMIX_SPI_Master.h
+[v _cPowerOfTwo `Ci ~T0 @X0 -> 8 `i e ]
+[i _cPowerOfTwo
 :U ..
-"30
--> 3 `i
--> 159 `i
--> 37 `i
--> 13 `i
--> 153 `i
--> 73 `i
--> 65 `i
--> 27 `i
 -> 1 `i
--> 9 `i
+-> 2 `i
+-> 4 `i
+-> 8 `i
+-> 16 `i
+-> 32 `i
+-> 64 `i
+-> 128 `i
 ..
 ]
-[; ;LED7Seg.c: 29: int segdisp[10] = {
-[; ;LED7Seg.c: 30: 3,159,37,13,153,73,65,27,1,9 };
-"31
-[v _LED7SegSetup `(v ~T0 @X0 1 ef ]
-"32
+[; ;VCAMIX_SPI_Master.h: 12: const int cPowerOfTwo[8] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
+[; ;VCAMIX_SPI_Master.h: 21: void putByte(uint8_t data,int clockPin);
+[; ;VCAMIX_SPI_Master.h: 22: void initDAC528();
+[; ;VCAMIX_SPI_Master.h: 23: void writeDAC528(int dacNumber, uint8_t dacData);
+"11 VCAMIX_SPI_Master.c
+[v _lineSettleMicroTime `Ci ~T0 @X0 1 e ]
+[i _lineSettleMicroTime
+-> 400 `i
+]
+[; ;VCAMIX_SPI_Master.c: 11: const int lineSettleMicroTime = 400;
+"12
+[v _clockMicroTime `Ci ~T0 @X0 1 e ]
+[i _clockMicroTime
+-> 200 `i
+]
+[; ;VCAMIX_SPI_Master.c: 12: const int clockMicroTime = 200;
+"14
+[v _putByte `(v ~T0 @X0 1 ef2`uc`i ]
 {
-[; ;LED7Seg.c: 31: void LED7SegSetup()
-[; ;LED7Seg.c: 32: {
-[e :U _LED7SegSetup ]
+[; ;VCAMIX_SPI_Master.c: 14: void putByte(uint8_t data,int clockPin) {
+[e :U _putByte ]
+[v _data `uc ~T0 @X0 1 r1 ]
+[v _clockPin `i ~T0 @X0 1 r2 ]
 [f ]
-[; ;LED7Seg.c: 34: do { ANSELCbits.ANSC5 = 0; } while(0);
-"34
-[e :U 1567 ]
-{
-[e = . . _ANSELCbits 0 5 -> -> 0 `i `uc ]
-}
+"15
+[v _i `uc ~T0 @X0 1 a ]
+[; ;VCAMIX_SPI_Master.c: 15: uint8_t i = 8;
+[e = _i -> -> 8 `i `uc ]
+"16
+[v _mask `uc ~T0 @X0 1 a ]
+[; ;VCAMIX_SPI_Master.c: 16: uint8_t mask;
+[; ;VCAMIX_SPI_Master.c: 17: while(i > 0) {
+"17
+[e $U 1565  ]
 [e :U 1566 ]
-[; ;LED7Seg.c: 35: do { TRISCbits.TRISC5 = 0; } while(0);
-"35
-[e :U 1570 ]
 {
-[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 18: mask = 0x01 << (i - 1);
+"18
+[e = _mask -> << -> 1 `i - -> _i `i -> 1 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 20: PORTB &= 0xBF ;
+"20
+[e =& _PORTB -> -> 191 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 22: _delay((unsigned long)((clockMicroTime)*(32000000/4000000.0)));
+"22
+[e ( __delay (1 -> * -> _clockMicroTime `d / -> -> 32000000 `l `d .4000000.0 `ul ]
+[; ;VCAMIX_SPI_Master.c: 23: if (data & mask){
+"23
+[e $ ! != & -> _data `i -> _mask `i -> 0 `i 1568  ]
+{
+[; ;VCAMIX_SPI_Master.c: 25: PORTB |= 0x80 ;
+"25
+[e =| _PORTB -> -> 128 `i `uc ]
+"26
+}
+[; ;VCAMIX_SPI_Master.c: 26: }else{
+[e $U 1569  ]
+[e :U 1568 ]
+{
+[; ;VCAMIX_SPI_Master.c: 28: PORTB &= 0x7F ;
+"28
+[e =& _PORTB -> -> 127 `i `uc ]
+"29
 }
 [e :U 1569 ]
-[; ;LED7Seg.c: 38: do { ANSELCbits.ANSC6 = 0; } while(0);
-"38
-[e :U 1573 ]
-{
-[e = . . _ANSELCbits 0 6 -> -> 0 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 29: }
+[; ;VCAMIX_SPI_Master.c: 31: _delay((unsigned long)((clockMicroTime)*(32000000/4000000.0)));
+"31
+[e ( __delay (1 -> * -> _clockMicroTime `d / -> -> 32000000 `l `d .4000000.0 `ul ]
+[; ;VCAMIX_SPI_Master.c: 33: PORTB |= 0x40 ;
+"33
+[e =| _PORTB -> -> 64 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 35: _delay((unsigned long)((clockMicroTime)*(32000000/4000000.0)));
+"35
+[e ( __delay (1 -> * -> _clockMicroTime `d / -> -> 32000000 `l `d .4000000.0 `ul ]
+[; ;VCAMIX_SPI_Master.c: 36: --i;
+"36
+[e =- _i -> -> 1 `i `uc ]
+"37
 }
-[e :U 1572 ]
-[; ;LED7Seg.c: 39: do { TRISCbits.TRISC6 = 0; } while(0);
-"39
-[e :U 1576 ]
-{
-[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
-}
-[e :U 1575 ]
-[; ;LED7Seg.c: 42: do { ANSELCbits.ANSC7 = 0; } while(0);
-"42
-[e :U 1579 ]
-{
-[e = . . _ANSELCbits 0 7 -> -> 0 `i `uc ]
-}
-[e :U 1578 ]
-[; ;LED7Seg.c: 43: do { TRISCbits.TRISC7 = 0; } while(0);
-"43
-[e :U 1582 ]
-{
-[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-}
-[e :U 1581 ]
-[; ;LED7Seg.c: 44: }
-"44
+[e :U 1565 ]
+"17
+[e $ > -> _i `i -> 0 `i 1566  ]
+[e :U 1567 ]
+[; ;VCAMIX_SPI_Master.c: 37: }
+[; ;VCAMIX_SPI_Master.c: 40: }
+"40
 [e :UE 1564 ]
 }
-"48
-[v _LED7SegPinWrite `(v ~T0 @X0 1 ef1`uc ]
-"49
+"44
+[v _initDAC528 `(v ~T0 @X0 1 ef ]
 {
-[; ;LED7Seg.c: 48: void LED7SegPinWrite(unsigned char val )
-[; ;LED7Seg.c: 49: {
-[e :U _LED7SegPinWrite ]
-"48
-[v _val `uc ~T0 @X0 1 r1 ]
-"49
+[; ;VCAMIX_SPI_Master.c: 44: void initDAC528() {
+[e :U _initDAC528 ]
 [f ]
-[; ;LED7Seg.c: 50: if (val){
-"50
-[e $ ! != -> _val `i -> -> -> 0 `i `uc `i 1584  ]
-{
-[; ;LED7Seg.c: 52: do { LATCbits.LATC7 = 1; } while(0);
-"52
-[e :U 1587 ]
-{
-[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-}
-[e :U 1586 ]
+[; ;VCAMIX_SPI_Master.c: 49: PORTA &= 0x7F ;
+"49
+[e =& _PORTA -> -> 127 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 51: putByte(0x00,0);
+"51
+[e ( _putByte (2 , -> -> 0 `i `uc -> 0 `i ]
+[; ;VCAMIX_SPI_Master.c: 53: putByte(0xFF,0);
 "53
-}
-[; ;LED7Seg.c: 53: } else {
-[e $U 1588  ]
-[e :U 1584 ]
-{
-[; ;LED7Seg.c: 55: do { LATCbits.LATC7 = 0; } while(0);
-"55
-[e :U 1591 ]
-{
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-}
-[e :U 1590 ]
+[e ( _putByte (2 , -> -> 255 `i `uc -> 0 `i ]
+[; ;VCAMIX_SPI_Master.c: 56: PORTA |= 0x80 ;
 "56
-}
-[e :U 1588 ]
-[; ;LED7Seg.c: 56: }
-[; ;LED7Seg.c: 57: }
+[e =| _PORTA -> -> 128 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 57: }
 "57
-[e :UE 1583 ]
+[e :UE 1570 ]
 }
+"59
+[v _writeDAC528 `(v ~T0 @X0 1 ef2`i`uc ]
+{
+[; ;VCAMIX_SPI_Master.c: 59: void writeDAC528(int dacNumber, uint8_t dacData) {
+[e :U _writeDAC528 ]
+[v _dacNumber `i ~T0 @X0 1 r1 ]
+[v _dacData `uc ~T0 @X0 1 r2 ]
+[f ]
 "60
-[v _LED7SegPulseClock `(v ~T0 @X0 1 ef ]
+[v _wkDacNumber `uc ~T0 @X0 1 a ]
+[; ;VCAMIX_SPI_Master.c: 60: uint8_t wkDacNumber=0;
+[e = _wkDacNumber -> -> 0 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 61: wkDacNumber=cPowerOfTwo[dacNumber];
 "61
-{
-[; ;LED7Seg.c: 60: void LED7SegPulseClock( void )
-[; ;LED7Seg.c: 61: {
-[e :U _LED7SegPulseClock ]
-[f ]
-[; ;LED7Seg.c: 63: do { LATCbits.LATC6 = 1; } while(0);
-"63
-[e :U 1595 ]
-{
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-}
-[e :U 1594 ]
-[; ;LED7Seg.c: 64: delay(1);
-"64
-[e ( _delay (1 -> 1 `i ]
-[; ;LED7Seg.c: 66: do { LATCbits.LATC6 = 0; } while(0);
-"66
-[e :U 1598 ]
-{
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-}
-[e :U 1597 ]
-[; ;LED7Seg.c: 67: }
-"67
-[e :UE 1592 ]
-}
-"69
-[v _LED7SegShiftOutPulseClock `(v ~T0 @X0 1 ef1`uc ]
-"70
-{
-[; ;LED7Seg.c: 69: void LED7SegShiftOutPulseClock(unsigned char val)
-[; ;LED7Seg.c: 70: {
-[e :U _LED7SegShiftOutPulseClock ]
-"69
-[v _val `uc ~T0 @X0 1 r1 ]
-"70
-[f ]
-"71
-[v _i `uc ~T0 @X0 1 a ]
-[; ;LED7Seg.c: 71: char i;
-[; ;LED7Seg.c: 75: for (i = 0; i < 8; i++) {
-"75
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 1600  ]
-[e $U 1601  ]
-[e :U 1600 ]
-{
-[; ;LED7Seg.c: 76: LED7SegPinWrite((val & (1 << i)));
+[e = _wkDacNumber -> *U + &U _cPowerOfTwo * -> -> _dacNumber `ui `ux -> -> # *U &U _cPowerOfTwo `ui `ux `uc ]
+[; ;VCAMIX_SPI_Master.c: 72: PORTA &= 0x7F ;
+"72
+[e =& _PORTA -> -> 127 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 74: putByte(wkDacNumber,0);
+"74
+[e ( _putByte (2 , _wkDacNumber -> 0 `i ]
+[; ;VCAMIX_SPI_Master.c: 76: putByte(dacData,0);
 "76
-[e ( _LED7SegPinWrite (1 -> & -> _val `i << -> 1 `i _i `uc ]
-[; ;LED7Seg.c: 77: LED7SegPulseClock();
-"77
-[e ( _LED7SegPulseClock ..  ]
-"78
-}
-"75
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 1600  ]
-[e :U 1601 ]
-"78
-}
-[; ;LED7Seg.c: 78: }
-[; ;LED7Seg.c: 79: }
+[e ( _putByte (2 , _dacData -> 0 `i ]
+[; ;VCAMIX_SPI_Master.c: 79: PORTA |= 0x80 ;
 "79
-[e :UE 1599 ]
-}
+[e =| _PORTA -> -> 128 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 80: }
 "80
-[v _LED7SegDisplayValue `(v ~T0 @X0 1 ef1`ui ]
-{
-[; ;LED7Seg.c: 80: void LED7SegDisplayValue(unsigned int iTwoDigitNumber){
-[e :U _LED7SegDisplayValue ]
-[v _iTwoDigitNumber `ui ~T0 @X0 1 r1 ]
-[f ]
-"81
-[v _iTensDigit `ui ~T0 @X0 1 a ]
-"82
-[v _iUnitsDigit `ui ~T0 @X0 1 a ]
-[; ;LED7Seg.c: 81: unsigned int iTensDigit;
-[; ;LED7Seg.c: 82: unsigned int iUnitsDigit;
-[; ;LED7Seg.c: 85: if(0>iTwoDigitNumber) iTwoDigitNumber=0;
-"85
-[e $ ! > -> -> 0 `i `ui _iTwoDigitNumber 1604  ]
-[e = _iTwoDigitNumber -> -> 0 `i `ui ]
-[e :U 1604 ]
-[; ;LED7Seg.c: 86: if(99<iTwoDigitNumber) iTwoDigitNumber=99;
-"86
-[e $ ! < -> -> 99 `i `ui _iTwoDigitNumber 1605  ]
-[e = _iTwoDigitNumber -> -> 99 `i `ui ]
-[e :U 1605 ]
-[; ;LED7Seg.c: 88: d=iTwoDigitNumber%10;
-"88
-[e = _d -> % _iTwoDigitNumber -> -> 10 `i `ui `f ]
-[; ;LED7Seg.c: 89: iUnitsDigit=d;
-"89
-[e = _iUnitsDigit -> _d `ui ]
-[; ;LED7Seg.c: 90: b=iTwoDigitNumber/10;
-"90
-[e = _b -> / _iTwoDigitNumber -> -> 10 `i `ui `f ]
-[; ;LED7Seg.c: 91: iTensDigit=b;
-"91
-[e = _iTensDigit -> _b `ui ]
-[; ;LED7Seg.c: 93: LED7SegDisplayValueByDigit(iTensDigit,iUnitsDigit);
-"93
-[e ( _LED7SegDisplayValueByDigit (2 , _iTensDigit _iUnitsDigit ]
-[; ;LED7Seg.c: 94: }
-"94
-[e :UE 1603 ]
-}
-"95
-[v _LED7SegDisplayValueByDigit `(v ~T0 @X0 1 ef2`ui`ui ]
-{
-[; ;LED7Seg.c: 95: void LED7SegDisplayValueByDigit(unsigned int iTensDigit,unsigned int iUnitsDigit){
-[e :U _LED7SegDisplayValueByDigit ]
-[v _iTensDigit `ui ~T0 @X0 1 r1 ]
-[v _iUnitsDigit `ui ~T0 @X0 1 r2 ]
-[f ]
-"96
-[v _iTensCode `ui ~T0 @X0 1 a ]
-[; ;LED7Seg.c: 96: unsigned int iTensCode;
-[; ;LED7Seg.c: 98: if(0>iUnitsDigit) iUnitsDigit=0;
-"98
-[e $ ! > -> -> 0 `i `ui _iUnitsDigit 1607  ]
-[e = _iUnitsDigit -> -> 0 `i `ui ]
-[e :U 1607 ]
-[; ;LED7Seg.c: 99: if(iUnitsDigit>9) iUnitsDigit=9;
-"99
-[e $ ! > _iUnitsDigit -> -> 9 `i `ui 1608  ]
-[e = _iUnitsDigit -> -> 9 `i `ui ]
-[e :U 1608 ]
-[; ;LED7Seg.c: 101: if(0>iTensDigit) iTensDigit=0;
-"101
-[e $ ! > -> -> 0 `i `ui _iTensDigit 1609  ]
-[e = _iTensDigit -> -> 0 `i `ui ]
-[e :U 1609 ]
-[; ;LED7Seg.c: 102: if(iTensDigit>9) iTensDigit=9;
-"102
-[e $ ! > _iTensDigit -> -> 9 `i `ui 1610  ]
-[e = _iTensDigit -> -> 9 `i `ui ]
-[e :U 1610 ]
-[; ;LED7Seg.c: 104: iTensCode=segdisp[iTensDigit];
-"104
-[e = _iTensCode -> *U + &U _segdisp * -> _iTensDigit `ux -> -> # *U &U _segdisp `ui `ux `ui ]
-[; ;LED7Seg.c: 105: if(0==iTensDigit) iTensCode=255;
-"105
-[e $ ! == -> -> 0 `i `ui _iTensDigit 1611  ]
-[e = _iTensCode -> -> 255 `i `ui ]
-[e :U 1611 ]
-[; ;LED7Seg.c: 107: LED7SegShiftOutPulseClock( segdisp[iUnitsDigit]);
-"107
-[e ( _LED7SegShiftOutPulseClock (1 -> *U + &U _segdisp * -> _iUnitsDigit `ux -> -> # *U &U _segdisp `ui `ux `uc ]
-[; ;LED7Seg.c: 108: LED7SegShiftOutPulseClock( iTensCode );
-"108
-[e ( _LED7SegShiftOutPulseClock (1 -> _iTensCode `uc ]
-[; ;LED7Seg.c: 110: do { LATCbits.LATC5 = 1; } while(0);
-"110
-[e :U 1614 ]
-{
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-}
-[e :U 1613 ]
-[; ;LED7Seg.c: 111: do { LATCbits.LATC5 = 0; } while(0);
-"111
-[e :U 1617 ]
-{
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-}
-[e :U 1616 ]
-[; ;LED7Seg.c: 113: }
-"113
-[e :UE 1606 ]
-}
-"114
-[v _LED7SegBlankDisplay `(v ~T0 @X0 1 ef ]
-{
-[; ;LED7Seg.c: 114: void LED7SegBlankDisplay() {
-[e :U _LED7SegBlankDisplay ]
-[f ]
-[; ;LED7Seg.c: 116: LED7SegShiftOutPulseClock(255);
-"116
-[e ( _LED7SegShiftOutPulseClock (1 -> -> 255 `i `uc ]
-[; ;LED7Seg.c: 117: LED7SegShiftOutPulseClock(255);
-"117
-[e ( _LED7SegShiftOutPulseClock (1 -> -> 255 `i `uc ]
-[; ;LED7Seg.c: 119: do { LATCbits.LATC5 = 1; } while(0);
-"119
-[e :U 1621 ]
-{
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-}
-[e :U 1620 ]
-[; ;LED7Seg.c: 121: do { LATCbits.LATC5 = 0; } while(0);
-"121
-[e :U 1624 ]
-{
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-}
-[e :U 1623 ]
-[; ;LED7Seg.c: 122: }
-"122
-[e :UE 1618 ]
-}
-"123
-[v _LED7SegLoop `(v ~T0 @X0 1 ef ]
-"124
-{
-[; ;LED7Seg.c: 123: void LED7SegLoop()
-[; ;LED7Seg.c: 124: {
-[e :U _LED7SegLoop ]
-[f ]
-[; ;LED7Seg.c: 125: LED7SegBlankDisplay();
-"125
-[e ( _LED7SegBlankDisplay ..  ]
-[; ;LED7Seg.c: 128: for(int d=0;d<200;d++){
-"128
-{
-[v _d `i ~T0 @X0 1 a ]
-[e = _d -> 0 `i ]
-[e $ < _d -> 200 `i 1626  ]
-[e $U 1627  ]
-[e :U 1626 ]
-{
-[; ;LED7Seg.c: 129: delay(speed);
-"129
-[e ( _delay (1 -> _speed `i ]
-"130
-}
-"128
-[e ++ _d -> 1 `i ]
-[e $ < _d -> 200 `i 1626  ]
-[e :U 1627 ]
-"130
-}
-[; ;LED7Seg.c: 130: }
-[; ;LED7Seg.c: 133: for (int z=0; z<100; z++)
-"133
-{
-[v _z `i ~T0 @X0 1 a ]
-[e = _z -> 0 `i ]
-[e $ < _z -> 100 `i 1629  ]
-[e $U 1630  ]
-"134
-[e :U 1629 ]
-[; ;LED7Seg.c: 134: {
-{
-[; ;LED7Seg.c: 135: LED7SegDisplayValue(z);
-"135
-[e ( _LED7SegDisplayValue (1 -> _z `ui ]
-[; ;LED7Seg.c: 136: for(int d=0;d<25;d++){
-"136
-{
-[v _d `i ~T0 @X0 1 a ]
-[e = _d -> 0 `i ]
-[e $ < _d -> 25 `i 1632  ]
-[e $U 1633  ]
-[e :U 1632 ]
-{
-[; ;LED7Seg.c: 137: delay(speed);
-"137
-[e ( _delay (1 -> _speed `i ]
-"138
-}
-"136
-[e ++ _d -> 1 `i ]
-[e $ < _d -> 25 `i 1632  ]
-[e :U 1633 ]
-"138
-}
-"139
-}
-"133
-[e ++ _z -> 1 `i ]
-[e $ < _z -> 100 `i 1629  ]
-[e :U 1630 ]
-"139
-}
-[; ;LED7Seg.c: 138: }
-[; ;LED7Seg.c: 139: }
-[; ;LED7Seg.c: 142: for(int d=0;d<200;d++){
-"142
-{
-[v _d `i ~T0 @X0 1 a ]
-[e = _d -> 0 `i ]
-[e $ < _d -> 200 `i 1635  ]
-[e $U 1636  ]
-[e :U 1635 ]
-{
-[; ;LED7Seg.c: 143: delay(speed);
-"143
-[e ( _delay (1 -> _speed `i ]
-"144
-}
-"142
-[e ++ _d -> 1 `i ]
-[e $ < _d -> 200 `i 1635  ]
-[e :U 1636 ]
-"144
-}
-[; ;LED7Seg.c: 144: }
-[; ;LED7Seg.c: 146: LED7SegBlankDisplay();
-"146
-[e ( _LED7SegBlankDisplay ..  ]
-[; ;LED7Seg.c: 148: }
-"148
-[e :UE 1625 ]
+[e :UE 1571 ]
 }

@@ -1,8 +1,5 @@
 
-# 1 "mcc_generated_files/interrupt_manager.c"
-
-# 110 "mcc_generated_files/interrupt_manager.h"
-void interrupt INTERRUPT_InterruptManager(void);
+# 1 "main.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -17438,6 +17435,9 @@ typedef uint16_t uintptr_t;
 # 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
 typedef unsigned char bool;
 
+# 110 "mcc_generated_files/interrupt_manager.h"
+void interrupt INTERRUPT_InterruptManager(void);
+
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
 typedef unsigned size_t;
 
@@ -17618,21 +17618,364 @@ void SYSTEM_Initialize(void);
 # 83
 void OSCILLATOR_Initialize(void);
 
-# 51 "mcc_generated_files/interrupt_manager.c"
-void interrupt INTERRUPT_InterruptManager (void)
+# 12 "VCAMIX_SPI_Master.h"
+const int cPowerOfTwo[8] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
+
+# 21
+void putByte(uint8_t data,int clockPin);
+void initDAC528();
+void writeDAC528(int dacNumber, uint8_t dacData);
+
+# 16 "LED7Seg.h"
+void LED7SegLoop();
+void LED7SegSetup();
+void delay(int delaytime);
+void LED7SegBlankDisplay();
+void LED7SegDisplayValue(unsigned int iTwoDigitNumber);
+void LED7SegDisplayValueByDigit(unsigned int iTensDigit,unsigned int iUnitsDigit);
+
+# 88 "main.c"
+typedef uint16_t adc_result_t;
+
+typedef enum
+{
+FADER0 = 0x0,
+FADER1 = 0x1,
+FADER2 = 0x2,
+FADER3 = 0x3,
+FADER4 = 0x4,
+POT0 = 0x4,
+FADER5 = 0x5,
+POT1 = 0x5,
+
+
+} adcc_channel_t;
+
+uint8_t iLEDs0_MSB;
+uint8_t iLEDs0_LSB;
+
+uint8_t iLEDs1_MSB;
+uint8_t iLEDs1_LSB;
+
+
+uint8_t wkFaderValue=0;
+volatile uint8_t byteFaderValue[8];
+
+void delay(int);
+
+const int cMstrClkAdjust = 32;
+void delay(int delaytime) {
+long counter = 0;
+long adjustedDelaytime=delaytime*cMstrClkAdjust;
+if (0<delaytime)
+for (counter = 0; counter<adjustedDelaytime; counter++);
+
+}
+
+void blinkyLoop (int maxLoops){
+int loopCount=maxLoops;
+int delayTime;
+
+ODCONB &= 0xE0;
+ODCONC &= 0x1F;
+while(loopCount>0){
+delayTime=loopCount*400;
+
+
+PORTB |= 0x1F;
+PORTC |= 0xE0;
+
+delay(delayTime);
+
+PORTB &= 0xE0;
+PORTC &= 0x1F;
+
+delay(delayTime);
+
+loopCount--;
+}
+PORTB |= 0x1F;
+PORTC |= 0xE0;
+delay(5000);
+return;
+}
+
+# 156
+I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress);
+void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress, uint8_t MSBWriteByte,uint8_t LSBWriteByte);
+void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue);
+
+# 163
+void main(void)
+{
+uint8_t I2C_ADDRESS_FADELED0 = 0x10;
+uint16_t iCounter=0;
+uint16_t iMSByte;
+uint16_t iLSByte;
+const uint16_t iResetValue=100;
+uint16_t iLoopCounter=0;
+uint8_t iChangeCount=0;
+int faderValue;
+uint8_t fader8bitValue;
+uint8_t prevFader8bitValue;
+uint8_t POT0Value;
+uint8_t POT1Value;
+uint8_t DACDataValue;
+
+I2C1_MESSAGE_STATUS readStatus=0;
+
+
+SYSTEM_Initialize();
+initDAC528();
+LED7SegSetup();
+
+
+
+
+(INTCONbits.GIE = 1);
+
+
+(INTCONbits.PEIE = 1);
+
+# 201
+faderValue=ADCC_GetSingleConversion(FADER5);
+prevFader8bitValue=faderValue>>2;
+
+blinkyLoop(10);
+
+
+
+
+while (1) {
+iLoopCounter++;
+if (iResetValue<=iLoopCounter) iLoopCounter=0;
+
+
+{
+delay(100);
+faderValue=ADCC_GetSingleConversion(FADER0);
+fader8bitValue=faderValue>>2;
+delay(100);
+faderValue=ADCC_GetSingleConversion(POT0);
+faderValue=1023-faderValue;
+
+POT0Value=faderValue/102.3;
+delay(100);
+faderValue=ADCC_GetSingleConversion(POT1);
+faderValue=1023-faderValue;
+POT1Value=faderValue/102.3;
+}
+
+
+
+DACDataValue=iCounter%256;
+writeDAC528(4,DACDataValue);
+
+# 285
+if (prevFader8bitValue!=fader8bitValue) {
+iChangeCount++;
+
+}
+prevFader8bitValue=fader8bitValue;
+
+
+iCounter++;
+if (fader8bitValue<252)
+delay(1*(255-fader8bitValue));
+
+# 300
+LED7SegDisplayValueByDigit(POT1Value,POT0Value);
+
+}
+}
+void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue)
+{
+bool wkOnFlag = 0;
+bool wkBrightFlag = 0;
+
+
+if (inValue > 80) wkOnFlag=1;
+if (inValue > 170) wkBrightFlag=1;
+
+switch(inFaderNum)
+{
+case 0 : {
+if(wkOnFlag) { iLEDs0_LSB |= 0b00000010;
+if(wkBrightFlag) {iLEDs0_LSB |= 0b00000001;}else{iLEDs0_LSB &= 0b11111110;};
+}else{ iLEDs0_LSB &= 0b11111100;}
+break;
+}
+case 1 : {
+if(wkOnFlag) { iLEDs0_LSB |= 0b00001000;
+if(wkBrightFlag) {iLEDs0_LSB |= 0b00000100;}else{iLEDs0_LSB &= 0b11111011;};
+}else{ iLEDs0_LSB &= 0b11110011;}
+break;
+}
+case 2 : {
+if(wkOnFlag) { iLEDs0_LSB |= 0b00100000;
+if(wkBrightFlag) {iLEDs0_LSB |= 0b00010000;}else{iLEDs0_LSB &= 0b11101111;};
+}else{ iLEDs0_LSB &= 0b11001111;}
+break;
+}
+case 3 : {
+if(wkOnFlag) { iLEDs0_LSB |= 0b10000000;
+if(wkBrightFlag) {iLEDs0_LSB |= 0b01000000;}else{iLEDs0_LSB &= 0b10111111;};
+}else{ iLEDs0_LSB &= 0b00111111;}
+break;
+}
+case 4 : {
+if(wkOnFlag) { iLEDs0_MSB |= 0b00000010;
+if(wkBrightFlag) {iLEDs0_MSB |= 0b00000001;}else{iLEDs0_MSB &= 0b11111110;};
+}else{ iLEDs0_MSB &= 0b11111100;}
+break;
+}
+case 5 : {
+if(wkOnFlag) { iLEDs0_MSB |= 0b00001000;
+if(wkBrightFlag) {iLEDs0_MSB |= 0b00000100;}else{iLEDs0_MSB &= 0b11111011;};
+}else{ iLEDs0_MSB &= 0b11110011;}
+break;
+}
+case 6 : {
+if(wkOnFlag) { iLEDs0_MSB |= 0b00100000;
+if(wkBrightFlag) {iLEDs0_MSB |= 0b00010000;}else{iLEDs0_MSB &= 0b11101111;};
+}else{ iLEDs0_MSB &= 0b11001111;}
+break;
+}
+case 7 : {
+if(wkOnFlag) { iLEDs0_MSB |= 0b10000000;
+if(wkBrightFlag) {iLEDs0_MSB |= 0b01000000;}else{iLEDs0_MSB &= 0b10111111;};
+}else{ iLEDs0_MSB &= 0b00111111;}
+}
+}
+}
+I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress)
 {
 
-if(INTCONbits.PEIE == 1 && PIE3bits.BCL1IE == 1 && PIR3bits.BCL1IF == 1)
+int pflag;
+int dataAddress=0;
+uint8_t pointerByte=0b00100000;
+I2C1_MESSAGE_STATUS status;
+I2C1_TRANSACTION_REQUEST_BLOCK readTRB[2];
+uint8_t writeBuffer[3];
+uint16_t timeOut;
+
+
+
+status = I2C1_MESSAGE_PENDING;
+
+# 385
+timeOut = 0;
+
+while(status != I2C1_MESSAGE_FAIL)
 {
-I2C1_BusCollisionISR();
-}
-else if(INTCONbits.PEIE == 1 && PIE3bits.SSP1IE == 1 && PIR3bits.SSP1IF == 1)
-{
-I2C1_ISR();
-}
+
+
+
+I2C1_MasterWriteTRBBuild( &readTRB[0],
+&pointerByte,
+1,
+slaveDeviceAddress);
+
+I2C1_MasterReadTRBBuild( &readTRB[1],
+byteFaderValue,
+8,
+slaveDeviceAddress);
+
+
+I2C1_MasterTRBInsert(2, readTRB, &status);
+
+
+while(status == I2C1_MESSAGE_PENDING);
+
+if (status == I2C1_MESSAGE_COMPLETE)
+break;
+
+# 418
+if (timeOut == 100)
+break;
 else
-{
+timeOut++;
 
 }
+
+if (I2C1_MESSAGE_FAIL==status) {
+
+}
+
+return status;
+}
+
+# 497
+void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress,uint8_t MSBWriteByte,uint8_t LSBWriteByte)
+{
+
+# 508
+uint16_t dataAddress;
+uint8_t sourceData[16] = { 0xA0, 0xA1, 0xA2, 0xA3,
+0xA4, 0xA5, 0xA6, 0xA7,
+0xA8, 0xA9, 0xAA, 0xAB,
+0xAC, 0xAD, 0xAE, 0xAF };
+uint8_t *pData;
+uint16_t nCount;
+
+uint8_t writeBuffer[3];
+uint8_t *pD;
+uint16_t counter, timeOut;
+uint8_t pointerByte = 0b00100000;
+
+I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
+
+dataAddress = 0x00;
+pD = sourceData;
+nCount = 1;
+
+
+
+PORTC |= 0x02;
+
+for (counter = 0; counter < nCount; counter++)
+{
+
+
+writeBuffer[0] = pointerByte;
+
+writeBuffer[1] = (MSBWriteByte);
+writeBuffer[2] = (LSBWriteByte);
+
+
+
+
+timeOut = 0;
+while(status != I2C1_MESSAGE_FAIL)
+{
+
+I2C1_MasterWrite( writeBuffer,
+3,
+slaveDeviceAddress,
+&status);
+
+
+while(status == I2C1_MESSAGE_PENDING);
+
+if (status == I2C1_MESSAGE_COMPLETE)
+break;
+
+# 565
+if (timeOut == 100)
+break;
+else
+timeOut++;
+}
+
+if (status == I2C1_MESSAGE_FAIL)
+{
+break;
+}
+dataAddress++;
+}
+PORTC &= 0xFD;
+
+
+
 }
 

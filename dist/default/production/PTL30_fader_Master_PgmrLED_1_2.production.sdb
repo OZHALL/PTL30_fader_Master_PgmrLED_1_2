@@ -12,7 +12,6 @@ channel_ANA3 3
 channel_ANA4 4
 channel_ANA5 5
 channel_ANA6 6
-channel_ANA7 7
 channel_ANC0 16
 channel_VSS 60
 channel_Temp 61
@@ -44,7 +43,7 @@ S_MASTER_NOACK_STOP 9
 S_MASTER_SEND_ADDR_10BIT_LSB 10
 S_MASTER_10BIT_RESTART 11
 ]
-"154 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"179 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [e E14267 . `uc
 I2C1_MESSAGE_COMPLETE 0
 I2C1_MESSAGE_FAIL 1
@@ -54,7 +53,7 @@ I2C1_MESSAGE_ADDRESS_NO_ACK 4
 I2C1_DATA_NO_ACK 5
 I2C1_LOST_STATE 6
 ]
-"176
+"201
 [e E14316 . `uc
 channel_ANA0 0
 channel_ANA1 1
@@ -63,34 +62,34 @@ channel_ANA3 3
 channel_ANA4 4
 channel_ANA5 5
 channel_ANA6 6
-channel_ANA7 7
 channel_ANC0 16
 channel_VSS 60
 channel_Temp 61
 channel_DAC1 62
 channel_FVR_buf1 63
 ]
-[e E14395 . `uc
+[e E14405 . `uc
 FADER0 0
 FADER1 1
 FADER2 2
 FADER3 3
 FADER4 4
-POT 4
+POT0 4
 FADER5 5
-FADER6 6
-FADER7 7
+POT1 5
 ]
+"32 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
 "56 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
 "44 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
-"27 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lbtoft.c
-[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
@@ -113,22 +112,16 @@ FADER7 7
 [v _LED7SegShiftOutPulseClock LED7SegShiftOutPulseClock `(v  1 e 1 0 ]
 "80
 [v _LED7SegDisplayValue LED7SegDisplayValue `(v  1 e 1 0 ]
-"102
+"95
+[v _LED7SegDisplayValueByDigit LED7SegDisplayValueByDigit `(v  1 e 1 0 ]
+"114
 [v _LED7SegBlankDisplay LED7SegBlankDisplay `(v  1 e 1 0 ]
-"111
-[v _LED7SegLoop LED7SegLoop `(v  1 e 1 0 ]
-"95 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"117 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _delay delay `(v  1 e 1 0 ]
-"103
+"125
 [v _blinkyLoop blinkyLoop `(v  1 e 1 0 ]
-"141
+"163
 [v _main main `(v  1 e 1 0 ]
-"260
-[v _UpdateLEDsFromValue UpdateLEDsFromValue `(v  1 e 1 0 ]
-"320
-[v _MYI2C_ReadFaders MYI2C_ReadFaders `(E14267  1 e 1 0 ]
-"453
-[v _MYI2C_Write2LEDBytes MYI2C_Write2LEDBytes `(v  1 e 1 0 ]
 "62 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
 "132
@@ -159,14 +152,22 @@ FADER7 7
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "52 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-[s S725 . 1 `uc 1 INTEDG 1 0 :1:0 
+"14 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\VCAMIX_SPI_Master.c
+[v _putByte putByte `(v  1 e 1 0 ]
+"44
+[v _initDAC528 initDAC528 `(v  1 e 1 0 ]
+"59
+[v _writeDAC528 writeDAC528 `(v  1 e 1 0 ]
+[s S724 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
 "362 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
-[u S730 . 1 `S725 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES730  1 e 1 @11 ]
+[u S729 . 1 `S724 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES729  1 e 1 @11 ]
+"382
+[v _PORTA PORTA `VEuc  1 e 1 @12 ]
 "444
 [v _PORTB PORTB `VEuc  1 e 1 @13 ]
 "506
@@ -177,7 +178,7 @@ FADER7 7
 [v _TRISB TRISB `VEuc  1 e 1 @18 ]
 "713
 [v _TRISC TRISC `VEuc  1 e 1 @19 ]
-[s S944 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S933 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -187,15 +188,15 @@ FADER7 7
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "730
-[u S953 . 1 `S944 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES953  1 e 1 @19 ]
+[u S942 . 1 `S933 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES942  1 e 1 @19 ]
 "775
 [v _LATA LATA `VEuc  1 e 1 @22 ]
 "837
 [v _LATB LATB `VEuc  1 e 1 @23 ]
 "899
 [v _LATC LATC `VEuc  1 e 1 @24 ]
-[s S965 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S954 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -205,8 +206,8 @@ FADER7 7
 `uc 1 LATC7 1 0 :1:7 
 ]
 "916
-[u S974 . 1 `S965 1 . 1 0 ]
-[v _LATCbits LATCbits `VES974  1 e 1 @24 ]
+[u S963 . 1 `S954 1 . 1 0 ]
+[v _LATCbits LATCbits `VES963  1 e 1 @24 ]
 "1536
 [v _ADRESL ADRESL `VEuc  1 e 1 @140 ]
 "1556
@@ -221,7 +222,7 @@ FADER7 7
 [v _ADACCH ADACCH `VEuc  1 e 1 @145 ]
 "1857
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @147 ]
-[s S146 . 1 `uc 1 ADGO 1 0 :1:0 
+[s S145 . 1 `uc 1 ADGO 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFM 1 0 :2:2 
 `uc 1 ADCS 1 0 :1:4 
@@ -230,44 +231,44 @@ FADER7 7
 `uc 1 ADON 1 0 :1:7 
 ]
 "1893
-[s S154 . 1 `uc 1 DONE 1 0 :1:0 
+[s S153 . 1 `uc 1 DONE 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFRM 1 0 :2:2 
 ]
-[s S158 . 1 `uc 1 nDONE 1 0 :1:0 
+[s S157 . 1 `uc 1 nDONE 1 0 :1:0 
 ]
-[s S160 . 1 `uc 1 GO 1 0 :1:0 
+[s S159 . 1 `uc 1 GO 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFM0 1 0 :1:2 
 `uc 1 ADFM1 1 0 :1:3 
 ]
-[s S165 . 1 `uc 1 GO_nDONE 1 0 :1:0 
+[s S164 . 1 `uc 1 GO_nDONE 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFRM0 1 0 :1:2 
 `uc 1 ADFRM1 1 0 :1:3 
 ]
-[u S170 . 1 `S146 1 . 1 0 `S154 1 . 1 0 `S158 1 . 1 0 `S160 1 . 1 0 `S165 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES170  1 e 1 @147 ]
+[u S169 . 1 `S145 1 . 1 0 `S153 1 . 1 0 `S157 1 . 1 0 `S159 1 . 1 0 `S164 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES169  1 e 1 @147 ]
 "1968
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @148 ]
-[s S300 . 1 `uc 1 ADDSEN 1 0 :1:0 
+[s S299 . 1 `uc 1 ADDSEN 1 0 :1:0 
 `uc 1 . 1 0 :4:1 
 `uc 1 ADGPOL 1 0 :1:5 
 `uc 1 ADIPEN 1 0 :1:6 
 `uc 1 ADPPOL 1 0 :1:7 
 ]
 "1982
-[u S306 . 1 `S300 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES306  1 e 1 @148 ]
+[u S305 . 1 `S299 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES305  1 e 1 @148 ]
 "2007
 [v _ADCON2 ADCON2 `VEuc  1 e 1 @149 ]
-[s S236 . 1 `uc 1 ADMD 1 0 :3:0 
+[s S235 . 1 `uc 1 ADMD 1 0 :3:0 
 `uc 1 ADACLR 1 0 :1:3 
 `uc 1 ADCRS 1 0 :3:4 
 `uc 1 ADPSIS 1 0 :1:7 
 ]
 "2029
-[s S241 . 1 `uc 1 ADMD0 1 0 :1:0 
+[s S240 . 1 `uc 1 ADMD0 1 0 :1:0 
 `uc 1 ADMD1 1 0 :1:1 
 `uc 1 ADMD2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -275,11 +276,11 @@ FADER7 7
 `uc 1 ADCRS1 1 0 :1:5 
 `uc 1 ADCRS2 1 0 :1:6 
 ]
-[u S249 . 1 `S236 1 . 1 0 `S241 1 . 1 0 ]
-[v _ADCON2bits ADCON2bits `VES249  1 e 1 @149 ]
+[u S248 . 1 `S235 1 . 1 0 `S240 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES248  1 e 1 @149 ]
 "2084
 [v _ADCON3 ADCON3 `VEuc  1 e 1 @150 ]
-[s S207 . 1 `uc 1 ADTMD0 1 0 :1:0 
+[s S206 . 1 `uc 1 ADTMD0 1 0 :1:0 
 `uc 1 ADTMD1 1 0 :1:1 
 `uc 1 ADTMD2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -288,15 +289,15 @@ FADER7 7
 `uc 1 ADCALC2 1 0 :1:6 
 ]
 "2105
-[s S215 . 1 `uc 1 ADTMD 1 0 :3:0 
+[s S214 . 1 `uc 1 ADTMD 1 0 :3:0 
 `uc 1 ADSOI 1 0 :1:3 
 `uc 1 ADCALC 1 0 :3:4 
 ]
-[u S219 . 1 `S207 1 . 1 0 `S215 1 . 1 0 ]
-[v _ADCON3bits ADCON3bits `VES219  1 e 1 @150 ]
+[u S218 . 1 `S206 1 . 1 0 `S214 1 . 1 0 ]
+[v _ADCON3bits ADCON3bits `VES218  1 e 1 @150 ]
 "2155
 [v _ADSTAT ADSTAT `VEuc  1 e 1 @151 ]
-[s S268 . 1 `uc 1 ADSTAT 1 0 :3:0 
+[s S267 . 1 `uc 1 ADSTAT 1 0 :3:0 
 `uc 1 ADMACT 1 0 :1:3 
 `uc 1 ADMATH 1 0 :1:4 
 `uc 1 ADLTHR 1 0 :1:5 
@@ -304,12 +305,12 @@ FADER7 7
 `uc 1 ADAOV 1 0 :1:7 
 ]
 "2175
-[s S275 . 1 `uc 1 ADSTAT0 1 0 :1:0 
+[s S274 . 1 `uc 1 ADSTAT0 1 0 :1:0 
 `uc 1 ADSTAT1 1 0 :1:1 
 `uc 1 ADSTAT2 1 0 :1:2 
 ]
-[u S279 . 1 `S268 1 . 1 0 `S275 1 . 1 0 ]
-[v _ADSTATbits ADSTATbits `VES279  1 e 1 @151 ]
+[u S278 . 1 `S267 1 . 1 0 `S274 1 . 1 0 ]
+[v _ADSTATbits ADSTATbits `VES278  1 e 1 @151 ]
 "2225
 [v _ADCLK ADCLK `VEuc  1 e 1 @152 ]
 "2283
@@ -356,19 +357,19 @@ FADER7 7
 [v _SSP1STAT SSP1STAT `VEuc  1 e 1 @399 ]
 "4920
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @400 ]
-[s S455 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S454 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "4950
-[s S461 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S460 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S466 . 1 `uc 1 SSPM01 1 0 :1:0 
+[s S465 . 1 `uc 1 SSPM01 1 0 :1:0 
 `uc 1 SSPM11 1 0 :1:1 
 `uc 1 SSPM21 1 0 :1:2 
 `uc 1 SSPM31 1 0 :1:3 
@@ -377,9 +378,9 @@ FADER7 7
 `uc 1 SSPOV1 1 0 :1:6 
 `uc 1 WCOL1 1 0 :1:7 
 ]
-[u S475 . 1 `S455 1 . 1 0 `S461 1 . 1 0 `S466 1 . 1 0 ]
-[v _SSP1CON1bits SSP1CON1bits `VES475  1 e 1 @400 ]
-[s S500 . 1 `uc 1 SEN 1 0 :1:0 
+[u S474 . 1 `S454 1 . 1 0 `S460 1 . 1 0 `S465 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES474  1 e 1 @400 ]
+[s S499 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -389,17 +390,17 @@ FADER7 7
 `uc 1 GCEN 1 0 :1:7 
 ]
 "5087
-[s S509 . 1 `uc 1 . 1 0 :1:0 
+[s S508 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK 1 0 :5:1 
 ]
-[s S512 . 1 `uc 1 . 1 0 :1:0 
+[s S511 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
-[s S519 . 1 `uc 1 SEN1 1 0 :1:0 
+[s S518 . 1 `uc 1 SEN1 1 0 :1:0 
 `uc 1 ADMSK11 1 0 :1:1 
 `uc 1 ADMSK21 1 0 :1:2 
 `uc 1 ADMSK31 1 0 :1:3 
@@ -408,18 +409,18 @@ FADER7 7
 `uc 1 ACKSTAT1 1 0 :1:6 
 `uc 1 GCEN1 1 0 :1:7 
 ]
-[s S528 . 1 `uc 1 . 1 0 :1:0 
+[s S527 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RSEN1 1 0 :1:1 
 `uc 1 PEN1 1 0 :1:2 
 `uc 1 RCEN1 1 0 :1:3 
 `uc 1 ADMSK41 1 0 :1:4 
 `uc 1 ADMSK51 1 0 :1:5 
 ]
-[u S535 . 1 `S500 1 . 1 0 `S509 1 . 1 0 `S512 1 . 1 0 `S519 1 . 1 0 `S528 1 . 1 0 ]
-[v _SSP1CON2bits SSP1CON2bits `VES535  1 e 1 @401 ]
+[u S534 . 1 `S499 1 . 1 0 `S508 1 . 1 0 `S511 1 . 1 0 `S518 1 . 1 0 `S527 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES534  1 e 1 @401 ]
 "5227
 [v _SSP1CON3 SSP1CON3 `VEuc  1 e 1 @402 ]
-[s S421 . 1 `uc 1 SSP1IF 1 0 :1:0 
+[s S420 . 1 `uc 1 SSP1IF 1 0 :1:0 
 `uc 1 BCL1IF 1 0 :1:1 
 `uc 1 SSP2IF 1 0 :1:2 
 `uc 1 BCL2IF 1 0 :1:3 
@@ -427,9 +428,9 @@ FADER7 7
 `uc 1 RCIF 1 0 :1:5 
 ]
 "21249
-[u S428 . 1 `S421 1 . 1 0 ]
-[v _PIR3bits PIR3bits `VES428  1 e 1 @1807 ]
-[s S438 . 1 `uc 1 SSP1IE 1 0 :1:0 
+[u S427 . 1 `S420 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES427  1 e 1 @1807 ]
+[s S437 . 1 `uc 1 SSP1IE 1 0 :1:0 
 `uc 1 BCL1IE 1 0 :1:1 
 `uc 1 SSP2IE 1 0 :1:2 
 `uc 1 BCL2IE 1 0 :1:3 
@@ -437,8 +438,8 @@ FADER7 7
 `uc 1 RCIE 1 0 :1:5 
 ]
 "21671
-[u S445 . 1 `S438 1 . 1 0 ]
-[v _PIE3bits PIE3bits `VES445  1 e 1 @1817 ]
+[u S444 . 1 `S437 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES444  1 e 1 @1817 ]
 "23324
 [v _OSCCON1 OSCCON1 `VEuc  1 e 1 @2189 ]
 "23464
@@ -496,7 +497,7 @@ FADER7 7
 [v _ODCONB ODCONB `VEuc  1 e 1 @3909 ]
 "34231
 [v _ANSELC ANSELC `VEuc  1 e 1 @3918 ]
-[s S923 . 1 `uc 1 ANSC0 1 0 :1:0 
+[s S912 . 1 `uc 1 ANSC0 1 0 :1:0 
 `uc 1 ANSC1 1 0 :1:1 
 `uc 1 ANSC2 1 0 :1:2 
 `uc 1 ANSC3 1 0 :1:3 
@@ -506,10 +507,10 @@ FADER7 7
 `uc 1 ANSC7 1 0 :1:7 
 ]
 "34248
-[u S932 . 1 `S923 1 . 1 0 ]
+[u S921 . 1 `S912 1 . 1 0 ]
 "34248
 "34248
-[v _ANSELCbits ANSELCbits `VES932  1 e 1 @3918 ]
+[v _ANSELCbits ANSELCbits `VES921  1 e 1 @3918 ]
 "34293
 [v _WPUC WPUC `VEuc  1 e 1 @3919 ]
 "34355
@@ -527,107 +528,163 @@ FADER7 7
 [v _speed speed `DCui  1 e 2 0 ]
 "29
 [v _segdisp segdisp `[10]i  1 e 20 0 ]
-"82 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"104 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _iLEDs0_MSB iLEDs0_MSB `uc  1 e 1 0 ]
-"83
+"105
 [v _iLEDs0_LSB iLEDs0_LSB `uc  1 e 1 0 ]
-"90
+"112
 [v _byteFaderValue byteFaderValue `VE[8]uc  1 e 8 0 ]
-"94
+"116
 [v _cMstrClkAdjust cMstrClkAdjust `DCi  1 e 2 0 ]
-[s S375 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
+[s S374 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
 "184 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/i2c1.c
-[s S387 . 3 `uc 1 count 1 0 `*.4S375 1 ptrb_list 1 1 `*.4E14260 1 pTrFlag 1 2 ]
-[v _i2c1_tr_queue i2c1_tr_queue `[1]S387  1 s 3 i2c1_tr_queue ]
+[s S386 . 3 `uc 1 count 1 0 `*.4S374 1 ptrb_list 1 1 `*.4E14260 1 pTrFlag 1 2 ]
+[v _i2c1_tr_queue i2c1_tr_queue `[1]S386  1 s 3 i2c1_tr_queue ]
 "185
-[s S391 . 1 `uc 1 full 1 0 :1:0 
+[s S390 . 1 `uc 1 full 1 0 :1:0 
 `uc 1 empty 1 0 :1:1 
 `uc 1 reserved 1 0 :6:2 
 ]
-[u S395 . 1 `S391 1 s 1 0 `uc 1 status 1 0 ]
-[s S398 . 5 `*.4S387 1 pTrTail 1 0 `*.4S387 1 pTrHead 1 1 `S395 1 trStatus 1 2 `uc 1 i2cDoneFlag 1 3 `uc 1 i2cErrors 1 4 ]
-[v _i2c1_object i2c1_object `S398  1 s 5 i2c1_object ]
+[u S394 . 1 `S390 1 s 1 0 `uc 1 status 1 0 ]
+[s S397 . 5 `*.4S386 1 pTrTail 1 0 `*.4S386 1 pTrHead 1 1 `S394 1 trStatus 1 2 `uc 1 i2cDoneFlag 1 3 `uc 1 i2cErrors 1 4 ]
+[v _i2c1_object i2c1_object `S397  1 s 5 i2c1_object ]
 "186
 [v _i2c1_state i2c1_state `E14328  1 s 1 i2c1_state ]
 "187
 [v _i2c1_trb_count i2c1_trb_count `uc  1 s 1 i2c1_trb_count ]
 "189
-[v _p_i2c1_trb_current p_i2c1_trb_current `*.4S375  1 s 1 p_i2c1_trb_current ]
+[v _p_i2c1_trb_current p_i2c1_trb_current `*.4S374  1 s 1 p_i2c1_trb_current ]
 "190
-[v _p_i2c1_current p_i2c1_current `*.4S387  1 s 1 p_i2c1_current ]
-"141 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+[v _p_i2c1_current p_i2c1_current `*.4S386  1 s 1 p_i2c1_current ]
+"12 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\VCAMIX_SPI_Master.c
+[v _clockMicroTime clockMicroTime `DCi  1 e 2 0 ]
+"12 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\VCAMIX_SPI_Master.h
+[v _cPowerOfTwo cPowerOfTwo `DC[8]i  1 e 16 0 ]
+"163 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"228
-[v main@ndx ndx `i  1 a 2 13 ]
-"150
-[v main@faderValue faderValue `i  1 a 2 10 ]
-"148
-[v main@iLoopCounter iLoopCounter `ui  1 a 2 7 ]
-"144
-[v main@iCounter iCounter `ui  1 a 2 0 ]
-"151
-[v main@fader8bitValue fader8bitValue `uc  1 a 1 12 ]
-"143
-[v main@I2C_ADDRESS_FADELED0 I2C_ADDRESS_FADELED0 `uc  1 a 1 9 ]
-"154
-[v main@readStatus readStatus `E14267  1 a 1 6 ]
-"152
-[v main@prevFader8bitValue prevFader8bitValue `uc  1 a 1 5 ]
-"149
-[v main@iChangeCount iChangeCount `uc  1 a 1 4 ]
-"147
+"172
+[v main@faderValue faderValue `i  1 a 2 74 ]
+"170
+[v main@iLoopCounter iLoopCounter `ui  1 a 2 70 ]
+"166
+[v main@iCounter iCounter `ui  1 a 2 67 ]
+"177
+[v main@DACDataValue DACDataValue `uc  1 a 1 73 ]
+"173
+[v main@fader8bitValue fader8bitValue `uc  1 a 1 72 ]
+"174
+[v main@prevFader8bitValue prevFader8bitValue `uc  1 a 1 69 ]
+"176
+[v main@POT1Value POT1Value `uc  1 a 1 66 ]
+"175
+[v main@POT0Value POT0Value `uc  1 a 1 65 ]
+"171
+[v main@iChangeCount iChangeCount `uc  1 a 1 64 ]
+"179
+[v main@readStatus readStatus `E14267  1 a 1 63 ]
+"165
+[v main@I2C_ADDRESS_FADELED0 I2C_ADDRESS_FADELED0 `uc  1 a 1 62 ]
+"169
 [v main@iResetValue iResetValue `DCui  1 s 2 iResetValue ]
-"259
+"307
 } 0
-"103
+"59 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\VCAMIX_SPI_Master.c
+[v _writeDAC528 writeDAC528 `(v  1 e 1 0 ]
+{
+"60
+[v writeDAC528@wkDacNumber wkDacNumber `uc  1 a 1 57 ]
+"59
+[v writeDAC528@dacNumber dacNumber `i  1 p 2 53 ]
+[v writeDAC528@dacData dacData `uc  1 p 1 55 ]
+"80
+} 0
+"44
+[v _initDAC528 initDAC528 `(v  1 e 1 0 ]
+{
+"57
+} 0
+"14
+[v _putByte putByte `(v  1 e 1 0 ]
+{
+[v putByte@data data `uc  1 a 1 wreg ]
+"15
+[v putByte@i i `uc  1 a 1 52 ]
+"16
+[v putByte@mask mask `uc  1 a 1 51 ]
+"14
+[v putByte@data data `uc  1 a 1 wreg ]
+[v putByte@clockPin clockPin `i  1 p 2 44 ]
+[v putByte@data data `uc  1 a 1 50 ]
+"40
+} 0
+"44 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+{
+"47
+[v ___fttol@lval lval `ul  1 a 4 39 ]
+"46
+[v ___fttol@exp1 exp1 `uc  1 a 1 43 ]
+[v ___fttol@sign1 sign1 `uc  1 a 1 38 ]
+"44
+[v ___fttol@f1 f1 `f  1 p 3 30 ]
+"73
+} 0
+"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+{
+"65
+[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 25 ]
+"64
+[v ___ftmul@sign sign `uc  1 a 1 29 ]
+[v ___ftmul@cntr cntr `uc  1 a 1 28 ]
+[v ___ftmul@exp exp `uc  1 a 1 24 ]
+"62
+[v ___ftmul@f1 f1 `f  1 p 3 14 ]
+[v ___ftmul@f2 f2 `f  1 p 3 17 ]
+"157
+} 0
+"32 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
+{
+"34
+[v ___awtoft@sign sign `uc  1 a 1 13 ]
+"32
+[v ___awtoft@c c `i  1 p 2 8 ]
+"42
+} 0
+"125 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _blinkyLoop blinkyLoop `(v  1 e 1 0 ]
 {
-"104
+"126
 [v blinkyLoop@loopCount loopCount `i  1 a 2 22 ]
-"105
+"127
 [v blinkyLoop@delayTime delayTime `i  1 a 2 20 ]
-"103
+"125
 [v blinkyLoop@maxLoops maxLoops `i  1 p 2 17 ]
-"129
-} 0
-"27 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lbtoft.c
-[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
-{
-[v ___lbtoft@c c `uc  1 a 1 wreg ]
-[v ___lbtoft@c c `uc  1 a 1 wreg ]
-"29
-[v ___lbtoft@c c `uc  1 a 1 15 ]
-"30
+"151
 } 0
 "56 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
 {
 "60
-[v ___ftdiv@f3 f3 `f  1 a 3 27 ]
+[v ___ftdiv@f3 f3 `f  1 a 3 25 ]
 "59
-[v ___ftdiv@sign sign `uc  1 a 1 31 ]
-[v ___ftdiv@exp exp `uc  1 a 1 30 ]
-[v ___ftdiv@cntr cntr `uc  1 a 1 26 ]
+[v ___ftdiv@sign sign `uc  1 a 1 29 ]
+[v ___ftdiv@exp exp `uc  1 a 1 28 ]
+[v ___ftdiv@cntr cntr `uc  1 a 1 24 ]
 "56
-[v ___ftdiv@f2 f2 `f  1 p 3 16 ]
-[v ___ftdiv@f1 f1 `f  1 p 3 19 ]
+[v ___ftdiv@f2 f2 `f  1 p 3 14 ]
+[v ___ftdiv@f1 f1 `f  1 p 3 17 ]
 "86
 } 0
-"260 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
-[v _UpdateLEDsFromValue UpdateLEDsFromValue `(v  1 e 1 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
 {
-[v UpdateLEDsFromValue@inFaderNum inFaderNum `uc  1 a 1 wreg ]
-"263
-[v UpdateLEDsFromValue@wkBrightFlag wkBrightFlag `uc  1 a 1 4 ]
-"262
-[v UpdateLEDsFromValue@wkOnFlag wkOnFlag `uc  1 a 1 3 ]
-"260
-[v UpdateLEDsFromValue@inFaderNum inFaderNum `uc  1 a 1 wreg ]
-[v UpdateLEDsFromValue@inValue inValue `uc  1 p 1 0 ]
-"262
-[v UpdateLEDsFromValue@inFaderNum inFaderNum `uc  1 a 1 2 ]
-"319
+[v ___ftpack@arg arg `um  1 p 3 0 ]
+[v ___ftpack@exp exp `uc  1 p 1 3 ]
+[v ___ftpack@sign sign `uc  1 p 1 4 ]
+"86
 } 0
 "83 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -656,211 +713,20 @@ FADER7 7
 {
 "106
 } 0
-"453 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
-[v _MYI2C_Write2LEDBytes MYI2C_Write2LEDBytes `(v  1 e 1 0 ]
-{
-[v MYI2C_Write2LEDBytes@slaveDeviceAddress slaveDeviceAddress `uc  1 a 1 wreg ]
-"465
-[v MYI2C_Write2LEDBytes@sourceData sourceData `[16]uc  1 a 16 20 ]
-"472
-[v MYI2C_Write2LEDBytes@writeBuffer writeBuffer `[3]uc  1 a 3 47 ]
-"474
-[v MYI2C_Write2LEDBytes@timeOut timeOut `ui  1 a 2 44 ]
-[v MYI2C_Write2LEDBytes@counter counter `ui  1 a 2 42 ]
-"470
-[v MYI2C_Write2LEDBytes@nCount nCount `ui  1 a 2 39 ]
-"464
-[v MYI2C_Write2LEDBytes@dataAddress dataAddress `ui  1 a 2 36 ]
-"477
-[v MYI2C_Write2LEDBytes@status status `E14267  1 a 1 50 ]
-"475
-[v MYI2C_Write2LEDBytes@pointerByte pointerByte `uc  1 a 1 46 ]
-"473
-[v MYI2C_Write2LEDBytes@pD pD `*.4uc  1 a 1 38 ]
-"453
-[v MYI2C_Write2LEDBytes@slaveDeviceAddress slaveDeviceAddress `uc  1 a 1 wreg ]
-[v MYI2C_Write2LEDBytes@MSBWriteByte MSBWriteByte `uc  1 p 1 14 ]
-[v MYI2C_Write2LEDBytes@LSBWriteByte LSBWriteByte `uc  1 p 1 15 ]
-"464
-[v MYI2C_Write2LEDBytes@F14460 F14460 `[16]uc  1 s 16 F14460 ]
-"468
-[v MYI2C_Write2LEDBytes@slaveDeviceAddress slaveDeviceAddress `uc  1 a 1 41 ]
-"537
-} 0
-"598 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/i2c1.c
-[v _I2C1_MasterWrite I2C1_MasterWrite `(v  1 e 1 0 ]
-{
-"599
-[v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 wreg ]
-[v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 wreg ]
-"600
-[v I2C1_MasterWrite@length length `uc  1 p 1 7 ]
-"601
-[v I2C1_MasterWrite@address address `ui  1 p 2 8 ]
-"602
-[v I2C1_MasterWrite@pflag pflag `*.4E14260  1 p 1 10 ]
-[s S375 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
-"604
-[v I2C1_MasterWrite@trBlock trBlock `S375  1 s 4 trBlock ]
-"607
-[v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 13 ]
-"617
-} 0
-"320 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
-[v _MYI2C_ReadFaders MYI2C_ReadFaders `(E14267  1 e 1 0 ]
-{
-[v MYI2C_ReadFaders@slaveDeviceAddress slaveDeviceAddress `uc  1 a 1 wreg ]
-[s S375 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
-"327
-[v MYI2C_ReadFaders@readTRB readTRB `[2]S375  1 a 8 17 ]
-"329
-[v MYI2C_ReadFaders@timeOut timeOut `ui  1 a 2 13 ]
-"324
-[v MYI2C_ReadFaders@dataAddress dataAddress `i  1 a 2 11 ]
-"326
-[v MYI2C_ReadFaders@status status `E14267  1 a 1 25 ]
-"325
-[v MYI2C_ReadFaders@pointerByte pointerByte `uc  1 a 1 16 ]
-"320
-[v MYI2C_ReadFaders@slaveDeviceAddress slaveDeviceAddress `uc  1 a 1 wreg ]
-"324
-[v MYI2C_ReadFaders@slaveDeviceAddress slaveDeviceAddress `uc  1 a 1 15 ]
-"386
-} 0
-"707 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/i2c1.c
-[v _I2C1_MasterWriteTRBBuild I2C1_MasterWriteTRBBuild `(v  1 e 1 0 ]
-{
-[s S375 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
-"708
-[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.4S375  1 a 1 wreg ]
-[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.4S375  1 a 1 wreg ]
-"709
-[v I2C1_MasterWriteTRBBuild@pdata pdata `*.4uc  1 p 1 0 ]
-"710
-[v I2C1_MasterWriteTRBBuild@length length `uc  1 p 1 1 ]
-"711
-[v I2C1_MasterWriteTRBBuild@address address `ui  1 p 2 2 ]
-"713
-"708
-[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.4S375  1 a 1 6 ]
-"716
-} 0
-"641
-[v _I2C1_MasterTRBInsert I2C1_MasterTRBInsert `(v  1 e 1 0 ]
-{
-"642
-[v I2C1_MasterTRBInsert@count count `uc  1 a 1 wreg ]
-[v I2C1_MasterTRBInsert@count count `uc  1 a 1 wreg ]
-[s S375 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
-"643
-[v I2C1_MasterTRBInsert@ptrb_list ptrb_list `*.4S375  1 p 1 0 ]
-"644
-[v I2C1_MasterTRBInsert@pflag pflag `*.4E14260  1 p 1 1 ]
-"648
-[v I2C1_MasterTRBInsert@count count `uc  1 a 1 3 ]
-"692
-} 0
-"694
-[v _I2C1_MasterReadTRBBuild I2C1_MasterReadTRBBuild `(v  1 e 1 0 ]
-{
-[s S375 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
-"695
-[v I2C1_MasterReadTRBBuild@ptrb ptrb `*.4S375  1 a 1 wreg ]
-[v I2C1_MasterReadTRBBuild@ptrb ptrb `*.4S375  1 a 1 wreg ]
-"696
-[v I2C1_MasterReadTRBBuild@pdata pdata `*.4uc  1 p 1 0 ]
-"697
-[v I2C1_MasterReadTRBBuild@length length `uc  1 p 1 1 ]
-"698
-[v I2C1_MasterReadTRBBuild@address address `ui  1 p 2 2 ]
-"700
-"695
-[v I2C1_MasterReadTRBBuild@ptrb ptrb `*.4S375  1 a 1 6 ]
-"705
-} 0
 "31 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\LED7Seg.c
 [v _LED7SegSetup LED7SegSetup `(v  1 e 1 0 ]
 {
 "44
 } 0
-"111
-[v _LED7SegLoop LED7SegLoop `(v  1 e 1 0 ]
+"95
+[v _LED7SegDisplayValueByDigit LED7SegDisplayValueByDigit `(v  1 e 1 0 ]
 {
-"124
-[v LED7SegLoop@d_1042 d `i  1 a 2 57 ]
-"130
-[v LED7SegLoop@d_1043 d `i  1 a 2 59 ]
-"121
-[v LED7SegLoop@z z `i  1 a 2 61 ]
-"116
-[v LED7SegLoop@d d `i  1 a 2 55 ]
-"136
-} 0
-"80
-[v _LED7SegDisplayValue LED7SegDisplayValue `(v  1 e 1 0 ]
-{
-"81
-[v LED7SegDisplayValue@iTensDigit iTensDigit `ui  1 a 2 52 ]
-"83
-[v LED7SegDisplayValue@iTensCode iTensCode `ui  1 a 2 50 ]
-"82
-[v LED7SegDisplayValue@iUnitsDigit iUnitsDigit `ui  1 a 2 48 ]
-"80
-[v LED7SegDisplayValue@iTwoDigitNumber iTwoDigitNumber `ui  1 p 2 46 ]
-"101
-} 0
-"28 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwtoft.c
-[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
-{
-[v ___lwtoft@c c `ui  1 p 2 8 ]
-"31
-} 0
-"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
-[v ___ftpack __ftpack `(f  1 e 3 0 ]
-{
-[v ___ftpack@arg arg `um  1 p 3 0 ]
-[v ___ftpack@exp exp `uc  1 p 1 3 ]
-[v ___ftpack@sign sign `uc  1 p 1 4 ]
-"86
-} 0
-"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwmod.c
-[v ___lwmod __lwmod `(ui  1 e 2 0 ]
-{
-"11
-[v ___lwmod@counter counter `uc  1 a 1 5 ]
-"6
-[v ___lwmod@divisor divisor `ui  1 p 2 0 ]
-[v ___lwmod@dividend dividend `ui  1 p 2 2 ]
-"26
-} 0
-"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-{
-"11
-[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
-"12
-[v ___lwdiv@counter counter `uc  1 a 1 7 ]
-"6
-[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
-[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
-"31
-} 0
-"44 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\fttol.c
-[v ___fttol __fttol `(l  1 e 4 0 ]
-{
-"47
-[v ___fttol@lval lval `ul  1 a 4 41 ]
-"46
-[v ___fttol@exp1 exp1 `uc  1 a 1 45 ]
-[v ___fttol@sign1 sign1 `uc  1 a 1 40 ]
-"44
-[v ___fttol@f1 f1 `f  1 p 3 32 ]
-"73
-} 0
-"102 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\LED7Seg.c
-[v _LED7SegBlankDisplay LED7SegBlankDisplay `(v  1 e 1 0 ]
-{
-"110
+"96
+[v LED7SegDisplayValueByDigit@iTensCode iTensCode `ui  1 a 2 24 ]
+"95
+[v LED7SegDisplayValueByDigit@iTensDigit iTensDigit `ui  1 p 2 20 ]
+[v LED7SegDisplayValueByDigit@iUnitsDigit iUnitsDigit `ui  1 p 2 22 ]
+"113
 } 0
 "69
 [v _LED7SegShiftOutPulseClock LED7SegShiftOutPulseClock `(v  1 e 1 0 ]
@@ -879,16 +745,16 @@ FADER7 7
 {
 "67
 } 0
-"95 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"117 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _delay delay `(v  1 e 1 0 ]
 {
-"96
+"118
 [v delay@counter counter `l  1 a 4 13 ]
-"97
+"119
 [v delay@adjustedDelaytime adjustedDelaytime `l  1 a 4 9 ]
-"95
+"117
 [v delay@delaytime delaytime `i  1 p 2 6 ]
-"101
+"123
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]

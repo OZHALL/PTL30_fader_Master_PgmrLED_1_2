@@ -94,7 +94,6 @@ typedef enum
     channel_ANA4 =  0x4,
     channel_ANA5 =  0x5,
     channel_ANA6 =  0x6,
-    channel_ANA7 =  0x7,
     channel_ANC0 =  0x10,
     channel_VSS =  0x3C,
     channel_Temp =  0x3D,

@@ -17524,7 +17524,6 @@ channel_ANA3 = 0x3,
 channel_ANA4 = 0x4,
 channel_ANA5 = 0x5,
 channel_ANA6 = 0x6,
-channel_ANA7 = 0x7,
 channel_ANC0 = 0x10,
 channel_VSS = 0x3C,
 channel_Temp = 0x3D,
@@ -17532,85 +17531,85 @@ channel_DAC1 = 0x3E,
 channel_FVR_buf1 = 0x3F
 } adcc_channel_t;
 
-# 138
+# 137
 void ADCC_Initialize(void);
 
-# 167
+# 166
 void ADCC_StartConversion(adcc_channel_t channel);
 
-# 198
+# 197
 bool ADCC_IsConversionDone();
 
-# 229
+# 228
 adc_result_t ADCC_GetConversionResult(void);
 
-# 260
+# 259
 adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
 
-# 285
+# 284
 void ADCC_StopConversion(void);
 
-# 309
+# 308
 void ADCC_SetStopOnInterrupt(void);
 
-# 331
+# 330
 void ADCC_DischargeSampleCapacitor(void);
 
-# 355
+# 354
 void ADCC_LoadAcquisitionRegister(uint8_t);
 
-# 378
+# 377
 void ADCC_SetPrechargeTime(uint8_t);
 
-# 402
+# 401
 void ADCC_SetRepeatCount(uint8_t);
 
-# 426
+# 425
 uint8_t ADCC_GetCurrentCountofConversions(void);
 
-# 450
+# 449
 void ADCC_ClearAccumulator(void);
 
-# 473
+# 472
 uint16_t ADCC_GetAccumulatorValue(void);
 
-# 497
+# 496
 bool ADCC_HasAccumulatorOverflowed(void);
 
-# 521
+# 520
 uint16_t ADCC_GetFilterValue(void);
 
-# 545
+# 544
 uint16_t ADCC_GetPreviousResult(void);
 
-# 569
+# 568
 void ADCC_DefineSetPoint(uint16_t);
 
-# 594
+# 593
 void ADCC_SetUpperThreshold(uint16_t);
 
-# 619
+# 618
 void ADCC_SetLowerThreshold(uint16_t);
 
-# 642
+# 641
 uint16_t ADCC_GetErrorCalculation(void);
 
-# 664
+# 663
 void ADCC_EnableDoubleSampling(void);
 
-# 686
+# 685
 void ADCC_EnableContinuousConversion(void);
 
-# 708
+# 707
 void ADCC_DisableContinuousConversion(void);
 
-# 730
+# 729
 bool ADCC_HasErrorCrossedUpperThreshold(void);
 
-# 752
+# 751
 bool ADCC_HasErrorCrossedLowerThreshold(void);
 
-# 774
+# 773
 uint8_t ADCC_GetConversionStageStatus(void);
 
 # 70 "mcc_generated_files/mcc.h"
@@ -17619,14 +17618,23 @@ void SYSTEM_Initialize(void);
 # 83
 void OSCILLATOR_Initialize(void);
 
+# 12 "VCAMIX_SPI_Master.h"
+const int cPowerOfTwo[8] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
+
+# 21
+void putByte(uint8_t data,int clockPin);
+void initDAC528();
+void writeDAC528(int dacNumber, uint8_t dacData);
+
 # 16 "LED7Seg.h"
 void LED7SegLoop();
 void LED7SegSetup();
 void delay(int delaytime);
 void LED7SegBlankDisplay();
 void LED7SegDisplayValue(unsigned int iTwoDigitNumber);
+void LED7SegDisplayValueByDigit(unsigned int iTensDigit,unsigned int iUnitsDigit);
 
-# 67 "main.c"
+# 88 "main.c"
 typedef uint16_t adc_result_t;
 
 typedef enum
@@ -17636,10 +17644,11 @@ FADER1 = 0x1,
 FADER2 = 0x2,
 FADER3 = 0x3,
 FADER4 = 0x4,
-POT = 0x4,
+POT0 = 0x4,
 FADER5 = 0x5,
-FADER6 = 0x6,
-FADER7 = 0x7,
+POT1 = 0x5,
+
+
 } adcc_channel_t;
 
 uint8_t iLEDs0_MSB;
@@ -17691,12 +17700,12 @@ delay(5000);
 return;
 }
 
-# 134
+# 156
 I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress);
 void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress, uint8_t MSBWriteByte,uint8_t LSBWriteByte);
 void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue);
 
-# 141
+# 163
 void main(void)
 {
 uint8_t I2C_ADDRESS_FADELED0 = 0x10;
@@ -17709,12 +17718,15 @@ uint8_t iChangeCount=0;
 int faderValue;
 uint8_t fader8bitValue;
 uint8_t prevFader8bitValue;
+uint8_t POT0Value;
+uint8_t POT1Value;
+uint8_t DACDataValue;
 
 I2C1_MESSAGE_STATUS readStatus=0;
 
 
 SYSTEM_Initialize();
-
+initDAC528();
 LED7SegSetup();
 
 
@@ -17725,14 +17737,14 @@ LED7SegSetup();
 
 (INTCONbits.PEIE = 1);
 
-# 176
-faderValue=ADCC_GetSingleConversion(FADER0);
+# 201
+faderValue=ADCC_GetSingleConversion(FADER5);
 prevFader8bitValue=faderValue>>2;
 
 blinkyLoop(10);
 
 
-LED7SegLoop();
+
 
 while (1) {
 iLoopCounter++;
@@ -17740,26 +17752,29 @@ if (iResetValue<=iLoopCounter) iLoopCounter=0;
 
 
 {
+delay(100);
 faderValue=ADCC_GetSingleConversion(FADER0);
 fader8bitValue=faderValue>>2;
+delay(100);
+faderValue=ADCC_GetSingleConversion(POT0);
+faderValue=1023-faderValue;
+
+POT0Value=faderValue/102.3;
+delay(100);
+faderValue=ADCC_GetSingleConversion(POT1);
+faderValue=1023-faderValue;
+POT1Value=faderValue/102.3;
 }
 
-faderValue=byteFaderValue[0];
 
-# 223
-readStatus = MYI2C_ReadFaders(I2C_ADDRESS_FADELED0);
 
-if(readStatus==I2C1_MESSAGE_COMPLETE)
-{
+DACDataValue=4* (iCounter%32);
+writeDAC528(4,DACDataValue);
+writeDAC528(5,DACDataValue);
+writeDAC528(6,DACDataValue);
+writeDAC528(7,DACDataValue);
 
-for(int ndx=0;ndx<8;ndx++){
-UpdateLEDsFromValue(ndx,byteFaderValue[ndx]);
-}
-
-MYI2C_Write2LEDBytes(I2C_ADDRESS_FADELED0,iLEDs0_MSB,iLEDs0_LSB);
-}
-
-# 243
+# 289
 if (prevFader8bitValue!=fader8bitValue) {
 iChangeCount++;
 
@@ -17771,9 +17786,8 @@ iCounter++;
 if (fader8bitValue<252)
 delay(1*(255-fader8bitValue));
 
-
-
-LED7SegDisplayValue(iChangeCount/2.55);
+# 304
+LED7SegDisplayValueByDigit(POT1Value,POT0Value);
 
 }
 }
@@ -17852,7 +17866,7 @@ uint16_t timeOut;
 
 status = I2C1_MESSAGE_PENDING;
 
-# 341
+# 389
 timeOut = 0;
 
 while(status != I2C1_MESSAGE_FAIL)
@@ -17879,7 +17893,7 @@ while(status == I2C1_MESSAGE_PENDING);
 if (status == I2C1_MESSAGE_COMPLETE)
 break;
 
-# 374
+# 422
 if (timeOut == 100)
 break;
 else
@@ -17894,11 +17908,11 @@ if (I2C1_MESSAGE_FAIL==status) {
 return status;
 }
 
-# 453
+# 501
 void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress,uint8_t MSBWriteByte,uint8_t LSBWriteByte)
 {
 
-# 464
+# 512
 uint16_t dataAddress;
 uint8_t sourceData[16] = { 0xA0, 0xA1, 0xA2, 0xA3,
 0xA4, 0xA5, 0xA6, 0xA7,
@@ -17949,7 +17963,7 @@ while(status == I2C1_MESSAGE_PENDING);
 if (status == I2C1_MESSAGE_COMPLETE)
 break;
 
-# 521
+# 569
 if (timeOut == 100)
 break;
 else

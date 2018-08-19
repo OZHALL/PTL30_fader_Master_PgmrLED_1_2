@@ -80,7 +80,7 @@ void LED7SegShiftOutPulseClock(unsigned char val)
 void LED7SegDisplayValue(unsigned int iTwoDigitNumber){
     unsigned int iTensDigit;     // 0 - 9
     unsigned int iUnitsDigit;    // 0 - 9
-    unsigned int iTensCode;      // the code for the tens digit, so that we can blank it
+
     
     if(0>iTwoDigitNumber)  iTwoDigitNumber=0;   // guard the range
     if(99<iTwoDigitNumber) iTwoDigitNumber=99;  //
@@ -89,9 +89,21 @@ void LED7SegDisplayValue(unsigned int iTwoDigitNumber){
     iUnitsDigit=d;        // the right hand digit, make it an integer
     b=iTwoDigitNumber/10; // divide z by 10 - the whole number value will be the left-hand digit
     iTensDigit=b;         // the left hand digit
+
+    LED7SegDisplayValueByDigit(iTensDigit,iUnitsDigit);
+}
+void LED7SegDisplayValueByDigit(unsigned int iTensDigit,unsigned int iUnitsDigit){
+    unsigned int iTensCode;      // the code for the tens digit, so that we can blank it
+    
+    if(0>iUnitsDigit) iUnitsDigit=0;
+    if(iUnitsDigit>9) iUnitsDigit=9;
+    
+    if(0>iTensDigit) iTensDigit=0;
+    if(iTensDigit>9) iTensDigit=9;
+    
     iTensCode=segdisp[iTensDigit];
     if(0==iTensDigit)     iTensCode=255;         // blank leading zeroes
-
+    
     LED7SegShiftOutPulseClock( segdisp[iUnitsDigit]); // sends the digit down the serial path
     LED7SegShiftOutPulseClock( iTensCode ); // sends a blank down the serial path to push the digit to the right  
     // Pulse the latch pin to write the values into the storage register

@@ -1,32 +1,74 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"34237 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
-[s S1512 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1512 . ANSC0 ANSC1 ANSC2 ANSC3 ANSC4 ANSC5 ANSC6 ANSC7 ]
-"34236
-[u S1511 `S1512 1 ]
-[n S1511 . . ]
-"34248
-[v _ANSELCbits `VS1511 ~T0 @X0 0 e@3918 ]
-"719
-[s S40 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S40 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"718
-[u S39 `S40 1 ]
-[n S39 . . ]
-"730
-[v _TRISCbits `VS39 ~T0 @X0 0 e@19 ]
-"905
-[s S46 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S46 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
-"904
-[u S45 `S46 1 ]
-[n S45 . . ]
-"916
-[v _LATCbits `VS45 ~T0 @X0 0 e@24 ]
-"18 LED7Seg.h
-[v _delay `(v ~T0 @X0 0 ef1`i ]
-"21
-[v _LED7SegDisplayValueByDigit `(v ~T0 @X0 0 ef2`ui`ui ]
+"775 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
+[v _LATA `Vuc ~T0 @X0 0 e@22 ]
+"837
+[v _LATB `Vuc ~T0 @X0 0 e@23 ]
+"899
+[v _LATC `Vuc ~T0 @X0 0 e@24 ]
+"589
+[v _TRISA `Vuc ~T0 @X0 0 e@17 ]
+"651
+[v _TRISB `Vuc ~T0 @X0 0 e@18 ]
+"713
+[v _TRISC `Vuc ~T0 @X0 0 e@19 ]
+"34231
+[v _ANSELC `Vuc ~T0 @X0 0 e@3918 ]
+"33611
+[v _ANSELB `Vuc ~T0 @X0 0 e@3907 ]
+"32991
+[v _ANSELA `Vuc ~T0 @X0 0 e@3896 ]
+"34851
+[v _WPUE `Vuc ~T0 @X0 0 e@3941 ]
+"33673
+[v _WPUB `Vuc ~T0 @X0 0 e@3908 ]
+"33053
+[v _WPUA `Vuc ~T0 @X0 0 e@3897 ]
+"34293
+[v _WPUC `Vuc ~T0 @X0 0 e@3919 ]
+"33115
+[v _ODCONA `Vuc ~T0 @X0 0 e@3898 ]
+"33735
+[v _ODCONB `Vuc ~T0 @X0 0 e@3909 ]
+"34355
+[v _ODCONC `Vuc ~T0 @X0 0 e@3920 ]
+"36757
+[v _GIE `Vb ~T0 @X0 0 e@95 ]
+"29763
+[v _PPSLOCK `Vuc ~T0 @X0 0 e@3727 ]
+"29769
+[s S1306 :1 `uc 1 ]
+[n S1306 . PPSLOCKED ]
+"29768
+[u S1305 `S1306 1 ]
+[n S1305 . . ]
+"29773
+[v _PPSLOCKbits `VS1305 ~T0 @X0 0 e@3727 ]
+"31433
+[s S1403 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1403 . SSP1DATPPS0 SSP1DATPPS1 SSP1DATPPS2 SSP1DATPPS3 SSP1DATPPS4 ]
+"31440
+[s S1404 :5 `uc 1 ]
+[n S1404 . SSP1DATPPS ]
+"31432
+[u S1402 `S1403 1 `S1404 1 ]
+[n S1402 . . . ]
+"31444
+[v _SSP1DATPPSbits `VS1402 ~T0 @X0 0 e@3782 ]
+"31381
+[s S1400 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1400 . SSP1CLKPPS0 SSP1CLKPPS1 SSP1CLKPPS2 SSP1CLKPPS3 SSP1CLKPPS4 ]
+"31388
+[s S1401 :5 `uc 1 ]
+[n S1401 . SSP1CLKPPS ]
+"31380
+[u S1399 `S1400 1 `S1401 1 ]
+[n S1399 . . . ]
+"31392
+[v _SSP1CLKPPSbits `VS1399 ~T0 @X0 0 e@3781 ]
+"32741
+[v _RC3PPS `Vuc ~T0 @X0 0 e@3875 ]
+"32791
+[v _RC4PPS `Vuc ~T0 @X0 0 e@3876 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -13108,616 +13150,116 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
 [; ;pin_manager.h: 532: void PIN_MANAGER_Initialize (void);
 [; ;pin_manager.h: 544: void PIN_MANAGER_IOC(void);
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;i2c1.h: 83: typedef enum
-[; ;i2c1.h: 84: {
-[; ;i2c1.h: 85: I2C1_MESSAGE_COMPLETE,
-[; ;i2c1.h: 86: I2C1_MESSAGE_FAIL,
-[; ;i2c1.h: 87: I2C1_MESSAGE_PENDING,
-[; ;i2c1.h: 88: I2C1_STUCK_START,
-[; ;i2c1.h: 89: I2C1_MESSAGE_ADDRESS_NO_ACK,
-[; ;i2c1.h: 90: I2C1_DATA_NO_ACK,
-[; ;i2c1.h: 91: I2C1_LOST_STATE
-[; ;i2c1.h: 92: } I2C1_MESSAGE_STATUS;
-[; ;i2c1.h: 108: typedef struct
-[; ;i2c1.h: 109: {
-[; ;i2c1.h: 110: uint16_t address;
-[; ;i2c1.h: 113: uint8_t length;
-[; ;i2c1.h: 114: uint8_t *pbuffer;
-[; ;i2c1.h: 115: } I2C1_TRANSACTION_REQUEST_BLOCK;
-[; ;i2c1.h: 220: void I2C1_Initialize(void);
-[; ;i2c1.h: 259: void I2C1_MasterWrite(
-[; ;i2c1.h: 260: uint8_t *pdata,
-[; ;i2c1.h: 261: uint8_t length,
-[; ;i2c1.h: 262: uint16_t address,
-[; ;i2c1.h: 263: I2C1_MESSAGE_STATUS *pstatus);
-[; ;i2c1.h: 406: void I2C1_MasterRead(
-[; ;i2c1.h: 407: uint8_t *pdata,
-[; ;i2c1.h: 408: uint8_t length,
-[; ;i2c1.h: 409: uint16_t address,
-[; ;i2c1.h: 410: I2C1_MESSAGE_STATUS *pstatus);
-[; ;i2c1.h: 516: void I2C1_MasterTRBInsert(
-[; ;i2c1.h: 517: uint8_t count,
-[; ;i2c1.h: 518: I2C1_TRANSACTION_REQUEST_BLOCK *ptrb_list,
-[; ;i2c1.h: 519: I2C1_MESSAGE_STATUS *pflag);
-[; ;i2c1.h: 560: void I2C1_MasterReadTRBBuild(
-[; ;i2c1.h: 561: I2C1_TRANSACTION_REQUEST_BLOCK *ptrb,
-[; ;i2c1.h: 562: uint8_t *pdata,
-[; ;i2c1.h: 563: uint8_t length,
-[; ;i2c1.h: 564: uint16_t address);
-[; ;i2c1.h: 605: void I2C1_MasterWriteTRBBuild(
-[; ;i2c1.h: 606: I2C1_TRANSACTION_REQUEST_BLOCK *ptrb,
-[; ;i2c1.h: 607: uint8_t *pdata,
-[; ;i2c1.h: 608: uint8_t length,
-[; ;i2c1.h: 609: uint16_t address);
-[; ;i2c1.h: 647: bool I2C1_MasterQueueIsEmpty(void);
-[; ;i2c1.h: 685: bool I2C1_MasterQueueIsFull(void);
-[; ;i2c1.h: 686: void I2C1_BusCollisionISR( void );
-[; ;i2c1.h: 687: void I2C1_ISR ( void );
-[; ;adcc.h: 71: typedef uint16_t adc_result_t;
-[; ;adcc.h: 88: typedef enum
-[; ;adcc.h: 89: {
-[; ;adcc.h: 90: channel_ANA0 = 0x0,
-[; ;adcc.h: 91: channel_ANA1 = 0x1,
-[; ;adcc.h: 92: channel_ANA2 = 0x2,
-[; ;adcc.h: 93: channel_ANA3 = 0x3,
-[; ;adcc.h: 94: channel_ANA4 = 0x4,
-[; ;adcc.h: 95: channel_ANA5 = 0x5,
-[; ;adcc.h: 96: channel_ANA6 = 0x6,
-[; ;adcc.h: 97: channel_ANC0 = 0x10,
-[; ;adcc.h: 98: channel_VSS = 0x3C,
-[; ;adcc.h: 99: channel_Temp = 0x3D,
-[; ;adcc.h: 100: channel_DAC1 = 0x3E,
-[; ;adcc.h: 101: channel_FVR_buf1 = 0x3F
-[; ;adcc.h: 102: } adcc_channel_t;
-[; ;adcc.h: 137: void ADCC_Initialize(void);
-[; ;adcc.h: 166: void ADCC_StartConversion(adcc_channel_t channel);
-[; ;adcc.h: 197: bool ADCC_IsConversionDone();
-[; ;adcc.h: 228: adc_result_t ADCC_GetConversionResult(void);
-[; ;adcc.h: 259: adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
-[; ;adcc.h: 284: void ADCC_StopConversion(void);
-[; ;adcc.h: 308: void ADCC_SetStopOnInterrupt(void);
-[; ;adcc.h: 330: void ADCC_DischargeSampleCapacitor(void);
-[; ;adcc.h: 354: void ADCC_LoadAcquisitionRegister(uint8_t);
-[; ;adcc.h: 377: void ADCC_SetPrechargeTime(uint8_t);
-[; ;adcc.h: 401: void ADCC_SetRepeatCount(uint8_t);
-[; ;adcc.h: 425: uint8_t ADCC_GetCurrentCountofConversions(void);
-[; ;adcc.h: 449: void ADCC_ClearAccumulator(void);
-[; ;adcc.h: 472: uint16_t ADCC_GetAccumulatorValue(void);
-[; ;adcc.h: 496: bool ADCC_HasAccumulatorOverflowed(void);
-[; ;adcc.h: 520: uint16_t ADCC_GetFilterValue(void);
-[; ;adcc.h: 544: uint16_t ADCC_GetPreviousResult(void);
-[; ;adcc.h: 568: void ADCC_DefineSetPoint(uint16_t);
-[; ;adcc.h: 593: void ADCC_SetUpperThreshold(uint16_t);
-[; ;adcc.h: 618: void ADCC_SetLowerThreshold(uint16_t);
-[; ;adcc.h: 641: uint16_t ADCC_GetErrorCalculation(void);
-[; ;adcc.h: 663: void ADCC_EnableDoubleSampling(void);
-[; ;adcc.h: 685: void ADCC_EnableContinuousConversion(void);
-[; ;adcc.h: 707: void ADCC_DisableContinuousConversion(void);
-[; ;adcc.h: 729: bool ADCC_HasErrorCrossedUpperThreshold(void);
-[; ;adcc.h: 751: bool ADCC_HasErrorCrossedLowerThreshold(void);
-[; ;adcc.h: 773: uint8_t ADCC_GetConversionStageStatus(void);
-[; ;mcc.h: 70: void SYSTEM_Initialize(void);
-[; ;mcc.h: 83: void OSCILLATOR_Initialize(void);
-[; ;LED7Seg.h: 16: void LED7SegLoop();
-[; ;LED7Seg.h: 17: void LED7SegSetup();
-[; ;LED7Seg.h: 18: void delay(int delaytime);
-[; ;LED7Seg.h: 19: void LED7SegBlankDisplay();
-[; ;LED7Seg.h: 20: void LED7SegDisplayValue(unsigned int iTwoDigitNumber);
-[; ;LED7Seg.h: 21: void LED7SegDisplayValueByDigit(unsigned int iTensDigit,unsigned int iUnitsDigit);
-"19 LED7Seg.c
-[v _latchpin `Ci ~T0 @X0 1 e ]
-[i _latchpin
--> 16 `i
-]
-[; ;LED7Seg.c: 19: const int latchpin = 16;
-"20
-[v _clockpin `Ci ~T0 @X0 1 e ]
-[i _clockpin
--> 17 `i
-]
-[; ;LED7Seg.c: 20: const int clockpin = 17;
-"21
-[v _datapin `Ci ~T0 @X0 1 e ]
-[i _datapin
--> 18 `i
-]
-[; ;LED7Seg.c: 21: const int datapin = 18;
-"22
-[v _b `f ~T0 @X0 1 e ]
-[i _b
--> -> 0 `i `f
-]
-[; ;LED7Seg.c: 22: float b = 0;
-"23
-[v _c `ui ~T0 @X0 1 e ]
-[i _c
--> -> 0 `i `ui
-]
-[; ;LED7Seg.c: 23: unsigned int c = 0;
-"24
-[v _d `f ~T0 @X0 1 e ]
-[i _d
--> -> 0 `i `f
-]
-[; ;LED7Seg.c: 24: float d = 0;
-"25
-[v _e `i ~T0 @X0 1 e ]
-[i _e
--> 0 `i
-]
-[; ;LED7Seg.c: 25: int e = 0;
-"26
-[v _speed `Cui ~T0 @X0 1 e ]
-[i _speed
--> -> 50 `i `ui
-]
-[; ;LED7Seg.c: 26: const unsigned int speed = 50;
-"27
-[v _twoK `Cui ~T0 @X0 1 e ]
-[i _twoK
--> -> 10000 `i `ui
-]
-[; ;LED7Seg.c: 27: const unsigned int twoK = 10000;
-"28
-[v _toggleDly `Cui ~T0 @X0 1 e ]
-[i _toggleDly
--> -> 10 `i `ui
-]
-[; ;LED7Seg.c: 28: const unsigned int toggleDly=10;
-"29
-[v _segdisp `i ~T0 @X0 -> 10 `i e ]
-[i _segdisp
-:U ..
-"30
--> 3 `i
--> 159 `i
--> 37 `i
--> 13 `i
--> 153 `i
--> 73 `i
--> 65 `i
--> 27 `i
--> 1 `i
--> 9 `i
-..
-]
-[; ;LED7Seg.c: 29: int segdisp[10] = {
-[; ;LED7Seg.c: 30: 3,159,37,13,153,73,65,27,1,9 };
-"31
-[v _LED7SegSetup `(v ~T0 @X0 1 ef ]
-"32
-{
-[; ;LED7Seg.c: 31: void LED7SegSetup()
-[; ;LED7Seg.c: 32: {
-[e :U _LED7SegSetup ]
-[f ]
-[; ;LED7Seg.c: 34: do { ANSELCbits.ANSC5 = 0; } while(0);
-"34
-[e :U 1567 ]
-{
-[e = . . _ANSELCbits 0 5 -> -> 0 `i `uc ]
-}
-[e :U 1566 ]
-[; ;LED7Seg.c: 35: do { TRISCbits.TRISC5 = 0; } while(0);
-"35
-[e :U 1570 ]
-{
-[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
-}
-[e :U 1569 ]
-[; ;LED7Seg.c: 38: do { ANSELCbits.ANSC6 = 0; } while(0);
-"38
-[e :U 1573 ]
-{
-[e = . . _ANSELCbits 0 6 -> -> 0 `i `uc ]
-}
-[e :U 1572 ]
-[; ;LED7Seg.c: 39: do { TRISCbits.TRISC6 = 0; } while(0);
-"39
-[e :U 1576 ]
-{
-[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
-}
-[e :U 1575 ]
-[; ;LED7Seg.c: 42: do { ANSELCbits.ANSC7 = 0; } while(0);
-"42
-[e :U 1579 ]
-{
-[e = . . _ANSELCbits 0 7 -> -> 0 `i `uc ]
-}
-[e :U 1578 ]
-[; ;LED7Seg.c: 43: do { TRISCbits.TRISC7 = 0; } while(0);
-"43
-[e :U 1582 ]
-{
-[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-}
-[e :U 1581 ]
-[; ;LED7Seg.c: 44: }
-"44
-[e :UE 1564 ]
-}
-"48
-[v _LED7SegPinWrite `(v ~T0 @X0 1 ef1`uc ]
-"49
-{
-[; ;LED7Seg.c: 48: void LED7SegPinWrite(unsigned char val )
-[; ;LED7Seg.c: 49: {
-[e :U _LED7SegPinWrite ]
-"48
-[v _val `uc ~T0 @X0 1 r1 ]
-"49
-[f ]
-[; ;LED7Seg.c: 50: if (val){
-"50
-[e $ ! != -> _val `i -> -> -> 0 `i `uc `i 1584  ]
-{
-[; ;LED7Seg.c: 52: do { LATCbits.LATC7 = 1; } while(0);
-"52
-[e :U 1587 ]
-{
-[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
-}
-[e :U 1586 ]
+"52 mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize `(v ~T0 @X0 1 ef ]
 "53
-}
-[; ;LED7Seg.c: 53: } else {
-[e $U 1588  ]
-[e :U 1584 ]
 {
-[; ;LED7Seg.c: 55: do { LATCbits.LATC7 = 0; } while(0);
-"55
-[e :U 1591 ]
-{
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-}
-[e :U 1590 ]
-"56
-}
-[e :U 1588 ]
-[; ;LED7Seg.c: 56: }
-[; ;LED7Seg.c: 57: }
+[; ;pin_manager.c: 52: void PIN_MANAGER_Initialize(void)
+[; ;pin_manager.c: 53: {
+[e :U _PIN_MANAGER_Initialize ]
+[f ]
+[; ;pin_manager.c: 57: LATA = 0x00;
 "57
-[e :UE 1583 ]
-}
-"60
-[v _LED7SegPulseClock `(v ~T0 @X0 1 ef ]
-"61
-{
-[; ;LED7Seg.c: 60: void LED7SegPulseClock( void )
-[; ;LED7Seg.c: 61: {
-[e :U _LED7SegPulseClock ]
-[f ]
-[; ;LED7Seg.c: 63: do { LATCbits.LATC6 = 1; } while(0);
-"63
-[e :U 1595 ]
-{
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-}
-[e :U 1594 ]
-[; ;LED7Seg.c: 64: delay(1);
+[e = _LATA -> -> 0 `i `uc ]
+[; ;pin_manager.c: 58: LATB = 0x00;
+"58
+[e = _LATB -> -> 0 `i `uc ]
+[; ;pin_manager.c: 59: LATC = 0x00;
+"59
+[e = _LATC -> -> 0 `i `uc ]
+[; ;pin_manager.c: 64: TRISA = 0x7F;
 "64
-[e ( _delay (1 -> 1 `i ]
-[; ;LED7Seg.c: 66: do { LATCbits.LATC6 = 0; } while(0);
+[e = _TRISA -> -> 127 `i `uc ]
+[; ;pin_manager.c: 65: TRISB = 0xE0;
+"65
+[e = _TRISB -> -> 224 `i `uc ]
+[; ;pin_manager.c: 66: TRISC = 0x1D;
 "66
-[e :U 1598 ]
-{
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-}
-[e :U 1597 ]
-[; ;LED7Seg.c: 67: }
-"67
-[e :UE 1592 ]
-}
-"69
-[v _LED7SegShiftOutPulseClock `(v ~T0 @X0 1 ef1`uc ]
-"70
-{
-[; ;LED7Seg.c: 69: void LED7SegShiftOutPulseClock(unsigned char val)
-[; ;LED7Seg.c: 70: {
-[e :U _LED7SegShiftOutPulseClock ]
-"69
-[v _val `uc ~T0 @X0 1 r1 ]
-"70
-[f ]
+[e = _TRISC -> -> 29 `i `uc ]
+[; ;pin_manager.c: 71: ANSELC = 0xE7;
 "71
-[v _i `uc ~T0 @X0 1 a ]
-[; ;LED7Seg.c: 71: char i;
-[; ;LED7Seg.c: 75: for (i = 0; i < 8; i++) {
-"75
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 1600  ]
-[e $U 1601  ]
-[e :U 1600 ]
-{
-[; ;LED7Seg.c: 76: LED7SegPinWrite((val & (1 << i)));
-"76
-[e ( _LED7SegPinWrite (1 -> & -> _val `i << -> 1 `i _i `uc ]
-[; ;LED7Seg.c: 77: LED7SegPulseClock();
-"77
-[e ( _LED7SegPulseClock ..  ]
+[e = _ANSELC -> -> 231 `i `uc ]
+[; ;pin_manager.c: 72: ANSELB = 0x1F;
+"72
+[e = _ANSELB -> -> 31 `i `uc ]
+[; ;pin_manager.c: 73: ANSELA = 0xFF;
+"73
+[e = _ANSELA -> -> 255 `i `uc ]
+[; ;pin_manager.c: 78: WPUE = 0x00;
 "78
-}
-"75
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 1600  ]
-[e :U 1601 ]
-"78
-}
-[; ;LED7Seg.c: 78: }
-[; ;LED7Seg.c: 79: }
+[e = _WPUE -> -> 0 `i `uc ]
+[; ;pin_manager.c: 79: WPUB = 0x00;
 "79
-[e :UE 1599 ]
-}
+[e = _WPUB -> -> 0 `i `uc ]
+[; ;pin_manager.c: 80: WPUA = 0x00;
 "80
-[v _LED7SegDisplayValue `(v ~T0 @X0 1 ef1`ui ]
-{
-[; ;LED7Seg.c: 80: void LED7SegDisplayValue(unsigned int iTwoDigitNumber){
-[e :U _LED7SegDisplayValue ]
-[v _iTwoDigitNumber `ui ~T0 @X0 1 r1 ]
-[f ]
+[e = _WPUA -> -> 0 `i `uc ]
+[; ;pin_manager.c: 81: WPUC = 0x00;
 "81
-[v _iTensDigit `ui ~T0 @X0 1 a ]
-"82
-[v _iUnitsDigit `ui ~T0 @X0 1 a ]
-[; ;LED7Seg.c: 81: unsigned int iTensDigit;
-[; ;LED7Seg.c: 82: unsigned int iUnitsDigit;
-[; ;LED7Seg.c: 85: if(0>iTwoDigitNumber) iTwoDigitNumber=0;
-"85
-[e $ ! > -> -> 0 `i `ui _iTwoDigitNumber 1604  ]
-[e = _iTwoDigitNumber -> -> 0 `i `ui ]
-[e :U 1604 ]
-[; ;LED7Seg.c: 86: if(99<iTwoDigitNumber) iTwoDigitNumber=99;
+[e = _WPUC -> -> 0 `i `uc ]
+[; ;pin_manager.c: 86: ODCONA = 0x00;
 "86
-[e $ ! < -> -> 99 `i `ui _iTwoDigitNumber 1605  ]
-[e = _iTwoDigitNumber -> -> 99 `i `ui ]
-[e :U 1605 ]
-[; ;LED7Seg.c: 88: d=iTwoDigitNumber%10;
+[e = _ODCONA -> -> 0 `i `uc ]
+[; ;pin_manager.c: 87: ODCONB = 0x00;
+"87
+[e = _ODCONB -> -> 0 `i `uc ]
+[; ;pin_manager.c: 88: ODCONC = 0x00;
 "88
-[e = _d -> % _iTwoDigitNumber -> -> 10 `i `ui `f ]
-[; ;LED7Seg.c: 89: iUnitsDigit=d;
-"89
-[e = _iUnitsDigit -> _d `ui ]
-[; ;LED7Seg.c: 90: b=iTwoDigitNumber/10;
-"90
-[e = _b -> / _iTwoDigitNumber -> -> 10 `i `ui `f ]
-[; ;LED7Seg.c: 91: iTensDigit=b;
-"91
-[e = _iTensDigit -> _b `ui ]
-[; ;LED7Seg.c: 93: LED7SegDisplayValueByDigit(iTensDigit,iUnitsDigit);
-"93
-[e ( _LED7SegDisplayValueByDigit (2 , _iTensDigit _iUnitsDigit ]
-[; ;LED7Seg.c: 94: }
-"94
-[e :UE 1603 ]
-}
+[e = _ODCONC -> -> 0 `i `uc ]
 "95
-[v _LED7SegDisplayValueByDigit `(v ~T0 @X0 1 ef2`ui`ui ]
-{
-[; ;LED7Seg.c: 95: void LED7SegDisplayValueByDigit(unsigned int iTensDigit,unsigned int iUnitsDigit){
-[e :U _LED7SegDisplayValueByDigit ]
-[v _iTensDigit `ui ~T0 @X0 1 r1 ]
-[v _iUnitsDigit `ui ~T0 @X0 1 r2 ]
-[f ]
+[v _state `uc ~T0 @X0 1 a ]
+[; ;pin_manager.c: 95: bool state = (unsigned char)GIE;
+[e = _state -> -> _GIE `i `uc ]
+[; ;pin_manager.c: 96: GIE = 0;
 "96
-[v _iTensCode `ui ~T0 @X0 1 a ]
-[; ;LED7Seg.c: 96: unsigned int iTensCode;
-[; ;LED7Seg.c: 98: if(0>iUnitsDigit) iUnitsDigit=0;
+[e = _GIE -> -> 0 `i `b ]
+[; ;pin_manager.c: 97: PPSLOCK = 0x55;
+"97
+[e = _PPSLOCK -> -> 85 `i `uc ]
+[; ;pin_manager.c: 98: PPSLOCK = 0xAA;
 "98
-[e $ ! > -> -> 0 `i `ui _iUnitsDigit 1607  ]
-[e = _iUnitsDigit -> -> 0 `i `ui ]
-[e :U 1607 ]
-[; ;LED7Seg.c: 99: if(iUnitsDigit>9) iUnitsDigit=9;
+[e = _PPSLOCK -> -> 170 `i `uc ]
+[; ;pin_manager.c: 99: PPSLOCKbits.PPSLOCKED = 0x00;
 "99
-[e $ ! > _iUnitsDigit -> -> 9 `i `ui 1608  ]
-[e = _iUnitsDigit -> -> 9 `i `ui ]
-[e :U 1608 ]
-[; ;LED7Seg.c: 101: if(0>iTensDigit) iTensDigit=0;
+[e = . . _PPSLOCKbits 0 0 -> -> 0 `i `uc ]
+[; ;pin_manager.c: 101: SSP1DATPPSbits.SSP1DATPPS = 0x13;
 "101
-[e $ ! > -> -> 0 `i `ui _iTensDigit 1609  ]
-[e = _iTensDigit -> -> 0 `i `ui ]
-[e :U 1609 ]
-[; ;LED7Seg.c: 102: if(iTensDigit>9) iTensDigit=9;
+[e = . . _SSP1DATPPSbits 1 0 -> -> 19 `i `uc ]
+[; ;pin_manager.c: 102: SSP1CLKPPSbits.SSP1CLKPPS = 0x14;
 "102
-[e $ ! > _iTensDigit -> -> 9 `i `ui 1610  ]
-[e = _iTensDigit -> -> 9 `i `ui ]
-[e :U 1610 ]
-[; ;LED7Seg.c: 104: iTensCode=segdisp[iTensDigit];
+[e = . . _SSP1CLKPPSbits 1 0 -> -> 20 `i `uc ]
+[; ;pin_manager.c: 103: RC3PPS = 0x15;
+"103
+[e = _RC3PPS -> -> 21 `i `uc ]
+[; ;pin_manager.c: 104: RC4PPS = 0x14;
 "104
-[e = _iTensCode -> *U + &U _segdisp * -> _iTensDigit `ux -> -> # *U &U _segdisp `ui `ux `ui ]
-[; ;LED7Seg.c: 105: if(0==iTensDigit) iTensCode=255;
-"105
-[e $ ! == -> -> 0 `i `ui _iTensDigit 1611  ]
-[e = _iTensCode -> -> 255 `i `ui ]
-[e :U 1611 ]
-[; ;LED7Seg.c: 107: LED7SegShiftOutPulseClock( segdisp[iUnitsDigit]);
+[e = _RC4PPS -> -> 20 `i `uc ]
+[; ;pin_manager.c: 106: PPSLOCK = 0x55;
+"106
+[e = _PPSLOCK -> -> 85 `i `uc ]
+[; ;pin_manager.c: 107: PPSLOCK = 0xAA;
 "107
-[e ( _LED7SegShiftOutPulseClock (1 -> *U + &U _segdisp * -> _iUnitsDigit `ux -> -> # *U &U _segdisp `ui `ux `uc ]
-[; ;LED7Seg.c: 108: LED7SegShiftOutPulseClock( iTensCode );
+[e = _PPSLOCK -> -> 170 `i `uc ]
+[; ;pin_manager.c: 108: PPSLOCKbits.PPSLOCKED = 0x01;
 "108
-[e ( _LED7SegShiftOutPulseClock (1 -> _iTensCode `uc ]
-[; ;LED7Seg.c: 110: do { LATCbits.LATC5 = 1; } while(0);
+[e = . . _PPSLOCKbits 0 0 -> -> 1 `i `uc ]
+[; ;pin_manager.c: 110: GIE = state;
 "110
-[e :U 1614 ]
-{
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-}
-[e :U 1613 ]
-[; ;LED7Seg.c: 111: do { LATCbits.LATC5 = 0; } while(0);
+[e = _GIE -> _state `b ]
+[; ;pin_manager.c: 111: }
 "111
-[e :U 1617 ]
-{
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[e :UE 1563 ]
 }
-[e :U 1616 ]
-[; ;LED7Seg.c: 113: }
 "113
-[e :UE 1606 ]
-}
+[v _PIN_MANAGER_IOC `(v ~T0 @X0 1 ef ]
 "114
-[v _LED7SegBlankDisplay `(v ~T0 @X0 1 ef ]
 {
-[; ;LED7Seg.c: 114: void LED7SegBlankDisplay() {
-[e :U _LED7SegBlankDisplay ]
+[; ;pin_manager.c: 113: void PIN_MANAGER_IOC(void)
+[; ;pin_manager.c: 114: {
+[e :U _PIN_MANAGER_IOC ]
 [f ]
-[; ;LED7Seg.c: 116: LED7SegShiftOutPulseClock(255);
+[; ;pin_manager.c: 116: }
 "116
-[e ( _LED7SegShiftOutPulseClock (1 -> -> 255 `i `uc ]
-[; ;LED7Seg.c: 117: LED7SegShiftOutPulseClock(255);
-"117
-[e ( _LED7SegShiftOutPulseClock (1 -> -> 255 `i `uc ]
-[; ;LED7Seg.c: 119: do { LATCbits.LATC5 = 1; } while(0);
-"119
-[e :U 1621 ]
-{
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-}
-[e :U 1620 ]
-[; ;LED7Seg.c: 121: do { LATCbits.LATC5 = 0; } while(0);
-"121
-[e :U 1624 ]
-{
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-}
-[e :U 1623 ]
-[; ;LED7Seg.c: 122: }
-"122
-[e :UE 1618 ]
-}
-"123
-[v _LED7SegLoop `(v ~T0 @X0 1 ef ]
-"124
-{
-[; ;LED7Seg.c: 123: void LED7SegLoop()
-[; ;LED7Seg.c: 124: {
-[e :U _LED7SegLoop ]
-[f ]
-[; ;LED7Seg.c: 125: LED7SegBlankDisplay();
-"125
-[e ( _LED7SegBlankDisplay ..  ]
-[; ;LED7Seg.c: 128: for(int d=0;d<200;d++){
-"128
-{
-[v _d `i ~T0 @X0 1 a ]
-[e = _d -> 0 `i ]
-[e $ < _d -> 200 `i 1626  ]
-[e $U 1627  ]
-[e :U 1626 ]
-{
-[; ;LED7Seg.c: 129: delay(speed);
-"129
-[e ( _delay (1 -> _speed `i ]
-"130
-}
-"128
-[e ++ _d -> 1 `i ]
-[e $ < _d -> 200 `i 1626  ]
-[e :U 1627 ]
-"130
-}
-[; ;LED7Seg.c: 130: }
-[; ;LED7Seg.c: 133: for (int z=0; z<100; z++)
-"133
-{
-[v _z `i ~T0 @X0 1 a ]
-[e = _z -> 0 `i ]
-[e $ < _z -> 100 `i 1629  ]
-[e $U 1630  ]
-"134
-[e :U 1629 ]
-[; ;LED7Seg.c: 134: {
-{
-[; ;LED7Seg.c: 135: LED7SegDisplayValue(z);
-"135
-[e ( _LED7SegDisplayValue (1 -> _z `ui ]
-[; ;LED7Seg.c: 136: for(int d=0;d<25;d++){
-"136
-{
-[v _d `i ~T0 @X0 1 a ]
-[e = _d -> 0 `i ]
-[e $ < _d -> 25 `i 1632  ]
-[e $U 1633  ]
-[e :U 1632 ]
-{
-[; ;LED7Seg.c: 137: delay(speed);
-"137
-[e ( _delay (1 -> _speed `i ]
-"138
-}
-"136
-[e ++ _d -> 1 `i ]
-[e $ < _d -> 25 `i 1632  ]
-[e :U 1633 ]
-"138
-}
-"139
-}
-"133
-[e ++ _z -> 1 `i ]
-[e $ < _z -> 100 `i 1629  ]
-[e :U 1630 ]
-"139
-}
-[; ;LED7Seg.c: 138: }
-[; ;LED7Seg.c: 139: }
-[; ;LED7Seg.c: 142: for(int d=0;d<200;d++){
-"142
-{
-[v _d `i ~T0 @X0 1 a ]
-[e = _d -> 0 `i ]
-[e $ < _d -> 200 `i 1635  ]
-[e $U 1636  ]
-[e :U 1635 ]
-{
-[; ;LED7Seg.c: 143: delay(speed);
-"143
-[e ( _delay (1 -> _speed `i ]
-"144
-}
-"142
-[e ++ _d -> 1 `i ]
-[e $ < _d -> 200 `i 1635  ]
-[e :U 1636 ]
-"144
-}
-[; ;LED7Seg.c: 144: }
-[; ;LED7Seg.c: 146: LED7SegBlankDisplay();
-"146
-[e ( _LED7SegBlankDisplay ..  ]
-[; ;LED7Seg.c: 148: }
-"148
-[e :UE 1625 ]
+[e :UE 1564 ]
 }

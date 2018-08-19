@@ -14,6 +14,7 @@
         <itemPath>mcc_generated_files/interrupt_manager.h</itemPath>
       </logicalFolder>
       <itemPath>LED7Seg.h</itemPath>
+      <itemPath>VCAMIX_SPI_Master.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -33,6 +34,7 @@
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>LED7Seg.c</itemPath>
+      <itemPath>VCAMIX_SPI_Master.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

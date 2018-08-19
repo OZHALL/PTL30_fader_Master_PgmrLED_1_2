@@ -56,9 +56,30 @@
  2018-07-08 ozh hardware test (count 0 - 99) has been added/debugged
  *              also, reading fader 1 and displaying the 0-99 value is working.
  2018-07-18 ozh morph this into a fader accuracy test 
+ 2018-08-16 ozh Programmer/VCA/Mix OS (for MU single width module)
+ RA0-RA3 - Faders for "volume" level
+ RA4     - pot for program # units digit 
+ RA5     - pot for program # tens digit 
+ RA6     - unused but available at header
+ RA7     - /CS for SPI
+ RB0-RB3 - Fader LED control
+ RB4     - Load Toggle
+ RB5     - Save Toggle
+ RB6     - SPI CLK to VCA/Mix board
+ RB7     - SPI DAT to VCA/Mix board
+ RC0     - unused but available at header JPI2CPWR pin 7
+ RC1     - unused but available at header JPI2CPWR pin 8
+ RC2     - unused but available at header JPI2CPWR pin 6
+ RC3     - I2CDAT - JPI2CPWR pin 4
+ RC4     - I2CDAT - JPI2CPWR pin 5
+ RC5     - LED_LATCH_RCK (/CS) to 74HC595 for 7-Seg LED display
+ RC6     - LED_SCLOCK (/CS) to 74HC595 for 7-Seg LED display
+ RC7     - LED_DATA_IN to 74HC595 for 7-Seg LED display
+ RE3     - /MCLR
  * 
  */
 #include "mcc_generated_files/mcc.h"
+#include "VCAMIX_SPI_Master.h"
 #include "LED7Seg.h"
 
 /* BEGIN
@@ -73,10 +94,11 @@ typedef enum
     FADER2 = 0x2,
     FADER3 = 0x3,
     FADER4 = 0x4,
-    POT =  0x4,
+    POT0 =  0x4,
     FADER5 = 0x5,
-    FADER6 = 0x6,
-    FADER7 = 0x7,      
+    POT1 =  0x5,
+//    FADER6 = 0x6,
+//    FADER7 = 0x7,      
 } adcc_channel_t;
 // model for fader submodule 0 
 uint8_t iLEDs0_MSB;
@@ -150,12 +172,15 @@ void main(void)
     int faderValue;
     uint8_t fader8bitValue;
     uint8_t prevFader8bitValue;
+    uint8_t POT0Value;
+    uint8_t POT1Value;
+    uint8_t DACDataValue;
     
     I2C1_MESSAGE_STATUS readStatus=0;
     
     // initialize the device
     SYSTEM_Initialize();
-
+    initDAC528();
     LED7SegSetup();
     // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
     // Use the following macros to:
@@ -173,13 +198,13 @@ void main(void)
     //INTERRUPT_PeripheralInterruptDisable();
     
     // get value from fader
-    faderValue=ADCC_GetSingleConversion(FADER0);  // not POT
+    faderValue=ADCC_GetSingleConversion(FADER5);  // not POT
     prevFader8bitValue=faderValue>>2; // convert 10 bit to 8 bit   
     
     blinkyLoop(10);
     //Clear_WDT(); // clear watchdog timer, until i figure  out how to shut it off 
     
-    LED7SegLoop(); 
+   //LED7SegLoop(); 
     
     while (1) {
             iLoopCounter++;
@@ -187,11 +212,30 @@ void main(void)
             // get value from fader
             //if((0==iCounter%4)) // only get it once every 4 loops
             {
+                delay(100);
                 faderValue=ADCC_GetSingleConversion(FADER0);  // not POT
                 fader8bitValue=faderValue>>2;
-            }   
-            // test only - show the Fader0 value from fader submodule
-            faderValue=byteFaderValue[0];
+                delay(100);              
+                faderValue=ADCC_GetSingleConversion(POT0);  
+                faderValue=1023-faderValue;  // must invert the value for prototype - pots wired backwards
+                //fader8bitValue=faderValue>>2;
+                POT0Value=faderValue/102.3;   // change to 0-9
+                delay(100);
+                faderValue=ADCC_GetSingleConversion(POT1);  
+                faderValue=1023-faderValue;  // must invert the value
+                POT1Value=faderValue/102.3;   // change to 0-9
+            } 
+            
+                        
+            // hardware test VCA/MIX board (int dacNumber, uint8_t dacData)v
+            DACDataValue=4* (iCounter%32);
+            writeDAC528(4,DACDataValue); // this should ramp up Chnl 4 (0) volumee at some rate
+            writeDAC528(5,DACDataValue); // this should ramp up Chnl 4 (0) volumee at some rate
+            writeDAC528(6,DACDataValue); // this should ramp up Chnl 4 (0) volumee at some rate
+            writeDAC528(7,DACDataValue); // this should ramp up Chnl 4 (0) volumee at some rate
+             
+            // test only - show the POT0 value from fader submodule
+            //faderValue=byteFaderValue[POT0];
             
 //            // show change locally:  this will NOT be in the Teensy code
 //            if (faderValue> 170) { //640){  // test only - 170
@@ -220,6 +264,7 @@ void main(void)
 //            }
             
             // get fader values
+        /* this is all slave code
             readStatus = MYI2C_ReadFaders(I2C_ADDRESS_FADELED0);
             
             if(readStatus==I2C1_MESSAGE_COMPLETE)
@@ -231,6 +276,7 @@ void main(void)
                 // now send to slave
                 MYI2C_Write2LEDBytes(I2C_ADDRESS_FADELED0,iLEDs0_MSB,iLEDs0_LSB);
             }
+        */
             /*  count up routine for test only
             //if (prevFader8bitValue != fader8bitValue)
             //{
@@ -253,8 +299,10 @@ void main(void)
             
             
             //LED7SegDisplayValue(fader8bitValue/2.55);
-            LED7SegDisplayValue(iChangeCount/2.55);
-            
+            //LED7SegDisplayValue(iChangeCount/2.55);
+            //LED7SegDisplayValue(fader8bitValue/2.55);
+            LED7SegDisplayValueByDigit(POT1Value,POT0Value);  
+
     } 
  }
 void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue)

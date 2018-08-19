@@ -18,7 +18,7 @@ extern "C" {
     void delay(int delaytime);
     void LED7SegBlankDisplay();
     void LED7SegDisplayValue(unsigned int iTwoDigitNumber);
-
+    void LED7SegDisplayValueByDigit(unsigned int iTensDigit,unsigned int iUnitsDigit);
 
 #ifdef	__cplusplus
 }

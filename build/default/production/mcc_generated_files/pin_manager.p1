@@ -13168,21 +13168,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pin_manager.c: 59: LATC = 0x00;
 "59
 [e = _LATC -> -> 0 `i `uc ]
-[; ;pin_manager.c: 64: TRISA = 0xFF;
+[; ;pin_manager.c: 64: TRISA = 0x7F;
 "64
-[e = _TRISA -> -> 255 `i `uc ]
-[; ;pin_manager.c: 65: TRISB = 0xE0;
+[e = _TRISA -> -> 127 `i `uc ]
+[; ;pin_manager.c: 65: TRISB = 0x20;
 "65
-[e = _TRISB -> -> 224 `i `uc ]
+[e = _TRISB -> -> 32 `i `uc ]
 [; ;pin_manager.c: 66: TRISC = 0x1D;
 "66
 [e = _TRISC -> -> 29 `i `uc ]
 [; ;pin_manager.c: 71: ANSELC = 0xE7;
 "71
 [e = _ANSELC -> -> 231 `i `uc ]
-[; ;pin_manager.c: 72: ANSELB = 0x1F;
+[; ;pin_manager.c: 72: ANSELB = 0xDF;
 "72
-[e = _ANSELB -> -> 31 `i `uc ]
+[e = _ANSELB -> -> 223 `i `uc ]
 [; ;pin_manager.c: 73: ANSELA = 0xFF;
 "73
 [e = _ANSELA -> -> 255 `i `uc ]
