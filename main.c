@@ -57,6 +57,22 @@
  *              also, reading fader 1 and displaying the 0-99 value is working.
  2018-07-18 ozh morph this into a fader accuracy test 
  2018-08-16 ozh Programmer/VCA/Mix OS (for MU single width module)
+ 2018-08-20 ozh Display works (but is dim)
+ *              the SPI comms to the VCA/Mix board seems to work
+ *              faders are being read, but there are issues
+ *              1) there is some interaction between faders (config issue?)
+ *              2) vca/mix channels 3 & 4 do not work
+ 2018-08-22 ozh Added the read for the LOAD/SAVE switch, but LEDs are now off
+ *              most likely because of the change in the config
+ * 
+ todo: 
+ *  there is a little DC bleed in the attenuators
+ *  debug VCA/Mix board issue (done - floating ground on top half of TL074)
+ *  verify switch input (debounce) for load/save
+ *  add model for two satellite Dual EGs
+ *  add eeprom code
+ *  add I2C code to read/write fader values on two satellite Dual EGs
+ * 
  RA0-RA3 - Faders for "volume" level
  RA4     - pot for program # units digit 
  RA5     - pot for program # tens digit 
@@ -109,7 +125,9 @@ uint8_t iLEDs1_LSB;
 
 
 uint8_t wkFaderValue=0;
-volatile uint8_t byteFaderValue[8]; // this is the Model for the fader values
+volatile uint8_t byteFaderValue[4]; // this is the Model for the fader values
+
+uint8_t prevByteFaderValue[4]; // these are the previous fader values
 
 void delay(int);   
  // master clock frequency adjust.  1x = 1MHz   8x = 8MHz  16=16MHz
@@ -126,26 +144,26 @@ void blinkyLoop (int maxLoops){
     int loopCount=maxLoops;
     int delayTime;
     
-    ODCONB &= 0xE0;  // not open drain
-    ODCONC &= 0x1F;  // not open drain    
+    ODCONB &= 0xF0;  // not open drain bottom 4 bits
+    ODCONC &= 0x1F;  // not open drain top 3 bits
     while(loopCount>0){
         delayTime=loopCount*400;    
 
         // brightest
-        PORTB |= 0x1F; // bottom 5 bits of PORTB
-        PORTC |= 0xE0; // top 3 bits of PORTC all led's on activate all
+        LATB |= 0x0F; // bottom 4 bits of PORTB
+       // PORTC |= 0xE0; // top 3 bits of PORTC all led's on activate all
 
         delay(delayTime);
         // deactivate all led's
-        PORTB &= 0xE0; // deactivate all led's 
-        PORTC &= 0x1F; // deactivate all led's 
+        LATB &= 0xF0; // deactivate all led's 
+        //PORTC &= 0x1F; // deactivate all led's 
 
         delay(delayTime);
         
         loopCount--;
     }
-    PORTB |= 0x1F; // bottom 5 bits of PORTB
-    PORTC |= 0xE0; // top 3 bits of PORTC all led's on activate all
+    LATB |= 0x0F; // bottom 4 bits of PORTB
+    //LATC |= 0xE0; // top 3 bits of PORTC all led's on activate all
     delay(5000); // extra delay on the Master side - this appears to be required!
     return;
 }
@@ -175,6 +193,9 @@ void main(void)
     uint8_t POT0Value;
     uint8_t POT1Value;
     uint8_t DACDataValue;
+    double  dFader8bitValue;
+    int LoadDebounceCount=0;
+    int SaveDebounceCount=0;
     
     I2C1_MESSAGE_STATUS readStatus=0;
     
@@ -198,13 +219,20 @@ void main(void)
     //INTERRUPT_PeripheralInterruptDisable();
     
     // get value from fader
-    faderValue=ADCC_GetSingleConversion(FADER5);  // not POT
-    prevFader8bitValue=faderValue>>2; // convert 10 bit to 8 bit   
-    
+    for(int fx=0;fx<4;fx++){
+        faderValue=ADCC_GetSingleConversion(fx);  // not POT
+        byteFaderValue[fx]=255-(faderValue>>2);   // invert and convert 10 bit to 8 bit 
+        prevByteFaderValue[fx]= byteFaderValue[fx];
+    }
     blinkyLoop(10);
     //Clear_WDT(); // clear watchdog timer, until i figure  out how to shut it off 
     
    //LED7SegLoop(); 
+    // all 4 LEDs on
+    PORTB |= 0x0F; // bottom 4 bits of PORTB
+    PORTC |= 0xE0; // top 3 bits of PORTC all led's on activate all
+    ODCONB &= 0xF0;  // not open drain
+    ODCONC &= 0x1F;  // not open drain  
     
     while (1) {
             iLoopCounter++;
@@ -212,53 +240,62 @@ void main(void)
             // get value from fader
             //if((0==iCounter%4)) // only get it once every 4 loops
             {
-                delay(100);
-                faderValue=ADCC_GetSingleConversion(FADER0);  // not POT
-                fader8bitValue=faderValue>>2;
-                delay(100);              
+                /* service faders */
+                for(int fx=0;fx<4;fx++){
+                    faderValue=ADCC_GetSingleConversion(fx);  // 
+                    byteFaderValue[fx]=255-(faderValue>>2);   // invert and convert 10 bit to 8 bit 
+                    fader8bitValue=(byteFaderValue[fx]+prevByteFaderValue[fx])/2;  // smooth it for DAC
+                    writeDAC528(fx+4,fader8bitValue); //byteFaderValue[fx]); //fader8bitValue);         // +4 because the VCA/Mix is connected to DAC channels 5-8
+                    prevByteFaderValue[fx]= byteFaderValue[fx];
+                    delay(10);
+                }
+                
+                /* service pots */
+                delay(10);              
                 faderValue=ADCC_GetSingleConversion(POT0);  
                 faderValue=1023-faderValue;  // must invert the value for prototype - pots wired backwards
                 //fader8bitValue=faderValue>>2;
                 POT0Value=faderValue/102.3;   // change to 0-9
-                delay(100);
+                delay(10);
                 faderValue=ADCC_GetSingleConversion(POT1);  
                 faderValue=1023-faderValue;  // must invert the value
                 POT1Value=faderValue/102.3;   // change to 0-9
             } 
             
                         
-            // hardware test VCA/MIX board (int dacNumber, uint8_t dacData)v
+            // hardware test VCA/MIX board (int dacNumber, uint8_t dacData)
+            /* this code works
             DACDataValue=4* (iCounter%32);
             writeDAC528(4,DACDataValue); // this should ramp up Chnl 4 (0) volumee at some rate
             writeDAC528(5,DACDataValue); // this should ramp up Chnl 4 (0) volumee at some rate
             writeDAC528(6,DACDataValue); // this should ramp up Chnl 4 (0) volumee at some rate
             writeDAC528(7,DACDataValue); // this should ramp up Chnl 4 (0) volumee at some rate
-             
+            */ 
             // test only - show the POT0 value from fader submodule
             //faderValue=byteFaderValue[POT0];
             
 //            // show change locally:  this will NOT be in the Teensy code
 //            if (faderValue> 170) { //640){  // test only - 170
 //                // brightest
-//                PORTB |= 0x1F; // bottom 5 bits of PORTB
+//                PORTB |= 0x0F; // bottom 4 bits of PORTB
 //                PORTC |= 0xE0; // top 3 bits of PORTC all led's on activate all
-//                ODCONB &= 0xE0;  // not open drain
+//                ODCONB &= 0xF0;  // not open drain
 //                ODCONC &= 0x1F;  // not open drain
 //            }else{
 //                if (faderValue > 80) { //320) { // test only 80
 //                    // Pullups are NOT active on OUTPUT pins!!!
 //                    // activate pullup
 //                    //WPUC = 0xFF;
-//                    PORTB |= 0x1F; // bottom 5 bits of PORTB
+//                    PORTB |= 0x0F; // bottom 4 bits of PORTB
 //                    PORTC |= 0xE0; // top 3 bits of PORTC all led's on activate all
-//                    ODCONB |= 0x1F; //  open drain combines with external pullup
+//                    ODCONB |= 0x0F; //  open drain combines with external pullup
 //                    ODCONC |= 0xE0; //  open drain combines with external pullup
 //                }else{
 //                    // deactivate pullup
 //                    //WPUC = 0x00;
-//                    PORTB &= 0xE0; // deactivate all led's 
+//                    PORTB &= 0xF0; // deactivate all led's 
 //                    PORTC &= 0x1F; // deactivate all led's 
-//                    ODCONB &= 0xE0;  // not open drain
+//                    ODCONB &= 0xF0;  // not open drain
 //                    ODCONC &= 0x1F;  // not open drain
 //                }
 //            }
@@ -302,7 +339,39 @@ void main(void)
             //LED7SegDisplayValue(iChangeCount/2.55);
             //LED7SegDisplayValue(fader8bitValue/2.55);
             LED7SegDisplayValueByDigit(POT1Value,POT0Value);  
-
+          
+            // check switches (normally pulled up)
+/*
+// If you're doing a read-modify-write (for example a BSF), you generally want to use the LATCH.
+#define SET_Fader0_LED_LOW  LATB  &= 0b10011110 // RB0
+#define SET_Fader1_LED_LOW  LATB  &= 0b10011101 // RB1
+#define SET_Fader0_LED_HIGH LATB  |= 0b00000001 // RB0
+#define SET_Fader1_LED_HIGH LATB  |= 0b00000010 // RB1
+            if (PORTBbits.RB4 == 0){
+                // Load
+                LoadDebounceCount++;
+                if(5<LoadDebounceCount) { //do the load 
+                    SET_Fader0_LED_LOW ;
+                }
+            }else{
+                if(0<LoadDebounceCount){
+                    LoadDebounceCount=0;
+                    SET_Fader0_LED_HIGH ;
+                }
+            }
+            if (PORTBbits.RB5 == 0){
+                // Save
+                SaveDebounceCount++;
+                if(5<SaveDebounceCount) { //do the load 
+                    SET_Fader1_LED_LOW ;
+                }
+            }else{
+                if(0<SaveDebounceCount){
+                    SaveDebounceCount=0;
+                    SET_Fader1_LED_HIGH ;
+                }
+            }
+ */
     } 
  }
 void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue)

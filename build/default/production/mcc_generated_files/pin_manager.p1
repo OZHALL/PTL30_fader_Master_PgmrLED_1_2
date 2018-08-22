@@ -13171,27 +13171,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pin_manager.c: 64: TRISA = 0x7F;
 "64
 [e = _TRISA -> -> 127 `i `uc ]
-[; ;pin_manager.c: 65: TRISB = 0x20;
+[; ;pin_manager.c: 65: TRISB = 0x30;
 "65
-[e = _TRISB -> -> 32 `i `uc ]
+[e = _TRISB -> -> 48 `i `uc ]
 [; ;pin_manager.c: 66: TRISC = 0x1D;
 "66
 [e = _TRISC -> -> 29 `i `uc ]
 [; ;pin_manager.c: 71: ANSELC = 0xE7;
 "71
 [e = _ANSELC -> -> 231 `i `uc ]
-[; ;pin_manager.c: 72: ANSELB = 0xDF;
+[; ;pin_manager.c: 72: ANSELB = 0xCF;
 "72
-[e = _ANSELB -> -> 223 `i `uc ]
+[e = _ANSELB -> -> 207 `i `uc ]
 [; ;pin_manager.c: 73: ANSELA = 0xFF;
 "73
 [e = _ANSELA -> -> 255 `i `uc ]
 [; ;pin_manager.c: 78: WPUE = 0x00;
 "78
 [e = _WPUE -> -> 0 `i `uc ]
-[; ;pin_manager.c: 79: WPUB = 0x00;
+[; ;pin_manager.c: 79: WPUB = 0x30;
 "79
-[e = _WPUB -> -> 0 `i `uc ]
+[e = _WPUB -> -> 48 `i `uc ]
 [; ;pin_manager.c: 80: WPUA = 0x00;
 "80
 [e = _WPUA -> -> 0 `i `uc ]

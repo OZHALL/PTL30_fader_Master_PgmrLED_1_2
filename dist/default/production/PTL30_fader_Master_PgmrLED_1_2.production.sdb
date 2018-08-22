@@ -43,8 +43,8 @@ S_MASTER_NOACK_STOP 9
 S_MASTER_SEND_ADDR_10BIT_LSB 10
 S_MASTER_10BIT_RESTART 11
 ]
-"179 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
-[e E14267 . `uc
+"200 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+[e E14335 . `uc
 I2C1_MESSAGE_COMPLETE 0
 I2C1_MESSAGE_FAIL 1
 I2C1_MESSAGE_PENDING 2
@@ -53,8 +53,8 @@ I2C1_MESSAGE_ADDRESS_NO_ACK 4
 I2C1_DATA_NO_ACK 5
 I2C1_LOST_STATE 6
 ]
-"201
-[e E14316 . `uc
+"223
+[e E14266 . `uc
 channel_ANA0 0
 channel_ANA1 1
 channel_ANA2 2
@@ -68,6 +68,7 @@ channel_Temp 61
 channel_DAC1 62
 channel_FVR_buf1 63
 ]
+"255
 [e E14405 . `uc
 FADER0 0
 FADER1 1
@@ -78,6 +79,8 @@ POT0 4
 FADER5 5
 POT1 5
 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
 "32 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awtoft.c
 [v ___awtoft __awtoft `(f  1 e 3 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
@@ -116,11 +119,11 @@ POT1 5
 [v _LED7SegDisplayValueByDigit LED7SegDisplayValueByDigit `(v  1 e 1 0 ]
 "114
 [v _LED7SegBlankDisplay LED7SegBlankDisplay `(v  1 e 1 0 ]
-"117 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"135 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _delay delay `(v  1 e 1 0 ]
-"125
+"143
 [v _blinkyLoop blinkyLoop `(v  1 e 1 0 ]
-"163
+"181
 [v _main main `(v  1 e 1 0 ]
 "62 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
@@ -178,7 +181,7 @@ POT1 5
 [v _TRISB TRISB `VEuc  1 e 1 @18 ]
 "713
 [v _TRISC TRISC `VEuc  1 e 1 @19 ]
-[s S933 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S940 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -188,15 +191,15 @@ POT1 5
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "730
-[u S942 . 1 `S933 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES942  1 e 1 @19 ]
+[u S949 . 1 `S940 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES949  1 e 1 @19 ]
 "775
 [v _LATA LATA `VEuc  1 e 1 @22 ]
 "837
 [v _LATB LATB `VEuc  1 e 1 @23 ]
 "899
 [v _LATC LATC `VEuc  1 e 1 @24 ]
-[s S954 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S961 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -206,8 +209,8 @@ POT1 5
 `uc 1 LATC7 1 0 :1:7 
 ]
 "916
-[u S963 . 1 `S954 1 . 1 0 ]
-[v _LATCbits LATCbits `VES963  1 e 1 @24 ]
+[u S970 . 1 `S961 1 . 1 0 ]
+[v _LATCbits LATCbits `VES970  1 e 1 @24 ]
 "1536
 [v _ADRESL ADRESL `VEuc  1 e 1 @140 ]
 "1556
@@ -497,7 +500,7 @@ POT1 5
 [v _ODCONB ODCONB `VEuc  1 e 1 @3909 ]
 "34231
 [v _ANSELC ANSELC `VEuc  1 e 1 @3918 ]
-[s S912 . 1 `uc 1 ANSC0 1 0 :1:0 
+[s S919 . 1 `uc 1 ANSC0 1 0 :1:0 
 `uc 1 ANSC1 1 0 :1:1 
 `uc 1 ANSC2 1 0 :1:2 
 `uc 1 ANSC3 1 0 :1:3 
@@ -507,10 +510,10 @@ POT1 5
 `uc 1 ANSC7 1 0 :1:7 
 ]
 "34248
-[u S921 . 1 `S912 1 . 1 0 ]
+[u S928 . 1 `S919 1 . 1 0 ]
 "34248
 "34248
-[v _ANSELCbits ANSELCbits `VES921  1 e 1 @3918 ]
+[v _ANSELCbits ANSELCbits `VES928  1 e 1 @3918 ]
 "34293
 [v _WPUC WPUC `VEuc  1 e 1 @3919 ]
 "34355
@@ -528,13 +531,15 @@ POT1 5
 [v _speed speed `DCui  1 e 2 0 ]
 "29
 [v _segdisp segdisp `[10]i  1 e 20 0 ]
-"104 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"120 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _iLEDs0_MSB iLEDs0_MSB `uc  1 e 1 0 ]
-"105
+"121
 [v _iLEDs0_LSB iLEDs0_LSB `uc  1 e 1 0 ]
-"112
-[v _byteFaderValue byteFaderValue `VE[8]uc  1 e 8 0 ]
-"116
+"128
+[v _byteFaderValue byteFaderValue `VE[4]uc  1 e 4 0 ]
+"130
+[v _prevByteFaderValue prevByteFaderValue `[4]uc  1 e 4 0 ]
+"134
 [v _cMstrClkAdjust cMstrClkAdjust `DCi  1 e 2 0 ]
 [s S374 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
 "184 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/i2c1.c
@@ -560,34 +565,40 @@ POT1 5
 [v _clockMicroTime clockMicroTime `DCi  1 e 2 0 ]
 "12 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\VCAMIX_SPI_Master.h
 [v _cPowerOfTwo cPowerOfTwo `DC[8]i  1 e 16 0 ]
-"163 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"181 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"172
-[v main@faderValue faderValue `i  1 a 2 74 ]
-"170
-[v main@iLoopCounter iLoopCounter `ui  1 a 2 70 ]
-"166
-[v main@iCounter iCounter `ui  1 a 2 67 ]
-"177
-[v main@DACDataValue DACDataValue `uc  1 a 1 73 ]
-"173
-[v main@fader8bitValue fader8bitValue `uc  1 a 1 72 ]
-"174
-[v main@prevFader8bitValue prevFader8bitValue `uc  1 a 1 69 ]
-"176
-[v main@POT1Value POT1Value `uc  1 a 1 66 ]
-"175
-[v main@POT0Value POT0Value `uc  1 a 1 65 ]
-"171
-[v main@iChangeCount iChangeCount `uc  1 a 1 64 ]
-"179
-[v main@readStatus readStatus `E14267  1 a 1 63 ]
-"165
-[v main@I2C_ADDRESS_FADELED0 I2C_ADDRESS_FADELED0 `uc  1 a 1 62 ]
-"169
+"244
+[v main@fx_888 fx `i  1 a 2 19 ]
+"222
+[v main@fx fx `i  1 a 2 15 ]
+"190
+[v main@faderValue faderValue `i  1 a 2 17 ]
+"188
+[v main@iLoopCounter iLoopCounter `ui  1 a 2 12 ]
+"184
+[v main@iCounter iCounter `ui  1 a 2 6 ]
+"198
+[v main@SaveDebounceCount SaveDebounceCount `i  1 a 2 2 ]
+"197
+[v main@LoadDebounceCount LoadDebounceCount `i  1 a 2 0 ]
+"191
+[v main@fader8bitValue fader8bitValue `uc  1 a 1 14 ]
+"194
+[v main@POT1Value POT1Value `uc  1 a 1 11 ]
+"193
+[v main@POT0Value POT0Value `uc  1 a 1 10 ]
+"192
+[v main@prevFader8bitValue prevFader8bitValue `uc  1 a 1 9 ]
+"189
+[v main@iChangeCount iChangeCount `uc  1 a 1 8 ]
+"200
+[v main@readStatus readStatus `E14335  1 a 1 5 ]
+"183
+[v main@I2C_ADDRESS_FADELED0 I2C_ADDRESS_FADELED0 `uc  1 a 1 4 ]
+"187
 [v main@iResetValue iResetValue `DCui  1 s 2 iResetValue ]
-"307
+"376
 } 0
 "59 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\VCAMIX_SPI_Master.c
 [v _writeDAC528 writeDAC528 `(v  1 e 1 0 ]
@@ -653,16 +664,16 @@ POT1 5
 [v ___awtoft@c c `i  1 p 2 8 ]
 "42
 } 0
-"125 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"143 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _blinkyLoop blinkyLoop `(v  1 e 1 0 ]
 {
-"126
+"144
 [v blinkyLoop@loopCount loopCount `i  1 a 2 22 ]
-"127
+"145
 [v blinkyLoop@delayTime delayTime `i  1 a 2 20 ]
-"125
+"143
 [v blinkyLoop@maxLoops maxLoops `i  1 p 2 17 ]
-"151
+"169
 } 0
 "56 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
@@ -685,6 +696,19 @@ POT1 5
 [v ___ftpack@exp exp `uc  1 p 1 3 ]
 [v ___ftpack@sign sign `uc  1 p 1 4 ]
 "86
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"11
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"12
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"6
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"42
 } 0
 "83 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -745,16 +769,16 @@ POT1 5
 {
 "67
 } 0
-"117 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"135 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _delay delay `(v  1 e 1 0 ]
 {
-"118
+"136
 [v delay@counter counter `l  1 a 4 13 ]
-"119
+"137
 [v delay@adjustedDelaytime adjustedDelaytime `l  1 a 4 9 ]
-"117
+"135
 [v delay@delaytime delaytime `i  1 p 2 6 ]
-"123
+"141
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
