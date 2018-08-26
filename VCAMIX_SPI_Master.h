@@ -6,6 +6,7 @@
  */
 
 #include "mcc_generated_files/mcc.h"
+#define _XTAL_FREQ 32000000
 
 #ifndef VCAMIX_SPI_MASTER_H
 #define	VCAMIX_SPI_MASTER_H

@@ -1,32 +1,68 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"34237 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
-[s S1512 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1512 . ANSC0 ANSC1 ANSC2 ANSC3 ANSC4 ANSC5 ANSC6 ANSC7 ]
-"34236
-[u S1511 `S1512 1 ]
-[n S1511 . . ]
-"34248
-[v _ANSELCbits `VS1511 ~T0 @X0 0 e@3918 ]
-"719
-[s S40 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S40 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"718
-[u S39 `S40 1 ]
-[n S39 . . ]
-"730
-[v _TRISCbits `VS39 ~T0 @X0 0 e@19 ]
-"905
-[s S46 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S46 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 LATC6 LATC7 ]
-"904
-[u S45 `S46 1 ]
-[n S45 . . ]
-"916
-[v _LATCbits `VS45 ~T0 @X0 0 e@24 ]
-"18 LED7Seg.h
-[v _delay `(v ~T0 @X0 0 ef1`i ]
-"21
-[v _LED7SegDisplayValueByDigit `(v ~T0 @X0 0 ef2`ui`ui ]
+"21 EEPROM_24LC256.h
+[c E14395 128 4 8 .. ]
+[n E14395 . cPatchSize cMixFaderCount cADSRdataBytes  ]
+"91 EEPROM_24LC256.c
+[c E14260 0 1 2 3 4 5 6 .. ]
+[n E14260 . I2C1_MESSAGE_COMPLETE I2C1_MESSAGE_FAIL I2C1_MESSAGE_PENDING I2C1_STUCK_START I2C1_MESSAGE_ADDRESS_NO_ACK I2C1_DATA_NO_ACK I2C1_LOST_STATE  ]
+"259 mcc_generated_files/i2c1.h
+[v _I2C1_MasterWrite `(v ~T0 @X0 0 ef4`*uc`uc`ui`*E14260 ]
+"109
+[s S1563 `ui 1 `uc 1 `*uc 1 ]
+[n S1563 . address length pbuffer ]
+"605
+[v _I2C1_MasterWriteTRBBuild `(v ~T0 @X0 0 ef4`*S1563`*uc`uc`ui ]
+"560
+[v _I2C1_MasterReadTRBBuild `(v ~T0 @X0 0 ef4`*S1563`*uc`uc`ui ]
+"11 EEPROM_24LC256.c
+[v _iI2CFaderValue `Vuc ~T0 @X0 -> 0 `x e ]
+"516 mcc_generated_files/i2c1.h
+[v _I2C1_MasterTRBInsert `(v ~T0 @X0 0 ef3`uc`*S1563`*E14260 ]
+"13 EEPROM_24LC256.c
+[v _mvcChannels `uc ~T0 @X0 -> 0 `x e ]
+"14
+[v _dualADSRdata0 `uc ~T0 @X0 -> 0 `x e ]
+"15
+[v _dualADSRdata1 `uc ~T0 @X0 -> 0 `x e ]
+[v F14250 `(v ~T0 @X0 1 tf1`ul ]
+"153 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
+[v __delay `JF14250 ~T0 @X0 0 e ]
+[p i __delay ]
+"24 VCAMIX_SPI_Master.h
+[v _writeDAC528 `(v ~T0 @X0 0 ef2`i`uc ]
+"317 EEPROM_24LC256.c
+[v _writeI2CSystemData `(i ~T0 @X0 0 ef ]
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;__size_t.h: 4: typedef unsigned size_t;
+[; ;stddef.h: 6: typedef int ptrdiff_t;
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -13106,40 +13142,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 193: extern __bank0 unsigned char __resetbits;
 [; ;pic.h: 194: extern __bank0 __bit __powerdown;
 [; ;pic.h: 195: extern __bank0 __bit __timeout;
-[; ;pin_manager.h: 532: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 544: void PIN_MANAGER_IOC(void);
-[; ;stdint.h: 13: typedef signed char int8_t;
-[; ;stdint.h: 20: typedef signed int int16_t;
-[; ;stdint.h: 28: typedef signed short long int int24_t;
-[; ;stdint.h: 36: typedef signed long int int32_t;
-[; ;stdint.h: 43: typedef unsigned char uint8_t;
-[; ;stdint.h: 49: typedef unsigned int uint16_t;
-[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
-[; ;stdint.h: 63: typedef unsigned long int uint32_t;
-[; ;stdint.h: 71: typedef signed char int_least8_t;
-[; ;stdint.h: 78: typedef signed int int_least16_t;
-[; ;stdint.h: 90: typedef signed short long int int_least24_t;
-[; ;stdint.h: 98: typedef signed long int int_least32_t;
-[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
-[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
-[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
-[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
-[; ;stdint.h: 137: typedef signed char int_fast8_t;
-[; ;stdint.h: 144: typedef signed int int_fast16_t;
-[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
-[; ;stdint.h: 164: typedef signed long int int_fast32_t;
-[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
-[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
-[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
-[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
-[; ;stdint.h: 200: typedef int32_t intmax_t;
-[; ;stdint.h: 205: typedef uint32_t uintmax_t;
-[; ;stdint.h: 210: typedef int16_t intptr_t;
-[; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stddef.h: 6: typedef int ptrdiff_t;
 [; ;i2c1.h: 83: typedef enum
 [; ;i2c1.h: 84: {
 [; ;i2c1.h: 85: I2C1_MESSAGE_COMPLETE,
@@ -13185,6 +13187,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c1.h: 685: bool I2C1_MasterQueueIsFull(void);
 [; ;i2c1.h: 686: void I2C1_BusCollisionISR( void );
 [; ;i2c1.h: 687: void I2C1_ISR ( void );
+[; ;pin_manager.h: 532: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 544: void PIN_MANAGER_IOC(void);
+[; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
 [; ;adcc.h: 71: typedef uint16_t adc_result_t;
 [; ;adcc.h: 88: typedef enum
 [; ;adcc.h: 89: {
@@ -13230,494 +13235,749 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adcc.h: 773: uint8_t ADCC_GetConversionStageStatus(void);
 [; ;mcc.h: 70: void SYSTEM_Initialize(void);
 [; ;mcc.h: 83: void OSCILLATOR_Initialize(void);
-[; ;LED7Seg.h: 16: void LED7SegLoop();
-[; ;LED7Seg.h: 17: void LED7SegSetup();
-[; ;LED7Seg.h: 18: void delay(int delaytime);
-[; ;LED7Seg.h: 19: void LED7SegBlankDisplay();
-[; ;LED7Seg.h: 20: void LED7SegDisplayValue(unsigned int iTwoDigitNumber);
-[; ;LED7Seg.h: 21: void LED7SegDisplayValueByDigit(unsigned int iTensDigit,unsigned int iUnitsDigit);
-"19 LED7Seg.c
-[v _latchpin `Ci ~T0 @X0 1 e ]
-[i _latchpin
--> 16 `i
-]
-[; ;LED7Seg.c: 19: const int latchpin = 16;
-"20
-[v _clockpin `Ci ~T0 @X0 1 e ]
-[i _clockpin
--> 17 `i
-]
-[; ;LED7Seg.c: 20: const int clockpin = 17;
-"21
-[v _datapin `Ci ~T0 @X0 1 e ]
-[i _datapin
--> 18 `i
-]
-[; ;LED7Seg.c: 21: const int datapin = 18;
-"22
-[v _b `f ~T0 @X0 1 e ]
-[i _b
--> -> 0 `i `f
-]
-[; ;LED7Seg.c: 22: float b = 0;
-"23
-[v _c `ui ~T0 @X0 1 e ]
-[i _c
--> -> 0 `i `ui
-]
-[; ;LED7Seg.c: 23: unsigned int c = 0;
-"24
-[v _d `f ~T0 @X0 1 e ]
-[i _d
--> -> 0 `i `f
-]
-[; ;LED7Seg.c: 24: float d = 0;
-"25
-[v _e `i ~T0 @X0 1 e ]
-[i _e
--> 0 `i
-]
-[; ;LED7Seg.c: 25: int e = 0;
-"26
-[v _speed `Cui ~T0 @X0 1 e ]
-[i _speed
--> -> 50 `i `ui
-]
-[; ;LED7Seg.c: 26: const unsigned int speed = 50;
-"27
-[v _twoK `Cui ~T0 @X0 1 e ]
-[i _twoK
--> -> 10000 `i `ui
-]
-[; ;LED7Seg.c: 27: const unsigned int twoK = 10000;
-"28
-[v _toggleDly `Cui ~T0 @X0 1 e ]
-[i _toggleDly
--> -> 10 `i `ui
-]
-[; ;LED7Seg.c: 28: const unsigned int toggleDly=10;
-"29
-[v _segdisp `i ~T0 @X0 -> 10 `i e ]
-[i _segdisp
+"13 VCAMIX_SPI_Master.h
+[v _cPowerOfTwo `Ci ~T0 @X0 -> 8 `i e ]
+[i _cPowerOfTwo
 :U ..
-"30
--> 3 `i
--> 159 `i
--> 37 `i
--> 13 `i
--> 153 `i
--> 73 `i
--> 65 `i
--> 27 `i
 -> 1 `i
--> 9 `i
+-> 2 `i
+-> 4 `i
+-> 8 `i
+-> 16 `i
+-> 32 `i
+-> 64 `i
+-> 128 `i
 ..
 ]
-[; ;LED7Seg.c: 29: int segdisp[10] = {
-[; ;LED7Seg.c: 30: 3,159,37,13,153,73,65,27,1,9 };
-"31
-[v _LED7SegSetup `(v ~T0 @X0 1 ef ]
-"32
+[; ;VCAMIX_SPI_Master.h: 13: const int cPowerOfTwo[8] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
+[; ;VCAMIX_SPI_Master.h: 22: void putByte(uint8_t data,int clockPin);
+[; ;VCAMIX_SPI_Master.h: 23: void initDAC528();
+[; ;VCAMIX_SPI_Master.h: 24: void writeDAC528(int dacNumber, uint8_t dacData);
+[; ;EEPROM_24LC256.h: 11: typedef unsigned char uint8_t;
+[; ;EEPROM_24LC256.h: 12: typedef unsigned int uint16_t;
+"21 EEPROM_24LC256.h
+[v _MY_CONSTS `E14395 ~T0 @X0 1 e ]
+[; ;EEPROM_24LC256.h: 17: enum {
+[; ;EEPROM_24LC256.h: 18: cPatchSize = 128,
+[; ;EEPROM_24LC256.h: 19: cMixFaderCount=4,
+[; ;EEPROM_24LC256.h: 20: cADSRdataBytes=8
+[; ;EEPROM_24LC256.h: 21: } MY_CONSTS;
+[; ;EEPROM_24LC256.h: 31: void marshallPatchMemory(uint8_t mvcChannels[],uint8_t dualADSRdata0[],uint8_t dualADSRdata1[]);
+[; ;EEPROM_24LC256.h: 32: void MYI2C_Write16EEPROMBytes(uint8_t slaveDeviceAddress,int writeAddress,uint8_t *pData);
+[; ;EEPROM_24LC256.h: 34: void readI2CEEPROM(int readAddress,int batchSize,uint8_t *pData);
+[; ;EEPROM_24LC256.h: 35: I2C1_MESSAGE_STATUS MYI2C_ReadPatch(uint8_t slaveDeviceAddress,int readAddress,uint8_t *pData);
+[; ;EEPROM_24LC256.h: 37: void savePatch(int PatchNumber);
+[; ;EEPROM_24LC256.h: 38: void loadPatch(int PatchNumber);
+[; ;EEPROM_24LC256.h: 40: void initModelRelatedVariables();
+[; ;EEPROM_24LC256.c: 11: volatile extern uint8_t iI2CFaderValue[cADSRdataBytes];
+[; ;EEPROM_24LC256.c: 13: extern uint8_t mvcChannels[cMixFaderCount];
+[; ;EEPROM_24LC256.c: 14: extern uint8_t dualADSRdata0[cADSRdataBytes];
+[; ;EEPROM_24LC256.c: 15: extern uint8_t dualADSRdata1[cADSRdataBytes];
+"18 EEPROM_24LC256.c
+[v _aPatchMemory `uc ~T0 @X0 . `E14395 0 e ]
+[; ;EEPROM_24LC256.c: 18: uint8_t aPatchMemory[cPatchSize];
+"21
+[v _marshallPatchMemory `(v ~T0 @X0 1 ef3`*uc`*uc`*uc ]
 {
-[; ;LED7Seg.c: 31: void LED7SegSetup()
-[; ;LED7Seg.c: 32: {
-[e :U _LED7SegSetup ]
+[; ;EEPROM_24LC256.c: 21: void marshallPatchMemory(uint8_t mvcChannels[],uint8_t dualADSRdata0[],uint8_t dualADSRdata1[]){
+[e :U _marshallPatchMemory ]
+[v _mvcChannels `*uc ~T0 @X0 1 r1 ]
+[v _dualADSRdata0 `*uc ~T0 @X0 1 r2 ]
+[v _dualADSRdata1 `*uc ~T0 @X0 1 r3 ]
 [f ]
-[; ;LED7Seg.c: 34: do { ANSELCbits.ANSC5 = 0; } while(0);
-"34
-[e :U 1567 ]
+"22
+[v _iPatchMemoryNDX `i ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 22: int iPatchMemoryNDX=0;
+[e = _iPatchMemoryNDX -> 0 `i ]
+[; ;EEPROM_24LC256.c: 23: for(int i=0; i<cMixFaderCount;i++) {
+"23
 {
-[e = . . _ANSELCbits 0 5 -> -> 0 `i `uc ]
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> . `E14395 1 `i 1565  ]
+[e $U 1566  ]
+[e :U 1565 ]
+{
+[; ;EEPROM_24LC256.c: 24: aPatchMemory[iPatchMemoryNDX++]=mvcChannels[i];
+"24
+[e = *U + &U _aPatchMemory * -> -> ++ _iPatchMemoryNDX -> 1 `i `ui `ux -> -> # *U &U _aPatchMemory `ui `ux *U + _mvcChannels * -> _i `x -> -> # *U _mvcChannels `i `x ]
+"25
 }
+"23
+[e ++ _i -> 1 `i ]
+[e $ < _i -> . `E14395 1 `i 1565  ]
 [e :U 1566 ]
-[; ;LED7Seg.c: 35: do { TRISCbits.TRISC5 = 0; } while(0);
-"35
-[e :U 1570 ]
-{
-[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+"25
 }
+[; ;EEPROM_24LC256.c: 25: }
+[; ;EEPROM_24LC256.c: 26: for(int i=0; i<cADSRdataBytes;i++) {
+"26
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> . `E14395 2 `i 1568  ]
+[e $U 1569  ]
+[e :U 1568 ]
+{
+[; ;EEPROM_24LC256.c: 27: aPatchMemory[iPatchMemoryNDX++]=dualADSRdata0[i];
+"27
+[e = *U + &U _aPatchMemory * -> -> ++ _iPatchMemoryNDX -> 1 `i `ui `ux -> -> # *U &U _aPatchMemory `ui `ux *U + _dualADSRdata0 * -> _i `x -> -> # *U _dualADSRdata0 `i `x ]
+"28
+}
+"26
+[e ++ _i -> 1 `i ]
+[e $ < _i -> . `E14395 2 `i 1568  ]
 [e :U 1569 ]
-[; ;LED7Seg.c: 38: do { ANSELCbits.ANSC6 = 0; } while(0);
-"38
-[e :U 1573 ]
-{
-[e = . . _ANSELCbits 0 6 -> -> 0 `i `uc ]
+"28
 }
+[; ;EEPROM_24LC256.c: 28: }
+[; ;EEPROM_24LC256.c: 29: for(int i=0; i<cADSRdataBytes;i++) {
+"29
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> . `E14395 2 `i 1571  ]
+[e $U 1572  ]
+[e :U 1571 ]
+{
+[; ;EEPROM_24LC256.c: 30: aPatchMemory[iPatchMemoryNDX++]=dualADSRdata1[i];
+"30
+[e = *U + &U _aPatchMemory * -> -> ++ _iPatchMemoryNDX -> 1 `i `ui `ux -> -> # *U &U _aPatchMemory `ui `ux *U + _dualADSRdata1 * -> _i `x -> -> # *U _dualADSRdata1 `i `x ]
+"31
+}
+"29
+[e ++ _i -> 1 `i ]
+[e $ < _i -> . `E14395 2 `i 1571  ]
 [e :U 1572 ]
-[; ;LED7Seg.c: 39: do { TRISCbits.TRISC6 = 0; } while(0);
-"39
-[e :U 1576 ]
-{
-[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+"31
 }
+[; ;EEPROM_24LC256.c: 31: }
+[; ;EEPROM_24LC256.c: 33: for(;iPatchMemoryNDX<cPatchSize;iPatchMemoryNDX++){
+"33
+{
+[e $ < _iPatchMemoryNDX -> . `E14395 0 `i 1574  ]
+[e $U 1575  ]
+[e :U 1574 ]
+{
+[; ;EEPROM_24LC256.c: 34: aPatchMemory[iPatchMemoryNDX]=0;
+"34
+[e = *U + &U _aPatchMemory * -> -> _iPatchMemoryNDX `ui `ux -> -> # *U &U _aPatchMemory `ui `ux -> -> 0 `i `uc ]
+"35
+}
+"33
+[e ++ _iPatchMemoryNDX -> 1 `i ]
+[e $ < _iPatchMemoryNDX -> . `E14395 0 `i 1574  ]
 [e :U 1575 ]
-[; ;LED7Seg.c: 42: do { ANSELCbits.ANSC7 = 0; } while(0);
-"42
-[e :U 1579 ]
-{
-[e = . . _ANSELCbits 0 7 -> -> 0 `i `uc ]
+"35
 }
-[e :U 1578 ]
-[; ;LED7Seg.c: 43: do { TRISCbits.TRISC7 = 0; } while(0);
-"43
-[e :U 1582 ]
-{
-[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-}
-[e :U 1581 ]
-[; ;LED7Seg.c: 44: }
-"44
+[; ;EEPROM_24LC256.c: 35: }
+[; ;EEPROM_24LC256.c: 36: }
+"36
 [e :UE 1564 ]
 }
-"48
-[v _LED7SegPinWrite `(v ~T0 @X0 1 ef1`uc ]
-"49
+"38
+[v _updateModelFromPatchMemory `(i ~T0 @X0 1 ef3`*uc`*uc`*uc ]
 {
-[; ;LED7Seg.c: 48: void LED7SegPinWrite(unsigned char val )
-[; ;LED7Seg.c: 49: {
-[e :U _LED7SegPinWrite ]
-"48
-[v _val `uc ~T0 @X0 1 r1 ]
-"49
+[; ;EEPROM_24LC256.c: 38: updateModelFromPatchMemory(uint8_t mvcChannels[],uint8_t dualADSRdata0[],uint8_t dualADSRdata1[]){
+[e :U _updateModelFromPatchMemory ]
+[v _mvcChannels `*uc ~T0 @X0 1 r1 ]
+[v _dualADSRdata0 `*uc ~T0 @X0 1 r2 ]
+[v _dualADSRdata1 `*uc ~T0 @X0 1 r3 ]
 [f ]
-[; ;LED7Seg.c: 50: if (val){
-"50
-[e $ ! != -> _val `i -> -> -> 0 `i `uc `i 1584  ]
+"39
+[v _iPatchMemoryNDX `i ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 39: int iPatchMemoryNDX=0;
+[e = _iPatchMemoryNDX -> 0 `i ]
+[; ;EEPROM_24LC256.c: 40: for(int i=0; i<cMixFaderCount;i++) {
+"40
 {
-[; ;LED7Seg.c: 52: do { LATCbits.LATC7 = 1; } while(0);
-"52
-[e :U 1587 ]
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> . `E14395 1 `i 1578  ]
+[e $U 1579  ]
+[e :U 1578 ]
 {
-[e = . . _LATCbits 0 7 -> -> 1 `i `uc ]
+[; ;EEPROM_24LC256.c: 41: mvcChannels[i]=aPatchMemory[iPatchMemoryNDX++];
+"41
+[e = *U + _mvcChannels * -> _i `x -> -> # *U _mvcChannels `i `x *U + &U _aPatchMemory * -> -> ++ _iPatchMemoryNDX -> 1 `i `ui `ux -> -> # *U &U _aPatchMemory `ui `ux ]
+"42
 }
-[e :U 1586 ]
-"53
+"40
+[e ++ _i -> 1 `i ]
+[e $ < _i -> . `E14395 1 `i 1578  ]
+[e :U 1579 ]
+"42
 }
-[; ;LED7Seg.c: 53: } else {
-[e $U 1588  ]
+[; ;EEPROM_24LC256.c: 42: }
+[; ;EEPROM_24LC256.c: 43: for(int i=0; i<cADSRdataBytes;i++) {
+"43
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> . `E14395 2 `i 1581  ]
+[e $U 1582  ]
+[e :U 1581 ]
+{
+[; ;EEPROM_24LC256.c: 44: dualADSRdata0[i]=aPatchMemory[iPatchMemoryNDX++];
+"44
+[e = *U + _dualADSRdata0 * -> _i `x -> -> # *U _dualADSRdata0 `i `x *U + &U _aPatchMemory * -> -> ++ _iPatchMemoryNDX -> 1 `i `ui `ux -> -> # *U &U _aPatchMemory `ui `ux ]
+"45
+}
+"43
+[e ++ _i -> 1 `i ]
+[e $ < _i -> . `E14395 2 `i 1581  ]
+[e :U 1582 ]
+"45
+}
+[; ;EEPROM_24LC256.c: 45: }
+[; ;EEPROM_24LC256.c: 46: for(int i=0; i<cADSRdataBytes;i++) {
+"46
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> . `E14395 2 `i 1584  ]
+[e $U 1585  ]
 [e :U 1584 ]
 {
-[; ;LED7Seg.c: 55: do { LATCbits.LATC7 = 0; } while(0);
+[; ;EEPROM_24LC256.c: 47: dualADSRdata1[i]=aPatchMemory[iPatchMemoryNDX++];
+"47
+[e = *U + _dualADSRdata1 * -> _i `x -> -> # *U _dualADSRdata1 `i `x *U + &U _aPatchMemory * -> -> ++ _iPatchMemoryNDX -> 1 `i `ui `ux -> -> # *U &U _aPatchMemory `ui `ux ]
+"48
+}
+"46
+[e ++ _i -> 1 `i ]
+[e $ < _i -> . `E14395 2 `i 1584  ]
+[e :U 1585 ]
+"48
+}
+[; ;EEPROM_24LC256.c: 48: }
+[; ;EEPROM_24LC256.c: 49: }
+"49
+[e :UE 1577 ]
+}
+"52
+[v _MvcMinValue `Ci ~T0 @X0 1 e ]
+[i _MvcMinValue
+-> 0 `i
+]
+[; ;EEPROM_24LC256.c: 52: const int MvcMinValue = 0;
+"53
+[v _MvcMaxValue `Ci ~T0 @X0 1 e ]
+[i _MvcMaxValue
+-> 1023 `i
+]
+[; ;EEPROM_24LC256.c: 53: const int MvcMaxValue = 1023;
+"54
+[v _maxPatches `Ci ~T0 @X0 1 e ]
+[i _maxPatches
+-> 100 `i
+]
+[; ;EEPROM_24LC256.c: 54: const int maxPatches = 100;
 "55
-[e :U 1591 ]
-{
-[e = . . _LATCbits 0 7 -> -> 0 `i `uc ]
-}
-[e :U 1590 ]
-"56
-}
-[e :U 1588 ]
-[; ;LED7Seg.c: 56: }
-[; ;LED7Seg.c: 57: }
-"57
-[e :UE 1583 ]
-}
-"60
-[v _LED7SegPulseClock `(v ~T0 @X0 1 ef ]
-"61
-{
-[; ;LED7Seg.c: 60: void LED7SegPulseClock( void )
-[; ;LED7Seg.c: 61: {
-[e :U _LED7SegPulseClock ]
-[f ]
-[; ;LED7Seg.c: 63: do { LATCbits.LATC6 = 1; } while(0);
-"63
-[e :U 1595 ]
-{
-[e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
-}
-[e :U 1594 ]
-[; ;LED7Seg.c: 64: delay(1);
-"64
-[e ( _delay (1 -> 1 `i ]
-[; ;LED7Seg.c: 66: do { LATCbits.LATC6 = 0; } while(0);
-"66
-[e :U 1598 ]
-{
-[e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
-}
-[e :U 1597 ]
-[; ;LED7Seg.c: 67: }
-"67
-[e :UE 1592 ]
-}
-"69
-[v _LED7SegShiftOutPulseClock `(v ~T0 @X0 1 ef1`uc ]
-"70
-{
-[; ;LED7Seg.c: 69: void LED7SegShiftOutPulseClock(unsigned char val)
-[; ;LED7Seg.c: 70: {
-[e :U _LED7SegShiftOutPulseClock ]
-"69
-[v _val `uc ~T0 @X0 1 r1 ]
-"70
-[f ]
+[v _maxBanks `Ci ~T0 @X0 1 e ]
+[i _maxBanks
+-> 1 `i
+]
+[; ;EEPROM_24LC256.c: 55: const int maxBanks = 1;
 "71
-[v _i `uc ~T0 @X0 1 a ]
-[; ;LED7Seg.c: 71: char i;
-[; ;LED7Seg.c: 75: for (i = 0; i < 8; i++) {
-"75
+[v _ciI2C_EEPROM_DEVICE_ADDRESS `Ci ~T0 @X0 1 e ]
+[i _ciI2C_EEPROM_DEVICE_ADDRESS
+-> 80 `i
+]
+[; ;EEPROM_24LC256.c: 71: const int ciI2C_EEPROM_DEVICE_ADDRESS=80;
+"72
+[v _ciBatchSize `Ci ~T0 @X0 1 e ]
+[i _ciBatchSize
+-> 16 `i
+]
+[; ;EEPROM_24LC256.c: 72: const int ciBatchSize=16;
+"76
+[v _MYI2C_Write16EEPROMBytes `(v ~T0 @X0 1 ef3`uc`i`*uc ]
+"77
 {
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 1600  ]
+[; ;EEPROM_24LC256.c: 76: void MYI2C_Write16EEPROMBytes(uint8_t slaveDeviceAddress,int writeAddress,uint8_t *pData)
+[; ;EEPROM_24LC256.c: 77: {
+[e :U _MYI2C_Write16EEPROMBytes ]
+"76
+[v _slaveDeviceAddress `uc ~T0 @X0 1 r1 ]
+[v _writeAddress `i ~T0 @X0 1 r2 ]
+[v _pData `*uc ~T0 @X0 1 r3 ]
+"77
+[f ]
+"78
+[v _iPatchAddressHigh `uc ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 78: uint8_t iPatchAddressHigh=writeAddress>>8;
+[e = _iPatchAddressHigh -> >> _writeAddress -> 8 `i `uc ]
+"79
+[v _iPatchAddressLow `uc ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 79: uint8_t iPatchAddressLow=writeAddress&0xFF;
+[e = _iPatchAddressLow -> & _writeAddress -> 255 `i `uc ]
+"84
+[v _dataAddress `ui ~T0 @X0 1 a ]
+"85
+[v _nCount `ui ~T0 @X0 1 a ]
+"86
+[v _writeBuffer `uc ~T0 @X0 -> 17 `i a ]
+"87
+[v _counter `ui ~T0 @X0 1 a ]
+[v _timeOut `ui ~T0 @X0 1 a ]
+"89
+[v _pointerByte `uc ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 84: uint16_t dataAddress;
+[; ;EEPROM_24LC256.c: 85: uint16_t nCount;
+[; ;EEPROM_24LC256.c: 86: uint8_t writeBuffer[17];
+[; ;EEPROM_24LC256.c: 87: uint16_t counter, timeOut;
+[; ;EEPROM_24LC256.c: 89: uint8_t pointerByte = 0b10100000;
+[e = _pointerByte -> -> 160 `i `uc ]
+"91
+[v _status `E14260 ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 91: I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
+[e = _status . `E14260 2 ]
+[; ;EEPROM_24LC256.c: 94: dataAddress = 0x00;
+"94
+[e = _dataAddress -> -> 0 `i `ui ]
+[; ;EEPROM_24LC256.c: 95: nCount = 2;
+"95
+[e = _nCount -> -> 2 `i `ui ]
+[; ;EEPROM_24LC256.c: 98: for (counter = 0; counter < nCount; counter++)
+"98
+{
+[e = _counter -> -> 0 `i `ui ]
+[e $U 1591  ]
+"99
+[e :U 1588 ]
+[; ;EEPROM_24LC256.c: 99: {
+{
+[; ;EEPROM_24LC256.c: 102: writeBuffer[0] = pointerByte;
+"102
+[e = *U + &U _writeBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _pointerByte ]
+[; ;EEPROM_24LC256.c: 104: if(0==counter) {
+"104
+[e $ ! == -> -> 0 `i `ui _counter 1592  ]
+{
+[; ;EEPROM_24LC256.c: 106: writeBuffer[1] = iPatchAddressHigh;
+"106
+[e = *U + &U _writeBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _iPatchAddressHigh ]
+[; ;EEPROM_24LC256.c: 107: writeBuffer[2] = iPatchAddressHigh;
+"107
+[e = *U + &U _writeBuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _iPatchAddressHigh ]
+"108
+}
+[; ;EEPROM_24LC256.c: 108: }
+[e $U 1593  ]
+"109
+[e :U 1592 ]
+[; ;EEPROM_24LC256.c: 109: else
+[; ;EEPROM_24LC256.c: 110: {
+"110
+{
+[; ;EEPROM_24LC256.c: 112: for(int i=1;i<ciBatchSize;i++){
+"112
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 1 `i ]
+[e $ < _i _ciBatchSize 1594  ]
+[e $U 1595  ]
+[e :U 1594 ]
+{
+[; ;EEPROM_24LC256.c: 113: writeBuffer[i]=(*pData++);
+"113
+[e = *U + &U _writeBuffer * -> -> _i `ui `ux -> -> # *U &U _writeBuffer `ui `ux *U ++ _pData * -> -> 1 `i `x -> -> # *U _pData `i `x ]
+"114
+}
+"112
+[e ++ _i -> 1 `i ]
+[e $ < _i _ciBatchSize 1594  ]
+[e :U 1595 ]
+"114
+}
+"115
+}
+[e :U 1593 ]
+[; ;EEPROM_24LC256.c: 114: }
+[; ;EEPROM_24LC256.c: 115: }
+[; ;EEPROM_24LC256.c: 120: timeOut = 0;
+"120
+[e = _timeOut -> -> 0 `i `ui ]
+[; ;EEPROM_24LC256.c: 121: while(status != I2C1_MESSAGE_FAIL)
+"121
+[e $U 1597  ]
+[e :U 1598 ]
+[; ;EEPROM_24LC256.c: 122: {
+"122
+{
+[; ;EEPROM_24LC256.c: 123: if(0==counter) {
+"123
+[e $ ! == -> -> 0 `i `ui _counter 1600  ]
+{
+[; ;EEPROM_24LC256.c: 125: I2C1_MasterWrite( writeBuffer,
+[; ;EEPROM_24LC256.c: 126: 3,
+[; ;EEPROM_24LC256.c: 127: slaveDeviceAddress,
+[; ;EEPROM_24LC256.c: 128: &status);
+"128
+[e ( _I2C1_MasterWrite (4 , , , &U _writeBuffer -> -> 3 `i `uc -> _slaveDeviceAddress `ui &U _status ]
+"129
+}
+[; ;EEPROM_24LC256.c: 129: } else {
 [e $U 1601  ]
 [e :U 1600 ]
 {
-[; ;LED7Seg.c: 76: LED7SegPinWrite((val & (1 << i)));
-"76
-[e ( _LED7SegPinWrite (1 -> & -> _val `i << -> 1 `i _i `uc ]
-[; ;LED7Seg.c: 77: LED7SegPulseClock();
-"77
-[e ( _LED7SegPulseClock ..  ]
-"78
-}
-"75
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 1600  ]
-[e :U 1601 ]
-"78
-}
-[; ;LED7Seg.c: 78: }
-[; ;LED7Seg.c: 79: }
-"79
-[e :UE 1599 ]
-}
-"80
-[v _LED7SegDisplayValue `(v ~T0 @X0 1 ef1`ui ]
-{
-[; ;LED7Seg.c: 80: void LED7SegDisplayValue(unsigned int iTwoDigitNumber){
-[e :U _LED7SegDisplayValue ]
-[v _iTwoDigitNumber `ui ~T0 @X0 1 r1 ]
-[f ]
-"81
-[v _iTensDigit `ui ~T0 @X0 1 a ]
-"82
-[v _iUnitsDigit `ui ~T0 @X0 1 a ]
-[; ;LED7Seg.c: 81: unsigned int iTensDigit;
-[; ;LED7Seg.c: 82: unsigned int iUnitsDigit;
-[; ;LED7Seg.c: 85: if(0>iTwoDigitNumber) iTwoDigitNumber=0;
-"85
-[e $ ! > -> -> 0 `i `ui _iTwoDigitNumber 1604  ]
-[e = _iTwoDigitNumber -> -> 0 `i `ui ]
-[e :U 1604 ]
-[; ;LED7Seg.c: 86: if(99<iTwoDigitNumber) iTwoDigitNumber=99;
-"86
-[e $ ! < -> -> 99 `i `ui _iTwoDigitNumber 1605  ]
-[e = _iTwoDigitNumber -> -> 99 `i `ui ]
-[e :U 1605 ]
-[; ;LED7Seg.c: 88: d=iTwoDigitNumber%10;
-"88
-[e = _d -> % _iTwoDigitNumber -> -> 10 `i `ui `f ]
-[; ;LED7Seg.c: 89: iUnitsDigit=d;
-"89
-[e = _iUnitsDigit -> _d `ui ]
-[; ;LED7Seg.c: 90: b=iTwoDigitNumber/10;
-"90
-[e = _b -> / _iTwoDigitNumber -> -> 10 `i `ui `f ]
-[; ;LED7Seg.c: 91: iTensDigit=b;
-"91
-[e = _iTensDigit -> _b `ui ]
-[; ;LED7Seg.c: 93: LED7SegDisplayValueByDigit(iTensDigit,iUnitsDigit);
-"93
-[e ( _LED7SegDisplayValueByDigit (2 , _iTensDigit _iUnitsDigit ]
-[; ;LED7Seg.c: 94: }
-"94
-[e :UE 1603 ]
-}
-"95
-[v _LED7SegDisplayValueByDigit `(v ~T0 @X0 1 ef2`ui`ui ]
-{
-[; ;LED7Seg.c: 95: void LED7SegDisplayValueByDigit(unsigned int iTensDigit,unsigned int iUnitsDigit){
-[e :U _LED7SegDisplayValueByDigit ]
-[v _iTensDigit `ui ~T0 @X0 1 r1 ]
-[v _iUnitsDigit `ui ~T0 @X0 1 r2 ]
-[f ]
-"96
-[v _iTensCode `ui ~T0 @X0 1 a ]
-[; ;LED7Seg.c: 96: unsigned int iTensCode;
-[; ;LED7Seg.c: 98: if(0>iUnitsDigit) iUnitsDigit=0;
-"98
-[e $ ! > -> -> 0 `i `ui _iUnitsDigit 1607  ]
-[e = _iUnitsDigit -> -> 0 `i `ui ]
-[e :U 1607 ]
-[; ;LED7Seg.c: 99: if(iUnitsDigit>9) iUnitsDigit=9;
-"99
-[e $ ! > _iUnitsDigit -> -> 9 `i `ui 1608  ]
-[e = _iUnitsDigit -> -> 9 `i `ui ]
-[e :U 1608 ]
-[; ;LED7Seg.c: 101: if(0>iTensDigit) iTensDigit=0;
-"101
-[e $ ! > -> -> 0 `i `ui _iTensDigit 1609  ]
-[e = _iTensDigit -> -> 0 `i `ui ]
-[e :U 1609 ]
-[; ;LED7Seg.c: 102: if(iTensDigit>9) iTensDigit=9;
-"102
-[e $ ! > _iTensDigit -> -> 9 `i `ui 1610  ]
-[e = _iTensDigit -> -> 9 `i `ui ]
-[e :U 1610 ]
-[; ;LED7Seg.c: 104: iTensCode=segdisp[iTensDigit];
-"104
-[e = _iTensCode -> *U + &U _segdisp * -> _iTensDigit `ux -> -> # *U &U _segdisp `ui `ux `ui ]
-[; ;LED7Seg.c: 105: if(0==iTensDigit) iTensCode=255;
-"105
-[e $ ! == -> -> 0 `i `ui _iTensDigit 1611  ]
-[e = _iTensCode -> -> 255 `i `ui ]
-[e :U 1611 ]
-[; ;LED7Seg.c: 107: LED7SegShiftOutPulseClock( segdisp[iUnitsDigit]);
-"107
-[e ( _LED7SegShiftOutPulseClock (1 -> *U + &U _segdisp * -> _iUnitsDigit `ux -> -> # *U &U _segdisp `ui `ux `uc ]
-[; ;LED7Seg.c: 108: LED7SegShiftOutPulseClock( iTensCode );
-"108
-[e ( _LED7SegShiftOutPulseClock (1 -> _iTensCode `uc ]
-[; ;LED7Seg.c: 110: do { LATCbits.LATC5 = 1; } while(0);
-"110
-[e :U 1614 ]
-{
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-}
-[e :U 1613 ]
-[; ;LED7Seg.c: 111: do { LATCbits.LATC5 = 0; } while(0);
-"111
-[e :U 1617 ]
-{
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-}
-[e :U 1616 ]
-[; ;LED7Seg.c: 113: }
-"113
-[e :UE 1606 ]
-}
-"114
-[v _LED7SegBlankDisplay `(v ~T0 @X0 1 ef ]
-{
-[; ;LED7Seg.c: 114: void LED7SegBlankDisplay() {
-[e :U _LED7SegBlankDisplay ]
-[f ]
-[; ;LED7Seg.c: 116: LED7SegShiftOutPulseClock(255);
-"116
-[e ( _LED7SegShiftOutPulseClock (1 -> -> 255 `i `uc ]
-[; ;LED7Seg.c: 117: LED7SegShiftOutPulseClock(255);
-"117
-[e ( _LED7SegShiftOutPulseClock (1 -> -> 255 `i `uc ]
-[; ;LED7Seg.c: 119: do { LATCbits.LATC5 = 1; } while(0);
-"119
-[e :U 1621 ]
-{
-[e = . . _LATCbits 0 5 -> -> 1 `i `uc ]
-}
-[e :U 1620 ]
-[; ;LED7Seg.c: 121: do { LATCbits.LATC5 = 0; } while(0);
-"121
-[e :U 1624 ]
-{
-[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
-}
-[e :U 1623 ]
-[; ;LED7Seg.c: 122: }
-"122
-[e :UE 1618 ]
-}
-"123
-[v _LED7SegLoop `(v ~T0 @X0 1 ef ]
-"124
-{
-[; ;LED7Seg.c: 123: void LED7SegLoop()
-[; ;LED7Seg.c: 124: {
-[e :U _LED7SegLoop ]
-[f ]
-[; ;LED7Seg.c: 125: LED7SegBlankDisplay();
-"125
-[e ( _LED7SegBlankDisplay ..  ]
-[; ;LED7Seg.c: 128: for(int d=0;d<200;d++){
-"128
-{
-[v _d `i ~T0 @X0 1 a ]
-[e = _d -> 0 `i ]
-[e $ < _d -> 200 `i 1626  ]
-[e $U 1627  ]
-[e :U 1626 ]
-{
-[; ;LED7Seg.c: 129: delay(speed);
-"129
-[e ( _delay (1 -> _speed `i ]
-"130
-}
-"128
-[e ++ _d -> 1 `i ]
-[e $ < _d -> 200 `i 1626  ]
-[e :U 1627 ]
-"130
-}
-[; ;LED7Seg.c: 130: }
-[; ;LED7Seg.c: 133: for (int z=0; z<100; z++)
-"133
-{
-[v _z `i ~T0 @X0 1 a ]
-[e = _z -> 0 `i ]
-[e $ < _z -> 100 `i 1629  ]
-[e $U 1630  ]
+[; ;EEPROM_24LC256.c: 131: I2C1_MasterWrite( writeBuffer,
+[; ;EEPROM_24LC256.c: 132: ciBatchSize+1,
+[; ;EEPROM_24LC256.c: 133: slaveDeviceAddress,
+[; ;EEPROM_24LC256.c: 134: &status);
 "134
-[e :U 1629 ]
-[; ;LED7Seg.c: 134: {
-{
-[; ;LED7Seg.c: 135: LED7SegDisplayValue(z);
+[e ( _I2C1_MasterWrite (4 , , , &U _writeBuffer -> + _ciBatchSize -> 1 `i `uc -> _slaveDeviceAddress `ui &U _status ]
 "135
-[e ( _LED7SegDisplayValue (1 -> _z `ui ]
-[; ;LED7Seg.c: 136: for(int d=0;d<25;d++){
-"136
-{
-[v _d `i ~T0 @X0 1 a ]
-[e = _d -> 0 `i ]
-[e $ < _d -> 25 `i 1632  ]
-[e $U 1633  ]
-[e :U 1632 ]
-{
-[; ;LED7Seg.c: 137: delay(speed);
-"137
-[e ( _delay (1 -> _speed `i ]
+}
+[e :U 1601 ]
+[; ;EEPROM_24LC256.c: 135: }
+[; ;EEPROM_24LC256.c: 138: while(status == I2C1_MESSAGE_PENDING);
 "138
+[e $U 1602  ]
+[e :U 1603 ]
+[e :U 1602 ]
+[e $ == -> _status `i -> . `E14260 2 `i 1603  ]
+[e :U 1604 ]
+[; ;EEPROM_24LC256.c: 140: if (status == I2C1_MESSAGE_COMPLETE)
+"140
+[e $ ! == -> _status `i -> . `E14260 0 `i 1605  ]
+[; ;EEPROM_24LC256.c: 141: break;
+"141
+[e $U 1599  ]
+[e :U 1605 ]
+[; ;EEPROM_24LC256.c: 150: if (timeOut == 100)
+"150
+[e $ ! == _timeOut -> -> 100 `i `ui 1606  ]
+[; ;EEPROM_24LC256.c: 151: break;
+"151
+[e $U 1599  ]
+[e $U 1607  ]
+"152
+[e :U 1606 ]
+[; ;EEPROM_24LC256.c: 152: else
+[; ;EEPROM_24LC256.c: 153: timeOut++;
+"153
+[e ++ _timeOut -> -> 1 `i `ui ]
+[e :U 1607 ]
+"154
 }
-"136
-[e ++ _d -> 1 `i ]
-[e $ < _d -> 25 `i 1632  ]
-[e :U 1633 ]
-"138
-}
-"139
-}
-"133
-[e ++ _z -> 1 `i ]
-[e $ < _z -> 100 `i 1629  ]
-[e :U 1630 ]
-"139
-}
-[; ;LED7Seg.c: 138: }
-[; ;LED7Seg.c: 139: }
-[; ;LED7Seg.c: 142: for(int d=0;d<200;d++){
-"142
+[e :U 1597 ]
+"121
+[e $ != -> _status `i -> . `E14260 1 `i 1598  ]
+[e :U 1599 ]
+[; ;EEPROM_24LC256.c: 154: }
+[; ;EEPROM_24LC256.c: 156: if (status == I2C1_MESSAGE_FAIL) { break; }
+"156
+[e $ ! == -> _status `i -> . `E14260 1 `i 1608  ]
 {
-[v _d `i ~T0 @X0 1 a ]
-[e = _d -> 0 `i ]
-[e $ < _d -> 200 `i 1635  ]
-[e $U 1636  ]
-[e :U 1635 ]
+[e $U 1589  ]
+}
+[e :U 1608 ]
+[; ;EEPROM_24LC256.c: 157: dataAddress++;
+"157
+[e ++ _dataAddress -> -> 1 `i `ui ]
+"158
+}
+"98
+[e ++ _counter -> -> 1 `i `ui ]
+[e :U 1591 ]
+[e $ < _counter _nCount 1588  ]
+[e :U 1589 ]
+"158
+}
+[; ;EEPROM_24LC256.c: 158: }
+[; ;EEPROM_24LC256.c: 159: }
+"159
+[e :UE 1587 ]
+}
+"161
+[v _MYI2C_ReadPatch `(E14260 ~T0 @X0 1 ef3`uc`i`*uc ]
+"162
 {
-[; ;LED7Seg.c: 143: delay(speed);
-"143
-[e ( _delay (1 -> _speed `i ]
-"144
+[; ;EEPROM_24LC256.c: 161: I2C1_MESSAGE_STATUS MYI2C_ReadPatch(uint8_t slaveDeviceAddress,int readAddress,uint8_t *pData)
+[; ;EEPROM_24LC256.c: 162: {
+[e :U _MYI2C_ReadPatch ]
+"161
+[v _slaveDeviceAddress `uc ~T0 @X0 1 r1 ]
+[v _readAddress `i ~T0 @X0 1 r2 ]
+[v _pData `*uc ~T0 @X0 1 r3 ]
+"162
+[f ]
+"163
+[v _iPatchAddressHigh `uc ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 163: uint8_t iPatchAddressHigh=readAddress>>8;
+[e = _iPatchAddressHigh -> >> _readAddress -> 8 `i `uc ]
+"164
+[v _iPatchAddressLow `uc ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 164: uint8_t iPatchAddressLow=readAddress&0xFF;
+[e = _iPatchAddressLow -> & _readAddress -> 255 `i `uc ]
+"167
+[v _pointerByte `uc ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 167: uint8_t pointerByte=0b10100001;
+[e = _pointerByte -> -> 161 `i `uc ]
+"168
+[v _status `E14260 ~T0 @X0 1 a ]
+"169
+[v _readTRB `S1563 ~T0 @X0 -> 2 `i a ]
+"170
+[v _writeBuffer `uc ~T0 @X0 -> 3 `i a ]
+"171
+[v _timeOut `ui ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 168: I2C1_MESSAGE_STATUS status;
+[; ;EEPROM_24LC256.c: 169: I2C1_TRANSACTION_REQUEST_BLOCK readTRB[2];
+[; ;EEPROM_24LC256.c: 170: uint8_t writeBuffer[3];
+[; ;EEPROM_24LC256.c: 171: uint16_t timeOut;
+[; ;EEPROM_24LC256.c: 175: status = I2C1_MESSAGE_PENDING;
+"175
+[e = _status . `E14260 2 ]
+[; ;EEPROM_24LC256.c: 179: writeBuffer[0] = iPatchAddressHigh;
+"179
+[e = *U + &U _writeBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _iPatchAddressHigh ]
+[; ;EEPROM_24LC256.c: 180: writeBuffer[1] = iPatchAddressLow;
+"180
+[e = *U + &U _writeBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _iPatchAddressLow ]
+[; ;EEPROM_24LC256.c: 182: timeOut = 0;
+"182
+[e = _timeOut -> -> 0 `i `ui ]
+[; ;EEPROM_24LC256.c: 184: while(status != I2C1_MESSAGE_FAIL)
+"184
+[e $U 1610  ]
+[e :U 1611 ]
+[; ;EEPROM_24LC256.c: 185: {
+"185
+{
+[; ;EEPROM_24LC256.c: 189: I2C1_MasterWriteTRBBuild( &readTRB[0],
+[; ;EEPROM_24LC256.c: 190: &pointerByte,
+[; ;EEPROM_24LC256.c: 191: 1,
+[; ;EEPROM_24LC256.c: 192: slaveDeviceAddress);
+"192
+[e ( _I2C1_MasterWriteTRBBuild (4 , , , &U *U + &U _readTRB * -> -> -> 0 `i `ui `ux -> -> # *U &U _readTRB `ui `ux &U _pointerByte -> -> 1 `i `uc -> _slaveDeviceAddress `ui ]
+[; ;EEPROM_24LC256.c: 194: I2C1_MasterReadTRBBuild( &readTRB[1],
+[; ;EEPROM_24LC256.c: 195: iI2CFaderValue,
+[; ;EEPROM_24LC256.c: 196: 8,
+[; ;EEPROM_24LC256.c: 197: slaveDeviceAddress);
+"197
+[e ( _I2C1_MasterReadTRBBuild (4 , , , &U *U + &U _readTRB * -> -> -> 1 `i `ui `ux -> -> # *U &U _readTRB `ui `ux -> &U _iI2CFaderValue `*uc -> -> 8 `i `uc -> _slaveDeviceAddress `ui ]
+[; ;EEPROM_24LC256.c: 200: I2C1_MasterTRBInsert(2, readTRB, &status);
+"200
+[e ( _I2C1_MasterTRBInsert (3 , , -> -> 2 `i `uc &U _readTRB &U _status ]
+[; ;EEPROM_24LC256.c: 203: while(status == I2C1_MESSAGE_PENDING);
+"203
+[e $U 1613  ]
+[e :U 1614 ]
+[e :U 1613 ]
+[e $ == -> _status `i -> . `E14260 2 `i 1614  ]
+[e :U 1615 ]
+[; ;EEPROM_24LC256.c: 205: if (status == I2C1_MESSAGE_COMPLETE)
+"205
+[e $ ! == -> _status `i -> . `E14260 0 `i 1616  ]
+[; ;EEPROM_24LC256.c: 206: break;
+"206
+[e $U 1612  ]
+[e :U 1616 ]
+[; ;EEPROM_24LC256.c: 215: if (timeOut == 100)
+"215
+[e $ ! == _timeOut -> -> 100 `i `ui 1617  ]
+[; ;EEPROM_24LC256.c: 216: break;
+"216
+[e $U 1612  ]
+[e $U 1618  ]
+"217
+[e :U 1617 ]
+[; ;EEPROM_24LC256.c: 217: else
+[; ;EEPROM_24LC256.c: 218: timeOut++;
+"218
+[e ++ _timeOut -> -> 1 `i `ui ]
+[e :U 1618 ]
+"220
 }
-"142
-[e ++ _d -> 1 `i ]
-[e $ < _d -> 200 `i 1635  ]
-[e :U 1636 ]
-"144
+[e :U 1610 ]
+"184
+[e $ != -> _status `i -> . `E14260 1 `i 1611  ]
+[e :U 1612 ]
+[; ;EEPROM_24LC256.c: 220: }
+[; ;EEPROM_24LC256.c: 222: if (I2C1_MESSAGE_FAIL==status) {
+"222
+[e $ ! == -> . `E14260 1 `i -> _status `i 1619  ]
+{
+"224
 }
-[; ;LED7Seg.c: 144: }
-[; ;LED7Seg.c: 146: LED7SegBlankDisplay();
-"146
-[e ( _LED7SegBlankDisplay ..  ]
-[; ;LED7Seg.c: 148: }
-"148
-[e :UE 1625 ]
+[e :U 1619 ]
+[; ;EEPROM_24LC256.c: 224: }
+[; ;EEPROM_24LC256.c: 226: return status;
+"226
+[e ) _status ]
+[e $UE 1609  ]
+[; ;EEPROM_24LC256.c: 227: }
+"227
+[e :UE 1609 ]
+}
+"228
+[v _readI2CEEPROM `(v ~T0 @X0 1 ef3`i`i`*uc ]
+{
+[; ;EEPROM_24LC256.c: 228: void readI2CEEPROM(int readAddress,int batchSize,uint8_t *pData){
+[e :U _readI2CEEPROM ]
+[v _readAddress `i ~T0 @X0 1 r1 ]
+[v _batchSize `i ~T0 @X0 1 r2 ]
+[v _pData `*uc ~T0 @X0 1 r3 ]
+[f ]
+"229
+[v _iPatchAddressHigh `uc ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 229: uint8_t iPatchAddressHigh=readAddress>>8;
+[e = _iPatchAddressHigh -> >> _readAddress -> 8 `i `uc ]
+"230
+[v _iPatchAddressLow `uc ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 230: uint8_t iPatchAddressLow=readAddress&0xFF;
+[e = _iPatchAddressLow -> & _readAddress -> 255 `i `uc ]
+[; ;EEPROM_24LC256.c: 255: }
+"255
+[e :UE 1620 ]
+}
+"257
+[v _savePatch `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;EEPROM_24LC256.c: 257: void savePatch(int PatchNumber){
+[e :U _savePatch ]
+[v _PatchNumber `i ~T0 @X0 1 r1 ]
+[f ]
+"258
+[v _iPatchAddress `i ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 258: int iPatchAddress=PatchNumber*cPatchSize;
+[e = _iPatchAddress * _PatchNumber -> . `E14395 0 `i ]
+"259
+[v _iPatchAddressHigh `uc ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 259: uint8_t iPatchAddressHigh=iPatchAddress>>8;
+[e = _iPatchAddressHigh -> >> _iPatchAddress -> 8 `i `uc ]
+"260
+[v _iPatchAddressLow `uc ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 260: uint8_t iPatchAddressLow=iPatchAddress&0xFF;
+[e = _iPatchAddressLow -> & _iPatchAddress -> 255 `i `uc ]
+[; ;EEPROM_24LC256.c: 263: marshallPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
+"263
+[e ( _marshallPatchMemory (3 , , &U _mvcChannels &U _dualADSRdata0 &U _dualADSRdata1 ]
+"266
+[v _pData `*uc ~T0 @X0 1 a ]
+"267
+[v _idx `i ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 266: uint8_t *pData;
+[; ;EEPROM_24LC256.c: 267: int idx;
+[; ;EEPROM_24LC256.c: 270: for(int batchNum=0;(batchNum*ciBatchSize)<cPatchSize;batchNum++){
+"270
+{
+[v _batchNum `i ~T0 @X0 1 a ]
+[e = _batchNum -> 0 `i ]
+[e $U 1625  ]
+[e :U 1622 ]
+{
+[; ;EEPROM_24LC256.c: 272: idx=batchNum*ciBatchSize;
+"272
+[e = _idx * _batchNum _ciBatchSize ]
+[; ;EEPROM_24LC256.c: 273: pData=&aPatchMemory[idx];
+"273
+[e = _pData &U *U + &U _aPatchMemory * -> -> _idx `ui `ux -> -> # *U &U _aPatchMemory `ui `ux ]
+[; ;EEPROM_24LC256.c: 274: MYI2C_Write16EEPROMBytes(ciI2C_EEPROM_DEVICE_ADDRESS,iPatchAddress,pData);
+"274
+[e ( _MYI2C_Write16EEPROMBytes (3 , , -> _ciI2C_EEPROM_DEVICE_ADDRESS `uc _iPatchAddress _pData ]
+[; ;EEPROM_24LC256.c: 276: iPatchAddress+=ciBatchSize;
+"276
+[e =+ _iPatchAddress _ciBatchSize ]
+[; ;EEPROM_24LC256.c: 278: _delay((unsigned long)((5)*(32000000/4000.0)));
+"278
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"279
+}
+"270
+[e ++ _batchNum -> 1 `i ]
+[e :U 1625 ]
+[e $ < * _batchNum _ciBatchSize -> . `E14395 0 `i 1622  ]
+[e :U 1623 ]
+"279
+}
+[; ;EEPROM_24LC256.c: 279: }
+[; ;EEPROM_24LC256.c: 284: }
+"284
+[e :UE 1621 ]
+}
+"287
+[v _wkMIDICC `uc ~T0 @X0 1 e ]
+[i _wkMIDICC
+-> -> 0 `i `uc
+]
+[; ;EEPROM_24LC256.c: 287: uint8_t wkMIDICC=0;
+"288
+[v _wkByte `uc ~T0 @X0 1 e ]
+[i _wkByte
+-> -> 0 `i `uc
+]
+[; ;EEPROM_24LC256.c: 288: uint8_t wkByte=0;
+"289
+[v _wkFloat `f ~T0 @X0 1 e ]
+[i _wkFloat
+-> -> 0 `i `f
+]
+[; ;EEPROM_24LC256.c: 289: float wkFloat=0;
+"291
+[v _loadPatch `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;EEPROM_24LC256.c: 291: void loadPatch(int PatchNumber){
+[e :U _loadPatch ]
+[v _PatchNumber `i ~T0 @X0 1 r1 ]
+[f ]
+"292
+[v _iPatchAddress `i ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 292: int iPatchAddress=PatchNumber*cPatchSize;
+[e = _iPatchAddress * _PatchNumber -> . `E14395 0 `i ]
+"295
+[v _pData `*uc ~T0 @X0 1 a ]
+"296
+[v _idx `i ~T0 @X0 1 a ]
+[; ;EEPROM_24LC256.c: 295: uint8_t *pData;
+[; ;EEPROM_24LC256.c: 296: int idx;
+[; ;EEPROM_24LC256.c: 300: pData=&aPatchMemory;
+"300
+[e = _pData &U _aPatchMemory ]
+[; ;EEPROM_24LC256.c: 302: MYI2C_ReadPatch(ciI2C_EEPROM_DEVICE_ADDRESS,iPatchAddress,pData);
+"302
+[e ( _MYI2C_ReadPatch (3 , , -> _ciI2C_EEPROM_DEVICE_ADDRESS `uc _iPatchAddress _pData ]
+[; ;EEPROM_24LC256.c: 309: updateModelFromPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
+"309
+[e ( _updateModelFromPatchMemory (3 , , &U _mvcChannels &U _dualADSRdata0 &U _dualADSRdata1 ]
+[; ;EEPROM_24LC256.c: 312: for(int i=0;i<cMixFaderCount;i++){
+"312
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> . `E14395 1 `i 1627  ]
+[e $U 1628  ]
+[e :U 1627 ]
+{
+[; ;EEPROM_24LC256.c: 313: writeDAC528(i+4,mvcChannels[i]);
+"313
+[e ( _writeDAC528 (2 , + _i -> 4 `i *U + &U _mvcChannels * -> -> _i `ui `ux -> -> # *U &U _mvcChannels `ui `ux ]
+"314
+}
+"312
+[e ++ _i -> 1 `i ]
+[e $ < _i -> . `E14395 1 `i 1627  ]
+[e :U 1628 ]
+"314
+}
+[; ;EEPROM_24LC256.c: 314: }
+[; ;EEPROM_24LC256.c: 317: writeI2CSystemData();
+"317
+[e ( _writeI2CSystemData ..  ]
+[; ;EEPROM_24LC256.c: 322: }
+"322
+[e :UE 1626 ]
+}
+"323
+[v _initModelRelatedVariables `(v ~T0 @X0 1 ef ]
+{
+[; ;EEPROM_24LC256.c: 323: void initModelRelatedVariables(){
+[e :U _initModelRelatedVariables ]
+[f ]
+[; ;EEPROM_24LC256.c: 324: }
+"324
+[e :UE 1630 ]
 }

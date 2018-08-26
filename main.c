@@ -66,7 +66,7 @@
  *              most likely because of the change in the config
  * 
  todo: 
- *  there is a little DC bleed in the attenuators
+ *  there is a little DC bleed in the attenuators (may be a circuit issue or DAC output issue)
  *  debug VCA/Mix board issue (done - floating ground on top half of TL074)
  *  verify switch input (debounce) for load/save
  *  add model for two satellite Dual EGs
@@ -116,18 +116,54 @@ typedef enum
 //    FADER6 = 0x6,
 //    FADER7 = 0x7,      
 } adcc_channel_t;
+
+/* The Model All Data written to the EEPROM */
+
+/* EEPROM header contains constants related to storage memory */
+#include "EEPROM_24LC256.h"
+
+/* Dual EG module support */
 // model for fader submodule 0 
 uint8_t iLEDs0_MSB;
 uint8_t iLEDs0_LSB;
+
 // model for fader submodule 1
 uint8_t iLEDs1_MSB;
 uint8_t iLEDs1_LSB;
 
+int mvcPatchNumber; // 0-99 controlled by Pot0 and Pot1
 
+// dual ADSR
+const uint8_t i2c_addr_dualADSR0=0x68;
+const uint8_t i2c_addr_dualADSR1=0x69;
+/* end Dual EG module support */
+extern uint8_t aPatchMemory[cPatchSize];  // the current Patch at read/write time
+
+//MIX_CHANNEL MidiInChannels[cOutChannelCount];  // array of 8 output channels from MIDI
+uint8_t PanelInChannels[cMixFaderCount]; // array of output channels from Panel
+uint8_t mvcChannels[cMixFaderCount];     // array of output channels
+uint8_t dualADSRdata0[cADSRdataBytes]; // local storage for one dualADSR
+uint8_t dualADSRdata1[cADSRdataBytes]; // local storage for second dualADSRconst int scale7bitTO8bit = 2;   // multiplier to scale 7 bit value to 8 bit value (e.g. from MIDI to digitalPot)
+
+
+void InitPanelInChannels() {       // initialize the array
+  for(int i=0; i<cMixFaderCount;i++) {
+    PanelInChannels[i]=0;
+  }
+}
+void InitmvcChannels() {       // initialize the MIDI array
+  for(int i=0; i<cMixFaderCount;i++) {
+    mvcChannels[i]=0;
+  }
+}
+
+
+/* End - The Model All Data written to the EEPROM */
 uint8_t wkFaderValue=0;
-volatile uint8_t byteFaderValue[4]; // this is the Model for the fader values
-
-uint8_t prevByteFaderValue[4]; // these are the previous fader values
+volatile uint8_t iI2CFaderValue[cADSRdataBytes]; // storage for sending/receiving
+// these are for the internal faders on the mixer/programmer
+uint8_t byteMixFaderValue[cMixFaderCount]; // this is the Model for the fader values
+uint8_t prevByteMixFaderValue[cMixFaderCount]; // these are the previous fader values
 
 void delay(int);   
  // master clock frequency adjust.  1x = 1MHz   8x = 8MHz  16=16MHz
@@ -180,7 +216,6 @@ void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue);
 
 void main(void)
 {
-    uint8_t I2C_ADDRESS_FADELED0 =  0x10;  // assume only 1 device for now
     uint16_t iCounter=0; // counter
     uint16_t iMSByte;
     uint16_t iLSByte;
@@ -221,8 +256,8 @@ void main(void)
     // get value from fader
     for(int fx=0;fx<4;fx++){
         faderValue=ADCC_GetSingleConversion(fx);  // not POT
-        byteFaderValue[fx]=255-(faderValue>>2);   // invert and convert 10 bit to 8 bit 
-        prevByteFaderValue[fx]= byteFaderValue[fx];
+        byteMixFaderValue[fx]=255-(faderValue>>2);   // invert and convert 10 bit to 8 bit 
+        prevByteMixFaderValue[fx]= byteMixFaderValue[fx];
     }
     blinkyLoop(10);
     //Clear_WDT(); // clear watchdog timer, until i figure  out how to shut it off 
@@ -241,12 +276,12 @@ void main(void)
             //if((0==iCounter%4)) // only get it once every 4 loops
             {
                 /* service faders */
-                for(int fx=0;fx<4;fx++){
+                for(int fx=0;fx<cMixFaderCount;fx++){
                     faderValue=ADCC_GetSingleConversion(fx);  // 
-                    byteFaderValue[fx]=255-(faderValue>>2);   // invert and convert 10 bit to 8 bit 
-                    fader8bitValue=(byteFaderValue[fx]+prevByteFaderValue[fx])/2;  // smooth it for DAC
-                    writeDAC528(fx+4,fader8bitValue); //byteFaderValue[fx]); //fader8bitValue);         // +4 because the VCA/Mix is connected to DAC channels 5-8
-                    prevByteFaderValue[fx]= byteFaderValue[fx];
+                    byteMixFaderValue[fx]=255-(faderValue>>2);   // invert and convert 10 bit to 8 bit 
+                    fader8bitValue=(byteMixFaderValue[fx]+prevByteMixFaderValue[fx])/2;  // smooth it for DAC
+                    writeDAC528(fx+4,fader8bitValue); //byteMixFaderValue[fx]); //fader8bitValue);         // +4 because the VCA/Mix is connected to DAC channels 5-8
+                    prevByteMixFaderValue[fx]= byteMixFaderValue[fx];
                     delay(10);
                 }
                 
@@ -302,7 +337,7 @@ void main(void)
             
             // get fader values
         /* this is all slave code
-            readStatus = MYI2C_ReadFaders(I2C_ADDRESS_FADELED0);
+            readStatus = MYI2C_ReadFaders(i2c_addr_dualADSR0);
             
             if(readStatus==I2C1_MESSAGE_COMPLETE)
             {
@@ -311,7 +346,7 @@ void main(void)
                     UpdateLEDsFromValue(ndx,byteFaderValue[ndx]);
                 }
                 // now send to slave
-                MYI2C_Write2LEDBytes(I2C_ADDRESS_FADELED0,iLEDs0_MSB,iLEDs0_LSB);
+                MYI2C_Write2LEDBytes(i2c_addr_dualADSR0,iLEDs0_MSB,iLEDs0_LSB);
             }
         */
             /*  count up routine for test only
@@ -320,7 +355,7 @@ void main(void)
             iMSByte = iCounter;
             iMSByte =  iMSByte>>8;
             iLSByte = iCounter&0xFF;
-            MYI2C_Write2LEDBytes(I2C_ADDRESS_FADELED0,iMSByte,iLSByte);
+            MYI2C_Write2LEDBytes(i2c_addr_dualADSR0,iMSByte,iLSByte);
             //}
             */
             if (prevFader8bitValue!=fader8bitValue) {
@@ -338,10 +373,10 @@ void main(void)
             //LED7SegDisplayValue(fader8bitValue/2.55);
             //LED7SegDisplayValue(iChangeCount/2.55);
             //LED7SegDisplayValue(fader8bitValue/2.55);
+            mvcPatchNumber=(POT1Value*10)+POT0Value;
             LED7SegDisplayValueByDigit(POT1Value,POT0Value);  
           
             // check switches (normally pulled up)
-/*
 // If you're doing a read-modify-write (for example a BSF), you generally want to use the LATCH.
 #define SET_Fader0_LED_LOW  LATB  &= 0b10011110 // RB0
 #define SET_Fader1_LED_LOW  LATB  &= 0b10011101 // RB1
@@ -362,8 +397,27 @@ void main(void)
             if (PORTBbits.RB5 == 0){
                 // Save
                 SaveDebounceCount++;
-                if(5<SaveDebounceCount) { //do the load 
+                if(5<SaveDebounceCount) { //do the save 
                     SET_Fader1_LED_LOW ;
+                    // get all system data from the ElectricDruid I2C network (e.g. DUALADSR)
+                    readStatus = MYI2C_ReadFaders(i2c_addr_dualADSR0);
+                    if(readStatus==I2C1_MESSAGE_COMPLETE)
+                    {
+                        for(int x=0;x<cADSRdataBytes;x++) {
+                            // copy from iI2CFaderValue array to mvc location
+                            dualADSRdata0[x]=iI2CFaderValue[x];
+                        }
+                        readStatus = MYI2C_ReadFaders(i2c_addr_dualADSR1);
+                        if(readStatus==I2C1_MESSAGE_COMPLETE)
+                        {
+                            for(int x=0;x<cADSRdataBytes;x++) {
+                                // copy from iI2CFaderValue array to mvc location
+                                dualADSRdata0[x]=iI2CFaderValue[x];
+                            }
+                            // do I2C EEProm write
+                            savePatch(mvcPatchNumber);  // see EEPROM_24LC256
+                        }
+                    }
                 }
             }else{
                 if(0<SaveDebounceCount){
@@ -371,7 +425,6 @@ void main(void)
                     SET_Fader1_LED_HIGH ;
                 }
             }
- */
     } 
  }
 void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue)
@@ -436,7 +489,14 @@ void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue)
 }
 I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress)
 {
-    // read faders, one at a time
+    // read faders on a dual EG or other ZebraSynth module that has two sets of 4 faders
+    /*
+    Pointer Byte:
+        D7:D4 ? Mode Bits               D3:D0 - Address  Comments
+        0 0 0 0 ? Configuration Mode                     Unused at the moment
+        0 0 0 1 ? Write LED mode                         Always use Address 0 with 2 data bytes
+        0 0 1 0 ? Read ADC (fader) mode 0000 to 0111     Only 0-7 address for this module
+     */
     int pflag;
     int dataAddress=0;  // start at fader 0
     uint8_t pointerByte=0b00100000;  // address 0
@@ -468,8 +528,8 @@ I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress)
                                         slaveDeviceAddress);
         // Build TRB for receiving data
         I2C1_MasterReadTRBBuild(    &readTRB[1],
-                                       byteFaderValue,
-                                       8,
+                                       iI2CFaderValue,
+                                       8, // should match cADSRdataBytes
                                        slaveDeviceAddress);
         
         // now send the transaction read TRB
@@ -652,7 +712,7 @@ void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress,uint8_t MSBWriteByte,uint8_
 
     //</code>    
 }
-        
+   
 /**
  End of File
 */

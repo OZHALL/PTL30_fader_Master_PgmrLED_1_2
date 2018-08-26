@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/pin_manager.c mcc_generated_files/mcc.c mcc_generated_files/adcc.c mcc_generated_files/i2c1.c mcc_generated_files/interrupt_manager.c main.c LED7Seg.c VCAMIX_SPI_Master.c
+SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/pin_manager.c mcc_generated_files/mcc.c mcc_generated_files/adcc.c mcc_generated_files/i2c1.c mcc_generated_files/interrupt_manager.c main.c LED7Seg.c VCAMIX_SPI_Master.c EEPROM_24LC256.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/pin_manager.p1 ${OBJECTDIR}/mcc_generated_files/mcc.p1 ${OBJECTDIR}/mcc_generated_files/adcc.p1 ${OBJECTDIR}/mcc_generated_files/i2c1.p1 ${OBJECTDIR}/mcc_generated_files/interrupt_manager.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/LED7Seg.p1 ${OBJECTDIR}/VCAMIX_SPI_Master.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/pin_manager.p1.d ${OBJECTDIR}/mcc_generated_files/mcc.p1.d ${OBJECTDIR}/mcc_generated_files/adcc.p1.d ${OBJECTDIR}/mcc_generated_files/i2c1.p1.d ${OBJECTDIR}/mcc_generated_files/interrupt_manager.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/LED7Seg.p1.d ${OBJECTDIR}/VCAMIX_SPI_Master.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/pin_manager.p1 ${OBJECTDIR}/mcc_generated_files/mcc.p1 ${OBJECTDIR}/mcc_generated_files/adcc.p1 ${OBJECTDIR}/mcc_generated_files/i2c1.p1 ${OBJECTDIR}/mcc_generated_files/interrupt_manager.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/LED7Seg.p1 ${OBJECTDIR}/VCAMIX_SPI_Master.p1 ${OBJECTDIR}/EEPROM_24LC256.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/pin_manager.p1.d ${OBJECTDIR}/mcc_generated_files/mcc.p1.d ${OBJECTDIR}/mcc_generated_files/adcc.p1.d ${OBJECTDIR}/mcc_generated_files/i2c1.p1.d ${OBJECTDIR}/mcc_generated_files/interrupt_manager.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/LED7Seg.p1.d ${OBJECTDIR}/VCAMIX_SPI_Master.p1.d ${OBJECTDIR}/EEPROM_24LC256.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/mcc_generated_files/pin_manager.p1 ${OBJECTDIR}/mcc_generated_files/mcc.p1 ${OBJECTDIR}/mcc_generated_files/adcc.p1 ${OBJECTDIR}/mcc_generated_files/i2c1.p1 ${OBJECTDIR}/mcc_generated_files/interrupt_manager.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/LED7Seg.p1 ${OBJECTDIR}/VCAMIX_SPI_Master.p1
+OBJECTFILES=${OBJECTDIR}/mcc_generated_files/pin_manager.p1 ${OBJECTDIR}/mcc_generated_files/mcc.p1 ${OBJECTDIR}/mcc_generated_files/adcc.p1 ${OBJECTDIR}/mcc_generated_files/i2c1.p1 ${OBJECTDIR}/mcc_generated_files/interrupt_manager.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/LED7Seg.p1 ${OBJECTDIR}/VCAMIX_SPI_Master.p1 ${OBJECTDIR}/EEPROM_24LC256.p1
 
 # Source Files
-SOURCEFILES=mcc_generated_files/pin_manager.c mcc_generated_files/mcc.c mcc_generated_files/adcc.c mcc_generated_files/i2c1.c mcc_generated_files/interrupt_manager.c main.c LED7Seg.c VCAMIX_SPI_Master.c
+SOURCEFILES=mcc_generated_files/pin_manager.c mcc_generated_files/mcc.c mcc_generated_files/adcc.c mcc_generated_files/i2c1.c mcc_generated_files/interrupt_manager.c main.c LED7Seg.c VCAMIX_SPI_Master.c EEPROM_24LC256.c
 
 
 CFLAGS=
@@ -157,6 +157,14 @@ ${OBJECTDIR}/VCAMIX_SPI_Master.p1: VCAMIX_SPI_Master.c  nbproject/Makefile-${CND
 	@-${MV} ${OBJECTDIR}/VCAMIX_SPI_Master.d ${OBJECTDIR}/VCAMIX_SPI_Master.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/VCAMIX_SPI_Master.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/EEPROM_24LC256.p1: EEPROM_24LC256.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/EEPROM_24LC256.p1.d 
+	@${RM} ${OBJECTDIR}/EEPROM_24LC256.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/EEPROM_24LC256.p1  EEPROM_24LC256.c 
+	@-${MV} ${OBJECTDIR}/EEPROM_24LC256.d ${OBJECTDIR}/EEPROM_24LC256.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/EEPROM_24LC256.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/mcc_generated_files/pin_manager.p1: mcc_generated_files/pin_manager.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
@@ -221,6 +229,14 @@ ${OBJECTDIR}/VCAMIX_SPI_Master.p1: VCAMIX_SPI_Master.c  nbproject/Makefile-${CND
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/VCAMIX_SPI_Master.p1  VCAMIX_SPI_Master.c 
 	@-${MV} ${OBJECTDIR}/VCAMIX_SPI_Master.d ${OBJECTDIR}/VCAMIX_SPI_Master.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/VCAMIX_SPI_Master.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/EEPROM_24LC256.p1: EEPROM_24LC256.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/EEPROM_24LC256.p1.d 
+	@${RM} ${OBJECTDIR}/EEPROM_24LC256.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-osccal,-resetbits,-download,-stackcall,+clib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/EEPROM_24LC256.p1  EEPROM_24LC256.c 
+	@-${MV} ${OBJECTDIR}/EEPROM_24LC256.d ${OBJECTDIR}/EEPROM_24LC256.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/EEPROM_24LC256.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

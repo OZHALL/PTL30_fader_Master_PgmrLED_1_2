@@ -50,8 +50,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "interrupt_manager.h"
-#include "adcc.h"
 #include "i2c1.h"
+#include "adcc.h"
 
 #define _XTAL_FREQ  32000000
 

@@ -43,8 +43,14 @@ S_MASTER_NOACK_STOP 9
 S_MASTER_SEND_ADDR_10BIT_LSB 10
 S_MASTER_10BIT_RESTART 11
 ]
-"200 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
-[e E14335 . `uc
+"21 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\EEPROM_24LC256.h
+[e E14414 . `uc
+cPatchSize 128
+cMixFaderCount 4
+cADSRdataBytes 8
+]
+"235 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+[e E14267 . `uc
 I2C1_MESSAGE_COMPLETE 0
 I2C1_MESSAGE_FAIL 1
 I2C1_MESSAGE_PENDING 2
@@ -53,8 +59,8 @@ I2C1_MESSAGE_ADDRESS_NO_ACK 4
 I2C1_DATA_NO_ACK 5
 I2C1_LOST_STATE 6
 ]
-"223
-[e E14266 . `uc
+"258
+[e E14316 . `uc
 channel_ANA0 0
 channel_ANA1 1
 channel_ANA2 2
@@ -68,7 +74,7 @@ channel_Temp 61
 channel_DAC1 62
 channel_FVR_buf1 63
 ]
-"255
+"290
 [e E14405 . `uc
 FADER0 0
 FADER1 1
@@ -78,6 +84,22 @@ FADER4 4
 POT0 4
 FADER5 5
 POT1 5
+]
+"21 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\EEPROM_24LC256.h
+[e E14395 . `uc
+cPatchSize 128
+cMixFaderCount 4
+cADSRdataBytes 8
+]
+"91 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\EEPROM_24LC256.c
+[e E14260 . `uc
+I2C1_MESSAGE_COMPLETE 0
+I2C1_MESSAGE_FAIL 1
+I2C1_MESSAGE_PENDING 2
+I2C1_STUCK_START 3
+I2C1_MESSAGE_ADDRESS_NO_ACK 4
+I2C1_DATA_NO_ACK 5
+I2C1_LOST_STATE 6
 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -105,6 +127,16 @@ POT1 5
 [v _eecpymem eecpymem `(v  1 e 1 0 ]
 "39
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
+"21 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\EEPROM_24LC256.c
+[v _marshallPatchMemory marshallPatchMemory `(v  1 e 1 0 ]
+"38
+[v _updateModelFromPatchMemory updateModelFromPatchMemory `(i  1 e 2 0 ]
+"76
+[v _MYI2C_Write16EEPROMBytes MYI2C_Write16EEPROMBytes `(v  1 e 1 0 ]
+"161
+[v _MYI2C_ReadPatch MYI2C_ReadPatch `(E14260  1 e 1 0 ]
+"257
+[v _savePatch savePatch `(v  1 e 1 0 ]
 "31 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\LED7Seg.c
 [v _LED7SegSetup LED7SegSetup `(v  1 e 1 0 ]
 "48
@@ -119,12 +151,14 @@ POT1 5
 [v _LED7SegDisplayValueByDigit LED7SegDisplayValueByDigit `(v  1 e 1 0 ]
 "114
 [v _LED7SegBlankDisplay LED7SegBlankDisplay `(v  1 e 1 0 ]
-"135 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"171 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _delay delay `(v  1 e 1 0 ]
-"143
+"179
 [v _blinkyLoop blinkyLoop `(v  1 e 1 0 ]
-"181
+"217
 [v _main main `(v  1 e 1 0 ]
+"490
+[v _MYI2C_ReadFaders MYI2C_ReadFaders `(E14267  1 e 1 0 ]
 "62 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
 "132
@@ -173,6 +207,18 @@ POT1 5
 [v _PORTA PORTA `VEuc  1 e 1 @12 ]
 "444
 [v _PORTB PORTB `VEuc  1 e 1 @13 ]
+[s S840 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"461
+[u S849 . 1 `S840 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES849  1 e 1 @13 ]
 "506
 [v _PORTC PORTC `VEuc  1 e 1 @14 ]
 "589
@@ -181,7 +227,7 @@ POT1 5
 [v _TRISB TRISB `VEuc  1 e 1 @18 ]
 "713
 [v _TRISC TRISC `VEuc  1 e 1 @19 ]
-[s S940 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S997 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -191,15 +237,15 @@ POT1 5
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "730
-[u S949 . 1 `S940 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES949  1 e 1 @19 ]
+[u S1006 . 1 `S997 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES1006  1 e 1 @19 ]
 "775
 [v _LATA LATA `VEuc  1 e 1 @22 ]
 "837
 [v _LATB LATB `VEuc  1 e 1 @23 ]
 "899
 [v _LATC LATC `VEuc  1 e 1 @24 ]
-[s S961 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S1018 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -209,8 +255,8 @@ POT1 5
 `uc 1 LATC7 1 0 :1:7 
 ]
 "916
-[u S970 . 1 `S961 1 . 1 0 ]
-[v _LATCbits LATCbits `VES970  1 e 1 @24 ]
+[u S1027 . 1 `S1018 1 . 1 0 ]
+[v _LATCbits LATCbits `VES1027  1 e 1 @24 ]
 "1536
 [v _ADRESL ADRESL `VEuc  1 e 1 @140 ]
 "1556
@@ -500,7 +546,7 @@ POT1 5
 [v _ODCONB ODCONB `VEuc  1 e 1 @3909 ]
 "34231
 [v _ANSELC ANSELC `VEuc  1 e 1 @3918 ]
-[s S919 . 1 `uc 1 ANSC0 1 0 :1:0 
+[s S976 . 1 `uc 1 ANSC0 1 0 :1:0 
 `uc 1 ANSC1 1 0 :1:1 
 `uc 1 ANSC2 1 0 :1:2 
 `uc 1 ANSC3 1 0 :1:3 
@@ -510,10 +556,10 @@ POT1 5
 `uc 1 ANSC7 1 0 :1:7 
 ]
 "34248
-[u S928 . 1 `S919 1 . 1 0 ]
+[u S985 . 1 `S976 1 . 1 0 ]
 "34248
 "34248
-[v _ANSELCbits ANSELCbits `VES928  1 e 1 @3918 ]
+[v _ANSELCbits ANSELCbits `VES985  1 e 1 @3918 ]
 "34293
 [v _WPUC WPUC `VEuc  1 e 1 @3919 ]
 "34355
@@ -523,6 +569,12 @@ POT1 5
 "36757
 "36757
 [v _GIE GIE `VEb  1 e 0 @95 ]
+"18 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\EEPROM_24LC256.c
+[v _aPatchMemory aPatchMemory `[128]uc  1 e 128 @9072 ]
+"71
+[v _ciI2C_EEPROM_DEVICE_ADDRESS ciI2C_EEPROM_DEVICE_ADDRESS `DCi  1 e 2 0 ]
+"72
+[v _ciBatchSize ciBatchSize `DCi  1 e 2 0 ]
 "22 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\LED7Seg.c
 [v _b b `f  1 e 3 0 ]
 "24
@@ -531,15 +583,31 @@ POT1 5
 [v _speed speed `DCui  1 e 2 0 ]
 "29
 [v _segdisp segdisp `[10]i  1 e 20 0 ]
-"120 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"127 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _iLEDs0_MSB iLEDs0_MSB `uc  1 e 1 0 ]
-"121
-[v _iLEDs0_LSB iLEDs0_LSB `uc  1 e 1 0 ]
 "128
-[v _byteFaderValue byteFaderValue `VE[4]uc  1 e 4 0 ]
-"130
-[v _prevByteFaderValue prevByteFaderValue `[4]uc  1 e 4 0 ]
+[v _iLEDs0_LSB iLEDs0_LSB `uc  1 e 1 0 ]
 "134
+[v _mvcPatchNumber mvcPatchNumber `i  1 e 2 0 ]
+"137
+[v _i2c_addr_dualADSR0 i2c_addr_dualADSR0 `DCuc  1 e 1 0 ]
+"138
+[v _i2c_addr_dualADSR1 i2c_addr_dualADSR1 `DCuc  1 e 1 0 ]
+"143
+[v _PanelInChannels PanelInChannels `[4]uc  1 e 4 0 ]
+"144
+[v _mvcChannels mvcChannels `[4]uc  1 e 4 0 ]
+"145
+[v _dualADSRdata0 dualADSRdata0 `[8]uc  1 e 8 0 ]
+"146
+[v _dualADSRdata1 dualADSRdata1 `[8]uc  1 e 8 0 ]
+"163
+[v _iI2CFaderValue iI2CFaderValue `VE[8]uc  1 e 8 0 ]
+"165
+[v _byteMixFaderValue byteMixFaderValue `[4]uc  1 e 4 0 ]
+"166
+[v _prevByteMixFaderValue prevByteMixFaderValue `[4]uc  1 e 4 0 ]
+"170
 [v _cMstrClkAdjust cMstrClkAdjust `DCi  1 e 2 0 ]
 [s S374 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
 "184 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/i2c1.c
@@ -563,42 +631,44 @@ POT1 5
 [v _p_i2c1_current p_i2c1_current `*.4S386  1 s 1 p_i2c1_current ]
 "12 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\VCAMIX_SPI_Master.c
 [v _clockMicroTime clockMicroTime `DCi  1 e 2 0 ]
-"12 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\VCAMIX_SPI_Master.h
+"13 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\VCAMIX_SPI_Master.h
 [v _cPowerOfTwo cPowerOfTwo `DC[8]i  1 e 16 0 ]
-"181 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"217 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"244
-[v main@fx_888 fx `i  1 a 2 19 ]
+"413
+[v main@x_945 x `i  1 a 2 15 ]
+"406
+[v main@x x `i  1 a 2 13 ]
+"279
+[v main@fx_935 fx `i  1 a 2 22 ]
+"257
+[v main@fx fx `i  1 a 2 18 ]
+"225
+[v main@faderValue faderValue `i  1 a 2 20 ]
+"233
+[v main@SaveDebounceCount SaveDebounceCount `i  1 a 2 10 ]
+"232
+[v main@LoadDebounceCount LoadDebounceCount `i  1 a 2 8 ]
+"223
+[v main@iLoopCounter iLoopCounter `ui  1 a 2 4 ]
+"219
+[v main@iCounter iCounter `ui  1 a 2 0 ]
+"226
+[v main@fader8bitValue fader8bitValue `uc  1 a 1 17 ]
+"235
+[v main@readStatus readStatus `E14267  1 a 1 12 ]
+"229
+[v main@POT1Value POT1Value `uc  1 a 1 7 ]
+"228
+[v main@POT0Value POT0Value `uc  1 a 1 6 ]
+"227
+[v main@prevFader8bitValue prevFader8bitValue `uc  1 a 1 3 ]
+"224
+[v main@iChangeCount iChangeCount `uc  1 a 1 2 ]
 "222
-[v main@fx fx `i  1 a 2 15 ]
-"190
-[v main@faderValue faderValue `i  1 a 2 17 ]
-"188
-[v main@iLoopCounter iLoopCounter `ui  1 a 2 12 ]
-"184
-[v main@iCounter iCounter `ui  1 a 2 6 ]
-"198
-[v main@SaveDebounceCount SaveDebounceCount `i  1 a 2 2 ]
-"197
-[v main@LoadDebounceCount LoadDebounceCount `i  1 a 2 0 ]
-"191
-[v main@fader8bitValue fader8bitValue `uc  1 a 1 14 ]
-"194
-[v main@POT1Value POT1Value `uc  1 a 1 11 ]
-"193
-[v main@POT0Value POT0Value `uc  1 a 1 10 ]
-"192
-[v main@prevFader8bitValue prevFader8bitValue `uc  1 a 1 9 ]
-"189
-[v main@iChangeCount iChangeCount `uc  1 a 1 8 ]
-"200
-[v main@readStatus readStatus `E14335  1 a 1 5 ]
-"183
-[v main@I2C_ADDRESS_FADELED0 I2C_ADDRESS_FADELED0 `uc  1 a 1 4 ]
-"187
 [v main@iResetValue iResetValue `DCui  1 s 2 iResetValue ]
-"376
+"429
 } 0
 "59 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\VCAMIX_SPI_Master.c
 [v _writeDAC528 writeDAC528 `(v  1 e 1 0 ]
@@ -610,7 +680,95 @@ POT1 5
 [v writeDAC528@dacData dacData `uc  1 p 1 55 ]
 "80
 } 0
-"44
+"257 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\EEPROM_24LC256.c
+[v _savePatch savePatch `(v  1 e 1 0 ]
+{
+"270
+[v savePatch@batchNum batchNum `i  1 a 2 64 ]
+"258
+[v savePatch@iPatchAddress iPatchAddress `i  1 a 2 66 ]
+"267
+[v savePatch@idx idx `i  1 a 2 62 ]
+"266
+[v savePatch@pData pData `*.39uc  1 a 2 60 ]
+"260
+[v savePatch@iPatchAddressLow iPatchAddressLow `uc  1 a 1 59 ]
+"259
+[v savePatch@iPatchAddressHigh iPatchAddressHigh `uc  1 a 1 58 ]
+"257
+[v savePatch@PatchNumber PatchNumber `i  1 p 2 54 ]
+"284
+} 0
+"21
+[v _marshallPatchMemory marshallPatchMemory `(v  1 e 1 0 ]
+{
+[v marshallPatchMemory@mvcChannels mvcChannels `*.4uc  1 a 1 wreg ]
+"29
+[v marshallPatchMemory@i_1165 i `i  1 a 2 13 ]
+"26
+[v marshallPatchMemory@i_1164 i `i  1 a 2 11 ]
+"23
+[v marshallPatchMemory@i i `i  1 a 2 9 ]
+"22
+[v marshallPatchMemory@iPatchMemoryNDX iPatchMemoryNDX `i  1 a 2 15 ]
+"21
+[v marshallPatchMemory@mvcChannels mvcChannels `*.4uc  1 a 1 wreg ]
+[v marshallPatchMemory@dualADSRdata0 dualADSRdata0 `*.5uc  1 p 1 0 ]
+[v marshallPatchMemory@dualADSRdata1 dualADSRdata1 `*.5uc  1 p 1 1 ]
+[v marshallPatchMemory@mvcChannels mvcChannels `*.4uc  1 a 1 8 ]
+"36
+} 0
+"76
+[v _MYI2C_Write16EEPROMBytes MYI2C_Write16EEPROMBytes `(v  1 e 1 0 ]
+{
+[v MYI2C_Write16EEPROMBytes@slaveDeviceAddress slaveDeviceAddress `uc  1 a 1 wreg ]
+"112
+[v MYI2C_Write16EEPROMBytes@i i `i  1 a 2 51 ]
+"86
+[v MYI2C_Write16EEPROMBytes@writeBuffer writeBuffer `[17]uc  1 a 17 22 ]
+"87
+[v MYI2C_Write16EEPROMBytes@counter counter `ui  1 a 2 49 ]
+[v MYI2C_Write16EEPROMBytes@timeOut timeOut `ui  1 a 2 44 ]
+"85
+[v MYI2C_Write16EEPROMBytes@nCount nCount `ui  1 a 2 42 ]
+"84
+[v MYI2C_Write16EEPROMBytes@dataAddress dataAddress `ui  1 a 2 39 ]
+"91
+[v MYI2C_Write16EEPROMBytes@status status `E14260  1 a 1 53 ]
+"78
+[v MYI2C_Write16EEPROMBytes@iPatchAddressHigh iPatchAddressHigh `uc  1 a 1 48 ]
+"89
+[v MYI2C_Write16EEPROMBytes@pointerByte pointerByte `uc  1 a 1 46 ]
+"79
+[v MYI2C_Write16EEPROMBytes@iPatchAddressLow iPatchAddressLow `uc  1 a 1 41 ]
+"76
+[v MYI2C_Write16EEPROMBytes@slaveDeviceAddress slaveDeviceAddress `uc  1 a 1 wreg ]
+[v MYI2C_Write16EEPROMBytes@writeAddress writeAddress `i  1 p 2 14 ]
+[v MYI2C_Write16EEPROMBytes@pData pData `*.39uc  1 p 2 16 ]
+"78
+[v MYI2C_Write16EEPROMBytes@slaveDeviceAddress slaveDeviceAddress `uc  1 a 1 47 ]
+"159
+} 0
+"598 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/i2c1.c
+[v _I2C1_MasterWrite I2C1_MasterWrite `(v  1 e 1 0 ]
+{
+"599
+[v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 wreg ]
+[v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 wreg ]
+"600
+[v I2C1_MasterWrite@length length `uc  1 p 1 7 ]
+"601
+[v I2C1_MasterWrite@address address `ui  1 p 2 8 ]
+"602
+[v I2C1_MasterWrite@pflag pflag `*.4E14260  1 p 1 10 ]
+[s S374 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
+"604
+[v I2C1_MasterWrite@trBlock trBlock `S374  1 s 4 trBlock ]
+"607
+[v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 13 ]
+"617
+} 0
+"44 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\VCAMIX_SPI_Master.c
 [v _initDAC528 initDAC528 `(v  1 e 1 0 ]
 {
 "57
@@ -664,16 +822,16 @@ POT1 5
 [v ___awtoft@c c `i  1 p 2 8 ]
 "42
 } 0
-"143 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"179 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _blinkyLoop blinkyLoop `(v  1 e 1 0 ]
 {
-"144
+"180
 [v blinkyLoop@loopCount loopCount `i  1 a 2 22 ]
-"145
+"181
 [v blinkyLoop@delayTime delayTime `i  1 a 2 20 ]
-"143
+"179
 [v blinkyLoop@maxLoops maxLoops `i  1 p 2 17 ]
-"169
+"205
 } 0
 "56 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
@@ -737,6 +895,78 @@ POT1 5
 {
 "106
 } 0
+"490 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+[v _MYI2C_ReadFaders MYI2C_ReadFaders `(E14267  1 e 1 0 ]
+{
+[v MYI2C_ReadFaders@slaveDeviceAddress slaveDeviceAddress `uc  1 a 1 wreg ]
+[s S374 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
+"504
+[v MYI2C_ReadFaders@readTRB readTRB `[2]S374  1 a 8 17 ]
+"506
+[v MYI2C_ReadFaders@timeOut timeOut `ui  1 a 2 13 ]
+"501
+[v MYI2C_ReadFaders@dataAddress dataAddress `i  1 a 2 11 ]
+"503
+[v MYI2C_ReadFaders@status status `E14267  1 a 1 25 ]
+"502
+[v MYI2C_ReadFaders@pointerByte pointerByte `uc  1 a 1 16 ]
+"490
+[v MYI2C_ReadFaders@slaveDeviceAddress slaveDeviceAddress `uc  1 a 1 wreg ]
+"501
+[v MYI2C_ReadFaders@slaveDeviceAddress slaveDeviceAddress `uc  1 a 1 15 ]
+"563
+} 0
+"707 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\mcc_generated_files/i2c1.c
+[v _I2C1_MasterWriteTRBBuild I2C1_MasterWriteTRBBuild `(v  1 e 1 0 ]
+{
+[s S374 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
+"708
+[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.4S374  1 a 1 wreg ]
+[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.4S374  1 a 1 wreg ]
+"709
+[v I2C1_MasterWriteTRBBuild@pdata pdata `*.4uc  1 p 1 0 ]
+"710
+[v I2C1_MasterWriteTRBBuild@length length `uc  1 p 1 1 ]
+"711
+[v I2C1_MasterWriteTRBBuild@address address `ui  1 p 2 2 ]
+"713
+"708
+[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.4S374  1 a 1 6 ]
+"716
+} 0
+"641
+[v _I2C1_MasterTRBInsert I2C1_MasterTRBInsert `(v  1 e 1 0 ]
+{
+"642
+[v I2C1_MasterTRBInsert@count count `uc  1 a 1 wreg ]
+[v I2C1_MasterTRBInsert@count count `uc  1 a 1 wreg ]
+[s S374 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
+"643
+[v I2C1_MasterTRBInsert@ptrb_list ptrb_list `*.4S374  1 p 1 0 ]
+"644
+[v I2C1_MasterTRBInsert@pflag pflag `*.4E14260  1 p 1 1 ]
+"648
+[v I2C1_MasterTRBInsert@count count `uc  1 a 1 3 ]
+"692
+} 0
+"694
+[v _I2C1_MasterReadTRBBuild I2C1_MasterReadTRBBuild `(v  1 e 1 0 ]
+{
+[s S374 . 4 `ui 1 address 2 0 `uc 1 length 1 2 `*.4uc 1 pbuffer 1 3 ]
+"695
+[v I2C1_MasterReadTRBBuild@ptrb ptrb `*.4S374  1 a 1 wreg ]
+[v I2C1_MasterReadTRBBuild@ptrb ptrb `*.4S374  1 a 1 wreg ]
+"696
+[v I2C1_MasterReadTRBBuild@pdata pdata `*.4uc  1 p 1 0 ]
+"697
+[v I2C1_MasterReadTRBBuild@length length `uc  1 p 1 1 ]
+"698
+[v I2C1_MasterReadTRBBuild@address address `ui  1 p 2 2 ]
+"700
+"695
+[v I2C1_MasterReadTRBBuild@ptrb ptrb `*.4S374  1 a 1 6 ]
+"705
+} 0
 "31 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\LED7Seg.c
 [v _LED7SegSetup LED7SegSetup `(v  1 e 1 0 ]
 {
@@ -769,16 +999,16 @@ POT1 5
 {
 "67
 } 0
-"135 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
+"171 C:\Users\Professor Beatz\MPLABXProjects\PTL30_fader_Master_PgmrLED_1_2\main.c
 [v _delay delay `(v  1 e 1 0 ]
 {
-"136
+"172
 [v delay@counter counter `l  1 a 4 13 ]
-"137
+"173
 [v delay@adjustedDelaytime adjustedDelaytime `l  1 a 4 9 ]
-"135
+"171
 [v delay@delaytime delaytime `i  1 p 2 6 ]
-"141
+"177
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
