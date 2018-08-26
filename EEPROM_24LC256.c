@@ -10,6 +10,7 @@
 #endif
 volatile extern uint8_t iI2CFaderValue[cADSRdataBytes]; // storage for sending/receiving
 
+extern uint8_t faderActiveFlag[cMixFaderCount]; // this is controls "takeover" mode for faders
 extern uint8_t mvcChannels[cMixFaderCount];     // array of output channels
 extern uint8_t dualADSRdata0[cADSRdataBytes]; // local storage for one dualADSR
 extern uint8_t dualADSRdata1[cADSRdataBytes]; // local storage for second dualADSRconst int scale7bitTO8bit = 2;   // multiplier to scale 7 bit value to 8 bit value (e.g. from MIDI to digitalPot)
@@ -35,10 +36,11 @@ void marshallPatchMemory(uint8_t mvcChannels[],uint8_t dualADSRdata0[],uint8_t d
     }
 }
 
-updateModelFromPatchMemory(uint8_t mvcChannels[],uint8_t dualADSRdata0[],uint8_t dualADSRdata1[]){
+void updateModelFromPatchMemory(uint8_t mvcChannels[],uint8_t dualADSRdata0[],uint8_t dualADSRdata1[]){
     int iPatchMemoryNDX=0;
     for(int i=0; i<cMixFaderCount;i++) {
         mvcChannels[i]=aPatchMemory[iPatchMemoryNDX++];
+        faderActiveFlag[i]=0;  // deactivate fader
     }
     for(int i=0; i<cADSRdataBytes;i++) {
         dualADSRdata0[i]=aPatchMemory[iPatchMemoryNDX++];
@@ -68,11 +70,6 @@ int PgmWriteButtonValue = 0; // variable to store the value coming from the swit
 int PgmWriteButtonChannel = 7;
 */
 
-const int ciI2C_EEPROM_DEVICE_ADDRESS=80;    // write patch data to 24C256 eeprom (I2C address 80 = 0x50) at the correct address
-const int ciBatchSize=16;  // get/put data 16 bytes at a time
-#define ciBufferSize 17
-//const int ciBufferSize=17;  // ciBatchSize plus 1 for the pointerByte
-
 void MYI2C_Write16EEPROMBytes(uint8_t slaveDeviceAddress,int writeAddress,uint8_t *pData) // pointer to 16 bytes of data to write
 {
     uint8_t iPatchAddressHigh=writeAddress>>8;
@@ -81,7 +78,7 @@ void MYI2C_Write16EEPROMBytes(uint8_t slaveDeviceAddress,int writeAddress,uint8_
     #define SLAVE_I2C_GENERIC_RETRY_MAX     100
     // write to 24LC256 EEPROM Device
 
-    uint16_t        dataAddress;
+    //uint16_t        dataAddress;
     uint16_t        nCount;
     uint8_t         writeBuffer[ciBufferSize];
     uint16_t        counter, timeOut;
@@ -91,7 +88,7 @@ void MYI2C_Write16EEPROMBytes(uint8_t slaveDeviceAddress,int writeAddress,uint8_
     I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
 
 
-    dataAddress = 0x00;             // starting EEPROM memory address 
+    //dataAddress = writeAddress;     // starting EEPROM memory address 
     nCount = 2;                     // number of byte pairs to write
 
 // write patch data to 24C256 eeprom (I2C address 80 = 0x50) at the correct address 
@@ -154,7 +151,7 @@ void MYI2C_Write16EEPROMBytes(uint8_t slaveDeviceAddress,int writeAddress,uint8_
         }
 
         if (status == I2C1_MESSAGE_FAIL) { break; }
-        dataAddress++;
+        //dataAddress++;
     }   
 }
 
@@ -188,16 +185,16 @@ I2C1_MESSAGE_STATUS MYI2C_ReadPatch(uint8_t slaveDeviceAddress,int readAddress,u
         // Build TRB for sending address
         I2C1_MasterWriteTRBBuild(   &readTRB[0],
                                         &pointerByte,
-                                        1,
+                                        2,
                                         slaveDeviceAddress);
         // Build TRB for receiving data
         I2C1_MasterReadTRBBuild(    &readTRB[1],
-                                       iI2CFaderValue,
-                                       8, // should match cADSRdataBytes
+                                       pData,
+                                       cPatchSize, // bytes to read
                                        slaveDeviceAddress);
         
         // now send the transaction read TRB
-        I2C1_MasterTRBInsert(2, readTRB, &status);
+        I2C1_MasterTRBInsert(2, readTRB, &status); // two TRBlocks
         
         // wait for the message to be sent or status has changed.
         while(status == I2C1_MESSAGE_PENDING);
@@ -254,72 +251,7 @@ void readI2CEEPROM(int readAddress,int batchSize,uint8_t *pData){ // pointer to 
  */
 }
 
-void savePatch(int PatchNumber){ // patch number = 0 to 99  (vs 0 to 11 for banks)
-  int iPatchAddress=PatchNumber*cPatchSize;  // calc starting addr for patch
-  uint8_t iPatchAddressHigh=iPatchAddress>>8;
-  uint8_t iPatchAddressLow=iPatchAddress&0xFF;    // mask lower byte
 
-    // marshall the data into aPatchMemory
-    marshallPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1); 
 
-    // write "cPatchSize" bytes, from address "iPatchAddress" in batches
-    uint8_t *pData;
-    int idx;
-    //pData=&mvcChannels[0].scInChannel; //point to first byte in first struct
-    
-    for(int batchNum=0;(batchNum*ciBatchSize)<cPatchSize;batchNum++){
-        // pointer to 16 bytes of data to write
-        idx=batchNum*ciBatchSize;
-        pData=&aPatchMemory[idx];
-        MYI2C_Write16EEPROMBytes(ciI2C_EEPROM_DEVICE_ADDRESS,iPatchAddress,pData); 
-        // update local variables for the next batch
-        iPatchAddress+=ciBatchSize;
-        /* NOTE: pData gets incremented w/in the write routine! */
-        __delay_ms(5);  // 5 ms write time for 24LC256!!!
-    }
 
-    // this will happen in the service routine for the timer
-    //updateLEDfromModel(cMode1to8,true); // model,redisplay
-    //updateLEDfromModel(cMode9to16,true);  
-}
-
-// declare this here for use by loadPatch
-uint8_t wkMIDICC=0;
-uint8_t wkByte=0;
-float wkFloat=0;  // used to multiply
-  
-void loadPatch(int PatchNumber){ // patch number = 0 to 35  (vs 0 to 11 for banks)
-    int iPatchAddress=PatchNumber*cPatchSize;  // calc starting addr for patch
-    
-    // read "cPatchSize" bytes, from address "iPatchAddress"
-    uint8_t *pData;
-    int idx;
-    //pData=&mvcChannels[0].scInChannel; //point to first byte in the first struct
-    
-  #ifdef DEF_I2C_EEPROM
-    pData=&aPatchMemory; //point to first byte in the first struct
-
-    MYI2C_ReadPatch(ciI2C_EEPROM_DEVICE_ADDRESS,iPatchAddress,pData);
-    
-  #endif
-
-    // I know the program values did not come from MIDI, but imagine they did - :)
-    // MIDI is the "priority channel"
-
-    updateModelFromPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
-
-    // update DAC and Matrix Switch from model
-    for(int i=0;i<cMixFaderCount;i++){
-       writeDAC528(i+4,mvcChannels[i]);
-     }
-
-  #ifdef DUALADSR 
-     writeI2CSystemData();
-  #endif      
-    // do the program display after model update
-    // show which program we loaded
-//    displayPatch(500,1,PatchNumber);  // MS delay; display if unchanged - yes!
-}
-void initModelRelatedVariables(){
-}
 /* END - EEPROM patch storage support */

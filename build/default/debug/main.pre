@@ -17817,14 +17817,7 @@ InitmvcChannels();
 
 (INTCONbits.PEIE = 1);
 
-# 291
-for(int fx=0;fx<4;fx++){
-faderValue=ADCC_GetSingleConversion(fx);
-PanelInChannels[fx]=255-(faderValue>>2);
-prevPanelInChannels[fx]= PanelInChannels[fx];
-}
-
-# 302
+# 301
 PORTB |= 0x0F;
 PORTC |= 0xE0;
 ODCONB &= 0xF0;
@@ -17852,7 +17845,6 @@ mvcChannels[fx]=PanelInChannels[fx];
 writeDAC528(fx+4,fader8bitValue);
 }
 prevPanelInChannels[fx]=PanelInChannels[fx];
-
 delay(10);
 }
 
@@ -17868,7 +17860,7 @@ faderValue=1023-faderValue;
 POT1Value=faderValue/102.3;
 }
 
-# 406
+# 404
 if (prevFader8bitValue!=fader8bitValue) {
 iChangeCount++;
 
@@ -17880,7 +17872,7 @@ iCounter++;
 if (fader8bitValue<252)
 delay(1*(255-fader8bitValue));
 
-# 421
+# 419
 mvcPatchNumber=(POT1Value*10)+POT0Value;
 LED7SegDisplayValueByDigit(POT1Value,POT0Value);
 
@@ -17894,9 +17886,6 @@ if(5<LoadDebounceCount) {
 LATB &= 0b10011110 ;
 
 loadPatch(mvcPatchNumber);
-
-LoadDebounceCount=1;
-_delay((unsigned long)((500)*(32000000/4000.0)));
 }
 }else{
 if(0<LoadDebounceCount){
@@ -17908,19 +17897,19 @@ if (PORTBbits.RB5 == 0){
 
 SaveDebounceCount++;
 if(5<SaveDebounceCount) {
-LATB &= 0b10011101 ;
+LATB |= 0b00000010 ;
 
-# 467
+# 462
 savePatch(mvcPatchNumber);
 
-# 472
+# 467
 SaveDebounceCount=1;
 _delay((unsigned long)((500)*(32000000/4000.0)));
 }
 }else{
 if(0<SaveDebounceCount){
 SaveDebounceCount=0;
-LATB |= 0b00000010;
+LATB &= 0b10011101 ;
 }
 }
 }
@@ -18001,7 +17990,7 @@ uint16_t timeOut;
 
 status = I2C1_MESSAGE_PENDING;
 
-# 565
+# 560
 timeOut = 0;
 
 while(status != I2C1_MESSAGE_FAIL)
@@ -18028,7 +18017,7 @@ while(status == I2C1_MESSAGE_PENDING);
 if (status == I2C1_MESSAGE_COMPLETE)
 break;
 
-# 598
+# 593
 if (timeOut == 100)
 break;
 else
@@ -18043,11 +18032,11 @@ if (I2C1_MESSAGE_FAIL==status) {
 return status;
 }
 
-# 677
+# 672
 void MYI2C_WriteFaders(uint8_t slaveDeviceAddress)
 {
 
-# 684
+# 679
 uint8_t *pData;
 uint16_t nCount;
 
@@ -18090,7 +18079,7 @@ while(status == I2C1_MESSAGE_PENDING);
 if (status == I2C1_MESSAGE_COMPLETE)
 break;
 
-# 733
+# 728
 if (timeOut == 100)
 break;
 else
@@ -18149,7 +18138,7 @@ while(status == I2C1_MESSAGE_PENDING);
 if (status == I2C1_MESSAGE_COMPLETE)
 break;
 
-# 798
+# 793
 if (timeOut == 100)
 break;
 else
@@ -18210,7 +18199,7 @@ int iPatchAddress=PatchNumber*cPatchSize;
 uint8_t *pData;
 int idx;
 
-# 869
+# 864
 updateModelFromPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
 
 
@@ -18218,7 +18207,7 @@ for(int i=0;i<cMixFaderCount;i++){
 writeDAC528(i+4,mvcChannels[i]);
 }
 
-# 879
+# 874
 }
 void initModelRelatedVariables(){
 }

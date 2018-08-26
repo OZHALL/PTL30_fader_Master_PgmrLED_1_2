@@ -17636,20 +17636,20 @@ uint8_t mask;
 while(i > 0) {
 mask = 0x01 << (i - 1);
 
-PORTB &= 0xBF ;
+LATB &= 0xBF ;
 
 _delay((unsigned long)((clockMicroTime)*(32000000/4000000.0)));
 if (data & mask){
 
-PORTB |= 0x80 ;
+LATB |= 0x80 ;
 }else{
 
-PORTB &= 0x7F ;
+LATB &= 0x7F ;
 }
 
 _delay((unsigned long)((clockMicroTime)*(32000000/4000000.0)));
 
-PORTB |= 0x40 ;
+LATB |= 0x40 ;
 
 _delay((unsigned long)((clockMicroTime)*(32000000/4000000.0)));
 --i;
@@ -17664,29 +17664,25 @@ void initDAC528() {
 
 
 
-
-PORTA &= 0x7F ;
+LATA &= 0x7F ;
 
 putByte(0x00,0);
 
 putByte(0xFF,0);
 
-
-PORTA |= 0x80 ;
+LATA |= 0x80 ;
 }
 
 void writeDAC528(int dacNumber, uint8_t dacData) {
 uint8_t wkDacNumber=0;
 wkDacNumber=cPowerOfTwo[dacNumber];
 
-# 72
-PORTA &= 0x7F ;
+LATA &= 0x7F ;
 
 putByte(wkDacNumber,0);
 
 putByte(dacData,0);
 
-
-PORTA |= 0x80 ;
+LATA |= 0x80 ;
 }
 

@@ -1,12 +1,12 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"444 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
-[v _PORTB `Vuc ~T0 @X0 0 e@13 ]
+"837 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
+[v _LATB `Vuc ~T0 @X0 0 e@23 ]
 [v F14219 `(v ~T0 @X0 1 tf1`ul ]
 "153 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
 [v __delay `JF14219 ~T0 @X0 0 e ]
 [p i __delay ]
-"382 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
-[v _PORTA `Vuc ~T0 @X0 0 e@12 ]
+"775 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
+[v _LATA `Vuc ~T0 @X0 0 e@22 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -13263,9 +13263,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;VCAMIX_SPI_Master.c: 18: mask = 0x01 << (i - 1);
 "18
 [e = _mask -> << -> 1 `i - -> _i `i -> 1 `i `uc ]
-[; ;VCAMIX_SPI_Master.c: 20: PORTB &= 0xBF ;
+[; ;VCAMIX_SPI_Master.c: 20: LATB &= 0xBF ;
 "20
-[e =& _PORTB -> -> 191 `i `uc ]
+[e =& _LATB -> -> 191 `i `uc ]
 [; ;VCAMIX_SPI_Master.c: 22: _delay((unsigned long)((clockMicroTime)*(32000000/4000000.0)));
 "22
 [e ( __delay (1 -> * -> _clockMicroTime `d / -> -> 32000000 `l `d .4000000.0 `ul ]
@@ -13273,18 +13273,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 "23
 [e $ ! != & -> _data `i -> _mask `i -> 0 `i 1568  ]
 {
-[; ;VCAMIX_SPI_Master.c: 25: PORTB |= 0x80 ;
+[; ;VCAMIX_SPI_Master.c: 25: LATB |= 0x80 ;
 "25
-[e =| _PORTB -> -> 128 `i `uc ]
+[e =| _LATB -> -> 128 `i `uc ]
 "26
 }
 [; ;VCAMIX_SPI_Master.c: 26: }else{
 [e $U 1569  ]
 [e :U 1568 ]
 {
-[; ;VCAMIX_SPI_Master.c: 28: PORTB &= 0x7F ;
+[; ;VCAMIX_SPI_Master.c: 28: LATB &= 0x7F ;
 "28
-[e =& _PORTB -> -> 127 `i `uc ]
+[e =& _LATB -> -> 127 `i `uc ]
 "29
 }
 [e :U 1569 ]
@@ -13292,9 +13292,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;VCAMIX_SPI_Master.c: 31: _delay((unsigned long)((clockMicroTime)*(32000000/4000000.0)));
 "31
 [e ( __delay (1 -> * -> _clockMicroTime `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-[; ;VCAMIX_SPI_Master.c: 33: PORTB |= 0x40 ;
+[; ;VCAMIX_SPI_Master.c: 33: LATB |= 0x40 ;
 "33
-[e =| _PORTB -> -> 64 `i `uc ]
+[e =| _LATB -> -> 64 `i `uc ]
 [; ;VCAMIX_SPI_Master.c: 35: _delay((unsigned long)((clockMicroTime)*(32000000/4000000.0)));
 "35
 [e ( __delay (1 -> * -> _clockMicroTime `d / -> -> 32000000 `l `d .4000000.0 `ul ]
@@ -13318,50 +13318,50 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;VCAMIX_SPI_Master.c: 44: void initDAC528() {
 [e :U _initDAC528 ]
 [f ]
-[; ;VCAMIX_SPI_Master.c: 49: PORTA &= 0x7F ;
-"49
-[e =& _PORTA -> -> 127 `i `uc ]
-[; ;VCAMIX_SPI_Master.c: 51: putByte(0x00,0);
-"51
+[; ;VCAMIX_SPI_Master.c: 48: LATA &= 0x7F ;
+"48
+[e =& _LATA -> -> 127 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 50: putByte(0x00,0);
+"50
 [e ( _putByte (2 , -> -> 0 `i `uc -> 0 `i ]
-[; ;VCAMIX_SPI_Master.c: 53: putByte(0xFF,0);
-"53
+[; ;VCAMIX_SPI_Master.c: 52: putByte(0xFF,0);
+"52
 [e ( _putByte (2 , -> -> 255 `i `uc -> 0 `i ]
-[; ;VCAMIX_SPI_Master.c: 56: PORTA |= 0x80 ;
-"56
-[e =| _PORTA -> -> 128 `i `uc ]
-[; ;VCAMIX_SPI_Master.c: 57: }
-"57
+[; ;VCAMIX_SPI_Master.c: 54: LATA |= 0x80 ;
+"54
+[e =| _LATA -> -> 128 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 55: }
+"55
 [e :UE 1570 ]
 }
-"59
+"57
 [v _writeDAC528 `(v ~T0 @X0 1 ef2`i`uc ]
 {
-[; ;VCAMIX_SPI_Master.c: 59: void writeDAC528(int dacNumber, uint8_t dacData) {
+[; ;VCAMIX_SPI_Master.c: 57: void writeDAC528(int dacNumber, uint8_t dacData) {
 [e :U _writeDAC528 ]
 [v _dacNumber `i ~T0 @X0 1 r1 ]
 [v _dacData `uc ~T0 @X0 1 r2 ]
 [f ]
-"60
+"58
 [v _wkDacNumber `uc ~T0 @X0 1 a ]
-[; ;VCAMIX_SPI_Master.c: 60: uint8_t wkDacNumber=0;
+[; ;VCAMIX_SPI_Master.c: 58: uint8_t wkDacNumber=0;
 [e = _wkDacNumber -> -> 0 `i `uc ]
-[; ;VCAMIX_SPI_Master.c: 61: wkDacNumber=cPowerOfTwo[dacNumber];
-"61
+[; ;VCAMIX_SPI_Master.c: 59: wkDacNumber=cPowerOfTwo[dacNumber];
+"59
 [e = _wkDacNumber -> *U + &U _cPowerOfTwo * -> -> _dacNumber `ui `ux -> -> # *U &U _cPowerOfTwo `ui `ux `uc ]
-[; ;VCAMIX_SPI_Master.c: 72: PORTA &= 0x7F ;
-"72
-[e =& _PORTA -> -> 127 `i `uc ]
-[; ;VCAMIX_SPI_Master.c: 74: putByte(wkDacNumber,0);
-"74
+[; ;VCAMIX_SPI_Master.c: 61: LATA &= 0x7F ;
+"61
+[e =& _LATA -> -> 127 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 63: putByte(wkDacNumber,0);
+"63
 [e ( _putByte (2 , _wkDacNumber -> 0 `i ]
-[; ;VCAMIX_SPI_Master.c: 76: putByte(dacData,0);
-"76
+[; ;VCAMIX_SPI_Master.c: 65: putByte(dacData,0);
+"65
 [e ( _putByte (2 , _dacData -> 0 `i ]
-[; ;VCAMIX_SPI_Master.c: 79: PORTA |= 0x80 ;
-"79
-[e =| _PORTA -> -> 128 `i `uc ]
-[; ;VCAMIX_SPI_Master.c: 80: }
-"80
+[; ;VCAMIX_SPI_Master.c: 67: LATA |= 0x80 ;
+"67
+[e =| _LATA -> -> 128 `i `uc ]
+[; ;VCAMIX_SPI_Master.c: 68: }
+"68
 [e :UE 1571 ]
 }

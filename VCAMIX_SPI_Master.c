@@ -45,37 +45,25 @@ void initDAC528() {
   // note: data line is shared with LED Display, so CS4 must be on to write to MAX528 also use separate clock
   //       putByte is a bit banging routine from the LED code.  reuse it.
   // set CS4 low
-  //digitalWrite(CS4,LOW); 
   CS4_RA7_LOW ;
   // ADDR byte 
   putByte(0x00,0); //DACCLK);  // set buffer mode   
   // DATA byte
   putByte(0xFF,0); //DACCLK);  // set all to full buffer mode
   // set CS4 high (disable)
-  //digitalWrite(CS4,HIGH); 
   CS4_RA7_HIGH ;
 }
 
 void writeDAC528(int dacNumber, uint8_t dacData) {
   uint8_t wkDacNumber=0;
   wkDacNumber=cPowerOfTwo[dacNumber];  // look up the power of 2 to set the bits
-  #if defined(OZH702_DBG_DAC_WRITES)
-  Serial.print("DAC data: "); 
-  Serial.print(dacData);
-  Serial.print("   DAC #: "); 
-  Serial.print(dacNumber);
-  Serial.print("   wkDacNumber: ");
-  Serial.println(wkDacNumber);
-  #endif
   // set CS4 low
-  //digitalWrite(CS4,LOW); 
   CS4_RA7_LOW ;
   // ADDR byte 
   putByte(wkDacNumber,0); //DACCLK);  // set dacNumber
   // DATA byte
   putByte(dacData,0); //DACCLK);  // set all to full buffer mode
   // set CS4 high (disable)
-  //digitalWrite(CS4,HIGH); 
   CS4_RA7_HIGH ;
 }
 

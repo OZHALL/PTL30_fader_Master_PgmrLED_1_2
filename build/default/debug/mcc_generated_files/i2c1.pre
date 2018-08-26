@@ -1,5 +1,104 @@
 
-# 1 "main.c"
+# 1 "mcc_generated_files/i2c1.c"
+
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
+typedef unsigned char bool;
+
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
+typedef unsigned size_t;
+
+# 6 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stddef.h"
+typedef int ptrdiff_t;
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -17336,114 +17435,6 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 
-# 532 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_Initialize (void);
-
-# 544
-void PIN_MANAGER_IOC(void);
-
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
-typedef signed char int8_t;
-
-# 20
-typedef signed int int16_t;
-
-# 28
-typedef signed short long int int24_t;
-
-# 36
-typedef signed long int int32_t;
-
-# 43
-typedef unsigned char uint8_t;
-
-# 49
-typedef unsigned int uint16_t;
-
-# 56
-typedef unsigned short long int uint24_t;
-
-# 63
-typedef unsigned long int uint32_t;
-
-# 71
-typedef signed char int_least8_t;
-
-# 78
-typedef signed int int_least16_t;
-
-# 90
-typedef signed short long int int_least24_t;
-
-# 98
-typedef signed long int int_least32_t;
-
-# 105
-typedef unsigned char uint_least8_t;
-
-# 111
-typedef unsigned int uint_least16_t;
-
-# 121
-typedef unsigned short long int uint_least24_t;
-
-# 128
-typedef unsigned long int uint_least32_t;
-
-# 137
-typedef signed char int_fast8_t;
-
-# 144
-typedef signed int int_fast16_t;
-
-# 156
-typedef signed short long int int_fast24_t;
-
-# 164
-typedef signed long int int_fast32_t;
-
-# 171
-typedef unsigned char uint_fast8_t;
-
-# 177
-typedef unsigned int uint_fast16_t;
-
-# 187
-typedef unsigned short long int uint_fast24_t;
-
-# 194
-typedef unsigned long int uint_fast32_t;
-
-# 200
-typedef int32_t intmax_t;
-
-
-
-
-typedef uint32_t uintmax_t;
-
-
-
-
-typedef int16_t intptr_t;
-
-
-
-
-typedef uint16_t uintptr_t;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdbool.h"
-typedef unsigned char bool;
-
-# 110 "mcc_generated_files/interrupt_manager.h"
-void interrupt INTERRUPT_InterruptManager(void);
-
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
-typedef unsigned size_t;
-
-# 6 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stddef.h"
-typedef int ptrdiff_t;
-
 # 83 "mcc_generated_files/i2c1.h"
 typedef enum
 {
@@ -17511,715 +17502,589 @@ bool I2C1_MasterQueueIsFull(void);
 void I2C1_BusCollisionISR( void );
 void I2C1_ISR ( void );
 
-# 71 "mcc_generated_files/adcc.h"
-typedef uint16_t adc_result_t;
+# 62 "mcc_generated_files/i2c1.c"
+typedef union
+{
+struct
+{
+uint8_t full:1;
+uint8_t empty:1;
+uint8_t reserved:6;
+}s;
+uint8_t status;
+}I2C_TR_QUEUE_STATUS;
 
-# 88
+# 84
+typedef struct
+{
+uint8_t count;
+I2C1_TRANSACTION_REQUEST_BLOCK *ptrb_list;
+I2C1_MESSAGE_STATUS *pTrFlag;
+
+
+} I2C_TR_QUEUE_ENTRY;
+
+# 104
+typedef struct
+{
+
+I2C_TR_QUEUE_ENTRY *pTrTail;
+I2C_TR_QUEUE_ENTRY *pTrHead;
+I2C_TR_QUEUE_STATUS trStatus;
+uint8_t i2cDoneFlag;
+
+uint8_t i2cErrors;
+
+
+} I2C_OBJECT ;
+
+# 128
 typedef enum
 {
-channel_ANA0 = 0x0,
-channel_ANA1 = 0x1,
-channel_ANA2 = 0x2,
-channel_ANA3 = 0x3,
-channel_ANA4 = 0x4,
-channel_ANA5 = 0x5,
-channel_ANA6 = 0x6,
-channel_ANC0 = 0x10,
-channel_VSS = 0x3C,
-channel_Temp = 0x3D,
-channel_DAC1 = 0x3E,
-channel_FVR_buf1 = 0x3F
-} adcc_channel_t;
+S_MASTER_IDLE,
+S_MASTER_RESTART,
+S_MASTER_SEND_ADDR,
+S_MASTER_SEND_DATA,
+S_MASTER_SEND_STOP,
+S_MASTER_ACK_ADDR,
+S_MASTER_RCV_DATA,
+S_MASTER_RCV_STOP,
+S_MASTER_ACK_RCV_DATA,
+S_MASTER_NOACK_STOP,
+S_MASTER_SEND_ADDR_10BIT_LSB,
+S_MASTER_10BIT_RESTART,
 
-# 137
-void ADCC_Initialize(void);
+} I2C_MASTER_STATES;
 
-# 166
-void ADCC_StartConversion(adcc_channel_t channel);
+# 177
+void I2C1_FunctionComplete(void);
+void I2C1_Stop(I2C1_MESSAGE_STATUS completion_code);
 
-# 197
-bool ADCC_IsConversionDone();
+# 184
+static I2C_TR_QUEUE_ENTRY i2c1_tr_queue[1];
+static I2C_OBJECT i2c1_object;
+static I2C_MASTER_STATES i2c1_state = S_MASTER_IDLE;
+static uint8_t i2c1_trb_count = 0;
 
-# 228
-adc_result_t ADCC_GetConversionResult(void);
+static I2C1_TRANSACTION_REQUEST_BLOCK *p_i2c1_trb_current = (0);
+static I2C_TR_QUEUE_ENTRY *p_i2c1_current = (0);
 
-# 259
-adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
-
-# 284
-void ADCC_StopConversion(void);
-
-# 308
-void ADCC_SetStopOnInterrupt(void);
-
-# 330
-void ADCC_DischargeSampleCapacitor(void);
-
-# 354
-void ADCC_LoadAcquisitionRegister(uint8_t);
-
-# 377
-void ADCC_SetPrechargeTime(uint8_t);
-
-# 401
-void ADCC_SetRepeatCount(uint8_t);
-
-# 425
-uint8_t ADCC_GetCurrentCountofConversions(void);
-
-# 449
-void ADCC_ClearAccumulator(void);
-
-# 472
-uint16_t ADCC_GetAccumulatorValue(void);
-
-# 496
-bool ADCC_HasAccumulatorOverflowed(void);
-
-# 520
-uint16_t ADCC_GetFilterValue(void);
-
-# 544
-uint16_t ADCC_GetPreviousResult(void);
-
-# 568
-void ADCC_DefineSetPoint(uint16_t);
-
-# 593
-void ADCC_SetUpperThreshold(uint16_t);
-
-# 618
-void ADCC_SetLowerThreshold(uint16_t);
-
-# 641
-uint16_t ADCC_GetErrorCalculation(void);
-
-# 663
-void ADCC_EnableDoubleSampling(void);
-
-# 685
-void ADCC_EnableContinuousConversion(void);
-
-# 707
-void ADCC_DisableContinuousConversion(void);
-
-# 729
-bool ADCC_HasErrorCrossedUpperThreshold(void);
-
-# 751
-bool ADCC_HasErrorCrossedLowerThreshold(void);
-
-# 773
-uint8_t ADCC_GetConversionStageStatus(void);
-
-# 70 "mcc_generated_files/mcc.h"
-void SYSTEM_Initialize(void);
-
-# 83
-void OSCILLATOR_Initialize(void);
-
-# 13 "VCAMIX_SPI_Master.h"
-const int cPowerOfTwo[8] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
-
-# 22
-void putByte(uint8_t data,int clockPin);
-void initDAC528();
-void writeDAC528(int dacNumber, uint8_t dacData);
-
-# 16 "LED7Seg.h"
-void LED7SegLoop();
-void LED7SegSetup();
-void delay(int delaytime);
-void LED7SegBlankDisplay();
-void LED7SegDisplayValue(unsigned int iTwoDigitNumber);
-void LED7SegDisplayValueByDigit(unsigned int iTensDigit,unsigned int iUnitsDigit);
-
-# 104 "main.c"
-typedef uint16_t adc_result_t;
-
-typedef enum
+# 198
+void I2C1_Initialize(void)
 {
-FADER0 = 0x0,
-FADER1 = 0x1,
-FADER2 = 0x2,
-FADER3 = 0x3,
-FADER4 = 0x4,
-POT0 = 0x4,
-FADER5 = 0x5,
-POT1 = 0x5,
+i2c1_object.pTrHead = i2c1_tr_queue;
+i2c1_object.pTrTail = i2c1_tr_queue;
+i2c1_object.trStatus.s.empty = 1;
+i2c1_object.trStatus.s.full = 0;
+
+i2c1_object.i2cErrors = 0;
 
 
-} adcc_channel_t;
+SSP1STAT = 0x00;
 
-# 135
-const uint8_t cPointerByteWriteFaders = 0b00110000;
-const uint8_t cPointerByteReadFaders = 0b00100000;
-const uint8_t cPointerByteWriteLED = 0b00010000;
+SSP1CON1 = 0x28;
 
-# 11 "EEPROM_24LC256.h"
-typedef unsigned char uint8_t;
-typedef unsigned int uint16_t;
+SSP1CON3 = 0x00;
+
+SSP1ADD = 0x13;
 
 
 
+PIR3bits.SSP1IF = 0;
 
-enum {
-cPatchSize=128,
-cMixFaderCount=4,
-cADSRdataBytes=8,
-ciI2C_EEPROM_DEVICE_ADDRESS=80,
-ciBatchSize=16,
-ciBufferSize=17
-
-} MY_CONSTS;
-
-# 31
-void marshallPatchMemory(uint8_t mvcChannels[],uint8_t dualADSRdata0[],uint8_t dualADSRdata1[]);
-void MYI2C_Write16EEPROMBytes(uint8_t slaveDeviceAddress,int writeAddress,uint8_t *pData);
-
-void readI2CEEPROM(int readAddress,int batchSize,uint8_t *pData);
-I2C1_MESSAGE_STATUS MYI2C_ReadPatch(uint8_t slaveDeviceAddress,int readAddress,uint8_t *pData);
-void updateModelFromPatchMemory(uint8_t mvcChannels[],uint8_t dualADSRdata0[],uint8_t dualADSRdata1[]);
-
-void initModelRelatedVariables();
-
-# 145 "main.c"
-uint8_t iLEDs0_MSB;
-uint8_t iLEDs0_LSB;
-
-
-uint8_t iLEDs1_MSB;
-uint8_t iLEDs1_LSB;
-
-int mvcPatchNumber;
-
-
-const uint8_t i2c_addr_dualADSR0=0x68;
-const uint8_t i2c_addr_dualADSR1=0x69;
-
-extern uint8_t aPatchMemory[cPatchSize];
-
-
-uint8_t wkFaderValue=0;
-volatile uint8_t iI2CFaderValue[cADSRdataBytes];
-
-uint8_t faderActiveFlag[cMixFaderCount];
-
-
-
-
-uint8_t PanelInChannels[cMixFaderCount];
-uint8_t prevPanelInChannels[cMixFaderCount];
-uint8_t mvcChannels[cMixFaderCount];
-uint8_t dualADSRdata0[cADSRdataBytes];
-uint8_t dualADSRdata1[cADSRdataBytes];
-
-
-void InitPanelInChannels() {
-for(int i=0; i<cMixFaderCount;i++) {
-PanelInChannels[i]=0;
-faderActiveFlag[i]=0;
-}
-}
-void InitmvcChannels() {
-for(int i=0; i<cMixFaderCount;i++) {
-mvcChannels[i]=0;
-}
-}
-
-
-
-
-void delay(int);
-
-const int cMstrClkAdjust = 32;
-void delay(int delaytime) {
-long counter = 0;
-long adjustedDelaytime=delaytime*cMstrClkAdjust;
-
-if (0<delaytime)
-for (counter = 0; counter<adjustedDelaytime; counter++);
-
+PIE3bits.SSP1IE = 1;
 
 }
 
-void blinkyLoop (int maxLoops){
-int loopCount=maxLoops;
-int delayTime;
 
-ODCONB &= 0xF0;
-ODCONC &= 0x1F;
-while(loopCount>0){
-delayTime=loopCount*400;
+uint8_t I2C1_ErrorCountGet(void)
+{
+uint8_t ret;
 
-
-LATB |= 0x0F;
-
-
-delay(delayTime);
-
-LATB &= 0xF0;
-
-
-delay(delayTime);
-
-loopCount--;
+ret = i2c1_object.i2cErrors;
+return ret;
 }
-LATB |= 0x0F;
 
-delay(5000);
+void I2C1_ISR ( void )
+{
+
+static uint8_t *pi2c_buf_ptr;
+static uint16_t i2c_address = 0;
+static uint8_t i2c_bytes_left = 0;
+static uint8_t i2c_10bit_address_restart = 0;
+
+PIR3bits.SSP1IF = 0;
+
+
+
+if(SSP1CON1bits.WCOL)
+{
+
+SSP1CON1bits.WCOL = 0;
+i2c1_state = S_MASTER_IDLE;
+*(p_i2c1_current->pTrFlag) = I2C1_MESSAGE_FAIL;
+
+
+p_i2c1_current = (0);
+
 return;
 }
 
-# 235
-I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress);
-void MYI2C_WriteFaders(uint8_t slaveDeviceAddress);
-void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress, uint8_t MSBWriteByte,uint8_t LSBWriteByte);
-void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue);
 
-void savePatch(int PatchNumber);
-void loadPatch(int PatchNumber);
-
-# 246
-void main(void)
+switch(i2c1_state)
 {
-uint16_t iCounter=0;
-uint16_t iMSByte;
-uint16_t iLSByte;
-const uint16_t iResetValue=100;
-uint16_t iLoopCounter=0;
-uint8_t iChangeCount=0;
-int faderValue;
-uint8_t fader8bitValue;
-uint8_t prevFader8bitValue;
-uint8_t POT0Value;
-uint8_t POT1Value;
-uint8_t DACDataValue;
-double dFader8bitValue;
-int LoadDebounceCount=0;
-int SaveDebounceCount=0;
+case S_MASTER_IDLE:
 
-I2C1_MESSAGE_STATUS readStatus=0;
-
-
-SYSTEM_Initialize();
-initDAC528();
-LED7SegSetup();
-
-InitPanelInChannels();
-InitmvcChannels();
-
-
-
-
-(INTCONbits.GIE = 1);
-
-
-(INTCONbits.PEIE = 1);
-
-# 291
-for(int fx=0;fx<4;fx++){
-faderValue=ADCC_GetSingleConversion(fx);
-PanelInChannels[fx]=255-(faderValue>>2);
-prevPanelInChannels[fx]= PanelInChannels[fx];
-}
-
-# 302
-PORTB |= 0x0F;
-PORTC |= 0xE0;
-ODCONB &= 0xF0;
-ODCONC &= 0x1F;
-
-while (1) {
-iLoopCounter++;
-if (iResetValue<=iLoopCounter) iLoopCounter=0;
-
-
+if(i2c1_object.trStatus.s.empty != 1)
 {
 
-for(int fx=0;fx<cMixFaderCount;fx++){
-faderValue=ADCC_GetSingleConversion(fx);
-PanelInChannels[fx]=255-(faderValue>>2);
+p_i2c1_current = i2c1_object.pTrHead;
+i2c1_trb_count = i2c1_object.pTrHead->count;
+p_i2c1_trb_current = i2c1_object.pTrHead->ptrb_list;
 
-fader8bitValue=PanelInChannels[fx];
-if( (PanelInChannels[fx]<(mvcChannels[fx]+4))
-&& (PanelInChannels[fx]>(mvcChannels[fx]-4)) ) {
-faderActiveFlag[fx]=1;
-LATB |= 0b00000010 ;
-}
-if(faderActiveFlag[fx]>0){
-mvcChannels[fx]=PanelInChannels[fx];
-writeDAC528(fx+4,fader8bitValue);
-}
-prevPanelInChannels[fx]=PanelInChannels[fx];
-
-delay(10);
-}
+i2c1_object.pTrHead++;
 
 
-delay(10);
-faderValue=ADCC_GetSingleConversion(POT0);
-faderValue=1023-faderValue;
-
-POT0Value=faderValue/102.3;
-delay(10);
-faderValue=ADCC_GetSingleConversion(POT1);
-faderValue=1023-faderValue;
-POT1Value=faderValue/102.3;
-}
-
-# 406
-if (prevFader8bitValue!=fader8bitValue) {
-iChangeCount++;
-
-}
-prevFader8bitValue=fader8bitValue;
-
-
-iCounter++;
-if (fader8bitValue<252)
-delay(1*(255-fader8bitValue));
-
-# 421
-mvcPatchNumber=(POT1Value*10)+POT0Value;
-LED7SegDisplayValueByDigit(POT1Value,POT0Value);
-
-
-
-
-if (PORTBbits.RB4 == 0){
-
-LoadDebounceCount++;
-if(5<LoadDebounceCount) {
-LATB &= 0b10011110 ;
-
-loadPatch(mvcPatchNumber);
-
-LoadDebounceCount=1;
-_delay((unsigned long)((500)*(32000000/4000.0)));
-}
-}else{
-if(0<LoadDebounceCount){
-LoadDebounceCount=0;
-LATB |= 0b00000001 ;
-}
-}
-if (PORTBbits.RB5 == 0){
-
-SaveDebounceCount++;
-if(5<SaveDebounceCount) {
-LATB &= 0b10011101 ;
-
-# 467
-savePatch(mvcPatchNumber);
-
-# 472
-SaveDebounceCount=1;
-_delay((unsigned long)((500)*(32000000/4000.0)));
-}
-}else{
-if(0<SaveDebounceCount){
-SaveDebounceCount=0;
-LATB |= 0b00000010;
-}
-}
-}
-}
-void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue)
-{
-bool wkOnFlag = 0;
-bool wkBrightFlag = 0;
-
-
-if (inValue > 80) wkOnFlag=1;
-if (inValue > 170) wkBrightFlag=1;
-
-switch(inFaderNum)
-{
-case 0 : {
-if(wkOnFlag) { iLEDs0_LSB |= 0b00000010;
-if(wkBrightFlag) {iLEDs0_LSB |= 0b00000001;}else{iLEDs0_LSB &= 0b11111110;};
-}else{ iLEDs0_LSB &= 0b11111100;}
-break;
-}
-case 1 : {
-if(wkOnFlag) { iLEDs0_LSB |= 0b00001000;
-if(wkBrightFlag) {iLEDs0_LSB |= 0b00000100;}else{iLEDs0_LSB &= 0b11111011;};
-}else{ iLEDs0_LSB &= 0b11110011;}
-break;
-}
-case 2 : {
-if(wkOnFlag) { iLEDs0_LSB |= 0b00100000;
-if(wkBrightFlag) {iLEDs0_LSB |= 0b00010000;}else{iLEDs0_LSB &= 0b11101111;};
-}else{ iLEDs0_LSB &= 0b11001111;}
-break;
-}
-case 3 : {
-if(wkOnFlag) { iLEDs0_LSB |= 0b10000000;
-if(wkBrightFlag) {iLEDs0_LSB |= 0b01000000;}else{iLEDs0_LSB &= 0b10111111;};
-}else{ iLEDs0_LSB &= 0b00111111;}
-break;
-}
-case 4 : {
-if(wkOnFlag) { iLEDs0_MSB |= 0b00000010;
-if(wkBrightFlag) {iLEDs0_MSB |= 0b00000001;}else{iLEDs0_MSB &= 0b11111110;};
-}else{ iLEDs0_MSB &= 0b11111100;}
-break;
-}
-case 5 : {
-if(wkOnFlag) { iLEDs0_MSB |= 0b00001000;
-if(wkBrightFlag) {iLEDs0_MSB |= 0b00000100;}else{iLEDs0_MSB &= 0b11111011;};
-}else{ iLEDs0_MSB &= 0b11110011;}
-break;
-}
-case 6 : {
-if(wkOnFlag) { iLEDs0_MSB |= 0b00100000;
-if(wkBrightFlag) {iLEDs0_MSB |= 0b00010000;}else{iLEDs0_MSB &= 0b11101111;};
-}else{ iLEDs0_MSB &= 0b11001111;}
-break;
-}
-case 7 : {
-if(wkOnFlag) { iLEDs0_MSB |= 0b10000000;
-if(wkBrightFlag) {iLEDs0_MSB |= 0b01000000;}else{iLEDs0_MSB &= 0b10111111;};
-}else{ iLEDs0_MSB &= 0b00111111;}
-}
-}
-}
-I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress)
+if(i2c1_object.pTrHead == (i2c1_tr_queue + 1))
 {
 
-
-int pflag;
-int dataAddress=0;
-uint8_t pointerByte=cPointerByteReadFaders;
-I2C1_MESSAGE_STATUS status;
-I2C1_TRANSACTION_REQUEST_BLOCK readTRB[2];
-uint8_t writeBuffer[3];
-uint16_t timeOut;
+i2c1_object.pTrHead = i2c1_tr_queue;
+}
 
 
 
-status = I2C1_MESSAGE_PENDING;
+i2c1_object.trStatus.s.full = 0;
 
-# 565
-timeOut = 0;
 
-while(status != I2C1_MESSAGE_FAIL)
+if(i2c1_object.pTrHead == i2c1_object.pTrTail)
 {
 
+i2c1_object.trStatus.s.empty = 1;
+}
 
 
-I2C1_MasterWriteTRBBuild( &readTRB[0],
-&pointerByte,
-1,
-slaveDeviceAddress);
-
-I2C1_MasterReadTRBBuild( &readTRB[1],
-iI2CFaderValue,
-8,
-slaveDeviceAddress);
+SSP1CON2bits.SEN = 1;
 
 
-I2C1_MasterTRBInsert(2, readTRB, &status);
+i2c1_state = S_MASTER_SEND_ADDR;
+}
 
-
-while(status == I2C1_MESSAGE_PENDING);
-
-if (status == I2C1_MESSAGE_COMPLETE)
 break;
 
-# 598
-if (timeOut == 100)
+case S_MASTER_RESTART:
+
+
+
+
+SSP1CON2bits.RSEN = 1;
+
+
+i2c1_state = S_MASTER_SEND_ADDR;
+
 break;
+
+case S_MASTER_SEND_ADDR_10BIT_LSB:
+
+if(SSP1CON2bits.ACKSTAT)
+{
+i2c1_object.i2cErrors++;
+I2C1_Stop(I2C1_MESSAGE_ADDRESS_NO_ACK);
+}
 else
-timeOut++;
-
-}
-
-if (I2C1_MESSAGE_FAIL==status) {
-
-}
-
-return status;
-}
-
-# 677
-void MYI2C_WriteFaders(uint8_t slaveDeviceAddress)
 {
 
-# 684
-uint8_t *pData;
-uint16_t nCount;
-
-uint8_t writeBuffer[9];
-uint8_t *pD;
-uint16_t counter, timeOut;
-uint8_t pointerByte = cPointerByteWriteFaders;
-
-I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
+SSP1BUF = (i2c_address >> 1) & 0x00FF;
 
 
-
-nCount = 1;
-
-for (counter = 0; counter < nCount; counter++)
+if(i2c_address & 0x01)
 {
 
 
-writeBuffer[0] = pointerByte;
-
-for(int x=1;x<cADSRdataBytes;x++){
-writeBuffer[x+1] = iI2CFaderValue[x];
+i2c1_state = S_MASTER_10BIT_RESTART;
 }
-
-
-
-
-timeOut = 0;
-while(status != I2C1_MESSAGE_FAIL)
-{
-
-I2C1_MasterWrite( writeBuffer,
-cADSRdataBytes+1,
-slaveDeviceAddress,
-&status);
-
-
-while(status == I2C1_MESSAGE_PENDING);
-
-if (status == I2C1_MESSAGE_COMPLETE)
-break;
-
-# 733
-if (timeOut == 100)
-break;
 else
-timeOut++;
-}
-
-if (status == I2C1_MESSAGE_FAIL)
-{
-break;
-}
-
-}
-}
-void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress,uint8_t MSBWriteByte,uint8_t LSBWriteByte)
 {
 
+i2c1_state = S_MASTER_SEND_DATA;
+}
+}
 
-uint8_t *pData;
-uint16_t nCount;
-
-uint8_t writeBuffer[3];
-
-uint16_t counter, timeOut;
-uint8_t pointerByte = cPointerByteWriteLED;
-
-I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
-
-
-
-nCount = 1;
-
-for (counter = 0; counter < nCount; counter++)
-{
-
-
-writeBuffer[0] = pointerByte;
-
-writeBuffer[1] = (MSBWriteByte);
-writeBuffer[2] = (LSBWriteByte);
-
-
-
-
-timeOut = 0;
-while(status != I2C1_MESSAGE_FAIL)
-{
-
-I2C1_MasterWrite( writeBuffer,
-3,
-slaveDeviceAddress,
-&status);
-
-
-while(status == I2C1_MESSAGE_PENDING);
-
-if (status == I2C1_MESSAGE_COMPLETE)
 break;
 
-# 798
-if (timeOut == 100)
-break;
+case S_MASTER_10BIT_RESTART:
+
+if(SSP1CON2bits.ACKSTAT)
+{
+i2c1_object.i2cErrors++;
+I2C1_Stop(I2C1_MESSAGE_ADDRESS_NO_ACK);
+}
 else
-timeOut++;
-}
-
-if (status == I2C1_MESSAGE_FAIL)
 {
+
+
+SSP1CON2bits.RSEN = 1;
+
+
+
+i2c_address = 0x00F0 | ((i2c_address >> 8) & 0x0006);
+
+
+i2c_address |= 0x0001;
+
+
+i2c_10bit_address_restart = 1;
+
+
+i2c1_state = S_MASTER_SEND_ADDR;
+}
+
 break;
-}
 
-}
-}
+case S_MASTER_SEND_ADDR:
 
-void savePatch(int PatchNumber){
-int iPatchAddress=PatchNumber*cPatchSize;
-uint8_t iPatchAddressHigh=iPatchAddress>>8;
-uint8_t iPatchAddressLow=iPatchAddress&0xFF;
+# 381
+if(i2c_10bit_address_restart != 1)
+{
 
-
-marshallPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
-
-
-uint8_t *pData;
-int idx;
-
-
-for(int batchNum=0;(batchNum*ciBatchSize)<cPatchSize;batchNum++){
-
-idx=batchNum*ciBatchSize;
-pData=&aPatchMemory[idx];
-MYI2C_Write16EEPROMBytes(ciI2C_EEPROM_DEVICE_ADDRESS,iPatchAddress,pData);
-
-iPatchAddress+=ciBatchSize;
-
-_delay((unsigned long)((5)*(32000000/4000.0)));
+i2c_address = p_i2c1_trb_current->address;
+pi2c_buf_ptr = p_i2c1_trb_current->pbuffer;
+i2c_bytes_left = p_i2c1_trb_current->length;
 }
 
 
+if(!1 && (0x0 != i2c_address))
+{
+if (0 == i2c_10bit_address_restart)
+{
 
 
+
+SSP1BUF = 0xF0 | ((i2c_address >> 8) & 0x0006);
+i2c1_state = S_MASTER_SEND_ADDR_10BIT_LSB;
+}
+else
+{
+
+SSP1BUF = i2c_address;
+i2c1_state = S_MASTER_ACK_ADDR;
+
+i2c_10bit_address_restart = 0;
+}
+}
+else
+{
+
+SSP1BUF = i2c_address;
+if(i2c_address & 0x01)
+{
+
+i2c1_state = S_MASTER_ACK_ADDR;
+}
+else
+{
+
+i2c1_state = S_MASTER_SEND_DATA;
+}
+}
+break;
+
+case S_MASTER_SEND_DATA:
+
+
+if(SSP1CON2bits.ACKSTAT)
+{
+
+i2c1_object.i2cErrors++;
+
+
+SSP1CON2bits.ACKSTAT = 0;
+
+
+I2C1_Stop(I2C1_DATA_NO_ACK);
+
+}
+else
+{
+
+if(i2c_bytes_left-- == 0U)
+{
+
+
+
+p_i2c1_trb_current++;
+
+
+if(--i2c1_trb_count == 0)
+{
+I2C1_Stop(I2C1_MESSAGE_COMPLETE);
+}
+else
+{
+
+# 464
+SSP1CON2bits.RSEN = 1;
+
+
+i2c1_state = S_MASTER_SEND_ADDR;
+
+}
+}
+else
+{
+
+SSP1BUF = *pi2c_buf_ptr++;
+}
+}
+break;
+
+case S_MASTER_ACK_ADDR:
+
+
+if(SSP1CON2bits.ACKSTAT)
+{
+
+
+i2c1_object.i2cErrors++;
+
+
+I2C1_Stop(I2C1_MESSAGE_ADDRESS_NO_ACK);
+
+
+SSP1CON2bits.ACKSTAT = 0;
+}
+else
+{
+SSP1CON2bits.RCEN = 1;
+i2c1_state = S_MASTER_ACK_RCV_DATA;
+}
+break;
+
+case S_MASTER_RCV_DATA:
+
+
+
+
+i2c1_state = S_MASTER_ACK_RCV_DATA;
+
+
+SSP1CON2bits.RCEN = 1;
+
+break;
+
+case S_MASTER_ACK_RCV_DATA:
+
+
+*pi2c_buf_ptr++ = SSP1BUF;
+
+
+if(--i2c_bytes_left)
+{
+
+# 526
+SSP1CON2bits.ACKDT = 0;
+
+
+i2c1_state = S_MASTER_RCV_DATA;
+}
+else
+{
+
+
+
+SSP1CON2bits.ACKDT = 1;
+
+I2C1_FunctionComplete();
 }
 
 
-void writeI2CSystemData(){
-MYI2C_WriteFaders(i2c_addr_dualADSR0);
-MYI2C_WriteFaders(i2c_addr_dualADSR1);
+SSP1CON2bits.ACKEN = 1;
+break;
+
+case S_MASTER_RCV_STOP:
+case S_MASTER_SEND_STOP:
+
+
+I2C1_Stop(I2C1_MESSAGE_COMPLETE);
+break;
+
+default:
+
+
+
+i2c1_object.i2cErrors++;
+I2C1_Stop(I2C1_LOST_STATE);
+break;
+
+}
 }
 
-uint8_t wkMIDICC=0;
-uint8_t wkByte=0;
-float wkFloat=0;
-
-void loadPatch(int PatchNumber){
-int iPatchAddress=PatchNumber*cPatchSize;
+void I2C1_FunctionComplete(void)
+{
 
 
-uint8_t *pData;
-int idx;
-
-# 869
-updateModelFromPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
+p_i2c1_trb_current++;
 
 
-for(int i=0;i<cMixFaderCount;i++){
-writeDAC528(i+4,mvcChannels[i]);
+if(--i2c1_trb_count == 0)
+{
+i2c1_state = S_MASTER_SEND_STOP;
+}
+else
+{
+i2c1_state = S_MASTER_RESTART;
 }
 
-# 879
 }
-void initModelRelatedVariables(){
+
+void I2C1_Stop(I2C1_MESSAGE_STATUS completion_code)
+{
+
+SSP1CON2bits.PEN = 1;
+
+
+if (p_i2c1_current->pTrFlag != (0))
+{
+
+*(p_i2c1_current->pTrFlag) = completion_code;
+}
+
+
+i2c1_state = S_MASTER_IDLE;
+
+}
+
+void I2C1_MasterWrite(
+uint8_t *pdata,
+uint8_t length,
+uint16_t address,
+I2C1_MESSAGE_STATUS *pflag)
+{
+static I2C1_TRANSACTION_REQUEST_BLOCK trBlock;
+
+
+if (i2c1_object.trStatus.s.full != 1)
+{
+I2C1_MasterWriteTRBBuild(&trBlock, pdata, length, address);
+I2C1_MasterTRBInsert(1, &trBlock, pflag);
+}
+else
+{
+*pflag = I2C1_MESSAGE_FAIL;
+}
+
+}
+
+void I2C1_MasterRead(
+uint8_t *pdata,
+uint8_t length,
+uint16_t address,
+I2C1_MESSAGE_STATUS *pflag)
+{
+static I2C1_TRANSACTION_REQUEST_BLOCK trBlock;
+
+
+
+if (i2c1_object.trStatus.s.full != 1)
+{
+I2C1_MasterReadTRBBuild(&trBlock, pdata, length, address);
+I2C1_MasterTRBInsert(1, &trBlock, pflag);
+}
+else
+{
+*pflag = I2C1_MESSAGE_FAIL;
+}
+
+}
+
+void I2C1_MasterTRBInsert(
+uint8_t count,
+I2C1_TRANSACTION_REQUEST_BLOCK *ptrb_list,
+I2C1_MESSAGE_STATUS *pflag)
+{
+
+
+if (i2c1_object.trStatus.s.full != 1)
+{
+*pflag = I2C1_MESSAGE_PENDING;
+
+i2c1_object.pTrTail->ptrb_list = ptrb_list;
+i2c1_object.pTrTail->count = count;
+i2c1_object.pTrTail->pTrFlag = pflag;
+i2c1_object.pTrTail++;
+
+
+if (i2c1_object.pTrTail == (i2c1_tr_queue + 1))
+{
+
+i2c1_object.pTrTail = i2c1_tr_queue;
+}
+
+
+
+i2c1_object.trStatus.s.empty = 0;
+
+
+if (i2c1_object.pTrHead == i2c1_object.pTrTail)
+{
+
+i2c1_object.trStatus.s.full = 1;
+}
+
+}
+else
+{
+*pflag = I2C1_MESSAGE_FAIL;
+}
+
+
+if (*pflag == I2C1_MESSAGE_PENDING)
+{
+while(i2c1_state != S_MASTER_IDLE);
+{
+
+
+PIR3bits.SSP1IF = 1;
+}
+}
+
+}
+
+void I2C1_MasterReadTRBBuild(
+I2C1_TRANSACTION_REQUEST_BLOCK *ptrb,
+uint8_t *pdata,
+uint8_t length,
+uint16_t address)
+{
+ptrb->address = address << 1;
+
+ptrb->address |= 0x01;
+ptrb->length = length;
+ptrb->pbuffer = pdata;
+}
+
+void I2C1_MasterWriteTRBBuild(
+I2C1_TRANSACTION_REQUEST_BLOCK *ptrb,
+uint8_t *pdata,
+uint8_t length,
+uint16_t address)
+{
+ptrb->address = address << 1;
+ptrb->length = length;
+ptrb->pbuffer = pdata;
+}
+
+bool I2C1_MasterQueueIsEmpty(void)
+{
+return(i2c1_object.trStatus.s.empty);
+}
+
+bool I2C1_MasterQueueIsFull(void)
+{
+return(i2c1_object.trStatus.s.full);
+}
+
+void I2C1_BusCollisionISR( void )
+{
+
 }
 

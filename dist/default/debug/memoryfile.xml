@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\PTL30_fader_Master_PgmrLED_1_2.production.hex">
+  <executable name="dist/default/debug\PTL30_fader_Master_PgmrLED_1_2.debug.hex">
     <memory name="program">
       <units>words</units>
       <length>8192</length>
-      <used>3494</used>
-      <free>4698</free>
+      <used>3387</used>
+      <free>4805</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>1024</length>
-      <used>336</used>
-      <free>688</free>
+      <used>334</used>
+      <free>690</free>
     </memory>
   </executable>
 </project>

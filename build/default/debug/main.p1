@@ -26,18 +26,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S25 . . ]
 "362
 [v _INTCONbits `VS25 ~T0 @X0 0 e@11 ]
-"292 main.c
+"444
+[v _PORTB `Vuc ~T0 @X0 0 e@13 ]
+"506
+[v _PORTC `Vuc ~T0 @X0 0 e@14 ]
+"314 main.c
 [c E14316 0 1 2 3 4 5 6 16 60 61 62 63 .. ]
 [n E14316 . channel_ANA0 channel_ANA1 channel_ANA2 channel_ANA3 channel_ANA4 channel_ANA5 channel_ANA6 channel_ANC0 channel_VSS channel_Temp channel_DAC1 channel_FVR_buf1  ]
 "259 mcc_generated_files/adcc.h
 [v _ADCC_GetSingleConversion `(ui ~T0 @X0 0 ef1`E14316 ]
-"444 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
-[v _PORTB `Vuc ~T0 @X0 0 e@13 ]
-"506
-[v _PORTC `Vuc ~T0 @X0 0 e@14 ]
 "24 VCAMIX_SPI_Master.h
 [v _writeDAC528 `(v ~T0 @X0 0 ef2`i`uc ]
-"335 main.c
+"333 main.c
 [c E14405 0 1 2 3 4 4 5 5 .. ]
 [n E14405 . FADER0 FADER1 FADER2 FADER3 FADER4 POT0 FADER5 POT1  ]
 "21 LED7Seg.h
@@ -52,12 +52,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PORTBbits `VS29 ~T0 @X0 0 e@13 ]
 "241 main.c
 [v _loadPatch `(v ~T0 @X0 0 ef1`i ]
+"240
+[v _savePatch `(v ~T0 @X0 0 ef1`i ]
 [v F14219 `(v ~T0 @X0 1 tf1`ul ]
 "153 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
 [v __delay `JF14219 ~T0 @X0 0 e ]
 [p i __delay ]
-"240 main.c
-[v _savePatch `(v ~T0 @X0 0 ef1`i ]
 "109 mcc_generated_files/i2c1.h
 [s S1563 `ui 1 `uc 1 `*uc 1 ]
 [n S1563 . address length pbuffer ]
@@ -13669,1180 +13669,1147 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 280: (INTCONbits.PEIE = 1);
 "280
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 291: for(int fx=0;fx<4;fx++){
-"291
+[; ;main.c: 301: PORTB |= 0x0F;
+"301
+[e =| _PORTB -> -> 15 `i `uc ]
+[; ;main.c: 302: PORTC |= 0xE0;
+"302
+[e =| _PORTC -> -> 224 `i `uc ]
+[; ;main.c: 303: ODCONB &= 0xF0;
+"303
+[e =& _ODCONB -> -> 240 `i `uc ]
+[; ;main.c: 304: ODCONC &= 0x1F;
+"304
+[e =& _ODCONC -> -> 31 `i `uc ]
+[; ;main.c: 306: while (1) {
+"306
+[e :U 1584 ]
+{
+[; ;main.c: 307: iLoopCounter++;
+"307
+[e ++ _iLoopCounter -> -> 1 `i `ui ]
+[; ;main.c: 308: if (iResetValue<=iLoopCounter) iLoopCounter=0;
+"308
+[e $ ! <= F14495 _iLoopCounter 1586  ]
+[e = _iLoopCounter -> -> 0 `i `ui ]
+[e :U 1586 ]
+[; ;main.c: 311: {
+"311
+{
+[; ;main.c: 313: for(int fx=0;fx<cMixFaderCount;fx++){
+"313
 {
 [v _fx `i ~T0 @X0 1 a ]
 [e = _fx -> 0 `i ]
-[e $ < _fx -> 4 `i 1583  ]
-[e $U 1584  ]
-[e :U 1583 ]
-{
-[; ;main.c: 292: faderValue=ADCC_GetSingleConversion(fx);
-"292
-[e = _faderValue -> ( _ADCC_GetSingleConversion (1 -> _fx `E14316 `i ]
-[; ;main.c: 293: PanelInChannels[fx]=255-(faderValue>>2);
-"293
-[e = *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux -> - -> 255 `i >> _faderValue -> 2 `i `uc ]
-[; ;main.c: 294: prevPanelInChannels[fx]= PanelInChannels[fx];
-"294
-[e = *U + &U _prevPanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _prevPanelInChannels `ui `ux *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux ]
-"295
-}
-"291
-[e ++ _fx -> 1 `i ]
-[e $ < _fx -> 4 `i 1583  ]
-[e :U 1584 ]
-"295
-}
-[; ;main.c: 295: }
-[; ;main.c: 302: PORTB |= 0x0F;
-"302
-[e =| _PORTB -> -> 15 `i `uc ]
-[; ;main.c: 303: PORTC |= 0xE0;
-"303
-[e =| _PORTC -> -> 224 `i `uc ]
-[; ;main.c: 304: ODCONB &= 0xF0;
-"304
-[e =& _ODCONB -> -> 240 `i `uc ]
-[; ;main.c: 305: ODCONC &= 0x1F;
-"305
-[e =& _ODCONC -> -> 31 `i `uc ]
-[; ;main.c: 307: while (1) {
-"307
+[e $ < _fx -> . `E14417 1 `i 1587  ]
+[e $U 1588  ]
 [e :U 1587 ]
 {
-[; ;main.c: 308: iLoopCounter++;
-"308
-[e ++ _iLoopCounter -> -> 1 `i `ui ]
-[; ;main.c: 309: if (iResetValue<=iLoopCounter) iLoopCounter=0;
-"309
-[e $ ! <= F14495 _iLoopCounter 1589  ]
-[e = _iLoopCounter -> -> 0 `i `ui ]
-[e :U 1589 ]
-[; ;main.c: 312: {
-"312
-{
-[; ;main.c: 314: for(int fx=0;fx<cMixFaderCount;fx++){
+[; ;main.c: 314: faderValue=ADCC_GetSingleConversion(fx);
 "314
-{
-[v _fx `i ~T0 @X0 1 a ]
-[e = _fx -> 0 `i ]
-[e $ < _fx -> . `E14417 1 `i 1590  ]
-[e $U 1591  ]
-[e :U 1590 ]
-{
-[; ;main.c: 315: faderValue=ADCC_GetSingleConversion(fx);
-"315
 [e = _faderValue -> ( _ADCC_GetSingleConversion (1 -> _fx `E14316 `i ]
-[; ;main.c: 316: PanelInChannels[fx]=255-(faderValue>>2);
-"316
+[; ;main.c: 315: PanelInChannels[fx]=255-(faderValue>>2);
+"315
 [e = *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux -> - -> 255 `i >> _faderValue -> 2 `i `uc ]
-[; ;main.c: 318: fader8bitValue=PanelInChannels[fx];
-"318
+[; ;main.c: 317: fader8bitValue=PanelInChannels[fx];
+"317
 [e = _fader8bitValue *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux ]
-[; ;main.c: 319: if( (PanelInChannels[fx]<(mvcChannels[fx]+4))
-[; ;main.c: 320: && (PanelInChannels[fx]>(mvcChannels[fx]-4)) ) {
+[; ;main.c: 318: if( (PanelInChannels[fx]<(mvcChannels[fx]+4))
+[; ;main.c: 319: && (PanelInChannels[fx]>(mvcChannels[fx]-4)) ) {
+"319
+[e $ ! && < -> *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux `i + -> *U + &U _mvcChannels * -> -> _fx `ui `ux -> -> # *U &U _mvcChannels `ui `ux `i -> 4 `i > -> *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux `i - -> *U + &U _mvcChannels * -> -> _fx `ui `ux -> -> # *U &U _mvcChannels `ui `ux `i -> 4 `i 1590  ]
+{
+[; ;main.c: 320: faderActiveFlag[fx]=1;
 "320
-[e $ ! && < -> *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux `i + -> *U + &U _mvcChannels * -> -> _fx `ui `ux -> -> # *U &U _mvcChannels `ui `ux `i -> 4 `i > -> *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux `i - -> *U + &U _mvcChannels * -> -> _fx `ui `ux -> -> # *U &U _mvcChannels `ui `ux `i -> 4 `i 1593  ]
-{
-[; ;main.c: 321: faderActiveFlag[fx]=1;
-"321
 [e = *U + &U _faderActiveFlag * -> -> _fx `ui `ux -> -> # *U &U _faderActiveFlag `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 322: LATB |= 0b00000010 ;
-"322
+[; ;main.c: 321: LATB |= 0b00000010 ;
+"321
 [e =| _LATB -> -> 2 `i `uc ]
+"322
+}
+[e :U 1590 ]
+[; ;main.c: 322: }
+[; ;main.c: 323: if(faderActiveFlag[fx]>0){
 "323
-}
-[e :U 1593 ]
-[; ;main.c: 323: }
-[; ;main.c: 324: if(faderActiveFlag[fx]>0){
+[e $ ! > -> *U + &U _faderActiveFlag * -> -> _fx `ui `ux -> -> # *U &U _faderActiveFlag `ui `ux `i -> 0 `i 1591  ]
+{
+[; ;main.c: 324: mvcChannels[fx]=PanelInChannels[fx];
 "324
-[e $ ! > -> *U + &U _faderActiveFlag * -> -> _fx `ui `ux -> -> # *U &U _faderActiveFlag `ui `ux `i -> 0 `i 1594  ]
-{
-[; ;main.c: 325: mvcChannels[fx]=PanelInChannels[fx];
-"325
 [e = *U + &U _mvcChannels * -> -> _fx `ui `ux -> -> # *U &U _mvcChannels `ui `ux *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux ]
-[; ;main.c: 326: writeDAC528(fx+4,fader8bitValue);
-"326
+[; ;main.c: 325: writeDAC528(fx+4,fader8bitValue);
+"325
 [e ( _writeDAC528 (2 , + _fx -> 4 `i _fader8bitValue ]
-"327
+"326
 }
-[e :U 1594 ]
-[; ;main.c: 327: }
-[; ;main.c: 328: prevPanelInChannels[fx]=PanelInChannels[fx];
-"328
-[e = *U + &U _prevPanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _prevPanelInChannels `ui `ux *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux ]
-[; ;main.c: 330: delay(10);
-"330
-[e ( _delay (1 -> 10 `i ]
-"331
-}
-"314
-[e ++ _fx -> 1 `i ]
-[e $ < _fx -> . `E14417 1 `i 1590  ]
 [e :U 1591 ]
-"331
-}
-[; ;main.c: 331: }
-[; ;main.c: 334: delay(10);
-"334
+[; ;main.c: 326: }
+[; ;main.c: 327: prevPanelInChannels[fx]=PanelInChannels[fx];
+"327
+[e = *U + &U _prevPanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _prevPanelInChannels `ui `ux *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux ]
+[; ;main.c: 328: delay(10);
+"328
 [e ( _delay (1 -> 10 `i ]
-[; ;main.c: 335: faderValue=ADCC_GetSingleConversion(POT0);
-"335
+"329
+}
+"313
+[e ++ _fx -> 1 `i ]
+[e $ < _fx -> . `E14417 1 `i 1587  ]
+[e :U 1588 ]
+"329
+}
+[; ;main.c: 329: }
+[; ;main.c: 332: delay(10);
+"332
+[e ( _delay (1 -> 10 `i ]
+[; ;main.c: 333: faderValue=ADCC_GetSingleConversion(POT0);
+"333
 [e = _faderValue -> ( _ADCC_GetSingleConversion (1 . `E14405 5 `i ]
-[; ;main.c: 336: faderValue=1023-faderValue;
+[; ;main.c: 334: faderValue=1023-faderValue;
+"334
+[e = _faderValue - -> 1023 `i _faderValue ]
+[; ;main.c: 336: POT0Value=faderValue/102.3;
 "336
-[e = _faderValue - -> 1023 `i _faderValue ]
-[; ;main.c: 338: POT0Value=faderValue/102.3;
-"338
 [e = _POT0Value -> / -> _faderValue `d .102.3 `uc ]
-[; ;main.c: 339: delay(10);
-"339
+[; ;main.c: 337: delay(10);
+"337
 [e ( _delay (1 -> 10 `i ]
-[; ;main.c: 340: faderValue=ADCC_GetSingleConversion(POT1);
-"340
+[; ;main.c: 338: faderValue=ADCC_GetSingleConversion(POT1);
+"338
 [e = _faderValue -> ( _ADCC_GetSingleConversion (1 . `E14405 7 `i ]
-[; ;main.c: 341: faderValue=1023-faderValue;
-"341
+[; ;main.c: 339: faderValue=1023-faderValue;
+"339
 [e = _faderValue - -> 1023 `i _faderValue ]
-[; ;main.c: 342: POT1Value=faderValue/102.3;
-"342
+[; ;main.c: 340: POT1Value=faderValue/102.3;
+"340
 [e = _POT1Value -> / -> _faderValue `d .102.3 `uc ]
-"343
+"341
 }
-[; ;main.c: 343: }
-[; ;main.c: 406: if (prevFader8bitValue!=fader8bitValue) {
-"406
-[e $ ! != -> _prevFader8bitValue `i -> _fader8bitValue `i 1595  ]
+[; ;main.c: 341: }
+[; ;main.c: 404: if (prevFader8bitValue!=fader8bitValue) {
+"404
+[e $ ! != -> _prevFader8bitValue `i -> _fader8bitValue `i 1592  ]
 {
-[; ;main.c: 407: iChangeCount++;
-"407
+[; ;main.c: 405: iChangeCount++;
+"405
 [e ++ _iChangeCount -> -> 1 `i `uc ]
-"409
+"407
+}
+[e :U 1592 ]
+[; ;main.c: 407: }
+[; ;main.c: 408: prevFader8bitValue=fader8bitValue;
+"408
+[e = _prevFader8bitValue _fader8bitValue ]
+[; ;main.c: 411: iCounter++;
+"411
+[e ++ _iCounter -> -> 1 `i `ui ]
+[; ;main.c: 412: if (fader8bitValue<252)
+"412
+[e $ ! < -> _fader8bitValue `i -> 252 `i 1593  ]
+[; ;main.c: 413: delay(1*(255-fader8bitValue));
+"413
+[e ( _delay (1 * -> 1 `i - -> 255 `i -> _fader8bitValue `i ]
+[e :U 1593 ]
+[; ;main.c: 419: mvcPatchNumber=(POT1Value*10)+POT0Value;
+"419
+[e = _mvcPatchNumber + * -> _POT1Value `i -> 10 `i -> _POT0Value `i ]
+[; ;main.c: 420: LED7SegDisplayValueByDigit(POT1Value,POT0Value);
+"420
+[e ( _LED7SegDisplayValueByDigit (2 , -> _POT1Value `ui -> _POT0Value `ui ]
+[; ;main.c: 425: if (PORTBbits.RB4 == 0){
+"425
+[e $ ! == -> . . _PORTBbits 0 4 `i -> 0 `i 1594  ]
+{
+[; ;main.c: 427: LoadDebounceCount++;
+"427
+[e ++ _LoadDebounceCount -> 1 `i ]
+[; ;main.c: 428: if(5<LoadDebounceCount) {
+"428
+[e $ ! < -> 5 `i _LoadDebounceCount 1595  ]
+{
+[; ;main.c: 429: LATB &= 0b10011110 ;
+"429
+[e =& _LATB -> -> 158 `i `uc ]
+[; ;main.c: 431: loadPatch(mvcPatchNumber);
+"431
+[e ( _loadPatch (1 _mvcPatchNumber ]
+"432
 }
 [e :U 1595 ]
-[; ;main.c: 409: }
-[; ;main.c: 410: prevFader8bitValue=fader8bitValue;
-"410
-[e = _prevFader8bitValue _fader8bitValue ]
-[; ;main.c: 413: iCounter++;
-"413
-[e ++ _iCounter -> -> 1 `i `ui ]
-[; ;main.c: 414: if (fader8bitValue<252)
-"414
-[e $ ! < -> _fader8bitValue `i -> 252 `i 1596  ]
-[; ;main.c: 415: delay(1*(255-fader8bitValue));
-"415
-[e ( _delay (1 * -> 1 `i - -> 255 `i -> _fader8bitValue `i ]
-[e :U 1596 ]
-[; ;main.c: 421: mvcPatchNumber=(POT1Value*10)+POT0Value;
-"421
-[e = _mvcPatchNumber + * -> _POT1Value `i -> 10 `i -> _POT0Value `i ]
-[; ;main.c: 422: LED7SegDisplayValueByDigit(POT1Value,POT0Value);
-"422
-[e ( _LED7SegDisplayValueByDigit (2 , -> _POT1Value `ui -> _POT0Value `ui ]
-[; ;main.c: 427: if (PORTBbits.RB4 == 0){
-"427
-[e $ ! == -> . . _PORTBbits 0 4 `i -> 0 `i 1597  ]
-{
-[; ;main.c: 429: LoadDebounceCount++;
-"429
-[e ++ _LoadDebounceCount -> 1 `i ]
-[; ;main.c: 430: if(5<LoadDebounceCount) {
-"430
-[e $ ! < -> 5 `i _LoadDebounceCount 1598  ]
-{
-[; ;main.c: 431: LATB &= 0b10011110 ;
-"431
-[e =& _LATB -> -> 158 `i `uc ]
-[; ;main.c: 433: loadPatch(mvcPatchNumber);
 "433
-[e ( _loadPatch (1 _mvcPatchNumber ]
-[; ;main.c: 435: LoadDebounceCount=1;
+}
+[; ;main.c: 432: }
+[; ;main.c: 433: }else{
+[e $U 1596  ]
+[e :U 1594 ]
+{
+[; ;main.c: 434: if(0<LoadDebounceCount){
+"434
+[e $ ! < -> 0 `i _LoadDebounceCount 1597  ]
+{
+[; ;main.c: 435: LoadDebounceCount=0;
 "435
-[e = _LoadDebounceCount -> 1 `i ]
-[; ;main.c: 436: _delay((unsigned long)((500)*(32000000/4000.0)));
+[e = _LoadDebounceCount -> 0 `i ]
+[; ;main.c: 436: LATB |= 0b00000001 ;
 "436
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[e =| _LATB -> -> 1 `i `uc ]
 "437
 }
-[e :U 1598 ]
+[e :U 1597 ]
 "438
 }
+[e :U 1596 ]
 [; ;main.c: 437: }
-[; ;main.c: 438: }else{
-[e $U 1599  ]
-[e :U 1597 ]
-{
-[; ;main.c: 439: if(0<LoadDebounceCount){
+[; ;main.c: 438: }
+[; ;main.c: 439: if (PORTBbits.RB5 == 0){
 "439
-[e $ ! < -> 0 `i _LoadDebounceCount 1600  ]
+[e $ ! == -> . . _PORTBbits 0 5 `i -> 0 `i 1598  ]
 {
-[; ;main.c: 440: LoadDebounceCount=0;
-"440
-[e = _LoadDebounceCount -> 0 `i ]
-[; ;main.c: 441: LATB |= 0b00000001 ;
+[; ;main.c: 441: SaveDebounceCount++;
 "441
-[e =| _LATB -> -> 1 `i `uc ]
+[e ++ _SaveDebounceCount -> 1 `i ]
+[; ;main.c: 442: if(5<SaveDebounceCount) {
 "442
-}
-[e :U 1600 ]
+[e $ ! < -> 5 `i _SaveDebounceCount 1599  ]
+{
+[; ;main.c: 443: LATB |= 0b00000010 ;
 "443
+[e =| _LATB -> -> 2 `i `uc ]
+[; ;main.c: 462: savePatch(mvcPatchNumber);
+"462
+[e ( _savePatch (1 _mvcPatchNumber ]
+[; ;main.c: 467: SaveDebounceCount=1;
+"467
+[e = _SaveDebounceCount -> 1 `i ]
+[; ;main.c: 468: _delay((unsigned long)((500)*(32000000/4000.0)));
+"468
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"469
 }
 [e :U 1599 ]
-[; ;main.c: 442: }
-[; ;main.c: 443: }
-[; ;main.c: 444: if (PORTBbits.RB5 == 0){
-"444
-[e $ ! == -> . . _PORTBbits 0 5 `i -> 0 `i 1601  ]
+"470
+}
+[; ;main.c: 469: }
+[; ;main.c: 470: }else{
+[e $U 1600  ]
+[e :U 1598 ]
 {
-[; ;main.c: 446: SaveDebounceCount++;
-"446
-[e ++ _SaveDebounceCount -> 1 `i ]
-[; ;main.c: 447: if(5<SaveDebounceCount) {
-"447
-[e $ ! < -> 5 `i _SaveDebounceCount 1602  ]
+[; ;main.c: 471: if(0<SaveDebounceCount){
+"471
+[e $ ! < -> 0 `i _SaveDebounceCount 1601  ]
 {
-[; ;main.c: 448: LATB &= 0b10011101 ;
-"448
-[e =& _LATB -> -> 157 `i `uc ]
-[; ;main.c: 467: savePatch(mvcPatchNumber);
-"467
-[e ( _savePatch (1 _mvcPatchNumber ]
-[; ;main.c: 472: SaveDebounceCount=1;
+[; ;main.c: 472: SaveDebounceCount=0;
 "472
-[e = _SaveDebounceCount -> 1 `i ]
-[; ;main.c: 473: _delay((unsigned long)((500)*(32000000/4000.0)));
+[e = _SaveDebounceCount -> 0 `i ]
+[; ;main.c: 473: LATB &= 0b10011101 ;
 "473
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[e =& _LATB -> -> 157 `i `uc ]
 "474
 }
-[e :U 1602 ]
+[e :U 1601 ]
 "475
 }
-[; ;main.c: 474: }
-[; ;main.c: 475: }else{
-[e $U 1603  ]
-[e :U 1601 ]
-{
-[; ;main.c: 476: if(0<SaveDebounceCount){
+[e :U 1600 ]
 "476
-[e $ ! < -> 0 `i _SaveDebounceCount 1604  ]
-{
-[; ;main.c: 477: SaveDebounceCount=0;
+}
+[e :U 1583 ]
+"306
+[e $U 1584  ]
+[e :U 1585 ]
+[; ;main.c: 474: }
+[; ;main.c: 475: }
+[; ;main.c: 476: }
+[; ;main.c: 477: }
 "477
-[e = _SaveDebounceCount -> 0 `i ]
-[; ;main.c: 478: LATB |= 0b00000010;
-"478
-[e =| _LATB -> -> 2 `i `uc ]
-"479
-}
-[e :U 1604 ]
-"480
-}
-[e :U 1603 ]
-"481
-}
-[e :U 1586 ]
-"307
-[e $U 1587  ]
-[e :U 1588 ]
-[; ;main.c: 479: }
-[; ;main.c: 480: }
-[; ;main.c: 481: }
-[; ;main.c: 482: }
-"482
 [e :UE 1582 ]
 }
-"483
+"478
 [v _UpdateLEDsFromValue `(v ~T0 @X0 1 ef2`uc`uc ]
-"484
+"479
 {
-[; ;main.c: 483: void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue)
-[; ;main.c: 484: {
+[; ;main.c: 478: void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue)
+[; ;main.c: 479: {
 [e :U _UpdateLEDsFromValue ]
-"483
+"478
 [v _inFaderNum `uc ~T0 @X0 1 r1 ]
 [v _inValue `uc ~T0 @X0 1 r2 ]
-"484
+"479
 [f ]
-"485
+"480
 [v _wkOnFlag `uc ~T0 @X0 1 a ]
-[; ;main.c: 485: bool wkOnFlag = 0;
+[; ;main.c: 480: bool wkOnFlag = 0;
 [e = _wkOnFlag -> -> 0 `i `uc ]
-"486
+"481
 [v _wkBrightFlag `uc ~T0 @X0 1 a ]
-[; ;main.c: 486: bool wkBrightFlag = 0;
+[; ;main.c: 481: bool wkBrightFlag = 0;
 [e = _wkBrightFlag -> -> 0 `i `uc ]
-[; ;main.c: 489: if (inValue > 80) wkOnFlag=1;
-"489
-[e $ ! > -> _inValue `i -> 80 `i 1606  ]
+[; ;main.c: 484: if (inValue > 80) wkOnFlag=1;
+"484
+[e $ ! > -> _inValue `i -> 80 `i 1603  ]
 [e = _wkOnFlag -> -> 1 `i `uc ]
-[e :U 1606 ]
-[; ;main.c: 490: if (inValue > 170) wkBrightFlag=1;
-"490
-[e $ ! > -> _inValue `i -> 170 `i 1607  ]
+[e :U 1603 ]
+[; ;main.c: 485: if (inValue > 170) wkBrightFlag=1;
+"485
+[e $ ! > -> _inValue `i -> 170 `i 1604  ]
 [e = _wkBrightFlag -> -> 1 `i `uc ]
+[e :U 1604 ]
+[; ;main.c: 487: switch(inFaderNum)
+"487
+[e $U 1606  ]
+[; ;main.c: 488: {
+"488
+{
+[; ;main.c: 489: case 0 : {
+"489
 [e :U 1607 ]
-[; ;main.c: 492: switch(inFaderNum)
-"492
-[e $U 1609  ]
-[; ;main.c: 493: {
-"493
 {
-[; ;main.c: 494: case 0 : {
-"494
-[e :U 1610 ]
-{
-[; ;main.c: 495: if(wkOnFlag) { iLEDs0_LSB |= 0b00000010;
-"495
-[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1611  ]
+[; ;main.c: 490: if(wkOnFlag) { iLEDs0_LSB |= 0b00000010;
+"490
+[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1608  ]
 {
 [e =| _iLEDs0_LSB -> -> 2 `i `uc ]
-[; ;main.c: 496: if(wkBrightFlag) {iLEDs0_LSB |= 0b00000001;}else{iLEDs0_LSB &= 0b11111110;};
-"496
-[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1612  ]
+[; ;main.c: 491: if(wkBrightFlag) {iLEDs0_LSB |= 0b00000001;}else{iLEDs0_LSB &= 0b11111110;};
+"491
+[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1609  ]
 {
 [e =| _iLEDs0_LSB -> -> 1 `i `uc ]
 }
-[e $U 1613  ]
-[e :U 1612 ]
+[e $U 1610  ]
+[e :U 1609 ]
 {
 [e =& _iLEDs0_LSB -> -> 254 `i `uc ]
 }
-[e :U 1613 ]
-"497
+[e :U 1610 ]
+"492
 }
-[; ;main.c: 497: }else{ iLEDs0_LSB &= 0b11111100;}
-[e $U 1614  ]
-[e :U 1611 ]
+[; ;main.c: 492: }else{ iLEDs0_LSB &= 0b11111100;}
+[e $U 1611  ]
+[e :U 1608 ]
 {
 [e =& _iLEDs0_LSB -> -> 252 `i `uc ]
 }
-[e :U 1614 ]
-[; ;main.c: 498: break;
-"498
-[e $U 1608  ]
-"499
+[e :U 1611 ]
+[; ;main.c: 493: break;
+"493
+[e $U 1605  ]
+"494
 }
-[; ;main.c: 499: }
-[; ;main.c: 500: case 1 : {
-"500
-[e :U 1615 ]
+[; ;main.c: 494: }
+[; ;main.c: 495: case 1 : {
+"495
+[e :U 1612 ]
 {
-[; ;main.c: 501: if(wkOnFlag) { iLEDs0_LSB |= 0b00001000;
-"501
-[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1616  ]
+[; ;main.c: 496: if(wkOnFlag) { iLEDs0_LSB |= 0b00001000;
+"496
+[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1613  ]
 {
 [e =| _iLEDs0_LSB -> -> 8 `i `uc ]
-[; ;main.c: 502: if(wkBrightFlag) {iLEDs0_LSB |= 0b00000100;}else{iLEDs0_LSB &= 0b11111011;};
-"502
-[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1617  ]
+[; ;main.c: 497: if(wkBrightFlag) {iLEDs0_LSB |= 0b00000100;}else{iLEDs0_LSB &= 0b11111011;};
+"497
+[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1614  ]
 {
 [e =| _iLEDs0_LSB -> -> 4 `i `uc ]
 }
-[e $U 1618  ]
-[e :U 1617 ]
+[e $U 1615  ]
+[e :U 1614 ]
 {
 [e =& _iLEDs0_LSB -> -> 251 `i `uc ]
 }
-[e :U 1618 ]
-"503
+[e :U 1615 ]
+"498
 }
-[; ;main.c: 503: }else{ iLEDs0_LSB &= 0b11110011;}
-[e $U 1619  ]
-[e :U 1616 ]
+[; ;main.c: 498: }else{ iLEDs0_LSB &= 0b11110011;}
+[e $U 1616  ]
+[e :U 1613 ]
 {
 [e =& _iLEDs0_LSB -> -> 243 `i `uc ]
 }
-[e :U 1619 ]
-[; ;main.c: 504: break;
-"504
-[e $U 1608  ]
-"505
+[e :U 1616 ]
+[; ;main.c: 499: break;
+"499
+[e $U 1605  ]
+"500
 }
-[; ;main.c: 505: }
-[; ;main.c: 506: case 2 : {
-"506
-[e :U 1620 ]
+[; ;main.c: 500: }
+[; ;main.c: 501: case 2 : {
+"501
+[e :U 1617 ]
 {
-[; ;main.c: 507: if(wkOnFlag) { iLEDs0_LSB |= 0b00100000;
-"507
-[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1621  ]
+[; ;main.c: 502: if(wkOnFlag) { iLEDs0_LSB |= 0b00100000;
+"502
+[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1618  ]
 {
 [e =| _iLEDs0_LSB -> -> 32 `i `uc ]
-[; ;main.c: 508: if(wkBrightFlag) {iLEDs0_LSB |= 0b00010000;}else{iLEDs0_LSB &= 0b11101111;};
-"508
-[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1622  ]
+[; ;main.c: 503: if(wkBrightFlag) {iLEDs0_LSB |= 0b00010000;}else{iLEDs0_LSB &= 0b11101111;};
+"503
+[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1619  ]
 {
 [e =| _iLEDs0_LSB -> -> 16 `i `uc ]
 }
-[e $U 1623  ]
-[e :U 1622 ]
+[e $U 1620  ]
+[e :U 1619 ]
 {
 [e =& _iLEDs0_LSB -> -> 239 `i `uc ]
 }
-[e :U 1623 ]
-"509
+[e :U 1620 ]
+"504
 }
-[; ;main.c: 509: }else{ iLEDs0_LSB &= 0b11001111;}
-[e $U 1624  ]
-[e :U 1621 ]
+[; ;main.c: 504: }else{ iLEDs0_LSB &= 0b11001111;}
+[e $U 1621  ]
+[e :U 1618 ]
 {
 [e =& _iLEDs0_LSB -> -> 207 `i `uc ]
 }
-[e :U 1624 ]
-[; ;main.c: 510: break;
-"510
-[e $U 1608  ]
-"511
+[e :U 1621 ]
+[; ;main.c: 505: break;
+"505
+[e $U 1605  ]
+"506
 }
-[; ;main.c: 511: }
-[; ;main.c: 512: case 3 : {
-"512
-[e :U 1625 ]
+[; ;main.c: 506: }
+[; ;main.c: 507: case 3 : {
+"507
+[e :U 1622 ]
 {
-[; ;main.c: 513: if(wkOnFlag) { iLEDs0_LSB |= 0b10000000;
-"513
-[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1626  ]
+[; ;main.c: 508: if(wkOnFlag) { iLEDs0_LSB |= 0b10000000;
+"508
+[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1623  ]
 {
 [e =| _iLEDs0_LSB -> -> 128 `i `uc ]
-[; ;main.c: 514: if(wkBrightFlag) {iLEDs0_LSB |= 0b01000000;}else{iLEDs0_LSB &= 0b10111111;};
-"514
-[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1627  ]
+[; ;main.c: 509: if(wkBrightFlag) {iLEDs0_LSB |= 0b01000000;}else{iLEDs0_LSB &= 0b10111111;};
+"509
+[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1624  ]
 {
 [e =| _iLEDs0_LSB -> -> 64 `i `uc ]
 }
-[e $U 1628  ]
-[e :U 1627 ]
+[e $U 1625  ]
+[e :U 1624 ]
 {
 [e =& _iLEDs0_LSB -> -> 191 `i `uc ]
 }
-[e :U 1628 ]
-"515
+[e :U 1625 ]
+"510
 }
-[; ;main.c: 515: }else{ iLEDs0_LSB &= 0b00111111;}
-[e $U 1629  ]
-[e :U 1626 ]
+[; ;main.c: 510: }else{ iLEDs0_LSB &= 0b00111111;}
+[e $U 1626  ]
+[e :U 1623 ]
 {
 [e =& _iLEDs0_LSB -> -> 63 `i `uc ]
 }
-[e :U 1629 ]
-[; ;main.c: 516: break;
-"516
-[e $U 1608  ]
-"517
+[e :U 1626 ]
+[; ;main.c: 511: break;
+"511
+[e $U 1605  ]
+"512
 }
-[; ;main.c: 517: }
-[; ;main.c: 518: case 4 : {
-"518
-[e :U 1630 ]
+[; ;main.c: 512: }
+[; ;main.c: 513: case 4 : {
+"513
+[e :U 1627 ]
 {
-[; ;main.c: 519: if(wkOnFlag) { iLEDs0_MSB |= 0b00000010;
-"519
-[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1631  ]
+[; ;main.c: 514: if(wkOnFlag) { iLEDs0_MSB |= 0b00000010;
+"514
+[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1628  ]
 {
 [e =| _iLEDs0_MSB -> -> 2 `i `uc ]
-[; ;main.c: 520: if(wkBrightFlag) {iLEDs0_MSB |= 0b00000001;}else{iLEDs0_MSB &= 0b11111110;};
-"520
-[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1632  ]
+[; ;main.c: 515: if(wkBrightFlag) {iLEDs0_MSB |= 0b00000001;}else{iLEDs0_MSB &= 0b11111110;};
+"515
+[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1629  ]
 {
 [e =| _iLEDs0_MSB -> -> 1 `i `uc ]
 }
-[e $U 1633  ]
-[e :U 1632 ]
+[e $U 1630  ]
+[e :U 1629 ]
 {
 [e =& _iLEDs0_MSB -> -> 254 `i `uc ]
 }
-[e :U 1633 ]
-"521
+[e :U 1630 ]
+"516
 }
-[; ;main.c: 521: }else{ iLEDs0_MSB &= 0b11111100;}
-[e $U 1634  ]
-[e :U 1631 ]
+[; ;main.c: 516: }else{ iLEDs0_MSB &= 0b11111100;}
+[e $U 1631  ]
+[e :U 1628 ]
 {
 [e =& _iLEDs0_MSB -> -> 252 `i `uc ]
 }
-[e :U 1634 ]
-[; ;main.c: 522: break;
-"522
-[e $U 1608  ]
-"523
+[e :U 1631 ]
+[; ;main.c: 517: break;
+"517
+[e $U 1605  ]
+"518
 }
-[; ;main.c: 523: }
-[; ;main.c: 524: case 5 : {
-"524
-[e :U 1635 ]
+[; ;main.c: 518: }
+[; ;main.c: 519: case 5 : {
+"519
+[e :U 1632 ]
 {
-[; ;main.c: 525: if(wkOnFlag) { iLEDs0_MSB |= 0b00001000;
-"525
-[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1636  ]
+[; ;main.c: 520: if(wkOnFlag) { iLEDs0_MSB |= 0b00001000;
+"520
+[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1633  ]
 {
 [e =| _iLEDs0_MSB -> -> 8 `i `uc ]
-[; ;main.c: 526: if(wkBrightFlag) {iLEDs0_MSB |= 0b00000100;}else{iLEDs0_MSB &= 0b11111011;};
-"526
-[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1637  ]
+[; ;main.c: 521: if(wkBrightFlag) {iLEDs0_MSB |= 0b00000100;}else{iLEDs0_MSB &= 0b11111011;};
+"521
+[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1634  ]
 {
 [e =| _iLEDs0_MSB -> -> 4 `i `uc ]
 }
-[e $U 1638  ]
-[e :U 1637 ]
+[e $U 1635  ]
+[e :U 1634 ]
 {
 [e =& _iLEDs0_MSB -> -> 251 `i `uc ]
 }
-[e :U 1638 ]
-"527
+[e :U 1635 ]
+"522
 }
-[; ;main.c: 527: }else{ iLEDs0_MSB &= 0b11110011;}
-[e $U 1639  ]
-[e :U 1636 ]
+[; ;main.c: 522: }else{ iLEDs0_MSB &= 0b11110011;}
+[e $U 1636  ]
+[e :U 1633 ]
 {
 [e =& _iLEDs0_MSB -> -> 243 `i `uc ]
 }
-[e :U 1639 ]
-[; ;main.c: 528: break;
-"528
-[e $U 1608  ]
-"529
+[e :U 1636 ]
+[; ;main.c: 523: break;
+"523
+[e $U 1605  ]
+"524
 }
-[; ;main.c: 529: }
-[; ;main.c: 530: case 6 : {
-"530
-[e :U 1640 ]
+[; ;main.c: 524: }
+[; ;main.c: 525: case 6 : {
+"525
+[e :U 1637 ]
 {
-[; ;main.c: 531: if(wkOnFlag) { iLEDs0_MSB |= 0b00100000;
-"531
-[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1641  ]
+[; ;main.c: 526: if(wkOnFlag) { iLEDs0_MSB |= 0b00100000;
+"526
+[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1638  ]
 {
 [e =| _iLEDs0_MSB -> -> 32 `i `uc ]
-[; ;main.c: 532: if(wkBrightFlag) {iLEDs0_MSB |= 0b00010000;}else{iLEDs0_MSB &= 0b11101111;};
-"532
-[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1642  ]
+[; ;main.c: 527: if(wkBrightFlag) {iLEDs0_MSB |= 0b00010000;}else{iLEDs0_MSB &= 0b11101111;};
+"527
+[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1639  ]
 {
 [e =| _iLEDs0_MSB -> -> 16 `i `uc ]
 }
-[e $U 1643  ]
-[e :U 1642 ]
+[e $U 1640  ]
+[e :U 1639 ]
 {
 [e =& _iLEDs0_MSB -> -> 239 `i `uc ]
 }
-[e :U 1643 ]
-"533
+[e :U 1640 ]
+"528
 }
-[; ;main.c: 533: }else{ iLEDs0_MSB &= 0b11001111;}
-[e $U 1644  ]
-[e :U 1641 ]
+[; ;main.c: 528: }else{ iLEDs0_MSB &= 0b11001111;}
+[e $U 1641  ]
+[e :U 1638 ]
 {
 [e =& _iLEDs0_MSB -> -> 207 `i `uc ]
 }
-[e :U 1644 ]
-[; ;main.c: 534: break;
-"534
-[e $U 1608  ]
-"535
+[e :U 1641 ]
+[; ;main.c: 529: break;
+"529
+[e $U 1605  ]
+"530
 }
-[; ;main.c: 535: }
-[; ;main.c: 536: case 7 : {
-"536
-[e :U 1645 ]
+[; ;main.c: 530: }
+[; ;main.c: 531: case 7 : {
+"531
+[e :U 1642 ]
 {
-[; ;main.c: 537: if(wkOnFlag) { iLEDs0_MSB |= 0b10000000;
-"537
-[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1646  ]
+[; ;main.c: 532: if(wkOnFlag) { iLEDs0_MSB |= 0b10000000;
+"532
+[e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1643  ]
 {
 [e =| _iLEDs0_MSB -> -> 128 `i `uc ]
-[; ;main.c: 538: if(wkBrightFlag) {iLEDs0_MSB |= 0b01000000;}else{iLEDs0_MSB &= 0b10111111;};
-"538
-[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1647  ]
+[; ;main.c: 533: if(wkBrightFlag) {iLEDs0_MSB |= 0b01000000;}else{iLEDs0_MSB &= 0b10111111;};
+"533
+[e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1644  ]
 {
 [e =| _iLEDs0_MSB -> -> 64 `i `uc ]
 }
-[e $U 1648  ]
-[e :U 1647 ]
+[e $U 1645  ]
+[e :U 1644 ]
 {
 [e =& _iLEDs0_MSB -> -> 191 `i `uc ]
 }
-[e :U 1648 ]
-"539
+[e :U 1645 ]
+"534
 }
-[; ;main.c: 539: }else{ iLEDs0_MSB &= 0b00111111;}
-[e $U 1649  ]
-[e :U 1646 ]
+[; ;main.c: 534: }else{ iLEDs0_MSB &= 0b00111111;}
+[e $U 1646  ]
+[e :U 1643 ]
 {
 [e =& _iLEDs0_MSB -> -> 63 `i `uc ]
 }
-[e :U 1649 ]
-"540
+[e :U 1646 ]
+"535
 }
-"541
+"536
 }
-[; ;main.c: 540: }
-[; ;main.c: 541: }
-[e $U 1608  ]
-"492
-[e :U 1609 ]
-[e [\ _inFaderNum , $ -> -> 0 `i `uc 1610
- , $ -> -> 1 `i `uc 1615
- , $ -> -> 2 `i `uc 1620
- , $ -> -> 3 `i `uc 1625
- , $ -> -> 4 `i `uc 1630
- , $ -> -> 5 `i `uc 1635
- , $ -> -> 6 `i `uc 1640
- , $ -> -> 7 `i `uc 1645
- 1608 ]
-"541
-[e :U 1608 ]
-[; ;main.c: 542: }
-"542
-[e :UE 1605 ]
+[; ;main.c: 535: }
+[; ;main.c: 536: }
+[e $U 1605  ]
+"487
+[e :U 1606 ]
+[e [\ _inFaderNum , $ -> -> 0 `i `uc 1607
+ , $ -> -> 1 `i `uc 1612
+ , $ -> -> 2 `i `uc 1617
+ , $ -> -> 3 `i `uc 1622
+ , $ -> -> 4 `i `uc 1627
+ , $ -> -> 5 `i `uc 1632
+ , $ -> -> 6 `i `uc 1637
+ , $ -> -> 7 `i `uc 1642
+ 1605 ]
+"536
+[e :U 1605 ]
+[; ;main.c: 537: }
+"537
+[e :UE 1602 ]
 }
-"543
+"538
 [v _MYI2C_ReadFaders `(E14267 ~T0 @X0 1 ef1`uc ]
-"544
+"539
 {
-[; ;main.c: 543: I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress)
-[; ;main.c: 544: {
+[; ;main.c: 538: I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress)
+[; ;main.c: 539: {
 [e :U _MYI2C_ReadFaders ]
-"543
+"538
 [v _slaveDeviceAddress `uc ~T0 @X0 1 r1 ]
-"544
+"539
 [f ]
-"547
+"542
 [v _pflag `i ~T0 @X0 1 a ]
-"548
+"543
 [v _dataAddress `i ~T0 @X0 1 a ]
-[; ;main.c: 547: int pflag;
-[; ;main.c: 548: int dataAddress=0;
+[; ;main.c: 542: int pflag;
+[; ;main.c: 543: int dataAddress=0;
 [e = _dataAddress -> 0 `i ]
-"549
+"544
 [v _pointerByte `uc ~T0 @X0 1 a ]
-[; ;main.c: 549: uint8_t pointerByte=cPointerByteReadFaders;
+[; ;main.c: 544: uint8_t pointerByte=cPointerByteReadFaders;
 [e = _pointerByte _cPointerByteReadFaders ]
-"550
+"545
 [v _status `E14267 ~T0 @X0 1 a ]
-"551
+"546
 [v _readTRB `S1563 ~T0 @X0 -> 2 `i a ]
-"552
+"547
 [v _writeBuffer `uc ~T0 @X0 -> 3 `i a ]
-"553
+"548
 [v _timeOut `ui ~T0 @X0 1 a ]
-[; ;main.c: 550: I2C1_MESSAGE_STATUS status;
-[; ;main.c: 551: I2C1_TRANSACTION_REQUEST_BLOCK readTRB[2];
-[; ;main.c: 552: uint8_t writeBuffer[3];
-[; ;main.c: 553: uint16_t timeOut;
-[; ;main.c: 557: status = I2C1_MESSAGE_PENDING;
-"557
+[; ;main.c: 545: I2C1_MESSAGE_STATUS status;
+[; ;main.c: 546: I2C1_TRANSACTION_REQUEST_BLOCK readTRB[2];
+[; ;main.c: 547: uint8_t writeBuffer[3];
+[; ;main.c: 548: uint16_t timeOut;
+[; ;main.c: 552: status = I2C1_MESSAGE_PENDING;
+"552
 [e = _status . `E14267 2 ]
-[; ;main.c: 565: timeOut = 0;
-"565
+[; ;main.c: 560: timeOut = 0;
+"560
 [e = _timeOut -> -> 0 `i `ui ]
-[; ;main.c: 567: while(status != I2C1_MESSAGE_FAIL)
-"567
-[e $U 1651  ]
-[e :U 1652 ]
-[; ;main.c: 568: {
-"568
+[; ;main.c: 562: while(status != I2C1_MESSAGE_FAIL)
+"562
+[e $U 1648  ]
+[e :U 1649 ]
+[; ;main.c: 563: {
+"563
 {
-[; ;main.c: 572: I2C1_MasterWriteTRBBuild( &readTRB[0],
-[; ;main.c: 573: &pointerByte,
-[; ;main.c: 574: 1,
+[; ;main.c: 567: I2C1_MasterWriteTRBBuild( &readTRB[0],
+[; ;main.c: 568: &pointerByte,
+[; ;main.c: 569: 1,
+[; ;main.c: 570: slaveDeviceAddress);
+"570
+[e ( _I2C1_MasterWriteTRBBuild (4 , , , &U *U + &U _readTRB * -> -> -> 0 `i `ui `ux -> -> # *U &U _readTRB `ui `ux &U _pointerByte -> -> 1 `i `uc -> _slaveDeviceAddress `ui ]
+[; ;main.c: 572: I2C1_MasterReadTRBBuild( &readTRB[1],
+[; ;main.c: 573: iI2CFaderValue,
+[; ;main.c: 574: 8,
 [; ;main.c: 575: slaveDeviceAddress);
 "575
-[e ( _I2C1_MasterWriteTRBBuild (4 , , , &U *U + &U _readTRB * -> -> -> 0 `i `ui `ux -> -> # *U &U _readTRB `ui `ux &U _pointerByte -> -> 1 `i `uc -> _slaveDeviceAddress `ui ]
-[; ;main.c: 577: I2C1_MasterReadTRBBuild( &readTRB[1],
-[; ;main.c: 578: iI2CFaderValue,
-[; ;main.c: 579: 8,
-[; ;main.c: 580: slaveDeviceAddress);
-"580
 [e ( _I2C1_MasterReadTRBBuild (4 , , , &U *U + &U _readTRB * -> -> -> 1 `i `ui `ux -> -> # *U &U _readTRB `ui `ux -> &U _iI2CFaderValue `*uc -> -> 8 `i `uc -> _slaveDeviceAddress `ui ]
-[; ;main.c: 583: I2C1_MasterTRBInsert(2, readTRB, &status);
-"583
+[; ;main.c: 578: I2C1_MasterTRBInsert(2, readTRB, &status);
+"578
 [e ( _I2C1_MasterTRBInsert (3 , , -> -> 2 `i `uc &U _readTRB &U _status ]
-[; ;main.c: 586: while(status == I2C1_MESSAGE_PENDING);
-"586
-[e $U 1654  ]
-[e :U 1655 ]
-[e :U 1654 ]
-[e $ == -> _status `i -> . `E14267 2 `i 1655  ]
-[e :U 1656 ]
-[; ;main.c: 588: if (status == I2C1_MESSAGE_COMPLETE)
-"588
-[e $ ! == -> _status `i -> . `E14267 0 `i 1657  ]
-[; ;main.c: 589: break;
-"589
-[e $U 1653  ]
-[e :U 1657 ]
-[; ;main.c: 598: if (timeOut == 100)
-"598
-[e $ ! == _timeOut -> -> 100 `i `ui 1658  ]
-[; ;main.c: 599: break;
-"599
-[e $U 1653  ]
-[e $U 1659  ]
-"600
-[e :U 1658 ]
-[; ;main.c: 600: else
-[; ;main.c: 601: timeOut++;
-"601
-[e ++ _timeOut -> -> 1 `i `ui ]
-[e :U 1659 ]
-"603
-}
+[; ;main.c: 581: while(status == I2C1_MESSAGE_PENDING);
+"581
+[e $U 1651  ]
+[e :U 1652 ]
 [e :U 1651 ]
-"567
-[e $ != -> _status `i -> . `E14267 1 `i 1652  ]
+[e $ == -> _status `i -> . `E14267 2 `i 1652  ]
 [e :U 1653 ]
-[; ;main.c: 603: }
-[; ;main.c: 605: if (I2C1_MESSAGE_FAIL==status) {
-"605
-[e $ ! == -> . `E14267 1 `i -> _status `i 1660  ]
-{
-"607
+[; ;main.c: 583: if (status == I2C1_MESSAGE_COMPLETE)
+"583
+[e $ ! == -> _status `i -> . `E14267 0 `i 1654  ]
+[; ;main.c: 584: break;
+"584
+[e $U 1650  ]
+[e :U 1654 ]
+[; ;main.c: 593: if (timeOut == 100)
+"593
+[e $ ! == _timeOut -> -> 100 `i `ui 1655  ]
+[; ;main.c: 594: break;
+"594
+[e $U 1650  ]
+[e $U 1656  ]
+"595
+[e :U 1655 ]
+[; ;main.c: 595: else
+[; ;main.c: 596: timeOut++;
+"596
+[e ++ _timeOut -> -> 1 `i `ui ]
+[e :U 1656 ]
+"598
 }
-[e :U 1660 ]
-[; ;main.c: 607: }
-[; ;main.c: 609: return status;
-"609
+[e :U 1648 ]
+"562
+[e $ != -> _status `i -> . `E14267 1 `i 1649  ]
+[e :U 1650 ]
+[; ;main.c: 598: }
+[; ;main.c: 600: if (I2C1_MESSAGE_FAIL==status) {
+"600
+[e $ ! == -> . `E14267 1 `i -> _status `i 1657  ]
+{
+"602
+}
+[e :U 1657 ]
+[; ;main.c: 602: }
+[; ;main.c: 604: return status;
+"604
 [e ) _status ]
-[e $UE 1650  ]
-[; ;main.c: 610: }
-"610
-[e :UE 1650 ]
+[e $UE 1647  ]
+[; ;main.c: 605: }
+"605
+[e :UE 1647 ]
 }
-"677
+"672
 [v _MYI2C_WriteFaders `(v ~T0 @X0 1 ef1`uc ]
-"678
+"673
 {
-[; ;main.c: 677: void MYI2C_WriteFaders(uint8_t slaveDeviceAddress)
-[; ;main.c: 678: {
+[; ;main.c: 672: void MYI2C_WriteFaders(uint8_t slaveDeviceAddress)
+[; ;main.c: 673: {
 [e :U _MYI2C_WriteFaders ]
-"677
+"672
 [v _slaveDeviceAddress `uc ~T0 @X0 1 r1 ]
-"678
+"673
 [f ]
-"684
+"679
 [v _pData `*uc ~T0 @X0 1 a ]
-"685
+"680
 [v _nCount `ui ~T0 @X0 1 a ]
-"687
+"682
 [v _writeBuffer `uc ~T0 @X0 -> 9 `i a ]
-"688
+"683
 [v _pD `*uc ~T0 @X0 1 a ]
-"689
+"684
 [v _counter `ui ~T0 @X0 1 a ]
 [v _timeOut `ui ~T0 @X0 1 a ]
-"690
+"685
 [v _pointerByte `uc ~T0 @X0 1 a ]
-[; ;main.c: 684: uint8_t *pData;
-[; ;main.c: 685: uint16_t nCount;
-[; ;main.c: 687: uint8_t writeBuffer[9];
-[; ;main.c: 688: uint8_t *pD;
-[; ;main.c: 689: uint16_t counter, timeOut;
-[; ;main.c: 690: uint8_t pointerByte = cPointerByteWriteFaders;
+[; ;main.c: 679: uint8_t *pData;
+[; ;main.c: 680: uint16_t nCount;
+[; ;main.c: 682: uint8_t writeBuffer[9];
+[; ;main.c: 683: uint8_t *pD;
+[; ;main.c: 684: uint16_t counter, timeOut;
+[; ;main.c: 685: uint8_t pointerByte = cPointerByteWriteFaders;
 [e = _pointerByte _cPointerByteWriteFaders ]
-"692
+"687
 [v _status `E14267 ~T0 @X0 1 a ]
-[; ;main.c: 692: I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
+[; ;main.c: 687: I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
 [e = _status . `E14267 2 ]
-[; ;main.c: 696: nCount = 1;
-"696
+[; ;main.c: 691: nCount = 1;
+"691
 [e = _nCount -> -> 1 `i `ui ]
-[; ;main.c: 698: for (counter = 0; counter < nCount; counter++)
-"698
+[; ;main.c: 693: for (counter = 0; counter < nCount; counter++)
+"693
 {
 [e = _counter -> -> 0 `i `ui ]
-[e $U 1665  ]
-"699
-[e :U 1662 ]
-[; ;main.c: 699: {
+[e $U 1662  ]
+"694
+[e :U 1659 ]
+[; ;main.c: 694: {
 {
-[; ;main.c: 702: writeBuffer[0] = pointerByte;
-"702
+[; ;main.c: 697: writeBuffer[0] = pointerByte;
+"697
 [e = *U + &U _writeBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _pointerByte ]
-[; ;main.c: 704: for(int x=1;x<cADSRdataBytes;x++){
-"704
+[; ;main.c: 699: for(int x=1;x<cADSRdataBytes;x++){
+"699
 {
 [v _x `i ~T0 @X0 1 a ]
 [e = _x -> 1 `i ]
-[e $ < _x -> . `E14417 2 `i 1666  ]
-[e $U 1667  ]
-[e :U 1666 ]
+[e $ < _x -> . `E14417 2 `i 1663  ]
+[e $U 1664  ]
+[e :U 1663 ]
 {
-[; ;main.c: 705: writeBuffer[x+1] = iI2CFaderValue[x];
-"705
+[; ;main.c: 700: writeBuffer[x+1] = iI2CFaderValue[x];
+"700
 [e = *U + &U _writeBuffer * -> -> + _x -> 1 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux *U + &U _iI2CFaderValue * -> -> _x `ui `ux -> -> # *U &U _iI2CFaderValue `ui `ux ]
-"706
+"701
 }
-"704
+"699
 [e ++ _x -> 1 `i ]
-[e $ < _x -> . `E14417 2 `i 1666  ]
-[e :U 1667 ]
-"706
+[e $ < _x -> . `E14417 2 `i 1663  ]
+[e :U 1664 ]
+"701
 }
-[; ;main.c: 706: }
-[; ;main.c: 711: timeOut = 0;
-"711
+[; ;main.c: 701: }
+[; ;main.c: 706: timeOut = 0;
+"706
 [e = _timeOut -> -> 0 `i `ui ]
-[; ;main.c: 712: while(status != I2C1_MESSAGE_FAIL)
-"712
+[; ;main.c: 707: while(status != I2C1_MESSAGE_FAIL)
+"707
+[e $U 1666  ]
+[e :U 1667 ]
+[; ;main.c: 708: {
+"708
+{
+[; ;main.c: 710: I2C1_MasterWrite( writeBuffer,
+[; ;main.c: 711: cADSRdataBytes+1,
+[; ;main.c: 712: slaveDeviceAddress,
+[; ;main.c: 713: &status);
+"713
+[e ( _I2C1_MasterWrite (4 , , , &U _writeBuffer -> + -> . `E14417 2 `i -> 1 `i `uc -> _slaveDeviceAddress `ui &U _status ]
+[; ;main.c: 716: while(status == I2C1_MESSAGE_PENDING);
+"716
 [e $U 1669  ]
 [e :U 1670 ]
-[; ;main.c: 713: {
-"713
-{
-[; ;main.c: 715: I2C1_MasterWrite( writeBuffer,
-[; ;main.c: 716: cADSRdataBytes+1,
-[; ;main.c: 717: slaveDeviceAddress,
-[; ;main.c: 718: &status);
+[e :U 1669 ]
+[e $ == -> _status `i -> . `E14267 2 `i 1670  ]
+[e :U 1671 ]
+[; ;main.c: 718: if (status == I2C1_MESSAGE_COMPLETE)
 "718
-[e ( _I2C1_MasterWrite (4 , , , &U _writeBuffer -> + -> . `E14417 2 `i -> 1 `i `uc -> _slaveDeviceAddress `ui &U _status ]
-[; ;main.c: 721: while(status == I2C1_MESSAGE_PENDING);
-"721
-[e $U 1672  ]
-[e :U 1673 ]
+[e $ ! == -> _status `i -> . `E14267 0 `i 1672  ]
+[; ;main.c: 719: break;
+"719
+[e $U 1668  ]
 [e :U 1672 ]
-[e $ == -> _status `i -> . `E14267 2 `i 1673  ]
-[e :U 1674 ]
-[; ;main.c: 723: if (status == I2C1_MESSAGE_COMPLETE)
-"723
-[e $ ! == -> _status `i -> . `E14267 0 `i 1675  ]
-[; ;main.c: 724: break;
-"724
-[e $U 1671  ]
-[e :U 1675 ]
-[; ;main.c: 733: if (timeOut == 100)
-"733
-[e $ ! == _timeOut -> -> 100 `i `ui 1676  ]
-[; ;main.c: 734: break;
-"734
-[e $U 1671  ]
-[e $U 1677  ]
-"735
-[e :U 1676 ]
-[; ;main.c: 735: else
-[; ;main.c: 736: timeOut++;
-"736
+[; ;main.c: 728: if (timeOut == 100)
+"728
+[e $ ! == _timeOut -> -> 100 `i `ui 1673  ]
+[; ;main.c: 729: break;
+"729
+[e $U 1668  ]
+[e $U 1674  ]
+"730
+[e :U 1673 ]
+[; ;main.c: 730: else
+[; ;main.c: 731: timeOut++;
+"731
 [e ++ _timeOut -> -> 1 `i `ui ]
-[e :U 1677 ]
+[e :U 1674 ]
+"732
+}
+[e :U 1666 ]
+"707
+[e $ != -> _status `i -> . `E14267 1 `i 1667  ]
+[e :U 1668 ]
+[; ;main.c: 732: }
+[; ;main.c: 734: if (status == I2C1_MESSAGE_FAIL)
+"734
+[e $ ! == -> _status `i -> . `E14267 1 `i 1675  ]
+[; ;main.c: 735: {
+"735
+{
+[; ;main.c: 736: break;
+"736
+[e $U 1660  ]
 "737
 }
-[e :U 1669 ]
-"712
-[e $ != -> _status `i -> . `E14267 1 `i 1670  ]
-[e :U 1671 ]
-[; ;main.c: 737: }
-[; ;main.c: 739: if (status == I2C1_MESSAGE_FAIL)
+[e :U 1675 ]
 "739
-[e $ ! == -> _status `i -> . `E14267 1 `i 1678  ]
-[; ;main.c: 740: {
-"740
-{
-[; ;main.c: 741: break;
-"741
-[e $U 1663  ]
-"742
 }
-[e :U 1678 ]
-"744
-}
-"698
+"693
 [e ++ _counter -> -> 1 `i `ui ]
-[e :U 1665 ]
-[e $ < _counter _nCount 1662  ]
-[e :U 1663 ]
-"744
+[e :U 1662 ]
+[e $ < _counter _nCount 1659  ]
+[e :U 1660 ]
+"739
 }
-[; ;main.c: 742: }
-[; ;main.c: 744: }
-[; ;main.c: 745: }
-"745
-[e :UE 1661 ]
+[; ;main.c: 737: }
+[; ;main.c: 739: }
+[; ;main.c: 740: }
+"740
+[e :UE 1658 ]
 }
-"746
+"741
 [v _MYI2C_Write2LEDBytes `(v ~T0 @X0 1 ef3`uc`uc`uc ]
-"747
+"742
 {
-[; ;main.c: 746: void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress,uint8_t MSBWriteByte,uint8_t LSBWriteByte)
-[; ;main.c: 747: {
+[; ;main.c: 741: void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress,uint8_t MSBWriteByte,uint8_t LSBWriteByte)
+[; ;main.c: 742: {
 [e :U _MYI2C_Write2LEDBytes ]
-"746
+"741
 [v _slaveDeviceAddress `uc ~T0 @X0 1 r1 ]
 [v _MSBWriteByte `uc ~T0 @X0 1 r2 ]
 [v _LSBWriteByte `uc ~T0 @X0 1 r3 ]
-"747
+"742
 [f ]
-"750
+"745
 [v _pData `*uc ~T0 @X0 1 a ]
-"751
+"746
 [v _nCount `ui ~T0 @X0 1 a ]
-"753
+"748
 [v _writeBuffer `uc ~T0 @X0 -> 3 `i a ]
-"755
+"750
 [v _counter `ui ~T0 @X0 1 a ]
 [v _timeOut `ui ~T0 @X0 1 a ]
-"756
+"751
 [v _pointerByte `uc ~T0 @X0 1 a ]
-[; ;main.c: 750: uint8_t *pData;
-[; ;main.c: 751: uint16_t nCount;
-[; ;main.c: 753: uint8_t writeBuffer[3];
-[; ;main.c: 755: uint16_t counter, timeOut;
-[; ;main.c: 756: uint8_t pointerByte = cPointerByteWriteLED;
+[; ;main.c: 745: uint8_t *pData;
+[; ;main.c: 746: uint16_t nCount;
+[; ;main.c: 748: uint8_t writeBuffer[3];
+[; ;main.c: 750: uint16_t counter, timeOut;
+[; ;main.c: 751: uint8_t pointerByte = cPointerByteWriteLED;
 [e = _pointerByte _cPointerByteWriteLED ]
-"758
+"753
 [v _status `E14267 ~T0 @X0 1 a ]
-[; ;main.c: 758: I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
+[; ;main.c: 753: I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
 [e = _status . `E14267 2 ]
-[; ;main.c: 762: nCount = 1;
-"762
+[; ;main.c: 757: nCount = 1;
+"757
 [e = _nCount -> -> 1 `i `ui ]
-[; ;main.c: 764: for (counter = 0; counter < nCount; counter++)
-"764
+[; ;main.c: 759: for (counter = 0; counter < nCount; counter++)
+"759
 {
 [e = _counter -> -> 0 `i `ui ]
-[e $U 1683  ]
-"765
-[e :U 1680 ]
-[; ;main.c: 765: {
+[e $U 1680  ]
+"760
+[e :U 1677 ]
+[; ;main.c: 760: {
 {
-[; ;main.c: 768: writeBuffer[0] = pointerByte;
-"768
+[; ;main.c: 763: writeBuffer[0] = pointerByte;
+"763
 [e = *U + &U _writeBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _pointerByte ]
-[; ;main.c: 770: writeBuffer[1] = (MSBWriteByte);
-"770
+[; ;main.c: 765: writeBuffer[1] = (MSBWriteByte);
+"765
 [e = *U + &U _writeBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _MSBWriteByte ]
-[; ;main.c: 771: writeBuffer[2] = (LSBWriteByte);
-"771
+[; ;main.c: 766: writeBuffer[2] = (LSBWriteByte);
+"766
 [e = *U + &U _writeBuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _LSBWriteByte ]
-[; ;main.c: 776: timeOut = 0;
-"776
+[; ;main.c: 771: timeOut = 0;
+"771
 [e = _timeOut -> -> 0 `i `ui ]
-[; ;main.c: 777: while(status != I2C1_MESSAGE_FAIL)
-"777
+[; ;main.c: 772: while(status != I2C1_MESSAGE_FAIL)
+"772
+[e $U 1681  ]
+[e :U 1682 ]
+[; ;main.c: 773: {
+"773
+{
+[; ;main.c: 775: I2C1_MasterWrite( writeBuffer,
+[; ;main.c: 776: 3,
+[; ;main.c: 777: slaveDeviceAddress,
+[; ;main.c: 778: &status);
+"778
+[e ( _I2C1_MasterWrite (4 , , , &U _writeBuffer -> -> 3 `i `uc -> _slaveDeviceAddress `ui &U _status ]
+[; ;main.c: 781: while(status == I2C1_MESSAGE_PENDING);
+"781
 [e $U 1684  ]
 [e :U 1685 ]
-[; ;main.c: 778: {
-"778
-{
-[; ;main.c: 780: I2C1_MasterWrite( writeBuffer,
-[; ;main.c: 781: 3,
-[; ;main.c: 782: slaveDeviceAddress,
-[; ;main.c: 783: &status);
+[e :U 1684 ]
+[e $ == -> _status `i -> . `E14267 2 `i 1685  ]
+[e :U 1686 ]
+[; ;main.c: 783: if (status == I2C1_MESSAGE_COMPLETE)
 "783
-[e ( _I2C1_MasterWrite (4 , , , &U _writeBuffer -> -> 3 `i `uc -> _slaveDeviceAddress `ui &U _status ]
-[; ;main.c: 786: while(status == I2C1_MESSAGE_PENDING);
-"786
-[e $U 1687  ]
-[e :U 1688 ]
+[e $ ! == -> _status `i -> . `E14267 0 `i 1687  ]
+[; ;main.c: 784: break;
+"784
+[e $U 1683  ]
 [e :U 1687 ]
-[e $ == -> _status `i -> . `E14267 2 `i 1688  ]
-[e :U 1689 ]
-[; ;main.c: 788: if (status == I2C1_MESSAGE_COMPLETE)
-"788
-[e $ ! == -> _status `i -> . `E14267 0 `i 1690  ]
-[; ;main.c: 789: break;
-"789
-[e $U 1686  ]
-[e :U 1690 ]
-[; ;main.c: 798: if (timeOut == 100)
-"798
-[e $ ! == _timeOut -> -> 100 `i `ui 1691  ]
-[; ;main.c: 799: break;
-"799
-[e $U 1686  ]
-[e $U 1692  ]
-"800
-[e :U 1691 ]
-[; ;main.c: 800: else
-[; ;main.c: 801: timeOut++;
-"801
+[; ;main.c: 793: if (timeOut == 100)
+"793
+[e $ ! == _timeOut -> -> 100 `i `ui 1688  ]
+[; ;main.c: 794: break;
+"794
+[e $U 1683  ]
+[e $U 1689  ]
+"795
+[e :U 1688 ]
+[; ;main.c: 795: else
+[; ;main.c: 796: timeOut++;
+"796
 [e ++ _timeOut -> -> 1 `i `ui ]
-[e :U 1692 ]
+[e :U 1689 ]
+"797
+}
+[e :U 1681 ]
+"772
+[e $ != -> _status `i -> . `E14267 1 `i 1682  ]
+[e :U 1683 ]
+[; ;main.c: 797: }
+[; ;main.c: 799: if (status == I2C1_MESSAGE_FAIL)
+"799
+[e $ ! == -> _status `i -> . `E14267 1 `i 1690  ]
+[; ;main.c: 800: {
+"800
+{
+[; ;main.c: 801: break;
+"801
+[e $U 1678  ]
 "802
 }
-[e :U 1684 ]
-"777
-[e $ != -> _status `i -> . `E14267 1 `i 1685  ]
-[e :U 1686 ]
-[; ;main.c: 802: }
-[; ;main.c: 804: if (status == I2C1_MESSAGE_FAIL)
+[e :U 1690 ]
 "804
-[e $ ! == -> _status `i -> . `E14267 1 `i 1693  ]
-[; ;main.c: 805: {
-"805
-{
-[; ;main.c: 806: break;
-"806
-[e $U 1681  ]
-"807
 }
-[e :U 1693 ]
-"809
-}
-"764
+"759
 [e ++ _counter -> -> 1 `i `ui ]
-[e :U 1683 ]
-[e $ < _counter _nCount 1680  ]
-[e :U 1681 ]
-"809
+[e :U 1680 ]
+[e $ < _counter _nCount 1677  ]
+[e :U 1678 ]
+"804
 }
-[; ;main.c: 807: }
-[; ;main.c: 809: }
-[; ;main.c: 810: }
-"810
-[e :UE 1679 ]
+[; ;main.c: 802: }
+[; ;main.c: 804: }
+[; ;main.c: 805: }
+"805
+[e :UE 1676 ]
 }
-"812
+"807
 [v _savePatch `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;main.c: 812: void savePatch(int PatchNumber){
+[; ;main.c: 807: void savePatch(int PatchNumber){
 [e :U _savePatch ]
 [v _PatchNumber `i ~T0 @X0 1 r1 ]
 [f ]
-"813
+"808
 [v _iPatchAddress `i ~T0 @X0 1 a ]
-[; ;main.c: 813: int iPatchAddress=PatchNumber*cPatchSize;
+[; ;main.c: 808: int iPatchAddress=PatchNumber*cPatchSize;
 [e = _iPatchAddress * _PatchNumber -> . `E14417 0 `i ]
-"814
+"809
 [v _iPatchAddressHigh `uc ~T0 @X0 1 a ]
-[; ;main.c: 814: uint8_t iPatchAddressHigh=iPatchAddress>>8;
+[; ;main.c: 809: uint8_t iPatchAddressHigh=iPatchAddress>>8;
 [e = _iPatchAddressHigh -> >> _iPatchAddress -> 8 `i `uc ]
-"815
+"810
 [v _iPatchAddressLow `uc ~T0 @X0 1 a ]
-[; ;main.c: 815: uint8_t iPatchAddressLow=iPatchAddress&0xFF;
+[; ;main.c: 810: uint8_t iPatchAddressLow=iPatchAddress&0xFF;
 [e = _iPatchAddressLow -> & _iPatchAddress -> 255 `i `uc ]
-[; ;main.c: 818: marshallPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
-"818
+[; ;main.c: 813: marshallPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
+"813
 [e ( _marshallPatchMemory (3 , , &U _mvcChannels &U _dualADSRdata0 &U _dualADSRdata1 ]
-"821
+"816
 [v _pData `*uc ~T0 @X0 1 a ]
-"822
+"817
 [v _idx `i ~T0 @X0 1 a ]
-[; ;main.c: 821: uint8_t *pData;
-[; ;main.c: 822: int idx;
-[; ;main.c: 825: for(int batchNum=0;(batchNum*ciBatchSize)<cPatchSize;batchNum++){
-"825
+[; ;main.c: 816: uint8_t *pData;
+[; ;main.c: 817: int idx;
+[; ;main.c: 820: for(int batchNum=0;(batchNum*ciBatchSize)<cPatchSize;batchNum++){
+"820
 {
 [v _batchNum `i ~T0 @X0 1 a ]
 [e = _batchNum -> 0 `i ]
-[e $U 1698  ]
-[e :U 1695 ]
+[e $U 1695  ]
+[e :U 1692 ]
 {
-[; ;main.c: 827: idx=batchNum*ciBatchSize;
-"827
+[; ;main.c: 822: idx=batchNum*ciBatchSize;
+"822
 [e = _idx * _batchNum -> . `E14417 4 `i ]
-[; ;main.c: 828: pData=&aPatchMemory[idx];
-"828
+[; ;main.c: 823: pData=&aPatchMemory[idx];
+"823
 [e = _pData &U *U + &U _aPatchMemory * -> -> _idx `ui `ux -> -> # *U &U _aPatchMemory `ui `ux ]
-[; ;main.c: 829: MYI2C_Write16EEPROMBytes(ciI2C_EEPROM_DEVICE_ADDRESS,iPatchAddress,pData);
-"829
+[; ;main.c: 824: MYI2C_Write16EEPROMBytes(ciI2C_EEPROM_DEVICE_ADDRESS,iPatchAddress,pData);
+"824
 [e ( _MYI2C_Write16EEPROMBytes (3 , , -> . `E14417 3 `uc _iPatchAddress _pData ]
-[; ;main.c: 831: iPatchAddress+=ciBatchSize;
-"831
+[; ;main.c: 826: iPatchAddress+=ciBatchSize;
+"826
 [e =+ _iPatchAddress -> . `E14417 4 `i ]
-[; ;main.c: 833: _delay((unsigned long)((5)*(32000000/4000.0)));
-"833
+[; ;main.c: 828: _delay((unsigned long)((5)*(32000000/4000.0)));
+"828
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"834
+"829
 }
-"825
+"820
 [e ++ _batchNum -> 1 `i ]
-[e :U 1698 ]
-[e $ < * _batchNum -> . `E14417 4 `i -> . `E14417 0 `i 1695  ]
-[e :U 1696 ]
-"834
+[e :U 1695 ]
+[e $ < * _batchNum -> . `E14417 4 `i -> . `E14417 0 `i 1692  ]
+[e :U 1693 ]
+"829
 }
+[; ;main.c: 829: }
 [; ;main.c: 834: }
-[; ;main.c: 839: }
-"839
-[e :UE 1694 ]
+"834
+[e :UE 1691 ]
 }
-"842
+"837
 [v _writeI2CSystemData `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 842: void writeI2CSystemData(){
+[; ;main.c: 837: void writeI2CSystemData(){
 [e :U _writeI2CSystemData ]
 [f ]
-[; ;main.c: 843: MYI2C_WriteFaders(i2c_addr_dualADSR0);
-"843
+[; ;main.c: 838: MYI2C_WriteFaders(i2c_addr_dualADSR0);
+"838
 [e ( _MYI2C_WriteFaders (1 _i2c_addr_dualADSR0 ]
-[; ;main.c: 844: MYI2C_WriteFaders(i2c_addr_dualADSR1);
-"844
+[; ;main.c: 839: MYI2C_WriteFaders(i2c_addr_dualADSR1);
+"839
 [e ( _MYI2C_WriteFaders (1 _i2c_addr_dualADSR1 ]
-[; ;main.c: 845: }
-"845
-[e :UE 1699 ]
+[; ;main.c: 840: }
+"840
+[e :UE 1696 ]
 }
-"847
+"842
 [v _wkMIDICC `uc ~T0 @X0 1 e ]
 [i _wkMIDICC
 -> -> 0 `i `uc
 ]
-[; ;main.c: 847: uint8_t wkMIDICC=0;
-"848
+[; ;main.c: 842: uint8_t wkMIDICC=0;
+"843
 [v _wkByte `uc ~T0 @X0 1 e ]
 [i _wkByte
 -> -> 0 `i `uc
 ]
-[; ;main.c: 848: uint8_t wkByte=0;
-"849
+[; ;main.c: 843: uint8_t wkByte=0;
+"844
 [v _wkFloat `f ~T0 @X0 1 e ]
 [i _wkFloat
 -> -> 0 `i `f
 ]
-[; ;main.c: 849: float wkFloat=0;
-"851
+[; ;main.c: 844: float wkFloat=0;
+"846
 [v _loadPatch `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;main.c: 851: void loadPatch(int PatchNumber){
+[; ;main.c: 846: void loadPatch(int PatchNumber){
 [e :U _loadPatch ]
 [v _PatchNumber `i ~T0 @X0 1 r1 ]
 [f ]
-"852
+"847
 [v _iPatchAddress `i ~T0 @X0 1 a ]
-[; ;main.c: 852: int iPatchAddress=PatchNumber*cPatchSize;
+[; ;main.c: 847: int iPatchAddress=PatchNumber*cPatchSize;
 [e = _iPatchAddress * _PatchNumber -> . `E14417 0 `i ]
-"855
+"850
 [v _pData `*uc ~T0 @X0 1 a ]
-"856
+"851
 [v _idx `i ~T0 @X0 1 a ]
-[; ;main.c: 855: uint8_t *pData;
-[; ;main.c: 856: int idx;
-[; ;main.c: 869: updateModelFromPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
-"869
+[; ;main.c: 850: uint8_t *pData;
+[; ;main.c: 851: int idx;
+[; ;main.c: 864: updateModelFromPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
+"864
 [e ( _updateModelFromPatchMemory (3 , , &U _mvcChannels &U _dualADSRdata0 &U _dualADSRdata1 ]
-[; ;main.c: 872: for(int i=0;i<cMixFaderCount;i++){
-"872
+[; ;main.c: 867: for(int i=0;i<cMixFaderCount;i++){
+"867
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> . `E14417 1 `i 1701  ]
-[e $U 1702  ]
-[e :U 1701 ]
+[e $ < _i -> . `E14417 1 `i 1698  ]
+[e $U 1699  ]
+[e :U 1698 ]
 {
-[; ;main.c: 873: writeDAC528(i+4,mvcChannels[i]);
-"873
+[; ;main.c: 868: writeDAC528(i+4,mvcChannels[i]);
+"868
 [e ( _writeDAC528 (2 , + _i -> 4 `i *U + &U _mvcChannels * -> -> _i `ui `ux -> -> # *U &U _mvcChannels `ui `ux ]
-"874
+"869
 }
-"872
+"867
 [e ++ _i -> 1 `i ]
-[e $ < _i -> . `E14417 1 `i 1701  ]
-[e :U 1702 ]
-"874
+[e $ < _i -> . `E14417 1 `i 1698  ]
+[e :U 1699 ]
+"869
 }
+[; ;main.c: 869: }
 [; ;main.c: 874: }
-[; ;main.c: 879: }
-"879
-[e :UE 1700 ]
+"874
+[e :UE 1697 ]
 }
-"880
+"875
 [v _initModelRelatedVariables `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 880: void initModelRelatedVariables(){
+[; ;main.c: 875: void initModelRelatedVariables(){
 [e :U _initModelRelatedVariables ]
 [f ]
-[; ;main.c: 881: }
-"881
-[e :UE 1704 ]
+[; ;main.c: 876: }
+"876
+[e :UE 1701 ]
 }
