@@ -8,10 +8,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ODCONC `Vuc ~T0 @X0 0 e@3920 ]
 "837
 [v _LATB `Vuc ~T0 @X0 0 e@23 ]
+"210 main.c
+[v _MYI2C_Write2LEDBytes `(v ~T0 @X0 0 ef3`uc`uc`uc ]
 [p mainexit ]
-"264 main.c
-[c E14267 0 1 2 3 4 5 6 .. ]
-[n E14267 . I2C1_MESSAGE_COMPLETE I2C1_MESSAGE_FAIL I2C1_MESSAGE_PENDING I2C1_STUCK_START I2C1_MESSAGE_ADDRESS_NO_ACK I2C1_DATA_NO_ACK I2C1_LOST_STATE  ]
+"268
+[c E14335 0 1 2 3 4 5 6 .. ]
+[n E14335 . I2C1_MESSAGE_COMPLETE I2C1_MESSAGE_FAIL I2C1_MESSAGE_PENDING I2C1_STUCK_START I2C1_MESSAGE_ADDRESS_NO_ACK I2C1_DATA_NO_ACK I2C1_LOST_STATE  ]
 "70 mcc_generated_files/mcc.h
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
 "23 VCAMIX_SPI_Master.h
@@ -26,18 +28,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S25 . . ]
 "362
 [v _INTCONbits `VS25 ~T0 @X0 0 e@11 ]
-"292 main.c
-[c E14316 0 1 2 3 4 5 6 16 60 61 62 63 .. ]
-[n E14316 . channel_ANA0 channel_ANA1 channel_ANA2 channel_ANA3 channel_ANA4 channel_ANA5 channel_ANA6 channel_ANC0 channel_VSS channel_Temp channel_DAC1 channel_FVR_buf1  ]
+"296 main.c
+[c E14266 0 1 2 3 4 5 6 16 60 61 62 63 .. ]
+[n E14266 . channel_ANA0 channel_ANA1 channel_ANA2 channel_ANA3 channel_ANA4 channel_ANA5 channel_ANA6 channel_ANC0 channel_VSS channel_Temp channel_DAC1 channel_FVR_buf1  ]
 "259 mcc_generated_files/adcc.h
-[v _ADCC_GetSingleConversion `(ui ~T0 @X0 0 ef1`E14316 ]
+[v _ADCC_GetSingleConversion `(ui ~T0 @X0 0 ef1`E14266 ]
 "444 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f18855.h
 [v _PORTB `Vuc ~T0 @X0 0 e@13 ]
 "506
 [v _PORTC `Vuc ~T0 @X0 0 e@14 ]
 "24 VCAMIX_SPI_Master.h
 [v _writeDAC528 `(v ~T0 @X0 0 ef2`i`uc ]
-"335 main.c
+"339 main.c
 [c E14405 0 1 2 3 4 4 5 5 .. ]
 [n E14405 . FADER0 FADER1 FADER2 FADER3 FADER4 POT0 FADER5 POT1  ]
 "21 LED7Seg.h
@@ -50,13 +52,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S29 . . ]
 "461
 [v _PORTBbits `VS29 ~T0 @X0 0 e@13 ]
-"241 main.c
+"214 main.c
 [v _loadPatch `(v ~T0 @X0 0 ef1`i ]
 [v F14219 `(v ~T0 @X0 1 tf1`ul ]
 "153 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
 [v __delay `JF14219 ~T0 @X0 0 e ]
 [p i __delay ]
-"240 main.c
+"213 main.c
 [v _savePatch `(v ~T0 @X0 0 ef1`i ]
 "109 mcc_generated_files/i2c1.h
 [s S1563 `ui 1 `uc 1 `*uc 1 ]
@@ -66,9 +68,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "560
 [v _I2C1_MasterReadTRBBuild `(v ~T0 @X0 0 ef4`*S1563`*uc`uc`ui ]
 "516
-[v _I2C1_MasterTRBInsert `(v ~T0 @X0 0 ef3`uc`*S1563`*E14267 ]
+[v _I2C1_MasterTRBInsert `(v ~T0 @X0 0 ef3`uc`*S1563`*E14335 ]
 "259
-[v _I2C1_MasterWrite `(v ~T0 @X0 0 ef4`*uc`uc`ui`*E14267 ]
+[v _I2C1_MasterWrite `(v ~T0 @X0 0 ef4`*uc`uc`ui`*E14335 ]
 "31 EEPROM_24LC256.h
 [v _marshallPatchMemory `(v ~T0 @X0 0 ef3`*uc`*uc`*uc ]
 "158 main.c
@@ -13188,6 +13190,49 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
+[; ;adcc.h: 71: typedef uint16_t adc_result_t;
+[; ;adcc.h: 88: typedef enum
+[; ;adcc.h: 89: {
+[; ;adcc.h: 90: channel_ANA0 = 0x0,
+[; ;adcc.h: 91: channel_ANA1 = 0x1,
+[; ;adcc.h: 92: channel_ANA2 = 0x2,
+[; ;adcc.h: 93: channel_ANA3 = 0x3,
+[; ;adcc.h: 94: channel_ANA4 = 0x4,
+[; ;adcc.h: 95: channel_ANA5 = 0x5,
+[; ;adcc.h: 96: channel_ANA6 = 0x6,
+[; ;adcc.h: 97: channel_ANC0 = 0x10,
+[; ;adcc.h: 98: channel_VSS = 0x3C,
+[; ;adcc.h: 99: channel_Temp = 0x3D,
+[; ;adcc.h: 100: channel_DAC1 = 0x3E,
+[; ;adcc.h: 101: channel_FVR_buf1 = 0x3F
+[; ;adcc.h: 102: } adcc_channel_t;
+[; ;adcc.h: 137: void ADCC_Initialize(void);
+[; ;adcc.h: 166: void ADCC_StartConversion(adcc_channel_t channel);
+[; ;adcc.h: 197: bool ADCC_IsConversionDone();
+[; ;adcc.h: 228: adc_result_t ADCC_GetConversionResult(void);
+[; ;adcc.h: 259: adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
+[; ;adcc.h: 284: void ADCC_StopConversion(void);
+[; ;adcc.h: 308: void ADCC_SetStopOnInterrupt(void);
+[; ;adcc.h: 330: void ADCC_DischargeSampleCapacitor(void);
+[; ;adcc.h: 354: void ADCC_LoadAcquisitionRegister(uint8_t);
+[; ;adcc.h: 377: void ADCC_SetPrechargeTime(uint8_t);
+[; ;adcc.h: 401: void ADCC_SetRepeatCount(uint8_t);
+[; ;adcc.h: 425: uint8_t ADCC_GetCurrentCountofConversions(void);
+[; ;adcc.h: 449: void ADCC_ClearAccumulator(void);
+[; ;adcc.h: 472: uint16_t ADCC_GetAccumulatorValue(void);
+[; ;adcc.h: 496: bool ADCC_HasAccumulatorOverflowed(void);
+[; ;adcc.h: 520: uint16_t ADCC_GetFilterValue(void);
+[; ;adcc.h: 544: uint16_t ADCC_GetPreviousResult(void);
+[; ;adcc.h: 568: void ADCC_DefineSetPoint(uint16_t);
+[; ;adcc.h: 593: void ADCC_SetUpperThreshold(uint16_t);
+[; ;adcc.h: 618: void ADCC_SetLowerThreshold(uint16_t);
+[; ;adcc.h: 641: uint16_t ADCC_GetErrorCalculation(void);
+[; ;adcc.h: 663: void ADCC_EnableDoubleSampling(void);
+[; ;adcc.h: 685: void ADCC_EnableContinuousConversion(void);
+[; ;adcc.h: 707: void ADCC_DisableContinuousConversion(void);
+[; ;adcc.h: 729: bool ADCC_HasErrorCrossedUpperThreshold(void);
+[; ;adcc.h: 751: bool ADCC_HasErrorCrossedLowerThreshold(void);
+[; ;adcc.h: 773: uint8_t ADCC_GetConversionStageStatus(void);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stddef.h: 6: typedef int ptrdiff_t;
 [; ;i2c1.h: 83: typedef enum
@@ -13235,49 +13280,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c1.h: 685: bool I2C1_MasterQueueIsFull(void);
 [; ;i2c1.h: 686: void I2C1_BusCollisionISR( void );
 [; ;i2c1.h: 687: void I2C1_ISR ( void );
-[; ;adcc.h: 71: typedef uint16_t adc_result_t;
-[; ;adcc.h: 88: typedef enum
-[; ;adcc.h: 89: {
-[; ;adcc.h: 90: channel_ANA0 = 0x0,
-[; ;adcc.h: 91: channel_ANA1 = 0x1,
-[; ;adcc.h: 92: channel_ANA2 = 0x2,
-[; ;adcc.h: 93: channel_ANA3 = 0x3,
-[; ;adcc.h: 94: channel_ANA4 = 0x4,
-[; ;adcc.h: 95: channel_ANA5 = 0x5,
-[; ;adcc.h: 96: channel_ANA6 = 0x6,
-[; ;adcc.h: 97: channel_ANC0 = 0x10,
-[; ;adcc.h: 98: channel_VSS = 0x3C,
-[; ;adcc.h: 99: channel_Temp = 0x3D,
-[; ;adcc.h: 100: channel_DAC1 = 0x3E,
-[; ;adcc.h: 101: channel_FVR_buf1 = 0x3F
-[; ;adcc.h: 102: } adcc_channel_t;
-[; ;adcc.h: 137: void ADCC_Initialize(void);
-[; ;adcc.h: 166: void ADCC_StartConversion(adcc_channel_t channel);
-[; ;adcc.h: 197: bool ADCC_IsConversionDone();
-[; ;adcc.h: 228: adc_result_t ADCC_GetConversionResult(void);
-[; ;adcc.h: 259: adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
-[; ;adcc.h: 284: void ADCC_StopConversion(void);
-[; ;adcc.h: 308: void ADCC_SetStopOnInterrupt(void);
-[; ;adcc.h: 330: void ADCC_DischargeSampleCapacitor(void);
-[; ;adcc.h: 354: void ADCC_LoadAcquisitionRegister(uint8_t);
-[; ;adcc.h: 377: void ADCC_SetPrechargeTime(uint8_t);
-[; ;adcc.h: 401: void ADCC_SetRepeatCount(uint8_t);
-[; ;adcc.h: 425: uint8_t ADCC_GetCurrentCountofConversions(void);
-[; ;adcc.h: 449: void ADCC_ClearAccumulator(void);
-[; ;adcc.h: 472: uint16_t ADCC_GetAccumulatorValue(void);
-[; ;adcc.h: 496: bool ADCC_HasAccumulatorOverflowed(void);
-[; ;adcc.h: 520: uint16_t ADCC_GetFilterValue(void);
-[; ;adcc.h: 544: uint16_t ADCC_GetPreviousResult(void);
-[; ;adcc.h: 568: void ADCC_DefineSetPoint(uint16_t);
-[; ;adcc.h: 593: void ADCC_SetUpperThreshold(uint16_t);
-[; ;adcc.h: 618: void ADCC_SetLowerThreshold(uint16_t);
-[; ;adcc.h: 641: uint16_t ADCC_GetErrorCalculation(void);
-[; ;adcc.h: 663: void ADCC_EnableDoubleSampling(void);
-[; ;adcc.h: 685: void ADCC_EnableContinuousConversion(void);
-[; ;adcc.h: 707: void ADCC_DisableContinuousConversion(void);
-[; ;adcc.h: 729: bool ADCC_HasErrorCrossedUpperThreshold(void);
-[; ;adcc.h: 751: bool ADCC_HasErrorCrossedLowerThreshold(void);
-[; ;adcc.h: 773: uint8_t ADCC_GetConversionStageStatus(void);
 [; ;mcc.h: 70: void SYSTEM_Initialize(void);
 [; ;mcc.h: 83: void OSCILLATOR_Initialize(void);
 "13 VCAMIX_SPI_Master.h
@@ -13513,164 +13515,173 @@ Version 3.2 HI-TECH Software Intermediate Code
 "202
 [e :UE 1572 ]
 }
-"204
+[; ;main.c: 208: I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress);
+[; ;main.c: 209: void MYI2C_WriteFaders(uint8_t slaveDeviceAddress);
+[; ;main.c: 210: void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress, uint8_t MSBWriteByte,uint8_t LSBWriteByte);
+[; ;main.c: 211: void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue);
+[; ;main.c: 213: void savePatch(int PatchNumber);
+[; ;main.c: 214: void loadPatch(int PatchNumber);
+"217
 [v _blinkyLoop `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;main.c: 204: void blinkyLoop (int maxLoops){
+[; ;main.c: 217: void blinkyLoop (int maxLoops){
 [e :U _blinkyLoop ]
 [v _maxLoops `i ~T0 @X0 1 r1 ]
 [f ]
-"205
+"218
 [v _loopCount `i ~T0 @X0 1 a ]
-[; ;main.c: 205: int loopCount=maxLoops;
+[; ;main.c: 218: int loopCount=maxLoops;
 [e = _loopCount _maxLoops ]
-"206
+"219
 [v _delayTime `i ~T0 @X0 1 a ]
-[; ;main.c: 206: int delayTime;
-[; ;main.c: 208: ODCONB &= 0xF0;
-"208
+[; ;main.c: 219: int delayTime;
+[; ;main.c: 221: ODCONB &= 0xF0;
+"221
 [e =& _ODCONB -> -> 240 `i `uc ]
-[; ;main.c: 209: ODCONC &= 0x1F;
-"209
+[; ;main.c: 222: ODCONC &= 0x1F;
+"222
 [e =& _ODCONC -> -> 31 `i `uc ]
-[; ;main.c: 210: while(loopCount>0){
-"210
+[; ;main.c: 224: while(loopCount>0){
+"224
 [e $U 1579  ]
 [e :U 1580 ]
 {
-[; ;main.c: 211: delayTime=loopCount*400;
-"211
-[e = _delayTime * _loopCount -> 400 `i ]
-[; ;main.c: 214: LATB |= 0x0F;
-"214
-[e =| _LATB -> -> 15 `i `uc ]
-[; ;main.c: 217: delay(delayTime);
-"217
-[e ( _delay (1 _delayTime ]
-[; ;main.c: 219: LATB &= 0xF0;
-"219
-[e =& _LATB -> -> 240 `i `uc ]
-[; ;main.c: 222: delay(delayTime);
-"222
-[e ( _delay (1 _delayTime ]
-[; ;main.c: 224: loopCount--;
-"224
-[e -- _loopCount -> 1 `i ]
+[; ;main.c: 225: delayTime=loopCount*400;
 "225
+[e = _delayTime * _loopCount -> 400 `i ]
+[; ;main.c: 228: LATB |= 0x0F;
+"228
+[e =| _LATB -> -> 15 `i `uc ]
+[; ;main.c: 230: MYI2C_Write2LEDBytes(i2c_addr_dualADSR0,0xFF,0xFF);
+"230
+[e ( _MYI2C_Write2LEDBytes (3 , , _i2c_addr_dualADSR0 -> -> 255 `i `uc -> -> 255 `i `uc ]
+[; ;main.c: 231: delay(delayTime);
+"231
+[e ( _delay (1 _delayTime ]
+[; ;main.c: 233: LATB &= 0xF0;
+"233
+[e =& _LATB -> -> 240 `i `uc ]
+[; ;main.c: 235: MYI2C_Write2LEDBytes(i2c_addr_dualADSR0,0x0,0x0);
+"235
+[e ( _MYI2C_Write2LEDBytes (3 , , _i2c_addr_dualADSR0 -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 236: delay(delayTime);
+"236
+[e ( _delay (1 _delayTime ]
+[; ;main.c: 238: loopCount--;
+"238
+[e -- _loopCount -> 1 `i ]
+"239
 }
 [e :U 1579 ]
-"210
+"224
 [e $ > _loopCount -> 0 `i 1580  ]
 [e :U 1581 ]
-[; ;main.c: 225: }
-[; ;main.c: 226: LATB |= 0x0F;
-"226
+[; ;main.c: 239: }
+[; ;main.c: 240: LATB |= 0x0F;
+"240
 [e =| _LATB -> -> 15 `i `uc ]
-[; ;main.c: 228: delay(5000);
-"228
+[; ;main.c: 242: delay(5000);
+"242
 [e ( _delay (1 -> 5000 `i ]
-[; ;main.c: 229: return;
-"229
+[; ;main.c: 243: MYI2C_Write2LEDBytes(i2c_addr_dualADSR0,0xFF,0xFF);
+"243
+[e ( _MYI2C_Write2LEDBytes (3 , , _i2c_addr_dualADSR0 -> -> 255 `i `uc -> -> 255 `i `uc ]
+[; ;main.c: 244: return;
+"244
 [e $UE 1578  ]
-[; ;main.c: 230: }
-"230
+[; ;main.c: 245: }
+"245
 [e :UE 1578 ]
 }
-[; ;main.c: 235: I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress);
-[; ;main.c: 236: void MYI2C_WriteFaders(uint8_t slaveDeviceAddress);
-[; ;main.c: 237: void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress, uint8_t MSBWriteByte,uint8_t LSBWriteByte);
-[; ;main.c: 238: void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue);
-[; ;main.c: 240: void savePatch(int PatchNumber);
-[; ;main.c: 241: void loadPatch(int PatchNumber);
 [v $root$_main `(v ~T0 @X0 0 e ]
-"246
+"250
 [v _main `(v ~T0 @X0 1 ef ]
-"247
+"251
 {
-[; ;main.c: 246: void main(void)
-[; ;main.c: 247: {
+[; ;main.c: 250: void main(void)
+[; ;main.c: 251: {
 [e :U _main ]
 [f ]
-"248
+"252
 [v _iCounter `ui ~T0 @X0 1 a ]
-[; ;main.c: 248: uint16_t iCounter=0;
+[; ;main.c: 252: uint16_t iCounter=0;
 [e = _iCounter -> -> 0 `i `ui ]
-"249
+"253
 [v _iMSByte `ui ~T0 @X0 1 a ]
-"250
+"254
 [v _iLSByte `ui ~T0 @X0 1 a ]
-"251
+"255
 [v F14495 `Cui ~T0 @X0 1 s iResetValue ]
 [i F14495
 -> -> 100 `i `ui
 ]
-"252
-[v _iLoopCounter `ui ~T0 @X0 1 a ]
-[; ;main.c: 249: uint16_t iMSByte;
-[; ;main.c: 250: uint16_t iLSByte;
-[; ;main.c: 251: const uint16_t iResetValue=100;
-[; ;main.c: 252: uint16_t iLoopCounter=0;
-[e = _iLoopCounter -> -> 0 `i `ui ]
-"253
-[v _iChangeCount `uc ~T0 @X0 1 a ]
-[; ;main.c: 253: uint8_t iChangeCount=0;
-[e = _iChangeCount -> -> 0 `i `uc ]
-"254
-[v _faderValue `i ~T0 @X0 1 a ]
-"255
-[v _fader8bitValue `uc ~T0 @X0 1 a ]
 "256
-[v _prevFader8bitValue `uc ~T0 @X0 1 a ]
+[v _iLoopCounter `ui ~T0 @X0 1 a ]
+[; ;main.c: 253: uint16_t iMSByte;
+[; ;main.c: 254: uint16_t iLSByte;
+[; ;main.c: 255: const uint16_t iResetValue=100;
+[; ;main.c: 256: uint16_t iLoopCounter=0;
+[e = _iLoopCounter -> -> 0 `i `ui ]
 "257
-[v _POT0Value `uc ~T0 @X0 1 a ]
+[v _iChangeCount `uc ~T0 @X0 1 a ]
+[; ;main.c: 257: uint8_t iChangeCount=0;
+[e = _iChangeCount -> -> 0 `i `uc ]
 "258
-[v _POT1Value `uc ~T0 @X0 1 a ]
+[v _faderValue `i ~T0 @X0 1 a ]
 "259
-[v _DACDataValue `uc ~T0 @X0 1 a ]
+[v _fader8bitValue `uc ~T0 @X0 1 a ]
 "260
-[v _dFader8bitValue `d ~T0 @X0 1 a ]
+[v _prevFader8bitValue `uc ~T0 @X0 1 a ]
 "261
-[v _LoadDebounceCount `i ~T0 @X0 1 a ]
-[; ;main.c: 254: int faderValue;
-[; ;main.c: 255: uint8_t fader8bitValue;
-[; ;main.c: 256: uint8_t prevFader8bitValue;
-[; ;main.c: 257: uint8_t POT0Value;
-[; ;main.c: 258: uint8_t POT1Value;
-[; ;main.c: 259: uint8_t DACDataValue;
-[; ;main.c: 260: double dFader8bitValue;
-[; ;main.c: 261: int LoadDebounceCount=0;
-[e = _LoadDebounceCount -> 0 `i ]
+[v _POT0Value `uc ~T0 @X0 1 a ]
 "262
-[v _SaveDebounceCount `i ~T0 @X0 1 a ]
-[; ;main.c: 262: int SaveDebounceCount=0;
-[e = _SaveDebounceCount -> 0 `i ]
+[v _POT1Value `uc ~T0 @X0 1 a ]
+"263
+[v _DACDataValue `uc ~T0 @X0 1 a ]
 "264
-[v _readStatus `E14267 ~T0 @X0 1 a ]
-[; ;main.c: 264: I2C1_MESSAGE_STATUS readStatus=0;
-[e = _readStatus -> -> 0 `i `E14267 ]
-[; ;main.c: 267: SYSTEM_Initialize();
-"267
-[e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 268: initDAC528();
+[v _dFader8bitValue `d ~T0 @X0 1 a ]
+"265
+[v _LoadDebounceCount `i ~T0 @X0 1 a ]
+[; ;main.c: 258: int faderValue;
+[; ;main.c: 259: uint8_t fader8bitValue;
+[; ;main.c: 260: uint8_t prevFader8bitValue;
+[; ;main.c: 261: uint8_t POT0Value;
+[; ;main.c: 262: uint8_t POT1Value;
+[; ;main.c: 263: uint8_t DACDataValue;
+[; ;main.c: 264: double dFader8bitValue;
+[; ;main.c: 265: int LoadDebounceCount=0;
+[e = _LoadDebounceCount -> 0 `i ]
+"266
+[v _SaveDebounceCount `i ~T0 @X0 1 a ]
+[; ;main.c: 266: int SaveDebounceCount=0;
+[e = _SaveDebounceCount -> 0 `i ]
 "268
-[e ( _initDAC528 ..  ]
-[; ;main.c: 269: LED7SegSetup();
-"269
-[e ( _LED7SegSetup ..  ]
-[; ;main.c: 271: InitPanelInChannels();
+[v _readStatus `E14335 ~T0 @X0 1 a ]
+[; ;main.c: 268: I2C1_MESSAGE_STATUS readStatus=0;
+[e = _readStatus -> -> 0 `i `E14335 ]
+[; ;main.c: 271: SYSTEM_Initialize();
 "271
-[e ( _InitPanelInChannels ..  ]
-[; ;main.c: 272: InitmvcChannels();
+[e ( _SYSTEM_Initialize ..  ]
+[; ;main.c: 272: initDAC528();
 "272
+[e ( _initDAC528 ..  ]
+[; ;main.c: 273: LED7SegSetup();
+"273
+[e ( _LED7SegSetup ..  ]
+[; ;main.c: 275: InitPanelInChannels();
+"275
+[e ( _InitPanelInChannels ..  ]
+[; ;main.c: 276: InitmvcChannels();
+"276
 [e ( _InitmvcChannels ..  ]
-[; ;main.c: 277: (INTCONbits.GIE = 1);
-"277
+[; ;main.c: 281: (INTCONbits.GIE = 1);
+"281
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 280: (INTCONbits.PEIE = 1);
-"280
+[; ;main.c: 284: (INTCONbits.PEIE = 1);
+"284
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 291: for(int fx=0;fx<4;fx++){
-"291
+[; ;main.c: 295: for(int fx=0;fx<4;fx++){
+"295
 {
 [v _fx `i ~T0 @X0 1 a ]
 [e = _fx -> 0 `i ]
@@ -13678,53 +13689,56 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 1584  ]
 [e :U 1583 ]
 {
-[; ;main.c: 292: faderValue=ADCC_GetSingleConversion(fx);
-"292
-[e = _faderValue -> ( _ADCC_GetSingleConversion (1 -> _fx `E14316 `i ]
-[; ;main.c: 293: PanelInChannels[fx]=255-(faderValue>>2);
-"293
+[; ;main.c: 296: faderValue=ADCC_GetSingleConversion(fx);
+"296
+[e = _faderValue -> ( _ADCC_GetSingleConversion (1 -> _fx `E14266 `i ]
+[; ;main.c: 297: PanelInChannels[fx]=255-(faderValue>>2);
+"297
 [e = *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux -> - -> 255 `i >> _faderValue -> 2 `i `uc ]
-[; ;main.c: 294: prevPanelInChannels[fx]= PanelInChannels[fx];
-"294
+[; ;main.c: 298: prevPanelInChannels[fx]= PanelInChannels[fx];
+"298
 [e = *U + &U _prevPanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _prevPanelInChannels `ui `ux *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux ]
-"295
+"299
 }
-"291
+"295
 [e ++ _fx -> 1 `i ]
 [e $ < _fx -> 4 `i 1583  ]
 [e :U 1584 ]
-"295
+"299
 }
-[; ;main.c: 295: }
-[; ;main.c: 302: PORTB |= 0x0F;
-"302
+[; ;main.c: 299: }
+[; ;main.c: 301: blinkyLoop(10);
+"301
+[e ( _blinkyLoop (1 -> 10 `i ]
+[; ;main.c: 306: PORTB |= 0x0F;
+"306
 [e =| _PORTB -> -> 15 `i `uc ]
-[; ;main.c: 303: PORTC |= 0xE0;
-"303
-[e =| _PORTC -> -> 224 `i `uc ]
-[; ;main.c: 304: ODCONB &= 0xF0;
-"304
-[e =& _ODCONB -> -> 240 `i `uc ]
-[; ;main.c: 305: ODCONC &= 0x1F;
-"305
-[e =& _ODCONC -> -> 31 `i `uc ]
-[; ;main.c: 307: while (1) {
+[; ;main.c: 307: PORTC |= 0xE0;
 "307
+[e =| _PORTC -> -> 224 `i `uc ]
+[; ;main.c: 308: ODCONB &= 0xF0;
+"308
+[e =& _ODCONB -> -> 240 `i `uc ]
+[; ;main.c: 309: ODCONC &= 0x1F;
+"309
+[e =& _ODCONC -> -> 31 `i `uc ]
+[; ;main.c: 311: while (1) {
+"311
 [e :U 1587 ]
 {
-[; ;main.c: 308: iLoopCounter++;
-"308
+[; ;main.c: 312: iLoopCounter++;
+"312
 [e ++ _iLoopCounter -> -> 1 `i `ui ]
-[; ;main.c: 309: if (iResetValue<=iLoopCounter) iLoopCounter=0;
-"309
+[; ;main.c: 313: if (iResetValue<=iLoopCounter) iLoopCounter=0;
+"313
 [e $ ! <= F14495 _iLoopCounter 1589  ]
 [e = _iLoopCounter -> -> 0 `i `ui ]
 [e :U 1589 ]
-[; ;main.c: 312: {
-"312
+[; ;main.c: 316: {
+"316
 {
-[; ;main.c: 314: for(int fx=0;fx<cMixFaderCount;fx++){
-"314
+[; ;main.c: 318: for(int fx=0;fx<cMixFaderCount;fx++){
+"318
 {
 [v _fx `i ~T0 @X0 1 a ]
 [e = _fx -> 0 `i ]
@@ -13732,276 +13746,276 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 1591  ]
 [e :U 1590 ]
 {
-[; ;main.c: 315: faderValue=ADCC_GetSingleConversion(fx);
-"315
-[e = _faderValue -> ( _ADCC_GetSingleConversion (1 -> _fx `E14316 `i ]
-[; ;main.c: 316: PanelInChannels[fx]=255-(faderValue>>2);
-"316
-[e = *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux -> - -> 255 `i >> _faderValue -> 2 `i `uc ]
-[; ;main.c: 318: fader8bitValue=PanelInChannels[fx];
-"318
-[e = _fader8bitValue *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux ]
-[; ;main.c: 319: if( (PanelInChannels[fx]<(mvcChannels[fx]+4))
-[; ;main.c: 320: && (PanelInChannels[fx]>(mvcChannels[fx]-4)) ) {
+[; ;main.c: 319: faderValue=ADCC_GetSingleConversion(fx);
+"319
+[e = _faderValue -> ( _ADCC_GetSingleConversion (1 -> _fx `E14266 `i ]
+[; ;main.c: 320: PanelInChannels[fx]=255-(faderValue>>2);
 "320
+[e = *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux -> - -> 255 `i >> _faderValue -> 2 `i `uc ]
+[; ;main.c: 322: fader8bitValue=PanelInChannels[fx];
+"322
+[e = _fader8bitValue *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux ]
+[; ;main.c: 323: if( (PanelInChannels[fx]<(mvcChannels[fx]+4))
+[; ;main.c: 324: && (PanelInChannels[fx]>(mvcChannels[fx]-4)) ) {
+"324
 [e $ ! && < -> *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux `i + -> *U + &U _mvcChannels * -> -> _fx `ui `ux -> -> # *U &U _mvcChannels `ui `ux `i -> 4 `i > -> *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux `i - -> *U + &U _mvcChannels * -> -> _fx `ui `ux -> -> # *U &U _mvcChannels `ui `ux `i -> 4 `i 1593  ]
 {
-[; ;main.c: 321: faderActiveFlag[fx]=1;
-"321
-[e = *U + &U _faderActiveFlag * -> -> _fx `ui `ux -> -> # *U &U _faderActiveFlag `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 322: LATB |= 0b00000010 ;
-"322
-[e =| _LATB -> -> 2 `i `uc ]
-"323
-}
-[e :U 1593 ]
-[; ;main.c: 323: }
-[; ;main.c: 324: if(faderActiveFlag[fx]>0){
-"324
-[e $ ! > -> *U + &U _faderActiveFlag * -> -> _fx `ui `ux -> -> # *U &U _faderActiveFlag `ui `ux `i -> 0 `i 1594  ]
-{
-[; ;main.c: 325: mvcChannels[fx]=PanelInChannels[fx];
+[; ;main.c: 325: faderActiveFlag[fx]=1;
 "325
-[e = *U + &U _mvcChannels * -> -> _fx `ui `ux -> -> # *U &U _mvcChannels `ui `ux *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux ]
-[; ;main.c: 326: writeDAC528(fx+4,fader8bitValue);
+[e = *U + &U _faderActiveFlag * -> -> _fx `ui `ux -> -> # *U &U _faderActiveFlag `ui `ux -> -> 1 `i `uc ]
+[; ;main.c: 326: LATB |= 0b00000010 ;
 "326
-[e ( _writeDAC528 (2 , + _fx -> 4 `i _fader8bitValue ]
+[e =| _LATB -> -> 2 `i `uc ]
 "327
 }
-[e :U 1594 ]
+[e :U 1593 ]
 [; ;main.c: 327: }
-[; ;main.c: 328: prevPanelInChannels[fx]=PanelInChannels[fx];
+[; ;main.c: 328: if(faderActiveFlag[fx]>0){
 "328
-[e = *U + &U _prevPanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _prevPanelInChannels `ui `ux *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux ]
-[; ;main.c: 330: delay(10);
+[e $ ! > -> *U + &U _faderActiveFlag * -> -> _fx `ui `ux -> -> # *U &U _faderActiveFlag `ui `ux `i -> 0 `i 1594  ]
+{
+[; ;main.c: 329: mvcChannels[fx]=PanelInChannels[fx];
+"329
+[e = *U + &U _mvcChannels * -> -> _fx `ui `ux -> -> # *U &U _mvcChannels `ui `ux *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux ]
+[; ;main.c: 330: writeDAC528(fx+4,fader8bitValue);
 "330
-[e ( _delay (1 -> 10 `i ]
+[e ( _writeDAC528 (2 , + _fx -> 4 `i _fader8bitValue ]
 "331
 }
-"314
-[e ++ _fx -> 1 `i ]
-[e $ < _fx -> . `E14417 1 `i 1590  ]
-[e :U 1591 ]
-"331
-}
+[e :U 1594 ]
 [; ;main.c: 331: }
+[; ;main.c: 332: prevPanelInChannels[fx]=PanelInChannels[fx];
+"332
+[e = *U + &U _prevPanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _prevPanelInChannels `ui `ux *U + &U _PanelInChannels * -> -> _fx `ui `ux -> -> # *U &U _PanelInChannels `ui `ux ]
 [; ;main.c: 334: delay(10);
 "334
 [e ( _delay (1 -> 10 `i ]
-[; ;main.c: 335: faderValue=ADCC_GetSingleConversion(POT0);
 "335
-[e = _faderValue -> ( _ADCC_GetSingleConversion (1 . `E14405 5 `i ]
-[; ;main.c: 336: faderValue=1023-faderValue;
-"336
-[e = _faderValue - -> 1023 `i _faderValue ]
-[; ;main.c: 338: POT0Value=faderValue/102.3;
-"338
-[e = _POT0Value -> / -> _faderValue `d .102.3 `uc ]
-[; ;main.c: 339: delay(10);
-"339
-[e ( _delay (1 -> 10 `i ]
-[; ;main.c: 340: faderValue=ADCC_GetSingleConversion(POT1);
-"340
-[e = _faderValue -> ( _ADCC_GetSingleConversion (1 . `E14405 7 `i ]
-[; ;main.c: 341: faderValue=1023-faderValue;
-"341
-[e = _faderValue - -> 1023 `i _faderValue ]
-[; ;main.c: 342: POT1Value=faderValue/102.3;
-"342
-[e = _POT1Value -> / -> _faderValue `d .102.3 `uc ]
-"343
 }
-[; ;main.c: 343: }
-[; ;main.c: 406: if (prevFader8bitValue!=fader8bitValue) {
-"406
+"318
+[e ++ _fx -> 1 `i ]
+[e $ < _fx -> . `E14417 1 `i 1590  ]
+[e :U 1591 ]
+"335
+}
+[; ;main.c: 335: }
+[; ;main.c: 338: delay(10);
+"338
+[e ( _delay (1 -> 10 `i ]
+[; ;main.c: 339: faderValue=ADCC_GetSingleConversion(POT0);
+"339
+[e = _faderValue -> ( _ADCC_GetSingleConversion (1 . `E14405 5 `i ]
+[; ;main.c: 340: faderValue=1023-faderValue;
+"340
+[e = _faderValue - -> 1023 `i _faderValue ]
+[; ;main.c: 342: POT0Value=faderValue/102.3;
+"342
+[e = _POT0Value -> / -> _faderValue `d .102.3 `uc ]
+[; ;main.c: 343: delay(10);
+"343
+[e ( _delay (1 -> 10 `i ]
+[; ;main.c: 344: faderValue=ADCC_GetSingleConversion(POT1);
+"344
+[e = _faderValue -> ( _ADCC_GetSingleConversion (1 . `E14405 7 `i ]
+[; ;main.c: 345: faderValue=1023-faderValue;
+"345
+[e = _faderValue - -> 1023 `i _faderValue ]
+[; ;main.c: 346: POT1Value=faderValue/102.3;
+"346
+[e = _POT1Value -> / -> _faderValue `d .102.3 `uc ]
+"347
+}
+[; ;main.c: 347: }
+[; ;main.c: 410: if (prevFader8bitValue!=fader8bitValue) {
+"410
 [e $ ! != -> _prevFader8bitValue `i -> _fader8bitValue `i 1595  ]
 {
-[; ;main.c: 407: iChangeCount++;
-"407
+[; ;main.c: 411: iChangeCount++;
+"411
 [e ++ _iChangeCount -> -> 1 `i `uc ]
-"409
+"413
 }
 [e :U 1595 ]
-[; ;main.c: 409: }
-[; ;main.c: 410: prevFader8bitValue=fader8bitValue;
-"410
-[e = _prevFader8bitValue _fader8bitValue ]
-[; ;main.c: 413: iCounter++;
-"413
-[e ++ _iCounter -> -> 1 `i `ui ]
-[; ;main.c: 414: if (fader8bitValue<252)
+[; ;main.c: 413: }
+[; ;main.c: 414: prevFader8bitValue=fader8bitValue;
 "414
+[e = _prevFader8bitValue _fader8bitValue ]
+[; ;main.c: 417: iCounter++;
+"417
+[e ++ _iCounter -> -> 1 `i `ui ]
+[; ;main.c: 418: if (fader8bitValue<252)
+"418
 [e $ ! < -> _fader8bitValue `i -> 252 `i 1596  ]
-[; ;main.c: 415: delay(1*(255-fader8bitValue));
-"415
+[; ;main.c: 419: delay(1*(255-fader8bitValue));
+"419
 [e ( _delay (1 * -> 1 `i - -> 255 `i -> _fader8bitValue `i ]
 [e :U 1596 ]
-[; ;main.c: 421: mvcPatchNumber=(POT1Value*10)+POT0Value;
-"421
+[; ;main.c: 425: mvcPatchNumber=(POT1Value*10)+POT0Value;
+"425
 [e = _mvcPatchNumber + * -> _POT1Value `i -> 10 `i -> _POT0Value `i ]
-[; ;main.c: 422: LED7SegDisplayValueByDigit(POT1Value,POT0Value);
-"422
+[; ;main.c: 426: LED7SegDisplayValueByDigit(POT1Value,POT0Value);
+"426
 [e ( _LED7SegDisplayValueByDigit (2 , -> _POT1Value `ui -> _POT0Value `ui ]
-[; ;main.c: 427: if (PORTBbits.RB4 == 0){
-"427
+[; ;main.c: 431: if (PORTBbits.RB4 == 0){
+"431
 [e $ ! == -> . . _PORTBbits 0 4 `i -> 0 `i 1597  ]
 {
-[; ;main.c: 429: LoadDebounceCount++;
-"429
+[; ;main.c: 433: LoadDebounceCount++;
+"433
 [e ++ _LoadDebounceCount -> 1 `i ]
-[; ;main.c: 430: if(5<LoadDebounceCount) {
-"430
+[; ;main.c: 434: if(5<LoadDebounceCount) {
+"434
 [e $ ! < -> 5 `i _LoadDebounceCount 1598  ]
 {
-[; ;main.c: 431: LATB &= 0b10011110 ;
-"431
-[e =& _LATB -> -> 158 `i `uc ]
-[; ;main.c: 433: loadPatch(mvcPatchNumber);
-"433
-[e ( _loadPatch (1 _mvcPatchNumber ]
-[; ;main.c: 435: LoadDebounceCount=1;
+[; ;main.c: 435: LATB &= 0b10011110 ;
 "435
-[e = _LoadDebounceCount -> 1 `i ]
-[; ;main.c: 436: _delay((unsigned long)((500)*(32000000/4000.0)));
-"436
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+[e =& _LATB -> -> 158 `i `uc ]
+[; ;main.c: 437: loadPatch(mvcPatchNumber);
 "437
+[e ( _loadPatch (1 _mvcPatchNumber ]
+[; ;main.c: 439: LoadDebounceCount=1;
+"439
+[e = _LoadDebounceCount -> 1 `i ]
+[; ;main.c: 440: _delay((unsigned long)((500)*(32000000/4000.0)));
+"440
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
+"441
 }
 [e :U 1598 ]
-"438
+"442
 }
-[; ;main.c: 437: }
-[; ;main.c: 438: }else{
+[; ;main.c: 441: }
+[; ;main.c: 442: }else{
 [e $U 1599  ]
 [e :U 1597 ]
 {
-[; ;main.c: 439: if(0<LoadDebounceCount){
-"439
+[; ;main.c: 443: if(0<LoadDebounceCount){
+"443
 [e $ ! < -> 0 `i _LoadDebounceCount 1600  ]
 {
-[; ;main.c: 440: LoadDebounceCount=0;
-"440
+[; ;main.c: 444: LoadDebounceCount=0;
+"444
 [e = _LoadDebounceCount -> 0 `i ]
-[; ;main.c: 441: LATB |= 0b00000001 ;
-"441
+[; ;main.c: 445: LATB |= 0b00000001 ;
+"445
 [e =| _LATB -> -> 1 `i `uc ]
-"442
+"446
 }
 [e :U 1600 ]
-"443
+"447
 }
 [e :U 1599 ]
-[; ;main.c: 442: }
-[; ;main.c: 443: }
-[; ;main.c: 444: if (PORTBbits.RB5 == 0){
-"444
+[; ;main.c: 446: }
+[; ;main.c: 447: }
+[; ;main.c: 448: if (PORTBbits.RB5 == 0){
+"448
 [e $ ! == -> . . _PORTBbits 0 5 `i -> 0 `i 1601  ]
 {
-[; ;main.c: 446: SaveDebounceCount++;
-"446
+[; ;main.c: 450: SaveDebounceCount++;
+"450
 [e ++ _SaveDebounceCount -> 1 `i ]
-[; ;main.c: 447: if(5<SaveDebounceCount) {
-"447
+[; ;main.c: 451: if(5<SaveDebounceCount) {
+"451
 [e $ ! < -> 5 `i _SaveDebounceCount 1602  ]
 {
-[; ;main.c: 448: LATB &= 0b10011101 ;
-"448
+[; ;main.c: 452: LATB &= 0b10011101 ;
+"452
 [e =& _LATB -> -> 157 `i `uc ]
-[; ;main.c: 467: savePatch(mvcPatchNumber);
-"467
+[; ;main.c: 471: savePatch(mvcPatchNumber);
+"471
 [e ( _savePatch (1 _mvcPatchNumber ]
-[; ;main.c: 472: SaveDebounceCount=1;
-"472
+[; ;main.c: 476: SaveDebounceCount=1;
+"476
 [e = _SaveDebounceCount -> 1 `i ]
-[; ;main.c: 473: _delay((unsigned long)((500)*(32000000/4000.0)));
-"473
+[; ;main.c: 477: _delay((unsigned long)((500)*(32000000/4000.0)));
+"477
 [e ( __delay (1 -> * -> -> 500 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"474
+"478
 }
 [e :U 1602 ]
-"475
+"479
 }
-[; ;main.c: 474: }
-[; ;main.c: 475: }else{
+[; ;main.c: 478: }
+[; ;main.c: 479: }else{
 [e $U 1603  ]
 [e :U 1601 ]
 {
-[; ;main.c: 476: if(0<SaveDebounceCount){
-"476
+[; ;main.c: 480: if(0<SaveDebounceCount){
+"480
 [e $ ! < -> 0 `i _SaveDebounceCount 1604  ]
 {
-[; ;main.c: 477: SaveDebounceCount=0;
-"477
+[; ;main.c: 481: SaveDebounceCount=0;
+"481
 [e = _SaveDebounceCount -> 0 `i ]
-[; ;main.c: 478: LATB |= 0b00000010;
-"478
+[; ;main.c: 482: LATB |= 0b00000010;
+"482
 [e =| _LATB -> -> 2 `i `uc ]
-"479
+"483
 }
 [e :U 1604 ]
-"480
+"484
 }
 [e :U 1603 ]
-"481
+"485
 }
 [e :U 1586 ]
-"307
+"311
 [e $U 1587  ]
 [e :U 1588 ]
-[; ;main.c: 479: }
-[; ;main.c: 480: }
-[; ;main.c: 481: }
-[; ;main.c: 482: }
-"482
+[; ;main.c: 483: }
+[; ;main.c: 484: }
+[; ;main.c: 485: }
+[; ;main.c: 486: }
+"486
 [e :UE 1582 ]
 }
-"483
+"487
 [v _UpdateLEDsFromValue `(v ~T0 @X0 1 ef2`uc`uc ]
-"484
+"488
 {
-[; ;main.c: 483: void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue)
-[; ;main.c: 484: {
+[; ;main.c: 487: void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue)
+[; ;main.c: 488: {
 [e :U _UpdateLEDsFromValue ]
-"483
+"487
 [v _inFaderNum `uc ~T0 @X0 1 r1 ]
 [v _inValue `uc ~T0 @X0 1 r2 ]
-"484
+"488
 [f ]
-"485
-[v _wkOnFlag `uc ~T0 @X0 1 a ]
-[; ;main.c: 485: bool wkOnFlag = 0;
-[e = _wkOnFlag -> -> 0 `i `uc ]
-"486
-[v _wkBrightFlag `uc ~T0 @X0 1 a ]
-[; ;main.c: 486: bool wkBrightFlag = 0;
-[e = _wkBrightFlag -> -> 0 `i `uc ]
-[; ;main.c: 489: if (inValue > 80) wkOnFlag=1;
 "489
+[v _wkOnFlag `uc ~T0 @X0 1 a ]
+[; ;main.c: 489: bool wkOnFlag = 0;
+[e = _wkOnFlag -> -> 0 `i `uc ]
+"490
+[v _wkBrightFlag `uc ~T0 @X0 1 a ]
+[; ;main.c: 490: bool wkBrightFlag = 0;
+[e = _wkBrightFlag -> -> 0 `i `uc ]
+[; ;main.c: 493: if (inValue > 80) wkOnFlag=1;
+"493
 [e $ ! > -> _inValue `i -> 80 `i 1606  ]
 [e = _wkOnFlag -> -> 1 `i `uc ]
 [e :U 1606 ]
-[; ;main.c: 490: if (inValue > 170) wkBrightFlag=1;
-"490
+[; ;main.c: 494: if (inValue > 170) wkBrightFlag=1;
+"494
 [e $ ! > -> _inValue `i -> 170 `i 1607  ]
 [e = _wkBrightFlag -> -> 1 `i `uc ]
 [e :U 1607 ]
-[; ;main.c: 492: switch(inFaderNum)
-"492
+[; ;main.c: 496: switch(inFaderNum)
+"496
 [e $U 1609  ]
-[; ;main.c: 493: {
-"493
+[; ;main.c: 497: {
+"497
 {
-[; ;main.c: 494: case 0 : {
-"494
+[; ;main.c: 498: case 0 : {
+"498
 [e :U 1610 ]
 {
-[; ;main.c: 495: if(wkOnFlag) { iLEDs0_LSB |= 0b00000010;
-"495
+[; ;main.c: 499: if(wkOnFlag) { iLEDs0_LSB |= 0b00000010;
+"499
 [e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1611  ]
 {
 [e =| _iLEDs0_LSB -> -> 2 `i `uc ]
-[; ;main.c: 496: if(wkBrightFlag) {iLEDs0_LSB |= 0b00000001;}else{iLEDs0_LSB &= 0b11111110;};
-"496
+[; ;main.c: 500: if(wkBrightFlag) {iLEDs0_LSB |= 0b00000001;}else{iLEDs0_LSB &= 0b11111110;};
+"500
 [e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1612  ]
 {
 [e =| _iLEDs0_LSB -> -> 1 `i `uc ]
@@ -14012,32 +14026,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _iLEDs0_LSB -> -> 254 `i `uc ]
 }
 [e :U 1613 ]
-"497
+"501
 }
-[; ;main.c: 497: }else{ iLEDs0_LSB &= 0b11111100;}
+[; ;main.c: 501: }else{ iLEDs0_LSB &= 0b11111100;}
 [e $U 1614  ]
 [e :U 1611 ]
 {
 [e =& _iLEDs0_LSB -> -> 252 `i `uc ]
 }
 [e :U 1614 ]
-[; ;main.c: 498: break;
-"498
+[; ;main.c: 502: break;
+"502
 [e $U 1608  ]
-"499
+"503
 }
-[; ;main.c: 499: }
-[; ;main.c: 500: case 1 : {
-"500
+[; ;main.c: 503: }
+[; ;main.c: 504: case 1 : {
+"504
 [e :U 1615 ]
 {
-[; ;main.c: 501: if(wkOnFlag) { iLEDs0_LSB |= 0b00001000;
-"501
+[; ;main.c: 505: if(wkOnFlag) { iLEDs0_LSB |= 0b00001000;
+"505
 [e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1616  ]
 {
 [e =| _iLEDs0_LSB -> -> 8 `i `uc ]
-[; ;main.c: 502: if(wkBrightFlag) {iLEDs0_LSB |= 0b00000100;}else{iLEDs0_LSB &= 0b11111011;};
-"502
+[; ;main.c: 506: if(wkBrightFlag) {iLEDs0_LSB |= 0b00000100;}else{iLEDs0_LSB &= 0b11111011;};
+"506
 [e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1617  ]
 {
 [e =| _iLEDs0_LSB -> -> 4 `i `uc ]
@@ -14048,32 +14062,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _iLEDs0_LSB -> -> 251 `i `uc ]
 }
 [e :U 1618 ]
-"503
+"507
 }
-[; ;main.c: 503: }else{ iLEDs0_LSB &= 0b11110011;}
+[; ;main.c: 507: }else{ iLEDs0_LSB &= 0b11110011;}
 [e $U 1619  ]
 [e :U 1616 ]
 {
 [e =& _iLEDs0_LSB -> -> 243 `i `uc ]
 }
 [e :U 1619 ]
-[; ;main.c: 504: break;
-"504
+[; ;main.c: 508: break;
+"508
 [e $U 1608  ]
-"505
+"509
 }
-[; ;main.c: 505: }
-[; ;main.c: 506: case 2 : {
-"506
+[; ;main.c: 509: }
+[; ;main.c: 510: case 2 : {
+"510
 [e :U 1620 ]
 {
-[; ;main.c: 507: if(wkOnFlag) { iLEDs0_LSB |= 0b00100000;
-"507
+[; ;main.c: 511: if(wkOnFlag) { iLEDs0_LSB |= 0b00100000;
+"511
 [e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1621  ]
 {
 [e =| _iLEDs0_LSB -> -> 32 `i `uc ]
-[; ;main.c: 508: if(wkBrightFlag) {iLEDs0_LSB |= 0b00010000;}else{iLEDs0_LSB &= 0b11101111;};
-"508
+[; ;main.c: 512: if(wkBrightFlag) {iLEDs0_LSB |= 0b00010000;}else{iLEDs0_LSB &= 0b11101111;};
+"512
 [e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1622  ]
 {
 [e =| _iLEDs0_LSB -> -> 16 `i `uc ]
@@ -14084,32 +14098,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _iLEDs0_LSB -> -> 239 `i `uc ]
 }
 [e :U 1623 ]
-"509
+"513
 }
-[; ;main.c: 509: }else{ iLEDs0_LSB &= 0b11001111;}
+[; ;main.c: 513: }else{ iLEDs0_LSB &= 0b11001111;}
 [e $U 1624  ]
 [e :U 1621 ]
 {
 [e =& _iLEDs0_LSB -> -> 207 `i `uc ]
 }
 [e :U 1624 ]
-[; ;main.c: 510: break;
-"510
+[; ;main.c: 514: break;
+"514
 [e $U 1608  ]
-"511
+"515
 }
-[; ;main.c: 511: }
-[; ;main.c: 512: case 3 : {
-"512
+[; ;main.c: 515: }
+[; ;main.c: 516: case 3 : {
+"516
 [e :U 1625 ]
 {
-[; ;main.c: 513: if(wkOnFlag) { iLEDs0_LSB |= 0b10000000;
-"513
+[; ;main.c: 517: if(wkOnFlag) { iLEDs0_LSB |= 0b10000000;
+"517
 [e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1626  ]
 {
 [e =| _iLEDs0_LSB -> -> 128 `i `uc ]
-[; ;main.c: 514: if(wkBrightFlag) {iLEDs0_LSB |= 0b01000000;}else{iLEDs0_LSB &= 0b10111111;};
-"514
+[; ;main.c: 518: if(wkBrightFlag) {iLEDs0_LSB |= 0b01000000;}else{iLEDs0_LSB &= 0b10111111;};
+"518
 [e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1627  ]
 {
 [e =| _iLEDs0_LSB -> -> 64 `i `uc ]
@@ -14120,32 +14134,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _iLEDs0_LSB -> -> 191 `i `uc ]
 }
 [e :U 1628 ]
-"515
+"519
 }
-[; ;main.c: 515: }else{ iLEDs0_LSB &= 0b00111111;}
+[; ;main.c: 519: }else{ iLEDs0_LSB &= 0b00111111;}
 [e $U 1629  ]
 [e :U 1626 ]
 {
 [e =& _iLEDs0_LSB -> -> 63 `i `uc ]
 }
 [e :U 1629 ]
-[; ;main.c: 516: break;
-"516
+[; ;main.c: 520: break;
+"520
 [e $U 1608  ]
-"517
+"521
 }
-[; ;main.c: 517: }
-[; ;main.c: 518: case 4 : {
-"518
+[; ;main.c: 521: }
+[; ;main.c: 522: case 4 : {
+"522
 [e :U 1630 ]
 {
-[; ;main.c: 519: if(wkOnFlag) { iLEDs0_MSB |= 0b00000010;
-"519
+[; ;main.c: 523: if(wkOnFlag) { iLEDs0_MSB |= 0b00000010;
+"523
 [e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1631  ]
 {
 [e =| _iLEDs0_MSB -> -> 2 `i `uc ]
-[; ;main.c: 520: if(wkBrightFlag) {iLEDs0_MSB |= 0b00000001;}else{iLEDs0_MSB &= 0b11111110;};
-"520
+[; ;main.c: 524: if(wkBrightFlag) {iLEDs0_MSB |= 0b00000001;}else{iLEDs0_MSB &= 0b11111110;};
+"524
 [e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1632  ]
 {
 [e =| _iLEDs0_MSB -> -> 1 `i `uc ]
@@ -14156,32 +14170,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _iLEDs0_MSB -> -> 254 `i `uc ]
 }
 [e :U 1633 ]
-"521
+"525
 }
-[; ;main.c: 521: }else{ iLEDs0_MSB &= 0b11111100;}
+[; ;main.c: 525: }else{ iLEDs0_MSB &= 0b11111100;}
 [e $U 1634  ]
 [e :U 1631 ]
 {
 [e =& _iLEDs0_MSB -> -> 252 `i `uc ]
 }
 [e :U 1634 ]
-[; ;main.c: 522: break;
-"522
+[; ;main.c: 526: break;
+"526
 [e $U 1608  ]
-"523
+"527
 }
-[; ;main.c: 523: }
-[; ;main.c: 524: case 5 : {
-"524
+[; ;main.c: 527: }
+[; ;main.c: 528: case 5 : {
+"528
 [e :U 1635 ]
 {
-[; ;main.c: 525: if(wkOnFlag) { iLEDs0_MSB |= 0b00001000;
-"525
+[; ;main.c: 529: if(wkOnFlag) { iLEDs0_MSB |= 0b00001000;
+"529
 [e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1636  ]
 {
 [e =| _iLEDs0_MSB -> -> 8 `i `uc ]
-[; ;main.c: 526: if(wkBrightFlag) {iLEDs0_MSB |= 0b00000100;}else{iLEDs0_MSB &= 0b11111011;};
-"526
+[; ;main.c: 530: if(wkBrightFlag) {iLEDs0_MSB |= 0b00000100;}else{iLEDs0_MSB &= 0b11111011;};
+"530
 [e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1637  ]
 {
 [e =| _iLEDs0_MSB -> -> 4 `i `uc ]
@@ -14192,32 +14206,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _iLEDs0_MSB -> -> 251 `i `uc ]
 }
 [e :U 1638 ]
-"527
+"531
 }
-[; ;main.c: 527: }else{ iLEDs0_MSB &= 0b11110011;}
+[; ;main.c: 531: }else{ iLEDs0_MSB &= 0b11110011;}
 [e $U 1639  ]
 [e :U 1636 ]
 {
 [e =& _iLEDs0_MSB -> -> 243 `i `uc ]
 }
 [e :U 1639 ]
-[; ;main.c: 528: break;
-"528
+[; ;main.c: 532: break;
+"532
 [e $U 1608  ]
-"529
+"533
 }
-[; ;main.c: 529: }
-[; ;main.c: 530: case 6 : {
-"530
+[; ;main.c: 533: }
+[; ;main.c: 534: case 6 : {
+"534
 [e :U 1640 ]
 {
-[; ;main.c: 531: if(wkOnFlag) { iLEDs0_MSB |= 0b00100000;
-"531
+[; ;main.c: 535: if(wkOnFlag) { iLEDs0_MSB |= 0b00100000;
+"535
 [e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1641  ]
 {
 [e =| _iLEDs0_MSB -> -> 32 `i `uc ]
-[; ;main.c: 532: if(wkBrightFlag) {iLEDs0_MSB |= 0b00010000;}else{iLEDs0_MSB &= 0b11101111;};
-"532
+[; ;main.c: 536: if(wkBrightFlag) {iLEDs0_MSB |= 0b00010000;}else{iLEDs0_MSB &= 0b11101111;};
+"536
 [e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1642  ]
 {
 [e =| _iLEDs0_MSB -> -> 16 `i `uc ]
@@ -14228,32 +14242,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _iLEDs0_MSB -> -> 239 `i `uc ]
 }
 [e :U 1643 ]
-"533
+"537
 }
-[; ;main.c: 533: }else{ iLEDs0_MSB &= 0b11001111;}
+[; ;main.c: 537: }else{ iLEDs0_MSB &= 0b11001111;}
 [e $U 1644  ]
 [e :U 1641 ]
 {
 [e =& _iLEDs0_MSB -> -> 207 `i `uc ]
 }
 [e :U 1644 ]
-[; ;main.c: 534: break;
-"534
+[; ;main.c: 538: break;
+"538
 [e $U 1608  ]
-"535
+"539
 }
-[; ;main.c: 535: }
-[; ;main.c: 536: case 7 : {
-"536
+[; ;main.c: 539: }
+[; ;main.c: 540: case 7 : {
+"540
 [e :U 1645 ]
 {
-[; ;main.c: 537: if(wkOnFlag) { iLEDs0_MSB |= 0b10000000;
-"537
+[; ;main.c: 541: if(wkOnFlag) { iLEDs0_MSB |= 0b10000000;
+"541
 [e $ ! != -> _wkOnFlag `i -> -> -> 0 `i `uc `i 1646  ]
 {
 [e =| _iLEDs0_MSB -> -> 128 `i `uc ]
-[; ;main.c: 538: if(wkBrightFlag) {iLEDs0_MSB |= 0b01000000;}else{iLEDs0_MSB &= 0b10111111;};
-"538
+[; ;main.c: 542: if(wkBrightFlag) {iLEDs0_MSB |= 0b01000000;}else{iLEDs0_MSB &= 0b10111111;};
+"542
 [e $ ! != -> _wkBrightFlag `i -> -> -> 0 `i `uc `i 1647  ]
 {
 [e =| _iLEDs0_MSB -> -> 64 `i `uc ]
@@ -14264,23 +14278,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =& _iLEDs0_MSB -> -> 191 `i `uc ]
 }
 [e :U 1648 ]
-"539
+"543
 }
-[; ;main.c: 539: }else{ iLEDs0_MSB &= 0b00111111;}
+[; ;main.c: 543: }else{ iLEDs0_MSB &= 0b00111111;}
 [e $U 1649  ]
 [e :U 1646 ]
 {
 [e =& _iLEDs0_MSB -> -> 63 `i `uc ]
 }
 [e :U 1649 ]
-"540
+"544
 }
-"541
+"545
 }
-[; ;main.c: 540: }
-[; ;main.c: 541: }
+[; ;main.c: 544: }
+[; ;main.c: 545: }
 [e $U 1608  ]
-"492
+"496
 [e :U 1609 ]
 [e [\ _inFaderNum , $ -> -> 0 `i `uc 1610
  , $ -> -> 1 `i `uc 1615
@@ -14291,177 +14305,177 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 6 `i `uc 1640
  , $ -> -> 7 `i `uc 1645
  1608 ]
-"541
+"545
 [e :U 1608 ]
-[; ;main.c: 542: }
-"542
+[; ;main.c: 546: }
+"546
 [e :UE 1605 ]
 }
-"543
-[v _MYI2C_ReadFaders `(E14267 ~T0 @X0 1 ef1`uc ]
-"544
-{
-[; ;main.c: 543: I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress)
-[; ;main.c: 544: {
-[e :U _MYI2C_ReadFaders ]
-"543
-[v _slaveDeviceAddress `uc ~T0 @X0 1 r1 ]
-"544
-[f ]
 "547
-[v _pflag `i ~T0 @X0 1 a ]
+[v _MYI2C_ReadFaders `(E14335 ~T0 @X0 1 ef1`uc ]
 "548
-[v _dataAddress `i ~T0 @X0 1 a ]
-[; ;main.c: 547: int pflag;
-[; ;main.c: 548: int dataAddress=0;
-[e = _dataAddress -> 0 `i ]
-"549
-[v _pointerByte `uc ~T0 @X0 1 a ]
-[; ;main.c: 549: uint8_t pointerByte=cPointerByteReadFaders;
-[e = _pointerByte _cPointerByteReadFaders ]
-"550
-[v _status `E14267 ~T0 @X0 1 a ]
+{
+[; ;main.c: 547: I2C1_MESSAGE_STATUS MYI2C_ReadFaders(uint8_t slaveDeviceAddress)
+[; ;main.c: 548: {
+[e :U _MYI2C_ReadFaders ]
+"547
+[v _slaveDeviceAddress `uc ~T0 @X0 1 r1 ]
+"548
+[f ]
 "551
-[v _readTRB `S1563 ~T0 @X0 -> 2 `i a ]
+[v _pflag `i ~T0 @X0 1 a ]
 "552
-[v _writeBuffer `uc ~T0 @X0 -> 3 `i a ]
+[v _dataAddress `i ~T0 @X0 1 a ]
+[; ;main.c: 551: int pflag;
+[; ;main.c: 552: int dataAddress=0;
+[e = _dataAddress -> 0 `i ]
 "553
-[v _timeOut `ui ~T0 @X0 1 a ]
-[; ;main.c: 550: I2C1_MESSAGE_STATUS status;
-[; ;main.c: 551: I2C1_TRANSACTION_REQUEST_BLOCK readTRB[2];
-[; ;main.c: 552: uint8_t writeBuffer[3];
-[; ;main.c: 553: uint16_t timeOut;
-[; ;main.c: 557: status = I2C1_MESSAGE_PENDING;
+[v _pointerByte `uc ~T0 @X0 1 a ]
+[; ;main.c: 553: uint8_t pointerByte=cPointerByteReadFaders;
+[e = _pointerByte _cPointerByteReadFaders ]
+"554
+[v _status `E14335 ~T0 @X0 1 a ]
+"555
+[v _readTRB `S1563 ~T0 @X0 -> 2 `i a ]
+"556
+[v _writeBuffer `uc ~T0 @X0 -> 3 `i a ]
 "557
-[e = _status . `E14267 2 ]
-[; ;main.c: 565: timeOut = 0;
-"565
+[v _timeOut `ui ~T0 @X0 1 a ]
+[; ;main.c: 554: I2C1_MESSAGE_STATUS status;
+[; ;main.c: 555: I2C1_TRANSACTION_REQUEST_BLOCK readTRB[2];
+[; ;main.c: 556: uint8_t writeBuffer[3];
+[; ;main.c: 557: uint16_t timeOut;
+[; ;main.c: 561: status = I2C1_MESSAGE_PENDING;
+"561
+[e = _status . `E14335 2 ]
+[; ;main.c: 569: timeOut = 0;
+"569
 [e = _timeOut -> -> 0 `i `ui ]
-[; ;main.c: 567: while(status != I2C1_MESSAGE_FAIL)
-"567
+[; ;main.c: 571: while(status != I2C1_MESSAGE_FAIL)
+"571
 [e $U 1651  ]
 [e :U 1652 ]
-[; ;main.c: 568: {
-"568
+[; ;main.c: 572: {
+"572
 {
-[; ;main.c: 572: I2C1_MasterWriteTRBBuild( &readTRB[0],
-[; ;main.c: 573: &pointerByte,
-[; ;main.c: 574: 1,
-[; ;main.c: 575: slaveDeviceAddress);
-"575
+[; ;main.c: 576: I2C1_MasterWriteTRBBuild( &readTRB[0],
+[; ;main.c: 577: &pointerByte,
+[; ;main.c: 578: 1,
+[; ;main.c: 579: slaveDeviceAddress);
+"579
 [e ( _I2C1_MasterWriteTRBBuild (4 , , , &U *U + &U _readTRB * -> -> -> 0 `i `ui `ux -> -> # *U &U _readTRB `ui `ux &U _pointerByte -> -> 1 `i `uc -> _slaveDeviceAddress `ui ]
-[; ;main.c: 577: I2C1_MasterReadTRBBuild( &readTRB[1],
-[; ;main.c: 578: iI2CFaderValue,
-[; ;main.c: 579: 8,
-[; ;main.c: 580: slaveDeviceAddress);
-"580
+[; ;main.c: 581: I2C1_MasterReadTRBBuild( &readTRB[1],
+[; ;main.c: 582: iI2CFaderValue,
+[; ;main.c: 583: 8,
+[; ;main.c: 584: slaveDeviceAddress);
+"584
 [e ( _I2C1_MasterReadTRBBuild (4 , , , &U *U + &U _readTRB * -> -> -> 1 `i `ui `ux -> -> # *U &U _readTRB `ui `ux -> &U _iI2CFaderValue `*uc -> -> 8 `i `uc -> _slaveDeviceAddress `ui ]
-[; ;main.c: 583: I2C1_MasterTRBInsert(2, readTRB, &status);
-"583
+[; ;main.c: 587: I2C1_MasterTRBInsert(2, readTRB, &status);
+"587
 [e ( _I2C1_MasterTRBInsert (3 , , -> -> 2 `i `uc &U _readTRB &U _status ]
-[; ;main.c: 586: while(status == I2C1_MESSAGE_PENDING);
-"586
+[; ;main.c: 590: while(status == I2C1_MESSAGE_PENDING);
+"590
 [e $U 1654  ]
 [e :U 1655 ]
 [e :U 1654 ]
-[e $ == -> _status `i -> . `E14267 2 `i 1655  ]
+[e $ == -> _status `i -> . `E14335 2 `i 1655  ]
 [e :U 1656 ]
-[; ;main.c: 588: if (status == I2C1_MESSAGE_COMPLETE)
-"588
-[e $ ! == -> _status `i -> . `E14267 0 `i 1657  ]
-[; ;main.c: 589: break;
-"589
+[; ;main.c: 592: if (status == I2C1_MESSAGE_COMPLETE)
+"592
+[e $ ! == -> _status `i -> . `E14335 0 `i 1657  ]
+[; ;main.c: 593: break;
+"593
 [e $U 1653  ]
 [e :U 1657 ]
-[; ;main.c: 598: if (timeOut == 100)
-"598
+[; ;main.c: 602: if (timeOut == 100)
+"602
 [e $ ! == _timeOut -> -> 100 `i `ui 1658  ]
-[; ;main.c: 599: break;
-"599
+[; ;main.c: 603: break;
+"603
 [e $U 1653  ]
 [e $U 1659  ]
-"600
+"604
 [e :U 1658 ]
-[; ;main.c: 600: else
-[; ;main.c: 601: timeOut++;
-"601
+[; ;main.c: 604: else
+[; ;main.c: 605: timeOut++;
+"605
 [e ++ _timeOut -> -> 1 `i `ui ]
 [e :U 1659 ]
-"603
-}
-[e :U 1651 ]
-"567
-[e $ != -> _status `i -> . `E14267 1 `i 1652  ]
-[e :U 1653 ]
-[; ;main.c: 603: }
-[; ;main.c: 605: if (I2C1_MESSAGE_FAIL==status) {
-"605
-[e $ ! == -> . `E14267 1 `i -> _status `i 1660  ]
-{
 "607
 }
-[e :U 1660 ]
+[e :U 1651 ]
+"571
+[e $ != -> _status `i -> . `E14335 1 `i 1652  ]
+[e :U 1653 ]
 [; ;main.c: 607: }
-[; ;main.c: 609: return status;
+[; ;main.c: 609: if (I2C1_MESSAGE_FAIL==status) {
 "609
+[e $ ! == -> . `E14335 1 `i -> _status `i 1660  ]
+{
+"611
+}
+[e :U 1660 ]
+[; ;main.c: 611: }
+[; ;main.c: 613: return status;
+"613
 [e ) _status ]
 [e $UE 1650  ]
-[; ;main.c: 610: }
-"610
+[; ;main.c: 614: }
+"614
 [e :UE 1650 ]
 }
-"677
+"681
 [v _MYI2C_WriteFaders `(v ~T0 @X0 1 ef1`uc ]
-"678
+"682
 {
-[; ;main.c: 677: void MYI2C_WriteFaders(uint8_t slaveDeviceAddress)
-[; ;main.c: 678: {
+[; ;main.c: 681: void MYI2C_WriteFaders(uint8_t slaveDeviceAddress)
+[; ;main.c: 682: {
 [e :U _MYI2C_WriteFaders ]
-"677
+"681
 [v _slaveDeviceAddress `uc ~T0 @X0 1 r1 ]
-"678
+"682
 [f ]
-"684
-[v _pData `*uc ~T0 @X0 1 a ]
-"685
-[v _nCount `ui ~T0 @X0 1 a ]
-"687
-[v _writeBuffer `uc ~T0 @X0 -> 9 `i a ]
 "688
-[v _pD `*uc ~T0 @X0 1 a ]
+[v _pData `*uc ~T0 @X0 1 a ]
 "689
+[v _nCount `ui ~T0 @X0 1 a ]
+"691
+[v _writeBuffer `uc ~T0 @X0 -> 9 `i a ]
+"692
+[v _pD `*uc ~T0 @X0 1 a ]
+"693
 [v _counter `ui ~T0 @X0 1 a ]
 [v _timeOut `ui ~T0 @X0 1 a ]
-"690
+"694
 [v _pointerByte `uc ~T0 @X0 1 a ]
-[; ;main.c: 684: uint8_t *pData;
-[; ;main.c: 685: uint16_t nCount;
-[; ;main.c: 687: uint8_t writeBuffer[9];
-[; ;main.c: 688: uint8_t *pD;
-[; ;main.c: 689: uint16_t counter, timeOut;
-[; ;main.c: 690: uint8_t pointerByte = cPointerByteWriteFaders;
+[; ;main.c: 688: uint8_t *pData;
+[; ;main.c: 689: uint16_t nCount;
+[; ;main.c: 691: uint8_t writeBuffer[9];
+[; ;main.c: 692: uint8_t *pD;
+[; ;main.c: 693: uint16_t counter, timeOut;
+[; ;main.c: 694: uint8_t pointerByte = cPointerByteWriteFaders;
 [e = _pointerByte _cPointerByteWriteFaders ]
-"692
-[v _status `E14267 ~T0 @X0 1 a ]
-[; ;main.c: 692: I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
-[e = _status . `E14267 2 ]
-[; ;main.c: 696: nCount = 1;
 "696
+[v _status `E14335 ~T0 @X0 1 a ]
+[; ;main.c: 696: I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
+[e = _status . `E14335 2 ]
+[; ;main.c: 700: nCount = 1;
+"700
 [e = _nCount -> -> 1 `i `ui ]
-[; ;main.c: 698: for (counter = 0; counter < nCount; counter++)
-"698
+[; ;main.c: 702: for (counter = 0; counter < nCount; counter++)
+"702
 {
 [e = _counter -> -> 0 `i `ui ]
 [e $U 1665  ]
-"699
+"703
 [e :U 1662 ]
-[; ;main.c: 699: {
+[; ;main.c: 703: {
 {
-[; ;main.c: 702: writeBuffer[0] = pointerByte;
-"702
+[; ;main.c: 706: writeBuffer[0] = pointerByte;
+"706
 [e = *U + &U _writeBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _pointerByte ]
-[; ;main.c: 704: for(int x=1;x<cADSRdataBytes;x++){
-"704
+[; ;main.c: 708: for(int x=1;x<cADSRdataBytes;x++){
+"708
 {
 [v _x `i ~T0 @X0 1 a ]
 [e = _x -> 1 `i ]
@@ -14469,350 +14483,350 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 1667  ]
 [e :U 1666 ]
 {
-[; ;main.c: 705: writeBuffer[x+1] = iI2CFaderValue[x];
-"705
+[; ;main.c: 709: writeBuffer[x+1] = iI2CFaderValue[x];
+"709
 [e = *U + &U _writeBuffer * -> -> + _x -> 1 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux *U + &U _iI2CFaderValue * -> -> _x `ui `ux -> -> # *U &U _iI2CFaderValue `ui `ux ]
-"706
+"710
 }
-"704
+"708
 [e ++ _x -> 1 `i ]
 [e $ < _x -> . `E14417 2 `i 1666  ]
 [e :U 1667 ]
-"706
+"710
 }
-[; ;main.c: 706: }
-[; ;main.c: 711: timeOut = 0;
-"711
+[; ;main.c: 710: }
+[; ;main.c: 715: timeOut = 0;
+"715
 [e = _timeOut -> -> 0 `i `ui ]
-[; ;main.c: 712: while(status != I2C1_MESSAGE_FAIL)
-"712
+[; ;main.c: 716: while(status != I2C1_MESSAGE_FAIL)
+"716
 [e $U 1669  ]
 [e :U 1670 ]
-[; ;main.c: 713: {
-"713
+[; ;main.c: 717: {
+"717
 {
-[; ;main.c: 715: I2C1_MasterWrite( writeBuffer,
-[; ;main.c: 716: cADSRdataBytes+1,
-[; ;main.c: 717: slaveDeviceAddress,
-[; ;main.c: 718: &status);
-"718
+[; ;main.c: 719: I2C1_MasterWrite( writeBuffer,
+[; ;main.c: 720: cADSRdataBytes+1,
+[; ;main.c: 721: slaveDeviceAddress,
+[; ;main.c: 722: &status);
+"722
 [e ( _I2C1_MasterWrite (4 , , , &U _writeBuffer -> + -> . `E14417 2 `i -> 1 `i `uc -> _slaveDeviceAddress `ui &U _status ]
-[; ;main.c: 721: while(status == I2C1_MESSAGE_PENDING);
-"721
+[; ;main.c: 725: while(status == I2C1_MESSAGE_PENDING);
+"725
 [e $U 1672  ]
 [e :U 1673 ]
 [e :U 1672 ]
-[e $ == -> _status `i -> . `E14267 2 `i 1673  ]
+[e $ == -> _status `i -> . `E14335 2 `i 1673  ]
 [e :U 1674 ]
-[; ;main.c: 723: if (status == I2C1_MESSAGE_COMPLETE)
-"723
-[e $ ! == -> _status `i -> . `E14267 0 `i 1675  ]
-[; ;main.c: 724: break;
-"724
+[; ;main.c: 727: if (status == I2C1_MESSAGE_COMPLETE)
+"727
+[e $ ! == -> _status `i -> . `E14335 0 `i 1675  ]
+[; ;main.c: 728: break;
+"728
 [e $U 1671  ]
 [e :U 1675 ]
-[; ;main.c: 733: if (timeOut == 100)
-"733
+[; ;main.c: 737: if (timeOut == 100)
+"737
 [e $ ! == _timeOut -> -> 100 `i `ui 1676  ]
-[; ;main.c: 734: break;
-"734
+[; ;main.c: 738: break;
+"738
 [e $U 1671  ]
 [e $U 1677  ]
-"735
+"739
 [e :U 1676 ]
-[; ;main.c: 735: else
-[; ;main.c: 736: timeOut++;
-"736
+[; ;main.c: 739: else
+[; ;main.c: 740: timeOut++;
+"740
 [e ++ _timeOut -> -> 1 `i `ui ]
 [e :U 1677 ]
-"737
+"741
 }
 [e :U 1669 ]
-"712
-[e $ != -> _status `i -> . `E14267 1 `i 1670  ]
+"716
+[e $ != -> _status `i -> . `E14335 1 `i 1670  ]
 [e :U 1671 ]
-[; ;main.c: 737: }
-[; ;main.c: 739: if (status == I2C1_MESSAGE_FAIL)
-"739
-[e $ ! == -> _status `i -> . `E14267 1 `i 1678  ]
-[; ;main.c: 740: {
-"740
+[; ;main.c: 741: }
+[; ;main.c: 743: if (status == I2C1_MESSAGE_FAIL)
+"743
+[e $ ! == -> _status `i -> . `E14335 1 `i 1678  ]
+[; ;main.c: 744: {
+"744
 {
-[; ;main.c: 741: break;
-"741
+[; ;main.c: 745: break;
+"745
 [e $U 1663  ]
-"742
+"746
 }
 [e :U 1678 ]
-"744
+"748
 }
-"698
+"702
 [e ++ _counter -> -> 1 `i `ui ]
 [e :U 1665 ]
 [e $ < _counter _nCount 1662  ]
 [e :U 1663 ]
-"744
+"748
 }
-[; ;main.c: 742: }
-[; ;main.c: 744: }
-[; ;main.c: 745: }
-"745
+[; ;main.c: 746: }
+[; ;main.c: 748: }
+[; ;main.c: 749: }
+"749
 [e :UE 1661 ]
 }
-"746
+"750
 [v _MYI2C_Write2LEDBytes `(v ~T0 @X0 1 ef3`uc`uc`uc ]
-"747
+"751
 {
-[; ;main.c: 746: void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress,uint8_t MSBWriteByte,uint8_t LSBWriteByte)
-[; ;main.c: 747: {
+[; ;main.c: 750: void MYI2C_Write2LEDBytes(uint8_t slaveDeviceAddress,uint8_t MSBWriteByte,uint8_t LSBWriteByte)
+[; ;main.c: 751: {
 [e :U _MYI2C_Write2LEDBytes ]
-"746
+"750
 [v _slaveDeviceAddress `uc ~T0 @X0 1 r1 ]
 [v _MSBWriteByte `uc ~T0 @X0 1 r2 ]
 [v _LSBWriteByte `uc ~T0 @X0 1 r3 ]
-"747
-[f ]
-"750
-[v _pData `*uc ~T0 @X0 1 a ]
 "751
-[v _nCount `ui ~T0 @X0 1 a ]
-"753
-[v _writeBuffer `uc ~T0 @X0 -> 3 `i a ]
+[f ]
+"754
+[v _pData `*uc ~T0 @X0 1 a ]
 "755
+[v _nCount `ui ~T0 @X0 1 a ]
+"757
+[v _writeBuffer `uc ~T0 @X0 -> 3 `i a ]
+"759
 [v _counter `ui ~T0 @X0 1 a ]
 [v _timeOut `ui ~T0 @X0 1 a ]
-"756
+"760
 [v _pointerByte `uc ~T0 @X0 1 a ]
-[; ;main.c: 750: uint8_t *pData;
-[; ;main.c: 751: uint16_t nCount;
-[; ;main.c: 753: uint8_t writeBuffer[3];
-[; ;main.c: 755: uint16_t counter, timeOut;
-[; ;main.c: 756: uint8_t pointerByte = cPointerByteWriteLED;
+[; ;main.c: 754: uint8_t *pData;
+[; ;main.c: 755: uint16_t nCount;
+[; ;main.c: 757: uint8_t writeBuffer[3];
+[; ;main.c: 759: uint16_t counter, timeOut;
+[; ;main.c: 760: uint8_t pointerByte = cPointerByteWriteLED;
 [e = _pointerByte _cPointerByteWriteLED ]
-"758
-[v _status `E14267 ~T0 @X0 1 a ]
-[; ;main.c: 758: I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
-[e = _status . `E14267 2 ]
-[; ;main.c: 762: nCount = 1;
 "762
+[v _status `E14335 ~T0 @X0 1 a ]
+[; ;main.c: 762: I2C1_MESSAGE_STATUS status = I2C1_MESSAGE_PENDING;
+[e = _status . `E14335 2 ]
+[; ;main.c: 766: nCount = 1;
+"766
 [e = _nCount -> -> 1 `i `ui ]
-[; ;main.c: 764: for (counter = 0; counter < nCount; counter++)
-"764
+[; ;main.c: 768: for (counter = 0; counter < nCount; counter++)
+"768
 {
 [e = _counter -> -> 0 `i `ui ]
 [e $U 1683  ]
-"765
+"769
 [e :U 1680 ]
-[; ;main.c: 765: {
+[; ;main.c: 769: {
 {
-[; ;main.c: 768: writeBuffer[0] = pointerByte;
-"768
+[; ;main.c: 772: writeBuffer[0] = pointerByte;
+"772
 [e = *U + &U _writeBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _pointerByte ]
-[; ;main.c: 770: writeBuffer[1] = (MSBWriteByte);
-"770
+[; ;main.c: 774: writeBuffer[1] = (MSBWriteByte);
+"774
 [e = *U + &U _writeBuffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _MSBWriteByte ]
-[; ;main.c: 771: writeBuffer[2] = (LSBWriteByte);
-"771
+[; ;main.c: 775: writeBuffer[2] = (LSBWriteByte);
+"775
 [e = *U + &U _writeBuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _writeBuffer `ui `ux _LSBWriteByte ]
-[; ;main.c: 776: timeOut = 0;
-"776
+[; ;main.c: 780: timeOut = 0;
+"780
 [e = _timeOut -> -> 0 `i `ui ]
-[; ;main.c: 777: while(status != I2C1_MESSAGE_FAIL)
-"777
+[; ;main.c: 781: while(status != I2C1_MESSAGE_FAIL)
+"781
 [e $U 1684  ]
 [e :U 1685 ]
-[; ;main.c: 778: {
-"778
+[; ;main.c: 782: {
+"782
 {
-[; ;main.c: 780: I2C1_MasterWrite( writeBuffer,
-[; ;main.c: 781: 3,
-[; ;main.c: 782: slaveDeviceAddress,
-[; ;main.c: 783: &status);
-"783
+[; ;main.c: 784: I2C1_MasterWrite( writeBuffer,
+[; ;main.c: 785: 3,
+[; ;main.c: 786: slaveDeviceAddress,
+[; ;main.c: 787: &status);
+"787
 [e ( _I2C1_MasterWrite (4 , , , &U _writeBuffer -> -> 3 `i `uc -> _slaveDeviceAddress `ui &U _status ]
-[; ;main.c: 786: while(status == I2C1_MESSAGE_PENDING);
-"786
+[; ;main.c: 790: while(status == I2C1_MESSAGE_PENDING);
+"790
 [e $U 1687  ]
 [e :U 1688 ]
 [e :U 1687 ]
-[e $ == -> _status `i -> . `E14267 2 `i 1688  ]
+[e $ == -> _status `i -> . `E14335 2 `i 1688  ]
 [e :U 1689 ]
-[; ;main.c: 788: if (status == I2C1_MESSAGE_COMPLETE)
-"788
-[e $ ! == -> _status `i -> . `E14267 0 `i 1690  ]
-[; ;main.c: 789: break;
-"789
+[; ;main.c: 792: if (status == I2C1_MESSAGE_COMPLETE)
+"792
+[e $ ! == -> _status `i -> . `E14335 0 `i 1690  ]
+[; ;main.c: 793: break;
+"793
 [e $U 1686  ]
 [e :U 1690 ]
-[; ;main.c: 798: if (timeOut == 100)
-"798
+[; ;main.c: 802: if (timeOut == 100)
+"802
 [e $ ! == _timeOut -> -> 100 `i `ui 1691  ]
-[; ;main.c: 799: break;
-"799
+[; ;main.c: 803: break;
+"803
 [e $U 1686  ]
 [e $U 1692  ]
-"800
+"804
 [e :U 1691 ]
-[; ;main.c: 800: else
-[; ;main.c: 801: timeOut++;
-"801
+[; ;main.c: 804: else
+[; ;main.c: 805: timeOut++;
+"805
 [e ++ _timeOut -> -> 1 `i `ui ]
 [e :U 1692 ]
-"802
+"806
 }
 [e :U 1684 ]
-"777
-[e $ != -> _status `i -> . `E14267 1 `i 1685  ]
+"781
+[e $ != -> _status `i -> . `E14335 1 `i 1685  ]
 [e :U 1686 ]
-[; ;main.c: 802: }
-[; ;main.c: 804: if (status == I2C1_MESSAGE_FAIL)
-"804
-[e $ ! == -> _status `i -> . `E14267 1 `i 1693  ]
-[; ;main.c: 805: {
-"805
+[; ;main.c: 806: }
+[; ;main.c: 808: if (status == I2C1_MESSAGE_FAIL)
+"808
+[e $ ! == -> _status `i -> . `E14335 1 `i 1693  ]
+[; ;main.c: 809: {
+"809
 {
-[; ;main.c: 806: break;
-"806
+[; ;main.c: 810: break;
+"810
 [e $U 1681  ]
-"807
+"811
 }
 [e :U 1693 ]
-"809
+"813
 }
-"764
+"768
 [e ++ _counter -> -> 1 `i `ui ]
 [e :U 1683 ]
 [e $ < _counter _nCount 1680  ]
 [e :U 1681 ]
-"809
+"813
 }
-[; ;main.c: 807: }
-[; ;main.c: 809: }
-[; ;main.c: 810: }
-"810
+[; ;main.c: 811: }
+[; ;main.c: 813: }
+[; ;main.c: 814: }
+"814
 [e :UE 1679 ]
 }
-"812
+"816
 [v _savePatch `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;main.c: 812: void savePatch(int PatchNumber){
+[; ;main.c: 816: void savePatch(int PatchNumber){
 [e :U _savePatch ]
 [v _PatchNumber `i ~T0 @X0 1 r1 ]
 [f ]
-"813
+"817
 [v _iPatchAddress `i ~T0 @X0 1 a ]
-[; ;main.c: 813: int iPatchAddress=PatchNumber*cPatchSize;
+[; ;main.c: 817: int iPatchAddress=PatchNumber*cPatchSize;
 [e = _iPatchAddress * _PatchNumber -> . `E14417 0 `i ]
-"814
-[v _iPatchAddressHigh `uc ~T0 @X0 1 a ]
-[; ;main.c: 814: uint8_t iPatchAddressHigh=iPatchAddress>>8;
-[e = _iPatchAddressHigh -> >> _iPatchAddress -> 8 `i `uc ]
-"815
-[v _iPatchAddressLow `uc ~T0 @X0 1 a ]
-[; ;main.c: 815: uint8_t iPatchAddressLow=iPatchAddress&0xFF;
-[e = _iPatchAddressLow -> & _iPatchAddress -> 255 `i `uc ]
-[; ;main.c: 818: marshallPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
 "818
-[e ( _marshallPatchMemory (3 , , &U _mvcChannels &U _dualADSRdata0 &U _dualADSRdata1 ]
-"821
-[v _pData `*uc ~T0 @X0 1 a ]
+[v _iPatchAddressHigh `uc ~T0 @X0 1 a ]
+[; ;main.c: 818: uint8_t iPatchAddressHigh=iPatchAddress>>8;
+[e = _iPatchAddressHigh -> >> _iPatchAddress -> 8 `i `uc ]
+"819
+[v _iPatchAddressLow `uc ~T0 @X0 1 a ]
+[; ;main.c: 819: uint8_t iPatchAddressLow=iPatchAddress&0xFF;
+[e = _iPatchAddressLow -> & _iPatchAddress -> 255 `i `uc ]
+[; ;main.c: 822: marshallPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
 "822
-[v _idx `i ~T0 @X0 1 a ]
-[; ;main.c: 821: uint8_t *pData;
-[; ;main.c: 822: int idx;
-[; ;main.c: 825: for(int batchNum=0;(batchNum*ciBatchSize)<cPatchSize;batchNum++){
+[e ( _marshallPatchMemory (3 , , &U _mvcChannels &U _dualADSRdata0 &U _dualADSRdata1 ]
 "825
+[v _pData `*uc ~T0 @X0 1 a ]
+"826
+[v _idx `i ~T0 @X0 1 a ]
+[; ;main.c: 825: uint8_t *pData;
+[; ;main.c: 826: int idx;
+[; ;main.c: 829: for(int batchNum=0;(batchNum*ciBatchSize)<cPatchSize;batchNum++){
+"829
 {
 [v _batchNum `i ~T0 @X0 1 a ]
 [e = _batchNum -> 0 `i ]
 [e $U 1698  ]
 [e :U 1695 ]
 {
-[; ;main.c: 827: idx=batchNum*ciBatchSize;
-"827
-[e = _idx * _batchNum -> . `E14417 4 `i ]
-[; ;main.c: 828: pData=&aPatchMemory[idx];
-"828
-[e = _pData &U *U + &U _aPatchMemory * -> -> _idx `ui `ux -> -> # *U &U _aPatchMemory `ui `ux ]
-[; ;main.c: 829: MYI2C_Write16EEPROMBytes(ciI2C_EEPROM_DEVICE_ADDRESS,iPatchAddress,pData);
-"829
-[e ( _MYI2C_Write16EEPROMBytes (3 , , -> . `E14417 3 `uc _iPatchAddress _pData ]
-[; ;main.c: 831: iPatchAddress+=ciBatchSize;
+[; ;main.c: 831: idx=batchNum*ciBatchSize;
 "831
-[e =+ _iPatchAddress -> . `E14417 4 `i ]
-[; ;main.c: 833: _delay((unsigned long)((5)*(32000000/4000.0)));
+[e = _idx * _batchNum -> . `E14417 4 `i ]
+[; ;main.c: 832: pData=&aPatchMemory[idx];
+"832
+[e = _pData &U *U + &U _aPatchMemory * -> -> _idx `ui `ux -> -> # *U &U _aPatchMemory `ui `ux ]
+[; ;main.c: 833: MYI2C_Write16EEPROMBytes(ciI2C_EEPROM_DEVICE_ADDRESS,iPatchAddress,pData);
 "833
+[e ( _MYI2C_Write16EEPROMBytes (3 , , -> . `E14417 3 `uc _iPatchAddress _pData ]
+[; ;main.c: 835: iPatchAddress+=ciBatchSize;
+"835
+[e =+ _iPatchAddress -> . `E14417 4 `i ]
+[; ;main.c: 837: _delay((unsigned long)((5)*(32000000/4000.0)));
+"837
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 32000000 `l `d .4000.0 `ul ]
-"834
+"838
 }
-"825
+"829
 [e ++ _batchNum -> 1 `i ]
 [e :U 1698 ]
 [e $ < * _batchNum -> . `E14417 4 `i -> . `E14417 0 `i 1695  ]
 [e :U 1696 ]
-"834
+"838
 }
-[; ;main.c: 834: }
-[; ;main.c: 839: }
-"839
+[; ;main.c: 838: }
+[; ;main.c: 843: }
+"843
 [e :UE 1694 ]
 }
-"842
+"846
 [v _writeI2CSystemData `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 842: void writeI2CSystemData(){
+[; ;main.c: 846: void writeI2CSystemData(){
 [e :U _writeI2CSystemData ]
 [f ]
-[; ;main.c: 843: MYI2C_WriteFaders(i2c_addr_dualADSR0);
-"843
+[; ;main.c: 847: MYI2C_WriteFaders(i2c_addr_dualADSR0);
+"847
 [e ( _MYI2C_WriteFaders (1 _i2c_addr_dualADSR0 ]
-[; ;main.c: 844: MYI2C_WriteFaders(i2c_addr_dualADSR1);
-"844
+[; ;main.c: 848: MYI2C_WriteFaders(i2c_addr_dualADSR1);
+"848
 [e ( _MYI2C_WriteFaders (1 _i2c_addr_dualADSR1 ]
-[; ;main.c: 845: }
-"845
+[; ;main.c: 849: }
+"849
 [e :UE 1699 ]
 }
-"847
+"851
 [v _wkMIDICC `uc ~T0 @X0 1 e ]
 [i _wkMIDICC
 -> -> 0 `i `uc
 ]
-[; ;main.c: 847: uint8_t wkMIDICC=0;
-"848
+[; ;main.c: 851: uint8_t wkMIDICC=0;
+"852
 [v _wkByte `uc ~T0 @X0 1 e ]
 [i _wkByte
 -> -> 0 `i `uc
 ]
-[; ;main.c: 848: uint8_t wkByte=0;
-"849
+[; ;main.c: 852: uint8_t wkByte=0;
+"853
 [v _wkFloat `f ~T0 @X0 1 e ]
 [i _wkFloat
 -> -> 0 `i `f
 ]
-[; ;main.c: 849: float wkFloat=0;
-"851
+[; ;main.c: 853: float wkFloat=0;
+"855
 [v _loadPatch `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;main.c: 851: void loadPatch(int PatchNumber){
+[; ;main.c: 855: void loadPatch(int PatchNumber){
 [e :U _loadPatch ]
 [v _PatchNumber `i ~T0 @X0 1 r1 ]
 [f ]
-"852
-[v _iPatchAddress `i ~T0 @X0 1 a ]
-[; ;main.c: 852: int iPatchAddress=PatchNumber*cPatchSize;
-[e = _iPatchAddress * _PatchNumber -> . `E14417 0 `i ]
-"855
-[v _pData `*uc ~T0 @X0 1 a ]
 "856
+[v _iPatchAddress `i ~T0 @X0 1 a ]
+[; ;main.c: 856: int iPatchAddress=PatchNumber*cPatchSize;
+[e = _iPatchAddress * _PatchNumber -> . `E14417 0 `i ]
+"859
+[v _pData `*uc ~T0 @X0 1 a ]
+"860
 [v _idx `i ~T0 @X0 1 a ]
-[; ;main.c: 855: uint8_t *pData;
-[; ;main.c: 856: int idx;
-[; ;main.c: 869: updateModelFromPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
-"869
+[; ;main.c: 859: uint8_t *pData;
+[; ;main.c: 860: int idx;
+[; ;main.c: 873: updateModelFromPatchMemory(mvcChannels,dualADSRdata0,dualADSRdata1);
+"873
 [e ( _updateModelFromPatchMemory (3 , , &U _mvcChannels &U _dualADSRdata0 &U _dualADSRdata1 ]
-[; ;main.c: 872: for(int i=0;i<cMixFaderCount;i++){
-"872
+[; ;main.c: 876: for(int i=0;i<cMixFaderCount;i++){
+"876
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -14820,29 +14834,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 1702  ]
 [e :U 1701 ]
 {
-[; ;main.c: 873: writeDAC528(i+4,mvcChannels[i]);
-"873
+[; ;main.c: 877: writeDAC528(i+4,mvcChannels[i]);
+"877
 [e ( _writeDAC528 (2 , + _i -> 4 `i *U + &U _mvcChannels * -> -> _i `ui `ux -> -> # *U &U _mvcChannels `ui `ux ]
-"874
+"878
 }
-"872
+"876
 [e ++ _i -> 1 `i ]
 [e $ < _i -> . `E14417 1 `i 1701  ]
 [e :U 1702 ]
-"874
+"878
 }
-[; ;main.c: 874: }
-[; ;main.c: 879: }
-"879
+[; ;main.c: 878: }
+[; ;main.c: 883: }
+"883
 [e :UE 1700 ]
 }
-"880
+"884
 [v _initModelRelatedVariables `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 880: void initModelRelatedVariables(){
+[; ;main.c: 884: void initModelRelatedVariables(){
 [e :U _initModelRelatedVariables ]
 [f ]
-[; ;main.c: 881: }
-"881
+[; ;main.c: 885: }
+"885
 [e :UE 1704 ]
 }

@@ -200,33 +200,6 @@ void delay(int delaytime) {
  //     __delay_us(delaytime);
  } 
 
-void blinkyLoop (int maxLoops){
-    int loopCount=maxLoops;
-    int delayTime;
-    
-    ODCONB &= 0xF0;  // not open drain bottom 4 bits
-    ODCONC &= 0x1F;  // not open drain top 3 bits
-    while(loopCount>0){
-        delayTime=loopCount*400;    
-
-        // brightest
-        LATB |= 0x0F; // bottom 4 bits of PORTB
-       // PORTC |= 0xE0; // top 3 bits of PORTC all led's on activate all
-
-        delay(delayTime);
-        // deactivate all led's
-        LATB &= 0xF0; // deactivate all led's 
-        //PORTC &= 0x1F; // deactivate all led's 
-
-        delay(delayTime);
-        
-        loopCount--;
-    }
-    LATB |= 0x0F; // bottom 4 bits of PORTB
-    //LATC |= 0xE0; // top 3 bits of PORTC all led's on activate all
-    delay(5000); // extra delay on the Master side - this appears to be required!
-    return;
-}
 
 /* END
  copied from PLT30_fader_led_test1 
@@ -238,6 +211,37 @@ void UpdateLEDsFromValue(uint8_t inFaderNum,uint8_t inValue);
 
 void savePatch(int PatchNumber);
 void loadPatch(int PatchNumber);
+
+
+void blinkyLoop (int maxLoops){
+    int loopCount=maxLoops;
+    int delayTime;
+    
+    ODCONB &= 0xF0;  // not open drain bottom 4 bits
+    ODCONC &= 0x1F;  // not open drain top 3 bits
+
+    while(loopCount>0){
+        delayTime=loopCount*400;    
+
+        // brightest
+        LATB |= 0x0F; // bottom 4 bits of PORTB
+       // PORTC |= 0xE0; // top 3 bits of PORTC all led's on activate all
+        MYI2C_Write2LEDBytes(i2c_addr_dualADSR0,0xFF,0xFF); // all on bright
+        delay(delayTime);
+        // deactivate all led's
+        LATB &= 0xF0; // deactivate all led's 
+        //PORTC &= 0x1F; // deactivate all led's 
+        MYI2C_Write2LEDBytes(i2c_addr_dualADSR0,0x0,0x0); // all off
+        delay(delayTime);
+        
+        loopCount--;
+    }
+    LATB |= 0x0F; // bottom 4 bits of PORTB
+    //LATC |= 0xE0; // top 3 bits of PORTC all led's on activate all
+    delay(5000); // extra delay on the Master side - this appears to be required!
+    MYI2C_Write2LEDBytes(i2c_addr_dualADSR0,0xFF,0xFF); // all on bright
+    return;
+}
 /*
                          Main application
  */
@@ -293,7 +297,7 @@ void main(void)
         prevPanelInChannels[fx]= PanelInChannels[fx];
     }
 #endif
-//    blinkyLoop(10);
+    blinkyLoop(10);
     //Clear_WDT(); // clear watchdog timer, until i figure  out how to shut it off 
     
    //LED7SegLoop(); 

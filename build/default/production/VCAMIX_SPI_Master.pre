@@ -17438,79 +17438,6 @@ typedef unsigned char bool;
 # 110 "mcc_generated_files/interrupt_manager.h"
 void interrupt INTERRUPT_InterruptManager(void);
 
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
-typedef unsigned size_t;
-
-# 6 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stddef.h"
-typedef int ptrdiff_t;
-
-# 83 "mcc_generated_files/i2c1.h"
-typedef enum
-{
-I2C1_MESSAGE_COMPLETE,
-I2C1_MESSAGE_FAIL,
-I2C1_MESSAGE_PENDING,
-I2C1_STUCK_START,
-I2C1_MESSAGE_ADDRESS_NO_ACK,
-I2C1_DATA_NO_ACK,
-I2C1_LOST_STATE
-} I2C1_MESSAGE_STATUS;
-
-# 108
-typedef struct
-{
-uint16_t address;
-
-
-uint8_t length;
-uint8_t *pbuffer;
-} I2C1_TRANSACTION_REQUEST_BLOCK;
-
-# 220
-void I2C1_Initialize(void);
-
-# 259
-void I2C1_MasterWrite(
-uint8_t *pdata,
-uint8_t length,
-uint16_t address,
-I2C1_MESSAGE_STATUS *pstatus);
-
-# 406
-void I2C1_MasterRead(
-uint8_t *pdata,
-uint8_t length,
-uint16_t address,
-I2C1_MESSAGE_STATUS *pstatus);
-
-# 516
-void I2C1_MasterTRBInsert(
-uint8_t count,
-I2C1_TRANSACTION_REQUEST_BLOCK *ptrb_list,
-I2C1_MESSAGE_STATUS *pflag);
-
-# 560
-void I2C1_MasterReadTRBBuild(
-I2C1_TRANSACTION_REQUEST_BLOCK *ptrb,
-uint8_t *pdata,
-uint8_t length,
-uint16_t address);
-
-# 605
-void I2C1_MasterWriteTRBBuild(
-I2C1_TRANSACTION_REQUEST_BLOCK *ptrb,
-uint8_t *pdata,
-uint8_t length,
-uint16_t address);
-
-# 647
-bool I2C1_MasterQueueIsEmpty(void);
-
-# 685
-bool I2C1_MasterQueueIsFull(void);
-void I2C1_BusCollisionISR( void );
-void I2C1_ISR ( void );
-
 # 71 "mcc_generated_files/adcc.h"
 typedef uint16_t adc_result_t;
 
@@ -17611,6 +17538,79 @@ bool ADCC_HasErrorCrossedLowerThreshold(void);
 
 # 773
 uint8_t ADCC_GetConversionStageStatus(void);
+
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\__size_t.h"
+typedef unsigned size_t;
+
+# 6 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stddef.h"
+typedef int ptrdiff_t;
+
+# 83 "mcc_generated_files/i2c1.h"
+typedef enum
+{
+I2C1_MESSAGE_COMPLETE,
+I2C1_MESSAGE_FAIL,
+I2C1_MESSAGE_PENDING,
+I2C1_STUCK_START,
+I2C1_MESSAGE_ADDRESS_NO_ACK,
+I2C1_DATA_NO_ACK,
+I2C1_LOST_STATE
+} I2C1_MESSAGE_STATUS;
+
+# 108
+typedef struct
+{
+uint16_t address;
+
+
+uint8_t length;
+uint8_t *pbuffer;
+} I2C1_TRANSACTION_REQUEST_BLOCK;
+
+# 220
+void I2C1_Initialize(void);
+
+# 259
+void I2C1_MasterWrite(
+uint8_t *pdata,
+uint8_t length,
+uint16_t address,
+I2C1_MESSAGE_STATUS *pstatus);
+
+# 406
+void I2C1_MasterRead(
+uint8_t *pdata,
+uint8_t length,
+uint16_t address,
+I2C1_MESSAGE_STATUS *pstatus);
+
+# 516
+void I2C1_MasterTRBInsert(
+uint8_t count,
+I2C1_TRANSACTION_REQUEST_BLOCK *ptrb_list,
+I2C1_MESSAGE_STATUS *pflag);
+
+# 560
+void I2C1_MasterReadTRBBuild(
+I2C1_TRANSACTION_REQUEST_BLOCK *ptrb,
+uint8_t *pdata,
+uint8_t length,
+uint16_t address);
+
+# 605
+void I2C1_MasterWriteTRBBuild(
+I2C1_TRANSACTION_REQUEST_BLOCK *ptrb,
+uint8_t *pdata,
+uint8_t length,
+uint16_t address);
+
+# 647
+bool I2C1_MasterQueueIsEmpty(void);
+
+# 685
+bool I2C1_MasterQueueIsFull(void);
+void I2C1_BusCollisionISR( void );
+void I2C1_ISR ( void );
 
 # 70 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);

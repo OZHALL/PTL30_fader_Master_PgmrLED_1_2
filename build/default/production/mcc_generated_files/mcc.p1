@@ -13174,6 +13174,49 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
+[; ;adcc.h: 71: typedef uint16_t adc_result_t;
+[; ;adcc.h: 88: typedef enum
+[; ;adcc.h: 89: {
+[; ;adcc.h: 90: channel_ANA0 = 0x0,
+[; ;adcc.h: 91: channel_ANA1 = 0x1,
+[; ;adcc.h: 92: channel_ANA2 = 0x2,
+[; ;adcc.h: 93: channel_ANA3 = 0x3,
+[; ;adcc.h: 94: channel_ANA4 = 0x4,
+[; ;adcc.h: 95: channel_ANA5 = 0x5,
+[; ;adcc.h: 96: channel_ANA6 = 0x6,
+[; ;adcc.h: 97: channel_ANC0 = 0x10,
+[; ;adcc.h: 98: channel_VSS = 0x3C,
+[; ;adcc.h: 99: channel_Temp = 0x3D,
+[; ;adcc.h: 100: channel_DAC1 = 0x3E,
+[; ;adcc.h: 101: channel_FVR_buf1 = 0x3F
+[; ;adcc.h: 102: } adcc_channel_t;
+[; ;adcc.h: 137: void ADCC_Initialize(void);
+[; ;adcc.h: 166: void ADCC_StartConversion(adcc_channel_t channel);
+[; ;adcc.h: 197: bool ADCC_IsConversionDone();
+[; ;adcc.h: 228: adc_result_t ADCC_GetConversionResult(void);
+[; ;adcc.h: 259: adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
+[; ;adcc.h: 284: void ADCC_StopConversion(void);
+[; ;adcc.h: 308: void ADCC_SetStopOnInterrupt(void);
+[; ;adcc.h: 330: void ADCC_DischargeSampleCapacitor(void);
+[; ;adcc.h: 354: void ADCC_LoadAcquisitionRegister(uint8_t);
+[; ;adcc.h: 377: void ADCC_SetPrechargeTime(uint8_t);
+[; ;adcc.h: 401: void ADCC_SetRepeatCount(uint8_t);
+[; ;adcc.h: 425: uint8_t ADCC_GetCurrentCountofConversions(void);
+[; ;adcc.h: 449: void ADCC_ClearAccumulator(void);
+[; ;adcc.h: 472: uint16_t ADCC_GetAccumulatorValue(void);
+[; ;adcc.h: 496: bool ADCC_HasAccumulatorOverflowed(void);
+[; ;adcc.h: 520: uint16_t ADCC_GetFilterValue(void);
+[; ;adcc.h: 544: uint16_t ADCC_GetPreviousResult(void);
+[; ;adcc.h: 568: void ADCC_DefineSetPoint(uint16_t);
+[; ;adcc.h: 593: void ADCC_SetUpperThreshold(uint16_t);
+[; ;adcc.h: 618: void ADCC_SetLowerThreshold(uint16_t);
+[; ;adcc.h: 641: uint16_t ADCC_GetErrorCalculation(void);
+[; ;adcc.h: 663: void ADCC_EnableDoubleSampling(void);
+[; ;adcc.h: 685: void ADCC_EnableContinuousConversion(void);
+[; ;adcc.h: 707: void ADCC_DisableContinuousConversion(void);
+[; ;adcc.h: 729: bool ADCC_HasErrorCrossedUpperThreshold(void);
+[; ;adcc.h: 751: bool ADCC_HasErrorCrossedLowerThreshold(void);
+[; ;adcc.h: 773: uint8_t ADCC_GetConversionStageStatus(void);
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stddef.h: 6: typedef int ptrdiff_t;
 [; ;i2c1.h: 83: typedef enum
@@ -13221,49 +13264,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c1.h: 685: bool I2C1_MasterQueueIsFull(void);
 [; ;i2c1.h: 686: void I2C1_BusCollisionISR( void );
 [; ;i2c1.h: 687: void I2C1_ISR ( void );
-[; ;adcc.h: 71: typedef uint16_t adc_result_t;
-[; ;adcc.h: 88: typedef enum
-[; ;adcc.h: 89: {
-[; ;adcc.h: 90: channel_ANA0 = 0x0,
-[; ;adcc.h: 91: channel_ANA1 = 0x1,
-[; ;adcc.h: 92: channel_ANA2 = 0x2,
-[; ;adcc.h: 93: channel_ANA3 = 0x3,
-[; ;adcc.h: 94: channel_ANA4 = 0x4,
-[; ;adcc.h: 95: channel_ANA5 = 0x5,
-[; ;adcc.h: 96: channel_ANA6 = 0x6,
-[; ;adcc.h: 97: channel_ANC0 = 0x10,
-[; ;adcc.h: 98: channel_VSS = 0x3C,
-[; ;adcc.h: 99: channel_Temp = 0x3D,
-[; ;adcc.h: 100: channel_DAC1 = 0x3E,
-[; ;adcc.h: 101: channel_FVR_buf1 = 0x3F
-[; ;adcc.h: 102: } adcc_channel_t;
-[; ;adcc.h: 137: void ADCC_Initialize(void);
-[; ;adcc.h: 166: void ADCC_StartConversion(adcc_channel_t channel);
-[; ;adcc.h: 197: bool ADCC_IsConversionDone();
-[; ;adcc.h: 228: adc_result_t ADCC_GetConversionResult(void);
-[; ;adcc.h: 259: adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
-[; ;adcc.h: 284: void ADCC_StopConversion(void);
-[; ;adcc.h: 308: void ADCC_SetStopOnInterrupt(void);
-[; ;adcc.h: 330: void ADCC_DischargeSampleCapacitor(void);
-[; ;adcc.h: 354: void ADCC_LoadAcquisitionRegister(uint8_t);
-[; ;adcc.h: 377: void ADCC_SetPrechargeTime(uint8_t);
-[; ;adcc.h: 401: void ADCC_SetRepeatCount(uint8_t);
-[; ;adcc.h: 425: uint8_t ADCC_GetCurrentCountofConversions(void);
-[; ;adcc.h: 449: void ADCC_ClearAccumulator(void);
-[; ;adcc.h: 472: uint16_t ADCC_GetAccumulatorValue(void);
-[; ;adcc.h: 496: bool ADCC_HasAccumulatorOverflowed(void);
-[; ;adcc.h: 520: uint16_t ADCC_GetFilterValue(void);
-[; ;adcc.h: 544: uint16_t ADCC_GetPreviousResult(void);
-[; ;adcc.h: 568: void ADCC_DefineSetPoint(uint16_t);
-[; ;adcc.h: 593: void ADCC_SetUpperThreshold(uint16_t);
-[; ;adcc.h: 618: void ADCC_SetLowerThreshold(uint16_t);
-[; ;adcc.h: 641: uint16_t ADCC_GetErrorCalculation(void);
-[; ;adcc.h: 663: void ADCC_EnableDoubleSampling(void);
-[; ;adcc.h: 685: void ADCC_EnableContinuousConversion(void);
-[; ;adcc.h: 707: void ADCC_DisableContinuousConversion(void);
-[; ;adcc.h: 729: bool ADCC_HasErrorCrossedUpperThreshold(void);
-[; ;adcc.h: 751: bool ADCC_HasErrorCrossedLowerThreshold(void);
-[; ;adcc.h: 773: uint8_t ADCC_GetConversionStageStatus(void);
 [; ;mcc.h: 70: void SYSTEM_Initialize(void);
 [; ;mcc.h: 83: void OSCILLATOR_Initialize(void);
 "83 mcc_generated_files/mcc.c
