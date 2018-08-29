@@ -117,6 +117,7 @@ typedef enum
 //    FADER7 = 0x7,      
 } adcc_channel_t;
 
+#define SET_Fader0_LED_LOW  LATB  &= 0b10011110 // RB0
 #define SET_Fader1_LED_LOW  LATB  &= 0b10011101 // RB1
 #define SET_Fader0_LED_HIGH LATB  |= 0b00000001 // RB0
 #define SET_Fader1_LED_HIGH LATB  |= 0b00000010 // RB1
