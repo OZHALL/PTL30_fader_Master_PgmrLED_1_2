@@ -317,6 +317,8 @@ void main(void)
                 /* service faders */
                 for(int fx=0;fx<cMixFaderCount;fx++){
                     faderValue=ADCC_GetSingleConversion(fx);  // 
+                    __delay_ms(1);                    
+                    faderValue=ADCC_GetSingleConversion(fx);  // do a double read for better accuracy ()
                     PanelInChannels[fx]=255-(faderValue>>2);   // invert and convert 10 bit to 8 bit 
                     //fader8bitValue=(PanelInChannels[fx]+prevPanelInChannels[fx])/2;  // smooth it for DAC
                     fader8bitValue=PanelInChannels[fx];
@@ -336,11 +338,15 @@ void main(void)
                 /* service pots */
                 __delay_ms(1);             
                 faderValue=ADCC_GetSingleConversion(POT0);  
+                __delay_ms(1);             
+                faderValue=ADCC_GetSingleConversion(POT0);  
                 faderValue=1023-faderValue;  // must invert the value for prototype - pots wired backwards
                 //fader8bitValue=faderValue>>2;
                 POT0Value=faderValue/102.3;   // change to 0-9
                 __delay_ms(1);
                 faderValue=ADCC_GetSingleConversion(POT1);  
+                __delay_ms(1);
+                faderValue=ADCC_GetSingleConversion(POT1);
                 faderValue=1023-faderValue;  // must invert the value
                 POT1Value=faderValue/102.3;   // change to 0-9
             } 
