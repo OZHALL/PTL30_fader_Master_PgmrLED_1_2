@@ -329,17 +329,16 @@ void main(void)
                         writeDAC528(fx+4,fader8bitValue); // +4 because the VCA/Mix is connected to DAC channels 5-8
                     }                     
                     prevPanelInChannels[fx]=PanelInChannels[fx];
-                    //__delay_ms(10);
-                    delay(10);
+                    __delay_ms(1);
                 }
                 
                 /* service pots */
-                delay(10);              
+                __delay_ms(1);             
                 faderValue=ADCC_GetSingleConversion(POT0);  
                 faderValue=1023-faderValue;  // must invert the value for prototype - pots wired backwards
                 //fader8bitValue=faderValue>>2;
                 POT0Value=faderValue/102.3;   // change to 0-9
-                delay(10);
+                __delay_ms(1);
                 faderValue=ADCC_GetSingleConversion(POT1);  
                 faderValue=1023-faderValue;  // must invert the value
                 POT1Value=faderValue/102.3;   // change to 0-9
