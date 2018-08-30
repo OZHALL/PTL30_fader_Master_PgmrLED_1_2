@@ -13340,9 +13340,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adcc.c: 66: ADCON1 = 0x00;
 "66
 [e = _ADCON1 -> -> 0 `i `uc ]
-[; ;adcc.c: 68: ADCON2 = 0x03;
+[; ;adcc.c: 68: ADCON2 = 0x00;
 "68
-[e = _ADCON2 -> -> 3 `i `uc ]
+[e = _ADCON2 -> -> 0 `i `uc ]
 [; ;adcc.c: 70: ADCON3 = 0x00;
 "70
 [e = _ADCON3 -> -> 0 `i `uc ]
@@ -13352,9 +13352,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adcc.c: 74: ADSTAT = 0x00;
 "74
 [e = _ADSTAT -> -> 0 `i `uc ]
-[; ;adcc.c: 76: ADCLK = 0x13;
+[; ;adcc.c: 76: ADCLK = 0x03;
 "76
-[e = _ADCLK -> -> 19 `i `uc ]
+[e = _ADCLK -> -> 3 `i `uc ]
 [; ;adcc.c: 78: ADREF = 0x00;
 "78
 [e = _ADREF -> -> 0 `i `uc ]
@@ -13364,9 +13364,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;adcc.c: 82: ADPRE = 0x00;
 "82
 [e = _ADPRE -> -> 0 `i `uc ]
-[; ;adcc.c: 84: ADACQ = 0x04;
+[; ;adcc.c: 84: ADACQ = 0x32;
 "84
-[e = _ADACQ -> -> 4 `i `uc ]
+[e = _ADACQ -> -> 50 `i `uc ]
 [; ;adcc.c: 86: ADPCH = 0x00;
 "86
 [e = _ADPCH -> -> 0 `i `uc ]

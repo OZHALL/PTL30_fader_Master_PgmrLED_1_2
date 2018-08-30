@@ -17625,7 +17625,7 @@ void ADCC_Initialize(void)
 
 ADCON1 = 0x00;
 
-ADCON2 = 0x03;
+ADCON2 = 0x00;
 
 ADCON3 = 0x00;
 
@@ -17633,7 +17633,7 @@ ADACT = 0x00;
 
 ADSTAT = 0x00;
 
-ADCLK = 0x13;
+ADCLK = 0x03;
 
 ADREF = 0x00;
 
@@ -17641,7 +17641,7 @@ ADCAP = 0x00;
 
 ADPRE = 0x00;
 
-ADACQ = 0x04;
+ADACQ = 0x32;
 
 ADPCH = 0x00;
 

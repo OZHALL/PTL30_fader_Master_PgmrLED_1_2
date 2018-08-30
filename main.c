@@ -64,7 +64,9 @@
  *              2) vca/mix channels 3 & 4 do not work
  2018-08-22 ozh Added the read for the LOAD/SAVE switch, but LEDs are now off
  *              most likely because of the change in the config
- * 
+ 2018-08-29 ozh tweak ADC configuration after doing some research
+ *              basic A/D, ADACQ 0x32  (50us), FOSC/ADCLK - FOSC/8 (92 us) 
+ *              total 142 us per fader/pot for a total of 852 us per loop )
  todo: 
  *  there is a little DC bleed in the attenuators (may be a circuit issue or DAC output issue)
  *  debug VCA/Mix board issue (done - floating ground on top half of TL074)
@@ -317,8 +319,6 @@ void main(void)
                 /* service faders */
                 for(int fx=0;fx<cMixFaderCount;fx++){
                     faderValue=ADCC_GetSingleConversion(fx);  // 
-                    __delay_ms(1);                    
-                    faderValue=ADCC_GetSingleConversion(fx);  // do a double read for better accuracy ()
                     PanelInChannels[fx]=255-(faderValue>>2);   // invert and convert 10 bit to 8 bit 
                     //fader8bitValue=(PanelInChannels[fx]+prevPanelInChannels[fx])/2;  // smooth it for DAC
                     fader8bitValue=PanelInChannels[fx];
@@ -332,21 +332,14 @@ void main(void)
                         writeDAC528(fx+4,fader8bitValue); // +4 because the VCA/Mix is connected to DAC channels 5-8
                     }                     
                     prevPanelInChannels[fx]=PanelInChannels[fx];
-                    __delay_ms(1);
                 }
                 
-                /* service pots */
-                __delay_ms(1);             
-                faderValue=ADCC_GetSingleConversion(POT0);  
-                __delay_ms(1);             
-                faderValue=ADCC_GetSingleConversion(POT0);  
+                /* service pots */            
+                faderValue=ADCC_GetSingleConversion(POT0);   
                 faderValue=1023-faderValue;  // must invert the value for prototype - pots wired backwards
                 //fader8bitValue=faderValue>>2;
                 POT0Value=faderValue/102.3;   // change to 0-9
-                __delay_ms(1);
                 faderValue=ADCC_GetSingleConversion(POT1);  
-                __delay_ms(1);
-                faderValue=ADCC_GetSingleConversion(POT1);
                 faderValue=1023-faderValue;  // must invert the value
                 POT1Value=faderValue/102.3;   // change to 0-9
             } 

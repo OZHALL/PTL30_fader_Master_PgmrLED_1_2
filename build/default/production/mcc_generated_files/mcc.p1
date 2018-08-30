@@ -20,7 +20,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "49 mcc_generated_files/mcc.c
 [p x FEXTOSC=OFF ]
 "50
-[p x RSTOSC=HFINT1 ]
+[p x RSTOSC=HFINT32 ]
 "51
 [p x CLKOUTEN=OFF ]
 "52
